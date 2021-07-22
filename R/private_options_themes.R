@@ -133,8 +133,8 @@
   plot.title = ggplot2::element_text(color = "black", margin = ggplot2::margin(0,0,2,0, unit = "lines"), hjust = 0.5),
   plot.margin = ggplot2::margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
-  labels.text = NULL, #ggplot2::element_text(),
-  labels.box = NULL, #ggplot2::element_rect(),
+  labels.text = ggplot2::element_text(color = "black", vjust = 0, hjust = 0.5),
+  labels.box = ggplot2::element_rect(fill = "white", colour = "black"),
 
   grid = ggplot2::element_line(),
 

@@ -381,11 +381,11 @@ add_labels <- function(object,
                        size = NULL,
                        nudge_y,
                        nudge_x,
-                       vjust = 0.5,
-                       hjust = 0.5,
+                       vjust = NULL,
+                       hjust = NULL,
                        round ,
-                       box,
-                       frame) {
+                       box = NULL,
+                       frame = NULL) {
 
   if (!is.null(color)) object$theme$labels.col <- color
   if (!is.null(size)) object$theme$labels.size <- size
@@ -394,15 +394,27 @@ add_labels <- function(object,
   if (!missing(nudge_y)) object$theme$labels.nudge_y <- nudge_y
   if (!missing(nudge_x)) object$theme$labels.nudge_x <- nudge_x
   if (!missing(round)) object$theme$labels.round <- round
-  if (!missing(box)) object$theme$labels.box.fill <- box
-  if (!missing(frame)) object$theme$labels.box.col <- frame
+  if (!is.null(box)) object$theme$labels.box.fill <- box
+  if (!is.null(frame)) object$theme$labels.box.col <- frame
 
-  theme$labels.text <- element_text(
-    colour = color,
-    size = size,
-    vjust = vjust,
-    hjust = hjust,
 
+  object$theme$labels.text <- merge_element(
+    element_text(
+      #family = family, face = face,
+      colour = color, size = size,
+      hjust = hjust, vjust = vjust#,
+      #angle = angle, lineheight = lineheight,
+      #margin = margin
+    ), object$theme$labels.text
+  )
+
+  object$theme$labels.box <- merge_element(
+    element_rect(
+      #family = family, face = face,
+      colour = frame, fill = box,
+      #angle = angle, lineheight = lineheight,
+      #margin = margin
+    ), object$theme$labels.box
   )
 
   object

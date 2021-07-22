@@ -84,18 +84,20 @@ print.scplot <- function(x, ...) {
   # add value labels ---------------------------
 
   if (!is.null(theme$labels.text)) {
-    p <- p + geom_text(
-      aes(label = !!sym(dvar)),
+    p <- p + geom_label(
+      aes(label = !!sym(dvar), y = !!sym(dvar)),
       colour =  theme$labels.text$colour,
       size = theme$labels.text$size,
       hjust = theme$labels.text$hjust,
       vjust = theme$labels.text$vjust,
-      lineheight = theme$labels.text$lineheight,
-      family = theme$labels.text$family,
-      fontface = theme$labels.text$face,
-      angle = theme$labels.text$angle,
+      #lineheight = theme$labels.text$lineheight,
+      #family = theme$labels.text$family,
+      #fontface = theme$labels.text$face,
+      #angle = theme$labels.text$angle,
+      fill = theme$labels.box$fill,
       nudge_x = theme$labels.nudge_x,
-      nudge_y = theme$labels.nudge_y
+      nudge_y = theme$labels.nudge_y,
+
     )
   }
   # add datapoints ---------------------------

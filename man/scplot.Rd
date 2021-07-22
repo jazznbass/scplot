@@ -143,11 +143,11 @@ add_labels(
   size = NULL,
   nudge_y,
   nudge_x,
-  vjust = 0.5,
-  hjust = 0.5,
+  vjust = NULL,
+  hjust = NULL,
   round,
-  box,
-  frame
+  box = NULL,
+  frame = NULL
 )
 
 add_ridge(object, color = "grey98")
