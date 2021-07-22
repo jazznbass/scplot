@@ -1,0 +1,120 @@
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(scan)
+```
+
+## scplot examples
+
+Starting with `scan` version 0.53 we introduced the new plotting function `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function. `scplot()` was designed to encompass a pipe style coding. For now, `scan` imports the `%>%` pipe operator from the `magrittr` package and exports it to the user namespace after executing `library(scan)`. Recently, with version 4.1, R implemented a pipe operator `|>` which also works fine with `scplot`. 
+
+`scplot` is already much more versatile then `plot.scdf` has been. But we will keep `plot.scdf` as it is in new upgrades of `scan`. We consider the state of `scplot` to be *experimental*. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.
+
+Here are a few plots that have been generated with `scplot` to demonstrate its possibilities. 
+
+### The standard style with an added statline
+
+```{r}
+scplot(exampleAB) %>%
+  add_statline("mean", color = "darkred") %>%
+  set_ylabel(orientation = "horizontal")
+
+```
+
+### A simple style with axis settings
+
+```{r}
+scplot(exampleA1B1A2B2) %>% 
+  add_theme("default", "small") %>% 
+  set_xaxis(increment = 5, increment_from = 0) %>%
+  set_yaxis(limits = c(NA, NA)) %>%
+  set_ylabel(orientation = "h")
+```
+
+### A dark style for presentations
+
+```{r}
+scplot(exampleABC) %>% 
+  add_theme("dark") %>% 
+  set_xaxis(increment = 2) %>%
+  add_labels(color = "black", box = "grey98") %>%
+  set_yaxis(limits = c(30, 120))
+ 
+```
+
+
+### Rotated axis values, removed dots, and some adjustments on phasenames
+
+```{r}
+scplot(example_A24) %>% 
+  add_statline("movingMean", col = "darkred") %>%
+  set_theme_element(xaxis.text.angle = 35) %>%
+  set_xaxis(size =.8) %>%
+  set_dataline(size = 0) %>%
+  add_legend(x = 2010, y = 250) %>%
+  set_phasenames("no speedlimit", "with speedlimit", x = "centre", y = "top", size = 0.8, box = "white") %>%
+  set_casenames("") %>%
+  add_title("Effect of a speedlimit on the A24") %>%
+  add_grid(color = "white", width = 1.5, type = "solid") %>%
+  add_margins(inner = c(0.5, 0, 0, 0)) %>%
+  add_caption("Note: Moving mean calculated with lag two.", size = 0.8, face = 3, margin = 0.1)
+  
+```
+
+### The chart theme
+
+```{r}
+scplot(exampleA1B1A2B2_zvt) %>% 
+  add_theme("chart") %>%
+  set_yaxis(limits = c(40, 90))
+```
+
+
+
+### Mulitple variables in a plot with an added legend
+
+```{r}
+scplot(exampleAB_add) %>%
+  add_dataline("depression", color = "darkred") %>% 
+  add_dataline("cigarrets", color = "lightblue") %>%
+  add_statline("trend", type = "dashed") %>%
+  add_statline("mean", variable = "depression", color = "red") %>%
+  add_marks(case = 1, positions = c(14,20), size = 3, variable = "cigarrets") %>%
+  set_xaxis(increment = 5) %>%
+  set_phasenames(x = "left") %>%
+  add_legend(x = 30, y = 45)
+
+
+```
+
+### An entensive example to show-off
+
+```{r}
+scplot(exampleABAB) %>% 
+  set_xaxis(increment = 4, size = 0.5, color = "brown") %>%
+  set_yaxis(limits = c(0, 50), color = "sienna3", size = 0.7) %>%
+  set_ylabel("Points", color = "sienna3", size = 0.7, orientation = 0) %>%
+  set_xlabel("Weeks", size = 0.7, color = "brown") %>%
+  add_title("Points by week", color = "sienna4", size = 1, face = 3) %>%
+  add_caption("Note: An extensive Example.", color = "black", size = 0.7, face = 3) %>%
+  set_phasenames("Baseline", "Intervention", "Fall-Back", "Intervention", color = "darkgreen") %>%
+  add_ridge("white") %>%
+  set_casenames(sample_names(3), color = "steelblue4", size = 0.8) %>%
+  set_panel(fill = c("grey94", "grey99"), frame = "sienna4") %>%
+  add_grid(color = "grey85", width = 0.5) %>%
+  set_dataline(color = "black", width = 1, linetype = "dotted", dots = "sienna4", size = 1, shape = 18) %>%
+  add_labels(color = "sienna", size = 0.5) %>%
+  set_seperator(extent = 0.8, width = 0.5, type = "solid", color = "sienna") %>%
+  add_statline(stat = "trendA", color = "tomato2") %>%
+  add_statline(stat = "maxA", color = "lightblue") %>%
+  add_marks(case = 1:2, positions = 14, color = "red3", size = 2, shape = 4) %>%
+  add_marks(case = "all", positions = 'points < quantile(points, 0.1)', color = "blue3", size = 1.5) %>%
+  add_marks(positions = outlier(exampleABAB), color = "brown", size = 2) %>%
+  add_text(case = 1, x = 5, y = 35, "Interesting", color = "darkgreen", angle = 20, size = 0.5) %>%
+  add_arrow(case = 1, 5, 30, 5, 22, color = "steelblue") %>%
+  set_background(frame = "sienna1") %>%
+  add_legend(case = 2, title = "Legend") %>%
+  set_theme_element(legend.text.size = 0.5) %>%
+  add_margins(c(0,0,0,4))
+```
+
