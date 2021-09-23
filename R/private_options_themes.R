@@ -115,26 +115,40 @@
   statline.width = 1,
   statline.linetype = "solid",
 
+  # ggplot2 ---------------------
+
   dataline.col = "black",
-  dataline.width = 2,
+  dataline.width = 0.5,
   dataline.linetype = "solid",
 
   datadots.col = "black",
   datadots.shape = 16,
-  datadots.size = 0.8,
+  datadots.size = 2,
 
-  # ggplot2 ---------------------
-
-  axis.line = ggplot2::element_line(color = "black", size = 0.7, linetype = "solid"),
+  axis.line = ggplot2::element_line(
+    color = "black", size = 0.7, linetype = "solid"
+  ),
 
   axis.title.y = ggplot2::element_text(color = "black", angle = 90),
   axis.title.x = ggplot2::element_text(color = "black", angle = 0),
 
-  plot.title = ggplot2::element_text(color = "black", margin = ggplot2::margin(0,0,2,0, unit = "lines"), hjust = 0.5),
+  plot.title = ggplot2::element_text(
+    color = "black",
+    margin = ggplot2::margin(0,0,2,0, unit = "lines"),
+    hjust = 0.5
+  ),
+
   plot.margin = ggplot2::margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
-  labels.text = ggplot2::element_text(color = "black", vjust = 0, hjust = 0.5),
-  labels.box = ggplot2::element_rect(fill = "white", colour = "black"),
+  casenames = ggplot2::element_text(
+    color = "black", size = 4,
+    vjust = 1, hjust = 0, angle = 0),
+
+  labels.text = ggplot2::element_text(color = "black", vjust = 0.5, hjust = 0.5, angle = 0),
+  labels.box = ggplot2::element_rect(fill = NULL, colour = "black"),
+  labels.padding = 0.1,
+
+
 
   grid = ggplot2::element_line(),
 

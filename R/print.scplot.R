@@ -12,6 +12,13 @@ print.scplot <- function(x, ...) {
   object <- x
 
   data <- object$scdf
+
+  #rename casesnames
+  names(data) <- object$casenames$labels
+
+  data_long <- as.data.frame(data)
+  data_long$case <- factor(data_long$case, levels = object$casenames$labels)
+
   theme <- object$theme
 
   dvar <- object$dvar
@@ -32,7 +39,30 @@ print.scplot <- function(x, ...) {
 
   N <- length(data)
 
-  # set x/y label
+  # set dataline for first dvar
+
+  if (is.null(object$datalines[[1]]$variable))
+    object$datalines[[1]]$variable <- object$dvar[1]
+
+  if (is.null(object$datalines[[1]]$col))
+    object$datalines[[1]]$col <- theme$dataline.col
+
+  if (is.null(object$datalines[[1]]$width))
+    object$datalines[[1]]$width <- theme$dataline.width
+
+  if (is.null(object$datalines[[1]]$linetype))
+    object$datalines[[1]]$linetype <- theme$dataline.linetype
+
+  if (is.null(object$datalines[[1]]$dots))
+    object$datalines[[1]]$dots <- theme$datadots.col
+
+  if (is.null(object$datalines[[1]]$shape))
+    object$datalines[[1]]$shape <- theme$datadots.shape
+
+  if (is.null(object$datalines[[1]]$size))
+    object$datalines[[1]]$size <- theme$datadots.size
+
+  # set x/y label --------
 
   if (is.null(object$xlabel)) {
     object$xlabel <- mvar
@@ -63,64 +93,147 @@ print.scplot <- function(x, ...) {
     xlim <- c(min(.mt, na.rm = TRUE), max(.mt, na.rm = TRUE))
   }
 
-
   # start plot -------------
 
-  p <- ggplot(data = as.data.frame(data), aes(x = !!sym(mvar), y = !!sym(dvar)))
+  dvar <- dvar[1]
+
+  p <- ggplot(
+    data = data_long,
+    aes(x = !!sym(mvar), y = !!sym(dvar))
+  )
+
   p <- p + theme(plot.margin = theme$plot.margin)
-  # set axis limits  --------
+
+  # set yaxis ticks and text  --------
+
+  if (!is.null(object$yaxis$inc)) {
+    p <- p + scale_y_continuous(
+      limits = c(ylim[1], ylim[2]),
+      breaks = seq(ylim[1], ylim[2], object$yaxis$inc)
+    )
+  } else {
+    p <- p + scale_y_continuous(limits = c(ylim[1], ylim[2]))
+  }
+
+  # set xaxis ticks and text  --------
+
+  if (!is.null(object$xaxis$inc_from)) {
+    x <- seq(object$xaxis$inc_from, xlim[2], object$xaxis$inc)
+    x <- x[x >= xlim[1]]
+    x <- c(1, x)
+  } else {
+    x <- seq(xlim[1], xlim[2], object$xaxis$inc)
+  }
+
+  p <- p + scale_x_continuous(
+    breaks = x, #seq(xlim[1], xlim[2], object$xaxis$inc),
+    limits = c(xlim[1], xlim[2])
+  )
 
   #p <- p + xlim(xlim[1], xlim[2])
   #p <- p + ylim(ylim[1], ylim[2])
-
   #p <- p + expand_limits(x = xlim, y=ylim)
-
-  p <- p + scale_x_continuous(breaks = xlim[1]:xlim[2], limits = c(xlim[1],xlim[2]))
 
   # add dataline ---------------------------
 
-  p <- p + geom_line(aes(group = !!sym(pvar)), col =  "black")
+  for (i in 1:length(object$datalines)) {
+      p <- p + geom_line(
+        aes(
+          y = !!sym(object$datalines[[i]]$variable),
+          group = !!sym(pvar)
+        ),
+        colour =  object$datalines[[i]]$col,
+        size = object$datalines[[i]]$width,
+        linetype = object$datalines[[i]]$linetype
+      )
+
+      # add datapoints
+
+      if (!is.null(object$datalines[[i]]$dots)) {
+        p <- p + geom_point(
+          aes(y = !!sym(object$datalines[[i]]$variable)),
+          colour = object$datalines[[i]]$dots,
+          size = object$datalines[[i]]$size,
+          shape = object$datalines[[i]]$shape,
+        )
+      }
+
+  }
 
   # add value labels ---------------------------
 
-  if (!is.null(theme$labels.text)) {
-    p <- p + geom_label(
-      aes(label = !!sym(dvar), y = !!sym(dvar)),
-      colour =  theme$labels.text$colour,
-      size = theme$labels.text$size,
-      hjust = theme$labels.text$hjust,
-      vjust = theme$labels.text$vjust,
-      #lineheight = theme$labels.text$lineheight,
-      #family = theme$labels.text$family,
-      #fontface = theme$labels.text$face,
-      #angle = theme$labels.text$angle,
-      fill = theme$labels.box$fill,
-      nudge_x = theme$labels.nudge_x,
-      nudge_y = theme$labels.nudge_y,
+  if (isTRUE(object$labels)) {
 
-    )
+    if (is.null(theme$labels.box$fill))
+      p <- p + geom_text(
+        aes(label = !!sym(dvar), y = !!sym(dvar)),
+        colour =  theme$labels.text$colour,
+        size = theme$labels.text$size,
+        hjust = theme$labels.text$hjust,
+        vjust = theme$labels.text$vjust,
+        #lineheight = theme$labels.text$lineheight,
+        #family = theme$labels.text$family,
+        #fontface = theme$labels.text$face,
+        angle = theme$labels.text$angle,
+        nudge_x = theme$labels.nudge_x,
+        nudge_y = theme$labels.nudge_y,
+      )
+
+    if (!is.null(theme$labels.box$fill))
+      p <- p + geom_label(
+        aes(label = !!sym(dvar), y = !!sym(dvar)),
+        colour =  theme$labels.text$colour,
+        size = theme$labels.text$size,
+        hjust = theme$labels.text$hjust,
+        vjust = theme$labels.text$vjust,
+        angle = theme$labels.text$angle,
+        #lineheight = theme$labels.text$lineheight,
+        fill = theme$labels.box$fill,
+        nudge_x = theme$labels.nudge_x,
+        nudge_y = theme$labels.nudge_y,
+        label.padding = unit(theme$labels.padding, "lines")
+      )
   }
-  # add datapoints ---------------------------
 
-  p <- p + geom_point()
 
   # create facets --------------------
 
-  p <- p + facet_grid(case ~ ., scales = "free")
-  #p$facet$params$free$y <- TRUE
+  p <- p + facet_grid(as.factor(case) ~ ., scales = "free")
   p <- p + theme(panel.spacing.y = unit(2, "lines"))
-
   p <- p + theme(strip.text.y = element_blank())
 
   # add casenames ------------------
 
+  if (is.null(theme$casenames.position.x)) x <- xlim[1]
+    else if (theme$casenames.position.x == "left") x <- xlim[1]
+    else if (theme$casenames.position.x == "right") x <- xlim[2]
+    else x <- theme$casenames.position.x
+
+  if (is.null(theme$casenames.position.y)) y <- ylim[2]
+    else if (theme$casenames.position.y == "top") y <- ylim[2]
+    else if (theme$casenames.position.y == "bottom") y <- ylim[1]
+    else y <- theme$casenames.position.y
+
   data_casenames <- data.frame(
-    x = rep(xlim[1], N),
-    y = rep(ylim[2], N),
-    case = names(data)
+    x = rep(x, N),
+    y = rep(y, N),
+    case = object$casenames$labels
   )
 
-  p <- p + geom_text(data = data_casenames, mapping = aes(x = x, y = y, label =  case), vjust = 1, hjust = 0)
+  p <- p + geom_text(
+    data = data_casenames,
+    mapping = aes(x = x, y = y, label =  case),
+    colour =  theme$casenames$colour,
+    size = theme$casenames$size,
+    hjust = theme$casenames$hjust,
+    vjust = theme$casenames$vjust,
+    #lineheight = theme$labels.text$lineheight,
+    #family = theme$labels.text$family,
+    #fontface = theme$labels.text$face,
+    angle = theme$casenames$angle,
+    #nudge_x = theme$casenames.nudge_x,
+    #nudge_y = theme$casenames.nudge_y,
+  )
 
   # add phaselines ----------------------------------------------------------
 
@@ -168,7 +281,7 @@ print.scplot <- function(x, ...) {
   # add axis label ------
 
   if (!is.null(object$ylabel)) p <- p + ylab(object$ylabel)
-  if (!is.null(object$xlabel)) p <- p + xlab(object$ylabel)
+  if (!is.null(object$xlabel)) p <- p + xlab(object$xlabel)
 
   p <- p + theme(axis.title.y = theme$axis.title.y)
   p <- p + theme(axis.title.x = theme$axis.title.x)

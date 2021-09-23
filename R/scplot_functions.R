@@ -151,8 +151,7 @@ set_xaxis <- function(object, limits, increment, increment_from,
 #' @rdname scplot
 #' @export
 set_yaxis <- function(object, limits, color, size,
-                      increment, increment_from, positions
-) {
+                      increment, increment_from, positions) {
 
   if (!missing(color)) object$theme$yaxis.text.col <- color
   if (!missing(size)) object$theme$yaxis.text.col <- size
@@ -281,14 +280,33 @@ set_phasenames <- function(object, ..., color, size, x, y, box, frame) {
 
 #' @rdname scplot
 #' @export
-set_casenames <- function(object, ..., x, y, color, size) {
+set_casenames <- function(object, ...,
+                          x = NULL, y = NULL,
+                          color  = NULL,
+                          size = NULL,
+                          hjust = NULL, vjust = NULL,
+                          angle = NULL) {
 
-  if (!missing(color)) object$theme$casenames.col <- color
-  if (!missing(size)) object$theme$casenames.size <- size
-  if (!missing(x)) object$theme$casenames.position.x <- x
-  if (!missing(y)) object$theme$casenames.position.y <- y
+  if (!is.null(color)) object$theme$casenames.col <- color
+  if (!is.null(size)) object$theme$casenames.size <- size
+  if (!is.null(x)) object$theme$casenames.position.x <- x
+  if (!is.null(y)) object$theme$casenames.position.y <- y
   labels <-  c(...)
   if (!is.null(labels)) object$casenames$labels <- labels
+
+  object$theme$casenames <- merge_element(
+    element_text(
+      #family = family, face = face,
+      colour = color,
+      size = size,
+      hjust = hjust,
+      vjust = vjust,#,
+      angle = angle,
+      #lineheight = lineheight,
+      #margin = margin
+    ), object$theme$casenames
+  )
+
   object
 }
 
@@ -383,6 +401,7 @@ add_labels <- function(object,
                        nudge_x,
                        vjust = NULL,
                        hjust = NULL,
+                       angle = NULL,
                        round ,
                        box = NULL,
                        frame = NULL) {
@@ -402,20 +421,20 @@ add_labels <- function(object,
     element_text(
       #family = family, face = face,
       colour = color, size = size,
-      hjust = hjust, vjust = vjust#,
-      #angle = angle, lineheight = lineheight,
+      hjust = hjust, vjust = vjust,#,
+      angle = angle,
+      #lineheight = lineheight,
       #margin = margin
     ), object$theme$labels.text
   )
 
   object$theme$labels.box <- merge_element(
     element_rect(
-      #family = family, face = face,
       colour = frame, fill = box,
-      #angle = angle, lineheight = lineheight,
-      #margin = margin
     ), object$theme$labels.box
   )
+
+  object$labels <- TRUE
 
   object
 }
@@ -490,6 +509,21 @@ set_dataline <- function(object, variable, color, width, linetype, dots, shape, 
   if (!missing(dots)) object$datalines[[id]]$dots <- dots
   if (!missing(shape)) object$datalines[[id]]$shape <-shape
   if (!missing(size)) object$datalines[[id]]$size <- size
+
+  #object$datalines[[id]]$line <- merge_element(
+  #  element_line(
+  #    colour = color, size = width,
+  #    linetype = linetype,
+  #  ), object$theme$dataline
+  #)
+
+  #object$datalines[[id]]$dots <- merge_element(
+  #  list(
+  #    colour = dots, size = size,
+  #    shape = shape,
+  #  ), object$theme$datadots
+  #)
+
 
   object
 }

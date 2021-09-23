@@ -3,7 +3,7 @@
 #' This function provides a plot of a single-case or multiple
 #' single-cases.
 #'
-#' @return An scdf plot object that creates a plot when printed.
+#' @return An scplot object that creates a ggplot2 plot when printed.
 #' @author Juergen Wilbert
 #' @export
 
@@ -13,7 +13,7 @@ scplot <- function(data) {
 
   theme <- utils::modifyList(
     scplot:::.scplot_themes$default,
-    scplot:::.scplot_themes[[getOption("scan.scplot.theme")]],
+    .scplot_themes[["grid"]], #scplot:::.scplot_themes[[getOption("scan.scplot.theme")]],
     keep.null = TRUE
   )
 
@@ -42,6 +42,7 @@ scplot <- function(data) {
     xlabel = NULL,
     ylabel = NULL,
     statlines = NULL,
+    labels = NULL,
     marks = NULL,
     texts = NULL,
     arrows = NULL,

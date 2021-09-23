@@ -118,7 +118,17 @@ add_marks(
 
 set_phasenames(object, ..., color, size, x, y, box, frame)
 
-set_casenames(object, ..., x, y, color, size)
+set_casenames(
+  object,
+  ...,
+  x = NULL,
+  y = NULL,
+  color = NULL,
+  size = NULL,
+  hjust = NULL,
+  vjust = NULL,
+  angle = NULL
+)
 
 add_text(object, case = 1, x, y, label, color = NULL, size = NULL, angle = 0)
 
@@ -145,6 +155,7 @@ add_labels(
   nudge_x,
   vjust = NULL,
   hjust = NULL,
+  angle = NULL,
   round,
   box = NULL,
   frame = NULL
@@ -239,7 +250,7 @@ If set to FALSE, no automatic linebreak is set.}
 \item{align}{Character string. One of "left", "right", "center"}
 }
 \value{
-An scdf plot object that creates a plot when printed.
+An scplot object that creates a ggplot2 plot when printed.
 }
 \description{
 This function provides a plot of a single-case or multiple
