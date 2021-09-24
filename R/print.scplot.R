@@ -12,18 +12,31 @@ print.scplot <- function(x, ...) {
   object <- x
 
   data <- object$scdf
+  theme <- object$theme
+  dvar <- object$dvar
+  pvar <- object$pvar
+  mvar <- object$mvar
 
   #rename casesnames
+
   names(data) <- object$casenames$labels
+
+  # rename phasenames
+
+  unlist(lapply(exampleABC, function(x) unique(x[[pvar]])))
+
+  if (!identical(object$phasenames$labels, ".default")) {
+    for(i in seq_along(data)) {
+      levels(data[[i]][[pvar]]) <- object$phasenames$labels
+    }
+  }
+
+  # convert to long format
 
   data_long <- as.data.frame(data)
   data_long$case <- factor(data_long$case, levels = object$casenames$labels)
 
-  theme <- object$theme
 
-  dvar <- object$dvar
-  pvar <- object$pvar
-  mvar <- object$mvar
 
   .design <- function(data, pvar, mvar) {
     phases <- rle(as.character(data[[pvar]]))
@@ -200,64 +213,94 @@ print.scplot <- function(x, ...) {
 
   p <- p + facet_grid(as.factor(case) ~ ., scales = "free")
   p <- p + theme(panel.spacing.y = unit(2, "lines"))
-  p <- p + theme(strip.text.y = element_blank())
+  p <- p + theme(strip.text.y = object$theme$casenames)
+  p <- p + theme(strip.background = object$theme$casenames.strip)
+  if (theme$casenames.type == "within")
+    p <- p + theme(strip.text.y = element_blank())
+
+
 
   # add casenames ------------------
 
-  if (is.null(theme$casenames.position.x)) x <- xlim[1]
-    else if (theme$casenames.position.x == "left") x <- xlim[1]
-    else if (theme$casenames.position.x == "right") x <- xlim[2]
-    else x <- theme$casenames.position.x
+  if (theme$casenames.type == "within") {
+    if (is.null(theme$casenames.position.x)) x <- xlim[1]
+      else if (identical(theme$casenames.position.x, "left")) x <- xlim[1]
+      else if (identical(theme$casenames.position.x, "right")) x <- xlim[2]
+      else x <- theme$casenames.position.x
 
-  if (is.null(theme$casenames.position.y)) y <- ylim[2]
-    else if (theme$casenames.position.y == "top") y <- ylim[2]
-    else if (theme$casenames.position.y == "bottom") y <- ylim[1]
-    else y <- theme$casenames.position.y
+    if (is.null(theme$casenames.position.y)) y <- ylim[2]
+      else if (theme$casenames.position.y == "top") y <- ylim[2]
+      else if (theme$casenames.position.y == "bottom") y <- ylim[1]
+      else y <- theme$casenames.position.y
 
-  data_casenames <- data.frame(
-    x = rep(x, N),
-    y = rep(y, N),
-    case = object$casenames$labels
-  )
+    data_casenames <- data.frame(
+      x = rep(x, N),
+      y = rep(y, N),
+      case = object$casenames$labels
+    )
 
-  p <- p + geom_text(
-    data = data_casenames,
-    mapping = aes(x = x, y = y, label =  case),
-    colour =  theme$casenames$colour,
-    size = theme$casenames$size,
-    hjust = theme$casenames$hjust,
-    vjust = theme$casenames$vjust,
-    #lineheight = theme$labels.text$lineheight,
-    #family = theme$labels.text$family,
-    #fontface = theme$labels.text$face,
-    angle = theme$casenames$angle,
-    #nudge_x = theme$casenames.nudge_x,
-    #nudge_y = theme$casenames.nudge_y,
-  )
-
+    p <- p + geom_text(
+      data = data_casenames,
+      mapping = aes(x = x, y = y, label =  case),
+      colour =  theme$casenames$colour,
+      size = theme$casenames$size,
+      hjust = theme$casenames$hjust,
+      vjust = theme$casenames$vjust,
+      #lineheight = theme$labels.text$lineheight,
+      #family = theme$labels.text$family,
+      #fontface = theme$labels.text$face,
+      angle = theme$casenames$angle,
+      #nudge_x = theme$casenames.nudge_x,
+      #nudge_y = theme$casenames.nudge_y,
+    )
+  }
   # add phaselines ----------------------------------------------------------
 
   data_phase <- data.frame(
-    case = rep(names(design), sapply(design, function(x) length(x$stop_mt) - 1)),
+    case = rep(
+      names(design),
+      sapply(design, function(x) length(x$stop_mt) - 1)
+    ),
     x = unlist(lapply(design, function(x) x$stop_mt[-length(x$stop_mt)] + 0.5))
   )
 
-  p <- p + geom_vline(data = data_phase, aes(xintercept = x), linetype="dashed", color = "black", size = 0.5)
+  p <- p + geom_vline(
+    data = data_phase,
+    aes(xintercept = x),
+    linetype = object$theme$seperators$linetype,
+    color = object$theme$seperators$colour,
+    size =object$theme$seperators$size
+  )
 
-  p <- p + coord_cartesian(clip="off")
+  p <- p + coord_cartesian(clip = "off")
 
   # add phasenames ---------
 
-  .phasenames <- lapply(design, function(x) x$values)
+  if (theme$phasenames.position.x == "centre") {
+    x <- lapply(design, function(x) (x$stop_mt - x$start_mt) / 2 + x$start_mt)
+  }
 
-  x <- lapply(design, function(x) (x$stop_mt - x$start_mt) / 2 + x$start_mt)
+  if (theme$phasenames.position.x == "left") {
+    x <- lapply(design, function(x) x$start_mt)
+  }
 
   data_phasenames <- data.frame(
     case = rep(names(design), sapply(design, function(x) length(x$values))),
     phase = unlist(lapply(design, function(x) x$values)),
     x = unlist(x)
   )
-  p <- p + geom_text(data = data_phasenames, vjust = 0, aes(label = phase, x = x, y = Inf))
+  p <- p + geom_text(
+    data = data_phasenames,
+    aes(label = phase, x = x, y = Inf),
+    colour =  theme$phasenames$colour,
+    size = theme$phasenames$size,
+    hjust = theme$phasenames$hjust,
+    vjust = theme$phasenames$vjust,
+    family = theme$phasenames$family,
+    fontface = theme$phasenames$face,
+    angle = theme$phasenames$angle,
+  )
+
   #p <- p + theme(plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"))
 
   # add axis.line -----------
@@ -288,7 +331,7 @@ print.scplot <- function(x, ...) {
 
 
   # out -----------
-
+  print(p)
   p
 }
 

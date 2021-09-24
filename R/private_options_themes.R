@@ -79,7 +79,7 @@
 
   phasenames.col = "black",
   phasenames.size = 1,
-  phasenames.position.x = "centre",
+
   phasenames.position.y = "above",
   phasenames.family = "sans",
   phasenames.face = "plain",
@@ -100,7 +100,6 @@
 
   seperators.linetype = "dashed",
   seperators.width = 1.5,
-  seperators.extent = "full",
   seperators.col = "black",
 
   legend.text.size = 0.8,
@@ -144,7 +143,31 @@
     color = "black", size = 4,
     vjust = 1, hjust = 0, angle = 0),
 
-  labels.text = ggplot2::element_text(color = "black", vjust = 0.5, hjust = 0.5, angle = 0),
+  casenames.strip = ggplot2::element_rect(
+    color="black", fill="grey80", size=1, linetype="solid"
+  ),
+
+  casenames.type = "within",
+
+  phasenames = ggplot2::element_text(
+    color = "black", size = 4,
+    vjust = 0, hjust = 0.5,
+    angle = 0,
+    family = "sans", face = "plain"
+  ),
+
+  phasenames.position.x = "centre",
+
+  seperators = ggplot2::element_line(
+    color = "black", size = 0.4, linetype = "dashed"
+  ),
+
+  seperators.extent = "full",
+
+  labels.text = ggplot2::element_text(
+    color = "black", vjust = 0.5, hjust = 0.5, angle = 0
+  ),
+
   labels.box = ggplot2::element_rect(fill = NULL, colour = "black"),
   labels.padding = 0.1,
 
