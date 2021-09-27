@@ -126,6 +126,10 @@ scplot(exampleAB_add) %>%
 #'                 lineheight = lineheight, margin = margin)
 #' }
 
+dat <- as.data.frame(exampleABC)
+
+dat_stat <- dat %>% group_by(case, !!sym(pvar)) %>% summarise(stat = mean(values, na.rm = TRUE))
 
 
+full_join(dat, dat_stat, by = c("case", "phase"))
 

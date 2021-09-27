@@ -336,28 +336,34 @@ print.scplot <- function(x, ...) {
         object$statlines[[j]]$variable <- object$dvar[1]
 
       if (object$statlines[[j]]$stat == "mean") {
-        p <- .statline_fixed_each(data_long, object$statlines[[j]], design, p,
-                                  fun = "mean", list(na.rm = TRUE))
+        p <- .statline_fixed_each(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "mean", list(na.rm = TRUE)
+        )
       }
       if (object$statlines[[j]]$stat == "median") {
-        p <- .statline_fixed_each(data_long, object$statlines[[j]], design, p,
-                                  fun = "median", list(na.rm = TRUE))
+        p <- .statline_fixed_each(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "median", list(na.rm = TRUE)
+        )
       }
       if (object$statlines[[j]]$stat == "min") {
-        p <- .statline_fixed_each(data_long, object$statlines[[j]], design, p,
-                                  fun = "min", list(na.rm = TRUE))
+        p <- .statline_fixed_each(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "min", list(na.rm = TRUE)
+        )
       }
       if (object$statlines[[j]]$stat == "max") {
-        p <- .statline_fixed_each(data_long, object$statlines[[j]], design, p,
-                                  fun = "max", list(na.rm = TRUE))
+        p <- .statline_fixed_each(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "max", list(na.rm = TRUE)
+        )
       }
-
-
-
-
     }
-
-
   }
 
 
