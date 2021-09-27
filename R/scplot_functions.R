@@ -51,12 +51,12 @@ add_statline <- function(object,
                          color = NULL,
                          width = NULL,
                          linetype = NULL,
-                         variable = ".dvar") {
+                         variable = NULL) {
 
-  if (is.null(color)) color <- object$theme$statline.col
-  if (is.null(width)) width <- object$theme$statline.width
-  if (is.null(linetype)) linetype <- object$theme$statline.linetype
-  #if (missing(variable)) variable <- ".dvar"
+  if (is.null(color)) color <- object$theme$statline$colour
+  if (is.null(width)) width <- object$theme$statline$size
+  if (is.null(linetype)) linetype <- object$theme$statline$linetype
+  if (is.null(variable)) variable <- ".dvar"
 
   new <- list(
     stat = stat,

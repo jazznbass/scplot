@@ -168,7 +168,7 @@ add_statline(
   color = NULL,
   width = NULL,
   linetype = NULL,
-  variable = ".dvar"
+  variable = NULL
 )
 
 add_caption(

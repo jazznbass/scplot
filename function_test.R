@@ -82,7 +82,7 @@ scplot(exampleABC) %>%
 # add_statline
 
 scplot(exampleABC) %>%
-  add_statline("mean", color = "red")
+  add_statline("meanA", color = "darkred")
 
 scplot(exampleAB_add) %>%
   set_dataline(color = "red", width = 0.5) %>%

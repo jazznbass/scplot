@@ -125,7 +125,7 @@
   datadots.size = 2,
 
   statline = ggplot2::element_line(
-    color = "grey", size = 1, linetype = "solid"
+    color = "grey", size = 0.7, linetype = "solid"
   ),
 
 

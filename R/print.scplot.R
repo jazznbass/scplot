@@ -363,6 +363,40 @@ print.scplot <- function(x, ...) {
           p, fun = "max", list(na.rm = TRUE)
         )
       }
+
+      if (object$statlines[[j]]$stat == "meanA") {
+        p <- .statline_fixed_first(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "mean", list(na.rm = TRUE)
+        )
+      }
+
+      if (object$statlines[[j]]$stat == "medianA") {
+        p <- .statline_fixed_first(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "median", list(na.rm = TRUE)
+        )
+      }
+
+      if (object$statlines[[j]]$stat == "maxA") {
+        p <- .statline_fixed_first(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "max", list(na.rm = TRUE)
+        )
+      }
+
+      if (object$statlines[[j]]$stat == "minA") {
+        p <- .statline_fixed_first(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable,  object$mvar, object$pvar,
+          p, fun = "min", list(na.rm = TRUE)
+        )
+      }
+
+
     }
   }
 
