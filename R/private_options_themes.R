@@ -124,6 +124,11 @@
   datadots.shape = 16,
   datadots.size = 2,
 
+  statline = ggplot2::element_line(
+    color = "grey", size = 1, linetype = "solid"
+  ),
+
+
   axis.line = ggplot2::element_line(
     color = "black", size = 0.7, linetype = "solid"
   ),

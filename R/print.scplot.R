@@ -218,8 +218,6 @@ print.scplot <- function(x, ...) {
   if (theme$casenames.type == "within")
     p <- p + theme(strip.text.y = element_blank())
 
-
-
   # add casenames ------------------
 
   if (theme$casenames.type == "within") {
@@ -254,6 +252,7 @@ print.scplot <- function(x, ...) {
       #nudge_y = theme$casenames.nudge_y,
     )
   }
+
   # add phaselines ----------------------------------------------------------
 
   data_phase <- data.frame(
@@ -329,9 +328,56 @@ print.scplot <- function(x, ...) {
   p <- p + theme(axis.title.y = theme$axis.title.y)
   p <- p + theme(axis.title.x = theme$axis.title.x)
 
+  # add statlines ------------------------------------------------------------
+
+  if (!is.null(object$statlines)) {
+    for(j in 1:length(object$statlines)) {
+      if (object$statlines[[j]]$variable == ".dvar")
+        object$statlines[[j]]$variable <- object$dvar[1]
+      if (object$statlines[[j]]$stat == "mean")
+        p <- .statline_mean(data_long, object$statlines[[j]], design, dvar, p)
+    }
+  }
+
 
   # out -----------
   print(p)
   p
 }
 
+.statline_mean <- function(data, line, design, dvar, p) {
+
+  data_phase <- data.frame(
+    case = rep(
+      names(design),
+      sapply(design, function(x) length(x$stop_mt) * 2)
+    ),
+    phase = unlist(lapply(design, function(x) rep(x$values, each = 2)))
+  )
+
+  data_phase$x <- unlist(lapply(design, function(x) {
+    out <- c()
+    for(y in 1:length(x$start_mt))
+      out <- c(out, x$start_mt[y], x$stop_mt[y])
+    out
+  }))
+
+  y <- c()
+  for(i in seq(1, nrow(data_phase), by = 2)) {
+    filter <- data$case == data_phase$case[i] &
+      data$phase == data_phase$phase[i]
+    value <- mean(data[filter, dvar], na.rm = TRUE)
+    y <- c(y, value, value)
+  }
+  data_phase$y <- y
+
+  p <- p + geom_line(
+    data = data_phase,
+    aes(x = x, y = y, group = phase),
+    linetype = line$line$linetype,
+    color = line$line$colour,
+    size = line$line$size
+  )
+
+  p
+}

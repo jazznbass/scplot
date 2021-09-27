@@ -162,7 +162,14 @@ add_theme(object, theme, ...)
 
 set_theme_element(object, ...)
 
-add_statline(object, stat, color, width, type, variable)
+add_statline(
+  object,
+  stat,
+  color = NULL,
+  width = NULL,
+  linetype = NULL,
+  variable = ".dvar"
+)
 
 add_caption(
   object,
