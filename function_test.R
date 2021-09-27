@@ -84,6 +84,18 @@ scplot(exampleABC) %>%
 scplot(exampleABC) %>%
   add_statline("mean", color = "red")
 
+scplot(exampleAB_add) %>%
+  set_dataline(color = "red", width = 0.5) %>%
+  add_dataline(variable = "depression", color = "blue", dots = "black") %>%
+  add_statline("min", color = "darkred", width = 0.3) %>%
+  add_statline("max", color = "darkred", width = 0.3) %>%
+  add_statline(
+    "min", color = "darkblue", width = 0.3, variable = "depression") %>%
+  add_statline(
+    "max", color = "darkblue", width = 0.3, variable = "depression")
+
+
+
 
 # crap --------------------------------------------------------------------
 
