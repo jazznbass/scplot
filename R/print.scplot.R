@@ -396,6 +396,19 @@ print.scplot <- function(x, ...) {
         )
       }
 
+      if (object$statlines[[j]]$stat == "trend") {
+        p <- .statline_trend(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable, object$mvar, object$pvar, p
+        )
+      }
+      if (object$statlines[[j]]$stat == "trendA") {
+        p <- .statline_trendA(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable, object$mvar, object$pvar, p
+        )
+      }
+
 
     }
   }

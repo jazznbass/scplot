@@ -14,10 +14,10 @@
 \alias{add_labels}
 \alias{add_dataline}
 \alias{set_dataline}
+\alias{add_statline}
 \alias{scplot}
 \alias{add_theme}
 \alias{set_theme_element}
-\alias{add_statline}
 \alias{add_caption}
 \alias{add_marks}
 \alias{add_text}
@@ -156,12 +156,6 @@ add_dataline(object, variable, color, width, linetype, dots, shape, size)
 
 set_dataline(object, variable, color, width, linetype, dots, shape, size)
 
-scplot(data)
-
-add_theme(object, theme, ...)
-
-set_theme_element(object, ...)
-
 add_statline(
   object,
   stat,
@@ -170,6 +164,12 @@ add_statline(
   linetype = NULL,
   variable = NULL
 )
+
+scplot(data)
+
+add_theme(object, theme, ...)
+
+set_theme_element(object, ...)
 
 add_caption(
   object,
@@ -255,14 +255,14 @@ character string with a logical expression (e.g. values < mean(values))}
 
 \item{shape}{Number. See pch graphical parameter on par help page.}
 
-\item{theme}{A character string with a predefined graphical theme.
-Possible values: default, yaxis, tiny, small, big, chart, ridge,
-annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
-
 \item{stat}{A character string defining a line or curve to be
 plotted. Possible values: "median", "mean", "trend", "trendA",
 "trendA_bisplit", "trendA_trisplit", "maxA", "minA", "meanA", "medianA",
 "plm", "movingMean", "movingMedian", "loreg"}
+
+\item{theme}{A character string with a predefined graphical theme.
+Possible values: default, yaxis, tiny, small, big, chart, ridge,
+annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
 
 \item{wrap}{Number that defines the maximum characters per line before a break.
 If set to FALSE, no automatic linebreak is set.}

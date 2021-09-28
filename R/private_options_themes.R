@@ -124,61 +124,58 @@
   datadots.shape = 16,
   datadots.size = 2,
 
-  statline = ggplot2::element_line(
-    color = "grey", size = 0.7, linetype = "solid"
-  ),
+  statline = element_line(color = "grey", size = 0.7, linetype = "solid"),
 
+  axis.line = element_line(color = "black", size = 0.7, linetype = "solid"),
 
-  axis.line = ggplot2::element_line(
-    color = "black", size = 0.7, linetype = "solid"
-  ),
+  axis.title.y = element_text(color = "black", angle = 90),
+  axis.title.x = element_text(color = "black", angle = 0),
 
-  axis.title.y = ggplot2::element_text(color = "black", angle = 90),
-  axis.title.x = ggplot2::element_text(color = "black", angle = 0),
-
-  plot.title = ggplot2::element_text(
+  plot.title = element_text(
     color = "black",
-    margin = ggplot2::margin(0,0,2,0, unit = "lines"),
+    margin = margin(0,0,2,0, unit = "lines"),
     hjust = 0.5
   ),
 
-  plot.margin = ggplot2::margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
+  plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
-  casenames = ggplot2::element_text(
-    color = "black", size = 4,
-    vjust = 1, hjust = 0, angle = 0),
+  casenames = element_text(
+    color = "black", size = 4, vjust = 1, hjust = 0, angle = 0
+  ),
 
-  casenames.strip = ggplot2::element_rect(
-    color="black", fill="grey80", size=1, linetype="solid"
+  casenames.strip = element_rect(
+    color = "black", fill = "grey80", size = 1, linetype = "solid"
   ),
 
   casenames.type = "within",
 
-  phasenames = ggplot2::element_text(
-    color = "black", size = 4,
-    vjust = 0, hjust = 0.5,
+  phasenames = element_text(
+    color = "black",
+    size = 4,
+    vjust = 0,
+    hjust = 0.5,
     angle = 0,
     family = "sans", face = "plain"
   ),
 
   phasenames.position.x = "centre",
 
-  seperators = ggplot2::element_line(
+  seperators = element_line(
     color = "black", size = 0.4, linetype = "dashed"
   ),
 
   seperators.extent = "full",
 
-  labels.text = ggplot2::element_text(
-    color = "black", vjust = 0.5, hjust = 0.5, angle = 0
+  labels.text = element_text(
+    color = "black", vjust = 0.5, hjust = 0.5, angle = 0, size = 3
   ),
 
-  labels.box = ggplot2::element_rect(fill = NULL, colour = "black"),
+  labels.box = element_rect(fill = NULL, colour = "black"),
   labels.padding = 0.1,
 
 
 
-  grid = ggplot2::element_line(),
+  grid = element_line(),
 
   NULL
 )

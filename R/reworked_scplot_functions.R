@@ -396,3 +396,45 @@ set_dataline <- function(object, variable, color, width, linetype, dots, shape, 
   object
 }
 
+#' @rdname scplot
+#' @param stat A character string defining a line or curve to be
+#' plotted. Possible values: "median", "mean", "trend", "trendA",
+#' "trendA_bisplit", "trendA_trisplit", "maxA", "minA", "meanA", "medianA",
+#' "plm", "movingMean", "movingMedian", "loreg"
+#' @param width A number defining the line width
+#' @param color A character string or a number defining the color of an element.
+#' @param size A number deifning the size of an element.
+#' @param type A character string with the line type: "solid", "dashed", "dotted"
+#' @export
+add_statline <- function(object,
+                         stat,
+                         color = NULL,
+                         width = NULL,
+                         linetype = NULL,
+                         variable = NULL) {
+
+  if (is.null(color)) color <- object$theme$statline$colour
+  if (is.null(width)) width <- object$theme$statline$size
+  if (is.null(linetype)) linetype <- object$theme$statline$linetype
+  if (is.null(variable)) variable <- ".dvar"
+
+  new <- list(
+    stat = stat,
+    line = element_line(
+      colour = color,
+      size = width,
+      linetype = linetype
+    ),
+    variable = variable,
+
+    col = color,
+    width = width,
+    linetype = linetype
+
+  )
+
+  object$statlines <- c(object$statlines, list(new))
+  object
+
+}
+
