@@ -7,6 +7,7 @@
 \alias{set_xaxis}
 \alias{set_yaxis}
 \alias{add_title}
+\alias{add_caption}
 \alias{set_casenames}
 \alias{set_phasenames}
 \alias{set_seperator}
@@ -15,15 +16,14 @@
 \alias{add_dataline}
 \alias{set_dataline}
 \alias{add_statline}
+\alias{set_background}
+\alias{set_panel}
 \alias{scplot}
 \alias{add_theme}
 \alias{set_theme_element}
-\alias{add_caption}
 \alias{add_marks}
 \alias{add_text}
 \alias{add_arrow}
-\alias{set_background}
-\alias{set_panel}
 \alias{add_ridge}
 \alias{add_legend}
 \alias{add_margins}
@@ -82,6 +82,19 @@ add_title(
   vjust = NULL,
   angle = NULL,
   lineheight = NULL,
+  margin = NULL,
+  parse = NULL
+)
+
+add_caption(
+  object,
+  label,
+  color = NULL,
+  size = NULL,
+  face = NULL,
+  hjust = NULL,
+  vjust = NULL,
+  wrap = NULL,
   margin = NULL,
   parse = NULL
 )
@@ -165,24 +178,15 @@ add_statline(
   variable = NULL
 )
 
+set_background(object, color = NULL, fill = NULL, linetype = NULL, size = NULL)
+
+set_panel(object, color = NULL, fill = NULL, linetype = NULL, size = NULL)
+
 scplot(data)
 
 add_theme(object, theme, ...)
 
 set_theme_element(object, ...)
-
-add_caption(
-  object,
-  label,
-  color,
-  size,
-  face,
-  hjust,
-  vjust,
-  wrap,
-  margin,
-  parse
-)
 
 add_marks(
   object,
@@ -197,10 +201,6 @@ add_marks(
 add_text(object, case = 1, x, y, label, color = NULL, size = NULL, angle = 0)
 
 add_arrow(object, case = 1, x0, y0, x1, y1, length = 0.1, color = NULL, ...)
-
-set_background(object, fill, frame)
-
-set_panel(object, fill, frame, width, linetype)
 
 add_ridge(object, color = "grey98")
 
@@ -239,6 +239,9 @@ character string with a logical expression (e.g. values < mean(values))}
 
 \item{parse}{If TRUE, the label is interpreted as an expression. Default = FALSE.}
 
+\item{wrap}{Number that defines the maximum characters per line before a break.
+If set to FALSE, no automatic linebreak is set.}
+
 \item{...}{various style parameter}
 
 \item{x}{x position}
@@ -263,9 +266,6 @@ plotted. Possible values: "median", "mean", "trend", "trendA",
 \item{theme}{A character string with a predefined graphical theme.
 Possible values: default, yaxis, tiny, small, big, chart, ridge,
 annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
-
-\item{wrap}{Number that defines the maximum characters per line before a break.
-If set to FALSE, no automatic linebreak is set.}
 
 \item{case}{Numerical vector with the csae number or character string "all" for all cases.}
 

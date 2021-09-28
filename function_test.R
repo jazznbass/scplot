@@ -94,8 +94,23 @@ scplot(exampleAB_add) %>%
   add_statline(
     "max", color = "darkblue", width = 0.3, variable = "depression")
 
+# panel/ background color
 
+scplot(exampleABC) %>%
+  set_background(fill = "lightblue", color = "darkblue", size = 1) %>%
+  set_panel(fill = "lightblue", size = 0.5)
 
+# add caption
+
+scplot(exampleABC) %>%
+  add_caption("Note. Hallo", color = "darkred", hjust = 0)
+
+# add ridge
+
+# add caption
+
+scplot(exampleABC) %>%
+  add_ridge("lightblue")
 
 # crap --------------------------------------------------------------------
 

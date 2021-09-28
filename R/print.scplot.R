@@ -143,6 +143,8 @@ print.scplot <- function(x, ...) {
     limits = c(xlim[1], xlim[2])
   )
 
+
+
   #p <- p + xlim(xlim[1], xlim[2])
   #p <- p + ylim(ylim[1], ylim[2])
   #p <- p + expand_limits(x = xlim, y=ylim)
@@ -150,15 +152,27 @@ print.scplot <- function(x, ...) {
   # add dataline ---------------------------
 
   for (i in 1:length(object$datalines)) {
-      p <- p + geom_line(
-        aes(
-          y = !!sym(object$datalines[[i]]$variable),
-          group = !!sym(pvar)
-        ),
-        colour =  object$datalines[[i]]$col,
-        size = object$datalines[[i]]$width,
-        linetype = object$datalines[[i]]$linetype
+
+    if (!is.null(theme$ridge.col)) {
+      # add ridge
+
+      p <- p + geom_ribbon(
+        aes(ymax = !!sym(object$datalines[[i]]$variable),
+            ymin = ylim[1],
+            group = !!sym(pvar)),
+        fill = theme$ridge.col
       )
+    }
+
+    p <- p + geom_line(
+      aes(
+        y = !!sym(object$datalines[[i]]$variable),
+        group = !!sym(pvar)
+      ),
+      colour =  object$datalines[[i]]$col,
+      size = object$datalines[[i]]$width,
+      linetype = object$datalines[[i]]$linetype
+    )
 
       # add datapoints
 
@@ -170,6 +184,7 @@ print.scplot <- function(x, ...) {
           shape = object$datalines[[i]]$shape,
         )
       }
+
 
   }
 
@@ -320,6 +335,13 @@ print.scplot <- function(x, ...) {
     theme(plot.title = object$theme$plot.title)
   }
 
+  # add caption -------------
+
+  if (!is.null(object$caption)) {
+    p <- p + labs(caption = object$caption) +
+      theme(plot.caption = theme$plot.caption, plot.caption.position = "plot")
+
+  }
   # add axis label ------
 
   if (!is.null(object$ylabel)) p <- p + ylab(object$ylabel)
@@ -412,6 +434,15 @@ print.scplot <- function(x, ...) {
 
     }
   }
+
+
+  # panel background --------------------------------------------------------
+
+  p <- p + theme(panel.background = theme$panel.background)
+
+  # plot background --------------------------------------------------------
+
+  p <- p + theme(plot.background = theme$plot.background)
 
 
   # out -----------

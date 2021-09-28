@@ -38,23 +38,7 @@ set_theme_element <- function(object, ...) {
 
 
 
-#' @rdname scplot
-#' @param label Character string.
-#' @export
-add_caption <- function(object, label, color, size, face, hjust, vjust,
-                        wrap, margin, parse) {
 
-  if (!missing(color)) object$theme$caption.col <- color
-  if (!missing(size)) object$theme$caption.size <- size
-  if (!missing(face)) object$theme$caption.face <- face
-  if (!missing(hjust)) object$theme$caption.align <- hjust
-  if (!missing(vjust)) object$theme$caption.vjust <- vjust
-  if (!missing(wrap)) object$theme$caption.wrap <- wrap
-  if (!missing(margin)) object$theme$caption.margin <- margin
-  if (!missing(parse)) object$theme$caption.parse <- parse
-  object$caption <- label
-  object
-}
 
 #' @rdname scplot
 #' @param positions Either a vector indicating the dot to be highlighted or a
@@ -132,27 +116,6 @@ add_arrow <- function(object, case = 1, x0, y0, x1, y1, length = 0.1,
   object
 }
 
-
-#' @rdname scplot
-#' @export
-set_background <- function(object, fill, frame) {
-
-  if (!missing(fill)) object$theme$plot.background.fill <- fill
-  if (!missing(frame)) object$theme$plot.background.col <- frame
-
-  object
-}
-
-#' @rdname scplot
-#' @export
-set_panel <- function(object, fill, frame, width, linetype) {
-
-  if (!missing(fill)) object$theme$panel.col <- fill
-  if (!missing(frame)) object$theme$panel.frame.col <- frame
-  if (!missing(width)) object$theme$panel.frame.width <- width
-  if (!missing(linetype)) object$theme$panel.frame.linetype <- linetype
-  object
-}
 
 
 #' @rdname scplot

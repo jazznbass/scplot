@@ -146,6 +146,39 @@ add_title <- function(object,
 }
 
 #' @rdname scplot
+#' @param label Character string.
+#' @export
+add_caption <- function(object, label, color = NULL, size = NULL, face = NULL, hjust= NULL, vjust = NULL,
+                        wrap = NULL, margin = NULL, parse = NULL) {
+
+  if (!is.null(color)) object$theme$caption.col <- color
+  if (!is.null(size)) object$theme$caption.size <- size
+  if (!is.null(face)) object$theme$caption.face <- face
+  if (!is.null(hjust)) object$theme$caption.align <- hjust
+  if (!is.null(vjust)) object$theme$caption.vjust <- vjust
+  if (!is.null(wrap)) object$theme$caption.wrap <- wrap
+  if (!is.null(margin)) object$theme$caption.margin <- margin
+  if (!is.null(parse)) object$theme$caption.parse <- parse
+
+  object$caption <- label
+
+  object$theme$plot.caption <- merge_element(
+    element_text(
+      colour = color,
+      size = size,
+      face = face,
+      hjust = hjust,
+      vjust = vjust,
+      margin = margin
+    ), object$theme$plot.caption
+  )
+
+
+  object
+}
+
+
+#' @rdname scplot
 #' @export
 set_casenames <- function(object, ...,
                           x = NULL, y = NULL,
@@ -437,4 +470,45 @@ add_statline <- function(object,
   object
 
 }
+
+#' @rdname scplot
+#' @export
+set_background <- function(object, color = NULL, fill = NULL, linetype = NULL, size = NULL) {
+
+  if (!is.null(fill)) object$theme$plot.background.fill <- fill
+  if (!is.null(frame)) object$theme$plot.background.col <- color
+
+  object$theme$plot.background <- merge_element(
+    element_rect(
+      colour = color,
+      fill = fill,
+      size = size,
+      linetype = linetype
+    ), object$theme$plot.background
+  )
+
+  object
+}
+
+#' @rdname scplot
+#' @export
+set_panel <- function(object, color = NULL, fill = NULL, linetype = NULL, size = NULL) {
+
+  if (!is.null(fill)) object$theme$panel.col <- fill
+  if (!is.null(color)) object$theme$panel.frame.col <- color
+  if (!is.null(size)) object$theme$panel.frame.width <- size
+  if (!is.null(linetype)) object$theme$panel.frame.linetype <- linetype
+
+  object$theme$panel.background <- merge_element(
+    element_rect(
+      colour = color,
+      fill = fill,
+      size = size,
+      linetype = linetype
+    ), object$theme$panel.background
+  )
+
+  object
+}
+
 

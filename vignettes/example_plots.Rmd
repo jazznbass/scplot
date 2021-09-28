@@ -81,7 +81,7 @@ scplot(exampleAB_add) %>%
   add_statline("mean", variable = "depression", color = "red") %>%
   add_marks(case = 1, positions = c(14,20), size = 3, variable = "cigarrets") %>%
   set_xaxis(increment = 5) %>%
-  set_phasenames(x = "left") %>%
+  set_phasenames(x = "left", hjust = 0) %>%
   add_legend(x = 30, y = 45)
 
 
