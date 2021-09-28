@@ -72,34 +72,48 @@ set_ylabel <- function(object, label, orientation,
 #' a proper scale based on the given data.
 #' @param increment An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.
 #' @export
-set_xaxis <- function(object, limits, increment, increment_from,
-                      color, size, line, positions) {
+set_xaxis <- function(object, limits = NULL, increment = NULL, increment_from = NULL,
+                      color = NULL, size = NULL, line = NULL, positions = NULL) {
 
-  if (!missing(color)) object$theme$xaxis.text.col <- color
-  if (!missing(size)) object$theme$xaxis.text.size <- size
-  if (!missing(line)) object$theme$vjust.xlab <- line
+  if (!is.null(color)) object$theme$xaxis.text.col <- color
+  if (!is.null(size)) object$theme$xaxis.text.size <- size
+  if (!is.null(line)) object$theme$vjust.xlab <- line
 
-  if (!missing(limits)) object$xaxis$lim <- limits
-  if (!missing(increment)) object$xaxis$inc <- increment
-  if (!missing(increment_from)) object$xaxis$inc_from <- increment_from
-  if (!missing(positions)) object$xaxis$pos <- positions
+  if (!is.null(limits)) object$xaxis$lim <- limits
+  if (!is.null(increment)) object$xaxis$inc <- increment
+  if (!is.null(increment_from)) object$xaxis$inc_from <- increment_from
+  if (!is.null(positions)) object$xaxis$pos <- positions
 
+  object$theme$axis.text.x <- merge_element(
+    element_text(
+      colour = color,
+      size = size,
+    ),
+    object$theme$axis.text.x)
 
   object
 }
 
 #' @rdname scplot
 #' @export
-set_yaxis <- function(object, limits, color, size,
-                      increment, increment_from, positions) {
+set_yaxis <- function(object, limits = NULL, color = NULL, size = NULL,
+                      increment = NULL, increment_from = NULL, positions = NULL) {
 
-  if (!missing(color)) object$theme$yaxis.text.col <- color
-  if (!missing(size)) object$theme$yaxis.text.col <- size
+  if (!is.null(color)) object$theme$yaxis.text.col <- color
+  if (!is.null(size)) object$theme$yaxis.text.col <- size
 
-  if (!missing(limits)) object$yaxis$lim <- limits
-  if (!missing(increment)) object$yaxis$inc <- increment
-  if (!missing(increment_from)) object$yaxis$inc_from <- increment_from
-  if (!missing(positions)) object$yaxis$pos <- positions
+  if (!is.null(limits)) object$yaxis$lim <- limits
+  if (!is.null(increment)) object$yaxis$inc <- increment
+  if (!is.null(increment_from)) object$yaxis$inc_from <- increment_from
+  if (!is.null(positions)) object$yaxis$pos <- positions
+
+  object$theme$axis.text.y <- merge_element(
+    element_text(
+      colour = color,
+      size = size,
+    ),
+    object$theme$axis.text.y
+  )
 
   object
 }

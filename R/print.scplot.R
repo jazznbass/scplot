@@ -35,7 +35,7 @@ print.scplot <- function(x, ...) {
 
   data_long <- as.data.frame(data)
   data_long$case <- factor(data_long$case, levels = object$casenames$labels)
-
+  data_long[[pvar]] <- factor(data_long[[pvar]])
 
 
   .design <- function(data, pvar, mvar) {
@@ -128,6 +128,8 @@ print.scplot <- function(x, ...) {
     p <- p + scale_y_continuous(limits = c(ylim[1], ylim[2]))
   }
 
+  p <- p + theme(axis.text.x= theme$axis.text.x)
+
   # set xaxis ticks and text  --------
 
   if (!is.null(object$xaxis$inc_from)) {
@@ -143,8 +145,7 @@ print.scplot <- function(x, ...) {
     limits = c(xlim[1], xlim[2])
   )
 
-
-
+  p <- p + theme(axis.text.y = theme$axis.text.y)
   #p <- p + xlim(xlim[1], xlim[2])
   #p <- p + ylim(ylim[1], ylim[2])
   #p <- p + expand_limits(x = xlim, y=ylim)
@@ -153,9 +154,9 @@ print.scplot <- function(x, ...) {
 
   for (i in 1:length(object$datalines)) {
 
-    if (!is.null(theme$ridge.col)) {
-      # add ridge
+    # add ridge
 
+    if (!is.null(theme$ridge.col)) {
       p <- p + geom_ribbon(
         aes(ymax = !!sym(object$datalines[[i]]$variable),
             ymin = ylim[1],

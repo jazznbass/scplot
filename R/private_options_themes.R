@@ -22,7 +22,11 @@
   axis.title.y = element_text(color = "black", angle = 90),
   axis.title.x = element_text(color = "black", angle = 0),
 
-  plot.title = element_text(
+  axis.text.x = element_text(color = "black", angle = 0, size = 7),
+  axis.text.y = element_text(color = "black", angle = 0, size = 7),
+
+
+    plot.title = element_text(
     color = "black",
     margin = margin(0,0,2,0, unit = "lines"),
     hjust = 0.5

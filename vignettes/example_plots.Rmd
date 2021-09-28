@@ -92,13 +92,13 @@ scplot(exampleAB_add) %>%
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
   set_xaxis(increment = 4, size = 3, color = "brown") %>%
-  set_yaxis(limits = c(0, 50), color = "sienna3", size = 3) %>%
+  set_yaxis(color = "sienna3", size = 3) %>%
   set_ylabel("Points", color = "sienna3", size = 7, orientation = 0) %>%
   set_xlabel("Weeks", size = 7, color = "brown") %>%
   add_title("Points by week", color = "sienna4", size = 12, face = 3) %>%
   add_caption("Note: An extensive Example.", color = "black", size = 7, face = 3) %>%
   set_phasenames("Baseline", "Intervention", "Fall-Back", "Intervention", color = "darkgreen") %>%
-  #add_ridge("white") %>%
+  add_ridge("white") %>%
   set_casenames(sample_names(3), color = "steelblue4", size = 3) %>%
   set_panel(fill = c("grey94", "grey99"), color = "sienna4") %>%
   add_grid(color = "grey85", size = 0.5) %>%

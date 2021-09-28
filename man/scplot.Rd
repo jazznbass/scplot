@@ -60,16 +60,24 @@ set_ylabel(
 
 set_xaxis(
   object,
-  limits,
-  increment,
-  increment_from,
-  color,
-  size,
-  line,
-  positions
+  limits = NULL,
+  increment = NULL,
+  increment_from = NULL,
+  color = NULL,
+  size = NULL,
+  line = NULL,
+  positions = NULL
 )
 
-set_yaxis(object, limits, color, size, increment, increment_from, positions)
+set_yaxis(
+  object,
+  limits = NULL,
+  color = NULL,
+  size = NULL,
+  increment = NULL,
+  increment_from = NULL,
+  positions = NULL
+)
 
 add_title(
   object,
