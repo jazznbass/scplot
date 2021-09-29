@@ -1,5 +1,5 @@
 library(scan)
-library(ggplot2)
+library(tidyverse)
 library(scplot)
 
 # print()
@@ -20,7 +20,7 @@ scplot(exampleABC) %>%
 # add_grid
 
 scplot(exampleABC) %>%
-  add_grid("lightblue", size = 0.5, linetype = "dotted")
+  add_grid("lightblue", size = 0.2, linetype = "dotted")
 
 # set axis
 
@@ -32,8 +32,9 @@ scplot(exampleABC) %>%
 
 scplot(exampleABC) %>%
   set_yaxis(limits = c(30, 120), increment = 25) %>%
+  set_panel(fill = "grey96") %>%
   add_labels(angle = 23, color = "black", size = 2, box = "lightblue",
-             frame = "white", nudge_y = 15)
+             frame = "white", nudge_y = 10)
 
 # set datalines
 
@@ -100,17 +101,36 @@ scplot(exampleABC) %>%
   set_background(fill = "lightblue", color = "darkblue", size = 1) %>%
   set_panel(fill = "lightblue", size = 0.5)
 
+
+# add ridge
+
+scplot(exampleABC) %>%
+  add_ridge("lightblue")
+
 # add caption
 
 scplot(exampleABC) %>%
   add_caption("Note. Hallo", color = "darkred", hjust = 0)
 
-# add ridge
 
-# add caption
 
-scplot(exampleABC) %>%
-  add_ridge("lightblue")
+
+
+p <- scplot(exampleABC)
+
+p <- print(p)
+
+p <- p + theme(legend.position = c(.95, .95))
+
+
+# Right -> inside the plot area
+p + theme(
+  legend.position = c(.95, .95),
+  legend.justification = c("right", "top"),
+  legend.box.just = "right",
+  legend.margin = margin(6, 6, 6, 6)
+)
+
 
 # crap --------------------------------------------------------------------
 scplot(exampleA1B1A2B2) %>%

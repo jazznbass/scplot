@@ -11,11 +11,7 @@ scplot <- function(data) {
 
   data <- scan:::.prepare_scdf(data)
 
-  theme <- utils::modifyList(
-    scplot:::.scplot_themes$default,
-    .scplot_themes[["grid"]], #scplot:::.scplot_themes[[getOption("scan.scplot.theme")]],
-    keep.null = TRUE
-  )
+  theme <- .merge_theme(.scplot_themes[["grid"]], .scplot_themes[["default"]])
 
   default_line <- list(
     variable = NULL,

@@ -4,8 +4,8 @@
 
 .scplot_themes$default = list(
 
-  plot.background = element_rect(size = 1, linetype = "solid"),
-  panel.background = element_rect(colour = "white", size = 1, linetype = "solid"),
+  plot.background = element_blank(),
+  panel.background = element_blank(),
 
   dataline.col = "black",
   dataline.width = 0.5,
@@ -17,13 +17,21 @@
 
   statline = element_line(color = "grey", size = 0.7, linetype = "solid"),
 
-  axis.line = element_line(color = "black", size = 0.7, linetype = "solid"),
+  axis.line.x = element_line(color = "black", size = 0.4, linetype = "solid"),
+  axis.line.y = element_line(color = "black", size = 0.4, linetype = "solid"),
 
-  axis.title.y = element_text(color = "black", angle = 90),
-  axis.title.x = element_text(color = "black", angle = 0),
+  axis.ticks.length = unit(2.75, "points"),
+  axis.ticks = element_line(color = "black", size = 0.4, linetype = "solid"),
 
-  axis.text.x = element_text(color = "black", angle = 0, size = 7),
-  axis.text.y = element_text(color = "black", angle = 0, size = 7),
+  axis.title.y = element_text(color = "black",
+                              angle = 90, margin = margin(r = 1.5)),
+  axis.title.x = element_text(color = "black",
+                              angle = 0, margin = margin(t = 1.5)),
+
+  axis.text.x = element_text(color = "black", angle = 0, size = 7,
+                             hjust = 0.5, margin = margin(t = 1.5)),
+  axis.text.y = element_text(color = "black", angle = 0, size = 7,
+                             hjust = 1, margin = margin(r = 1.5)),
 
 
     plot.title = element_text(
@@ -37,7 +45,6 @@
     margin = margin(0,0,0,2, unit = "lines"),
     hjust = 0
   ),
-
 
   plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
@@ -57,7 +64,8 @@
     vjust = 0,
     hjust = 0.5,
     angle = 0,
-    family = "sans", face = "plain"
+    family = "sans", face = "plain",
+    margin = margin(b = 1.5)
   ),
 
   phasenames.position.x = "centre",
@@ -77,10 +85,16 @@
 
 
 
-  grid = element_line(),
+  grid = element_blank(),
 
   NULL
 )
+
+.scplot_themes$grid <- list(
+  grid = element_line(colour = "lightblue", size = 0.2),
+  panel.background = element_rect(fill = "grey95", size = 0)
+)
+
 
 .scplot_themes$tiny <- list(
 
@@ -129,11 +143,6 @@
 
 )
 
-.scplot_themes$grid <- list(
-  grid.col = "lightblue", panel.col = "grey95",
-  lwd.line = 0.7, pch = 19, xaxis.text.size = 0.8, yaxis.text.size = 0.8,
-  casenames.size = 0.8, phasenames.size = 0.8
-)
 
 .scplot_themes$grid2 <- list(
   ridge.col = "white", grid.col = "lightgreen", panel.frame.col = "black",

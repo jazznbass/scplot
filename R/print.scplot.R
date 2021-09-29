@@ -115,6 +115,7 @@ print.scplot <- function(x, ...) {
     aes(x = !!sym(mvar), y = !!sym(dvar))
   )
 
+  p <- p + theme_void()
   p <- p + theme(plot.margin = theme$plot.margin)
 
   # set yaxis ticks and text  --------
@@ -265,7 +266,7 @@ print.scplot <- function(x, ...) {
       #fontface = theme$labels.text$face,
       angle = theme$casenames$angle,
       #nudge_x = theme$casenames.nudge_x,
-      #nudge_y = theme$casenames.nudge_y,
+      #nudge_y = theme$casenames$margin$b,
     )
   }
 
@@ -314,13 +315,18 @@ print.scplot <- function(x, ...) {
     family = theme$phasenames$family,
     fontface = theme$phasenames$face,
     angle = theme$phasenames$angle,
+    #nudge_y = (ylim[2] - ylim[1]) * 0.03,
   )
-
-  #p <- p + theme(plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"))
 
   # add axis.line -----------
 
-  #p <- p + theme(axis.line = object$theme$axis.line)
+  p <- p + theme(axis.line.x = object$theme$axis.line.x)
+  p <- p + theme(axis.line.y = object$theme$axis.line.x)
+  p <- p + theme(axis.ticks.length = object$theme$axis.ticks.length)
+  p <- p + theme(axis.ticks = object$theme$axis.ticks)
+
+
+  #axis.ticks
 
   # add grid ------------
 
@@ -444,6 +450,8 @@ print.scplot <- function(x, ...) {
   # plot background --------------------------------------------------------
 
   p <- p + theme(plot.background = theme$plot.background)
+
+
 
 
   # out -----------

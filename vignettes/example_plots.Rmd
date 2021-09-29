@@ -17,7 +17,7 @@ Here are a few plots that have been generated with `scplot` to demonstrate its p
 ```{r}
 scplot(exampleAB) %>%
   add_statline("mean", color = "darkred") %>%
-  set_ylabel(orientation = "horizontal")
+  set_ylabel(angle = 0)
 
 ```
 
@@ -28,14 +28,13 @@ scplot(exampleA1B1A2B2) %>%
   add_theme("default", "small") %>% 
   set_xaxis(increment = 5, increment_from = 0) %>%
   set_yaxis(limits = c(NA, 50)) %>%
-  set_ylabel(orientation = "h", angle = 0)
+  set_ylabel(angle = 0)
 ```
 
 ### A dark style for presentations
 
 ```{r}
 scplot(exampleABC) %>% 
-  add_theme("dark") %>% 
   set_xaxis(increment = 2) %>%
   add_labels(color = "black", box = "grey98") %>%
   set_yaxis(limits = c(30, 120))
@@ -48,16 +47,15 @@ scplot(exampleABC) %>%
 ```{r}
 scplot(example_A24) %>% 
   add_statline("movingMean", col = "darkred") %>%
-  set_theme_element(xaxis.text.angle = 35) %>%
-  set_xaxis(size =.8) %>%
+  set_xaxis(size = 10, angle = 35) %>%
   set_dataline(size = 0) %>%
   add_legend(x = 2010, y = 250) %>%
-  set_phasenames("no speedlimit", "with speedlimit", x = "centre", y = "top", size = 3, box = "white") %>%
+  set_phasenames("no speedlimit", "with speedlimit", x = "centre", y = "top", 
+                 size = 3, box = "white") %>%
   set_casenames("") %>%
   add_title("Effect of a speedlimit on the A24") %>%
-  add_grid(color = "white", size = 1.5, linetype = "solid") %>%
-  add_margins(inner = c(0.5, 0, 0, 0)) %>%
-  add_caption("Note: Moving mean calculated with lag two.", size = 0.8, face = 3, margin = 0.1)
+  add_grid(color = "white", size = 0.3, linetype = "solid") %>%
+  add_caption("Note: Moving mean calculated with lag two.", size = 10, face = 3)
   
 ```
 

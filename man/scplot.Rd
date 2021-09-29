@@ -46,7 +46,6 @@ set_xlabel(
 set_ylabel(
   object,
   label,
-  orientation,
   color = NULL,
   size = NULL,
   family = NULL,
@@ -66,6 +65,7 @@ set_xaxis(
   color = NULL,
   size = NULL,
   line = NULL,
+  angle = NULL,
   positions = NULL
 )
 
@@ -232,8 +232,6 @@ add_margins(object, outer, inner)
 
 \item{size}{A number deifning the size of an element.}
 
-\item{orientation}{of the label: 0 = vertical; 1 = horizontal}
-
 \item{limits}{Lower and upper limits of the axis (e.g., \code{limits = c(0,
 20)} sets the axis to a scale from 0 to 20). With multiple single-cases
 you can use \code{limits = c(0, NA)} to scale the axis from 0 to the maximum
@@ -289,6 +287,8 @@ annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
 
 \item{outer}{Vector with four values for the extension of the inner margins
 (negative numbers for smaller margins): c(bottom, left, top, right)}
+
+\item{orientation}{of the label: 0 = vertical; 1 = horizontal}
 
 \item{align}{Character string. One of "left", "right", "center"}
 }

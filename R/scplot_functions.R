@@ -12,13 +12,8 @@ add_theme <- function(object, theme, ...) {
     stop("Unknown theme template.")
   }
 
-  for(i in themes) {
-    object$theme <- utils::modifyList(
-      object$theme,
-      .scplot_themes[[i]],
-      keep.null = TRUE
-    )
-  }
+  for(i in themes)
+    object$theme <- .merge_theme(.scplot_themes[[i]], object$theme)
 
   object
 
