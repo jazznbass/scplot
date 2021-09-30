@@ -472,7 +472,8 @@ add_statline <- function(object,
                          color = NULL,
                          width = NULL,
                          linetype = NULL,
-                         variable = NULL) {
+                         variable = NULL,
+                         ...) {
 
   if (is.null(color)) color <- object$theme$statline$colour
   if (is.null(width)) width <- object$theme$statline$size
@@ -481,6 +482,7 @@ add_statline <- function(object,
 
   new <- list(
     stat = stat,
+    args = list(...),
     line = element_line(
       colour = color,
       size = width,
