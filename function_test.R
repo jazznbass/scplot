@@ -90,10 +90,19 @@ scplot(exampleAB_add) %>%
   add_dataline(variable = "depression", color = "blue", dots = "black") %>%
   add_statline("min", color = "darkred", width = 0.3) %>%
   add_statline("max", color = "darkred", width = 0.3) %>%
+  add_statline("loreg", color = "grey50", width = 0.5) %>%
   add_statline(
     "min", color = "darkblue", width = 0.3, variable = "depression") %>%
   add_statline(
-    "max", color = "darkblue", width = 0.3, variable = "depression")
+    "max", color = "darkblue", width = 0.3, variable = "depression") %>%
+  add_statline(
+    "trend", color = "grey50", width = 0.5, variable = "depression")
+
+scplot(exampleABC) %>%
+  add_statline("movingMean", lag = 2, color = "darkred")
+
+scplot(exampleAB_add) %>%
+  add_statline("loreg", f = 0.5, color = "darkred")
 
 # panel/ background color
 

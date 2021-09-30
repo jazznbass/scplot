@@ -183,7 +183,8 @@ add_statline(
   color = NULL,
   width = NULL,
   linetype = NULL,
-  variable = NULL
+  variable = NULL,
+  ...
 )
 
 set_background(object, color = NULL, fill = NULL, linetype = NULL, size = NULL)

@@ -360,84 +360,106 @@ print.scplot <- function(x, ...) {
   # add statlines ------------------------------------------------------------
 
   if (!is.null(object$statlines)) {
+
     for(j in 1:length(object$statlines)) {
       if (object$statlines[[j]]$variable == ".dvar")
         object$statlines[[j]]$variable <- object$dvar[1]
 
       if (object$statlines[[j]]$stat == "mean") {
-        p <- .statline_fixed_each(
+        p <- p + .statline_fixed_each(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "mean", list(na.rm = TRUE)
+          fun = "mean"
         )
       }
       if (object$statlines[[j]]$stat == "median") {
-        p <- .statline_fixed_each(
+        p <- p + .statline_fixed_each(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "median", list(na.rm = TRUE)
+          fun = "median"
         )
       }
       if (object$statlines[[j]]$stat == "min") {
-        p <- .statline_fixed_each(
+        p <- p + .statline_fixed_each(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "min", list(na.rm = TRUE)
+          fun = "min"
         )
       }
       if (object$statlines[[j]]$stat == "max") {
-        p <- .statline_fixed_each(
+        p <- p + .statline_fixed_each(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "max", list(na.rm = TRUE)
+          fun = "max"
         )
       }
 
       if (object$statlines[[j]]$stat == "meanA") {
-        p <- .statline_fixed_first(
+        p <- p + .statline_fixed_first(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "mean", list(na.rm = TRUE)
+          fun = "mean"
         )
       }
 
       if (object$statlines[[j]]$stat == "medianA") {
-        p <- .statline_fixed_first(
+        p <- p + .statline_fixed_first(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "median", list(na.rm = TRUE)
+          fun = "median"
         )
       }
 
       if (object$statlines[[j]]$stat == "maxA") {
-        p <- .statline_fixed_first(
+        p <- p + .statline_fixed_first(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "max", list(na.rm = TRUE)
+          fun = "max"
         )
       }
 
       if (object$statlines[[j]]$stat == "minA") {
-        p <- .statline_fixed_first(
+        p <- p + .statline_fixed_first(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          p, fun = "min", list(na.rm = TRUE)
+          fun = "min"
         )
       }
 
       if (object$statlines[[j]]$stat == "trend") {
-        p <- .statline_trend(
+        p <- p + .statline_trend(
           data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar, p
-        )
-      }
-      if (object$statlines[[j]]$stat == "trendA") {
-        p <- .statline_trendA(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar, p
+          object$statlines[[j]]$variable, object$mvar, object$pvar
         )
       }
 
+      if (object$statlines[[j]]$stat == "trendA") {
+        p <- p + .statline_trendA(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable, object$mvar, object$pvar
+        )
+      }
+
+      if (object$statlines[[j]]$stat == "movingMean") {
+        p <- p + .statline_moving_average(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable, object$mvar, object$pvar, mean
+        )
+      }
+
+      if (object$statlines[[j]]$stat == "movingMedian") {
+        p <- p + .statline_moving_average(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable, object$mvar, object$pvar, median
+        )
+      }
+
+      if (object$statlines[[j]]$stat == "loreg") {
+        p <- p + .statline_loreg(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable, object$mvar, object$pvar
+        )
+      }
 
     }
   }

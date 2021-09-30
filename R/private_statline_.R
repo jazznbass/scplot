@@ -1,5 +1,5 @@
 
-.statline_fixed_each <- function(data, line, dvar, mvar, pvar, p, fun, args) {
+.statline_fixed_each <- function(data, line, dvar, mvar, pvar, fun) {
 
   data <- rename(data,
     mt = !!sym(mvar),
@@ -7,13 +7,16 @@
     values = !!sym(dvar)
   )
 
+  args <- line$args
+  if (is.null(args$na.rm)) args$na.rm <- TRUE
+
   dat_stat <- data %>%
     group_by(case, phase) %>%
     summarise(stat = do.call(fun, c(list(values), args)))
 
   data <- full_join(data, dat_stat, by = c("case", "phase"))
 
-  p <- p + geom_line(
+  p <- geom_line(
     data = data,
     aes(x = mt, y = stat, group = phase),
     linetype = line$line$linetype,
@@ -24,13 +27,16 @@
   p
 }
 
-.statline_fixed_first <- function(data, line, dvar, mvar, pvar, p, fun, args) {
+.statline_fixed_first <- function(data, line, dvar, mvar, pvar, fun) {
 
   data <- rename(data,
-                 mt = !!sym(mvar),
-                 phase = !!sym(pvar),
-                 values = !!sym(dvar)
+    mt = !!sym(mvar),
+    phase = !!sym(pvar),
+    values = !!sym(dvar)
   )
+
+  args <- line$args
+  if (is.null(args$na.rm)) args$na.rm <- TRUE
 
   first_phase <- levels(data$phase)[1]
 
@@ -41,7 +47,7 @@
 
   data <- full_join(data, dat_stat, by = c("case"))
 
-  p <- p + geom_line(
+  p <- geom_line(
     data = data,
     aes(x = mt, y = stat),
     linetype = line$line$linetype,
@@ -52,7 +58,7 @@
   p
 }
 
-.statline_trend <- function(data, line, dvar, mvar, pvar, p) {
+.statline_trend <- function(data, line, dvar, mvar, pvar) {
 
   data <- rename(data,
      mt = !!sym(mvar),
@@ -77,10 +83,10 @@
     b <- dat_stat[["b"]][i]
 
     filter <- which(data$case == case & data$phase == phase)
-    data[filter, "y"] <- data[["mt"]][filter] * b + int
+    data[filter, "y"] <- data$mt[filter] * b + int
   }
 
-  p <- p + geom_line(
+  p <- geom_line(
     data = data,
     aes(x = mt, y = y, group = phase),
     linetype = line$line$linetype,
@@ -91,7 +97,7 @@
   p
 }
 
-.statline_trendA <- function(data, line, dvar, mvar, pvar, p) {
+.statline_trendA <- function(data, line, dvar, mvar, pvar) {
 
   data <- rename(data,
                  mt = !!sym(mvar),
@@ -116,10 +122,10 @@
     b <- dat_stat[["b"]][i]
 
     filter <- which(data$case == case)
-    data[filter, "y"] <- data[["mt"]][filter] * b + int
+    data$y[filter] <- data$mt[filter] * b + int
   }
 
-  p <- p + geom_line(
+  p <- geom_line(
     data = data,
     aes(x = mt, y = y),
     linetype = line$line$linetype,
@@ -128,4 +134,74 @@
   )
 
   p
+}
+
+.statline_moving_average <- function(data, line, dvar, mvar, pvar, fun) {
+
+  data <- rename(data,
+    mt = !!sym(mvar),
+    phase = !!sym(pvar),
+    values = !!sym(dvar)
+  )
+
+  lag <- line$args$lag
+  if (is.null(lag)) lag <- 1
+
+  data$y <- NA
+
+  for(case in unique(data$case)) {
+    filter <- which(data$case == case)
+    data$y[filter] <- .moving_average(data$values[filter], lag, fun)
+  }
+
+  p <- geom_line(
+    data = data,
+    aes(x = mt, y = y),
+    linetype = line$line$linetype,
+    color = line$line$colour,
+    size = line$line$size
+  )
+
+  p
+}
+
+.statline_loreg <- function(data, line, dvar, mvar, pvar) {
+
+  data <- rename(data,
+    mt = !!sym(mvar),
+    phase = !!sym(pvar),
+    values = !!sym(dvar)
+  )
+
+  f <- line$args$f
+  if (is.null(f)) f <- 0.5
+
+  data$y <- NA
+
+  for(case in unique(data$case)) {
+    filter <- which(data$case == case)
+    data$y[filter] <- lowess(data$values[filter] ~ data$mt[filter], f = f)$y
+  }
+
+  p <- geom_line(
+    data = data,
+    aes(x = mt, y = y),
+    linetype = line$line$linetype,
+    color = line$line$colour,
+    size = line$line$size
+  )
+
+  p
+}
+
+
+.moving_average <- function(x, xlag, fun) {
+  if (length(x) < xlag * 2 + 1) {
+    warning("To few datapoints to calculate with lag ", xlag)
+    return(x)
+  }
+  for(i in (xlag + 1):(length(x) - xlag))
+    x[i] <- fun(x[(i - xlag):(i + xlag)], na.rm = TRUE)
+
+  x
 }
