@@ -1,11 +1,7 @@
 
 .statline_fixed_each <- function(data, line, dvar, mvar, pvar, fun) {
 
-  data <- rename(data,
-    mt = !!sym(mvar),
-    phase = !!sym(pvar),
-    values = !!sym(dvar)
-  )
+  data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
 
@@ -21,11 +17,7 @@
 
 .statline_fixed_first <- function(data, line, dvar, mvar, pvar, fun) {
 
-  data <- rename(data,
-    mt = !!sym(mvar),
-    phase = !!sym(pvar),
-    values = !!sym(dvar)
-  )
+  data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
 
@@ -43,12 +35,7 @@
 
 .statline_trend <- function(data, line, dvar, mvar, pvar) {
 
-  data <- rename(data,
-     mt = !!sym(mvar),
-     phase = !!sym(pvar),
-     values = !!sym(dvar)
-  )
-
+  data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   dat_stat <- data %>%
     group_by(case, phase) %>%
@@ -74,11 +61,7 @@
 
 .statline_trendA <- function(data, line, dvar, mvar, pvar) {
 
-  data <- rename(data,
-                 mt = !!sym(mvar),
-                 phase = !!sym(pvar),
-                 values = !!sym(dvar)
-  )
+  data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   first_phase <- levels(data$phase)[1]
 
@@ -105,11 +88,7 @@
 
 .statline_moving_average <- function(data, line, dvar, mvar, pvar, fun) {
 
-  data <- rename(data,
-    mt = !!sym(mvar),
-    phase = !!sym(pvar),
-    values = !!sym(dvar)
-  )
+  data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (is.null(line$args$lag)) line$args$lag <- 1
 
@@ -125,11 +104,7 @@
 
 .statline_loreg <- function(data, line, dvar, mvar, pvar) {
 
-  data <- rename(data,
-    mt = !!sym(mvar),
-    phase = !!sym(pvar),
-    values = !!sym(dvar)
-  )
+  data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (is.null(line$args$f)) line$args$f <- 0.5
 
@@ -183,3 +158,13 @@
   )
 
 }
+
+.rename_scdf_var <- function(data, dvar, mvar, pvar) {
+
+  names(data)[which(names(data) == dvar)] <- "values"
+  names(data)[which(names(data) == mvar)] <- "mt"
+  names(data)[which(names(data) == pvar)] <- "phase"
+  data
+
+}
+

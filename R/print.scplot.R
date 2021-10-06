@@ -23,7 +23,6 @@ print.scplot <- function(x, ...) {
 
   # rename phasenames
 
-  unlist(lapply(exampleABC, function(x) unique(x[[pvar]])))
 
   if (!identical(object$phasenames$labels, ".default")) {
     for(i in seq_along(data)) {
@@ -151,6 +150,44 @@ print.scplot <- function(x, ...) {
   #p <- p + ylim(ylim[1], ylim[2])
   #p <- p + expand_limits(x = xlim, y=ylim)
 
+  # create facets --------------------
+
+  p <- p + facet_grid(as.factor(case) ~ ., scales = "free")
+  p <- p + theme(panel.spacing.y = unit(2, "lines"))
+  p <- p + theme(strip.text.y = object$theme$casenames)
+  p <- p + theme(strip.background = object$theme$casenames.strip)
+  if (theme$casenames.type == "within")
+    p <- p + theme(strip.text.y = element_blank())
+
+  # add panel phase colors ------------
+
+  if (length(theme$panel.background$fill) > 1) {
+    x1 <- unlist(lapply(design, function(x) c(-Inf, x$start_mt[-1] - 0.5)))
+    x2 <- unlist(
+      lapply(design, function(x) c(x$stop_mt[-length(x$stop_mt)] + 0.5, Inf))
+    )
+
+    phase <- unlist(lapply(design, function(x) x$values))
+
+    data_phase <- data.frame(
+      case = rep(
+        names(design),
+        sapply(design, function(x) length(x$stop_mt))
+      ),
+      phase = factor(phase, levels = unique(phase)),
+      x1 = x1,
+      x2 = x2
+    )
+
+
+    p <- p + scale_fill_manual(values = theme$panel.background$fill)
+
+    p <- p + geom_rect(
+      data = data_phase,
+      aes(xmin = x1, xmax = x2, ymin = -Inf, ymax = Inf, fill = phase),
+      inherit.aes = FALSE
+    )
+  }
   # add dataline ---------------------------
 
   for (i in 1:length(object$datalines)) {
@@ -224,16 +261,6 @@ print.scplot <- function(x, ...) {
         label.padding = unit(theme$labels.padding, "lines")
       )
   }
-
-
-  # create facets --------------------
-
-  p <- p + facet_grid(as.factor(case) ~ ., scales = "free")
-  p <- p + theme(panel.spacing.y = unit(2, "lines"))
-  p <- p + theme(strip.text.y = object$theme$casenames)
-  p <- p + theme(strip.background = object$theme$casenames.strip)
-  if (theme$casenames.type == "within")
-    p <- p + theme(strip.text.y = element_blank())
 
   # add casenames ------------------
 
@@ -327,6 +354,7 @@ print.scplot <- function(x, ...) {
 
 
   #axis.ticks
+
 
   # add grid ------------
 
@@ -472,9 +500,6 @@ print.scplot <- function(x, ...) {
   # plot background --------------------------------------------------------
 
   p <- p + theme(plot.background = theme$plot.background)
-
-
-
 
   # out -----------
   print(p)

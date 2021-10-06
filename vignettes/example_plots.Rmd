@@ -1,16 +1,21 @@
+---
+bibliography: references.bib
+---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(tidyverse)
 library(scan)
+library(scplot)
 ```
 
 ## scplot examples
 
-Starting with `scan` version 0.53 we introduced the new plotting function `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function. `scplot()` was designed to encompass a pipe style coding. For now, `scan` imports the `%>%` pipe operator from the `magrittr` package and exports it to the user namespace after executing `library(scan)`. Recently, with version 4.1, R implemented a pipe operator `|>` which also works fine with `scplot`. 
+Starting with `scan` version 0.53 we introduced the new plotting function `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function. `scplot()` was designed to encompass a pipe style coding. For now, `scan` imports the `%>%` pipe operator from the `magrittr` package and exports it to the user namespace after executing `library(scan)`. Recently, with version 4.1, R implemented a pipe operator `|>` which also works fine with `scplot`.
 
 `scplot` is already much more versatile then `plot.scdf` has been. But we will keep `plot.scdf` as it is in new upgrades of `scan`. We consider the state of `scplot` to be *experimental*. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.
 
-Here are a few plots that have been generated with `scplot` to demonstrate its possibilities. 
+Here are a few plots that have been generated with `scplot` to demonstrate its possibilities.
 
 ### The standard style with an added statline
 
@@ -41,7 +46,6 @@ scplot(exampleABC) %>%
  
 ```
 
-
 ### Rotated axis values, removed dots, and some adjustments on phasenames
 
 ```{r}
@@ -67,8 +71,6 @@ scplot(exampleA1B1A2B2_zvt) %>%
   set_yaxis(limits = c(40, 90))
 ```
 
-
-
 ### Mulitple variables in a plot with an added legend
 
 ```{r}
@@ -80,7 +82,8 @@ scplot(exampleAB_add) %>%
   add_marks(case = 1, positions = c(14,20), size = 3, variable = "cigarrets") %>%
   set_xaxis(increment = 5) %>%
   set_phasenames(x = "left", hjust = 0) %>%
-  add_legend(x = 30, y = 45)
+  set_casenames(y = 40, x = 35, size = 6, color = "darkred") %>%
+  add_legend(x = 30, y = 45) 
 
 
 ```
@@ -89,8 +92,8 @@ scplot(exampleAB_add) %>%
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
-  set_xaxis(increment = 4, size = 3, color = "brown") %>%
-  set_yaxis(color = "sienna3", size = 3) %>%
+  set_xaxis(increment = 4, size = 4, color = "brown") %>%
+  set_yaxis(color = "sienna3", size = 4) %>%
   set_ylabel("Points", color = "sienna3", size = 7, angle = 0) %>%
   set_xlabel("Weeks", size = 7, color = "brown") %>%
   add_title("Points by week", color = "sienna4", size = 12, face = 3) %>%
@@ -121,4 +124,3 @@ scplot(exampleA1B1A2B2) %>%
   set_theme_element(legend.text.size = 0.5)
 
 ```
-
