@@ -189,7 +189,14 @@ add_statline(
 
 set_background(object, color = NULL, fill = NULL, linetype = NULL, size = NULL)
 
-set_panel(object, color = NULL, fill = NULL, linetype = NULL, size = NULL)
+set_panel(
+  object,
+  color = NULL,
+  fill = NULL,
+  linetype = NULL,
+  size = NULL,
+  alpha = NULL
+)
 
 scplot(data)
 

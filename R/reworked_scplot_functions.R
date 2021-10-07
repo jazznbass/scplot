@@ -522,12 +522,23 @@ set_background <- function(object, color = NULL, fill = NULL, linetype = NULL, s
 
 #' @rdname scplot
 #' @export
-set_panel <- function(object, color = NULL, fill = NULL, linetype = NULL, size = NULL) {
+set_panel <- function(object,
+                      color = NULL,
+                      fill = NULL,
+                      linetype = NULL,
+                      size = NULL,
+                      alpha = NULL) {
 
   if (!is.null(fill)) object$theme$panel.col <- fill
   if (!is.null(color)) object$theme$panel.frame.col <- color
   if (!is.null(size)) object$theme$panel.frame.width <- size
   if (!is.null(linetype)) object$theme$panel.frame.linetype <- linetype
+
+  if (is.null(alpha)) {
+    if (length(fill > 1)) alpha <- 0.5 else alpha <- 1
+  }
+
+  if (!is.null(fill)) fill <- alpha(fill, alpha)
 
   object$theme$panel.background <- .merge_element(
     element_rect(

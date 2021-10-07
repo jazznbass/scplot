@@ -34,27 +34,21 @@
                              hjust = 1, margin = margin(r = 1.5)),
 
 
-    plot.title = element_text(
-    color = "black",
-    margin = margin(0,0,2,0, unit = "lines"),
-    hjust = 0.5
-  ),
+  plot.title = element_text(color = "black",
+                            margin = margin(0,0,2,0, unit = "lines"),
+                            hjust = 0.5),
 
-  plot.caption = element_text(
-    color = "black",
-    margin = margin(0,0,0,2, unit = "lines"),
-    hjust = 0
-  ),
+  plot.caption = element_text(color = "black",
+                              margin = margin(0,0,0,2, unit = "lines"),
+                              hjust = 0),
 
   plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
-  casenames = element_text(
-    color = "black", size = 4, vjust = 1, hjust = 0, angle = 0
-  ),
+  casenames = element_text(color = "black", size = 4, vjust = 1, hjust = 0,
+                           angle = 0),
 
-  casenames.strip = element_rect(
-    color = "black", fill = "grey80", size = 1, linetype = "solid"
-  ),
+  casenames.strip = element_rect(color = "black", fill = "grey80", size = 1,
+                                 linetype = "solid"),
 
   casenames.type = "within",
 
@@ -70,20 +64,15 @@
 
   phasenames.position.x = "centre",
 
-  seperators = element_line(
-    color = "black", size = 0.4, linetype = "dashed"
-  ),
+  seperators = element_line(color = "black", size = 0.4, linetype = "dashed"),
 
   seperators.extent = "full",
 
-  labels.text = element_text(
-    color = "black", vjust = 0.5, hjust = 0.5, angle = 0, size = 3
-  ),
+  labels.text = element_text(color = "black", vjust = 0.5, hjust = 0.5,
+                             angle = 0, size = 3),
 
   labels.box = element_rect(fill = NULL, colour = "black"),
   labels.padding = 0.1,
-
-
 
   grid = element_blank(),
 
@@ -209,11 +198,13 @@
 )
 
 .scplot_themes$phase_color <- list(
-  panel.col = c("aliceblue", "mistyrose1", "honeydew")
+  panel.background = element_rect(
+    fill = alpha(c("aliceblue", "mistyrose1", "honeydew"), 0.5))
 )
 
 .scplot_themes$phase_shade <- list(
-  panel.col = c("grey94", "grey99", "grey90")
+  panel.background = element_rect(
+    fill = alpha(c("grey80", "grey99", "grey90"), 0.5))
 )
 
 

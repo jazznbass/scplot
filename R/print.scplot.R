@@ -159,9 +159,19 @@ print.scplot <- function(x, ...) {
   if (theme$casenames.type == "within")
     p <- p + theme(strip.text.y = element_blank())
 
-  # add panel phase colors ------------
+  # add panel background ------------
 
   if (length(theme$panel.background$fill) > 1) {
+
+    type_phases <- unique(data_long[[pvar]])
+    color <- rep(theme$panel.background$fill, length = length(type_phases))
+
+    theme$panel.background$fill <- "white"
+
+    p <- p + scale_fill_manual(values = color)
+
+    #p <- p + theme(panel.ontop = TRUE)
+
     x1 <- unlist(lapply(design, function(x) c(-Inf, x$start_mt[-1] - 0.5)))
     x2 <- unlist(
       lapply(design, function(x) c(x$stop_mt[-length(x$stop_mt)] + 0.5, Inf))
@@ -179,15 +189,15 @@ print.scplot <- function(x, ...) {
       x2 = x2
     )
 
-
-    p <- p + scale_fill_manual(values = theme$panel.background$fill)
-
     p <- p + geom_rect(
       data = data_phase,
       aes(xmin = x1, xmax = x2, ymin = -Inf, ymax = Inf, fill = phase),
       inherit.aes = FALSE
     )
   }
+
+  p <- p + theme(panel.background = theme$panel.background)
+
   # add dataline ---------------------------
 
   for (i in 1:length(object$datalines)) {
@@ -226,6 +236,8 @@ print.scplot <- function(x, ...) {
 
 
   }
+
+
 
   # add value labels ---------------------------
 
@@ -493,13 +505,13 @@ print.scplot <- function(x, ...) {
   }
 
 
-  # panel background --------------------------------------------------------
-
-  p <- p + theme(panel.background = theme$panel.background)
-
   # plot background --------------------------------------------------------
 
   p <- p + theme(plot.background = theme$plot.background)
+
+  # add legend
+
+  p <- p + theme(legend.position = "none")
 
   # out -----------
   print(p)
