@@ -555,6 +555,30 @@ print.scplot <- function(x, ...) {
 
   }
 
+  # add text annotate -----
+
+  if (length(object$texts) > 0) {
+
+    for(i in seq_along(object$texts)) {
+      dat <- data.frame(
+        x = object$texts[[i]]$x,
+        y = object$texts[[i]]$y,
+        label = object$texts[[i]]$labels,
+        case = unique(data_long$case)[object$texts[[i]]$case]
+      )
+
+      p <- p + geom_text(
+        data = dat,
+        mapping = aes(x = x, y = y, label = label),
+        colour = object$texts[[i]]$colour,
+        size = object$texts[[i]]$size,
+        angle = object$texts[[i]]$angle
+
+      )
+    }
+  }
+
+
   # out -----------
   print(p)
   p

@@ -121,8 +121,8 @@ scplot(exampleA1B1A2B2) %>%
   add_marks(case = "all", positions = "values < quantile(values, 0.1)", 
             color = "blue3", size = 1.5) %>%
   add_marks(positions = outlier(exampleABAB), color = "brown", size = 2) %>%
-  add_text(case = 1, x = 5, y = 35, "Interesting", 
-           color = "darkgreen", angle = 20, size = 0.5) %>%
+  add_text(case = 1, x = 5, y = 35, label = "Interesting", 
+           color = "darkgreen", angle = 20, size = 3) %>%
   add_arrow(case = 1, 5, 30, 5, 22, color = "steelblue") %>%
   set_background(fill = "sienna1") %>%
   add_legend(case = 2, title = "Legend") %>%
