@@ -83,6 +83,7 @@ scplot(exampleAB_add) %>%
   add_statline("trend", linetype = "dashed") %>%
   add_statline("mean", variable = "depression", color = "red") %>%
   add_marks(case = 1, positions = c(14,20), size = 3, variable = "cigarrets")%>%
+  add_marks(case = 1, positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3)%>%
   set_xaxis(increment = 5) %>%
   set_phasenames(x = "left", hjust = 0) %>%
   set_casenames(y = 40, x = 35, size = 6, color = "darkred") %>%
@@ -117,7 +118,7 @@ scplot(exampleA1B1A2B2) %>%
   add_statline(stat = "trendA", color = "tomato2") %>%
   add_statline(stat = "maxA", color = "lightblue") %>%
   add_marks(case = 1:2, positions = 14, color = "red3", size = 2, shape = 4) %>%
-  add_marks(case = "all", positions = 'points < quantile(points, 0.1)', 
+  add_marks(case = "all", positions = "values < quantile(values, 0.1)", 
             color = "blue3", size = 1.5) %>%
   add_marks(positions = outlier(exampleABAB), color = "brown", size = 2) %>%
   add_text(case = 1, x = 5, y = 35, "Interesting", 

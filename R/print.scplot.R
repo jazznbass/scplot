@@ -9,6 +9,7 @@
 #' @import ggplot2
 print.scplot <- function(x, ...) {
 
+  # set global variables --------
   object <- x
 
   data <- object$scdf
@@ -17,12 +18,13 @@ print.scplot <- function(x, ...) {
   pvar <- object$pvar
   mvar <- object$mvar
 
-  #rename casesnames
+  N <- length(data)
+
+  # rename casesnames --------
 
   names(data) <- object$casenames$labels
 
-  # rename phasenames
-
+  # rename phasenames ----------
 
   if (!identical(object$phasenames$labels, ".default")) {
     for(i in seq_along(data)) {
@@ -30,12 +32,13 @@ print.scplot <- function(x, ...) {
     }
   }
 
-  # convert to long format
+  # convert to long format --------
 
   data_long <- as.data.frame(data)
   data_long$case <- factor(data_long$case, levels = object$casenames$labels)
   data_long[[pvar]] <- factor(data_long[[pvar]])
 
+  # extract design --------
 
   .design <- function(data, pvar, mvar) {
     phases <- rle(as.character(data[[pvar]]))
@@ -49,9 +52,7 @@ print.scplot <- function(x, ...) {
 
   design <- lapply(data, .design, pvar = pvar, mvar = mvar)
 
-  N <- length(data)
-
-  # set dataline for first dvar
+  # set dataline for first dvar ---------------------
 
   if (is.null(object$datalines[[1]]$variable))
     object$datalines[[1]]$variable <- object$dvar[1]
@@ -198,7 +199,7 @@ print.scplot <- function(x, ...) {
 
   p <- p + theme(panel.background = theme$panel.background)
 
-  # add dataline ---------------------------
+  # add dataline and dots ---------------------------
 
   for (i in 1:length(object$datalines)) {
 
@@ -389,6 +390,7 @@ print.scplot <- function(x, ...) {
       theme(plot.caption = theme$plot.caption, plot.caption.position = "plot")
 
   }
+
   # add axis label ------
 
   if (!is.null(object$ylabel)) p <- p + ylab(object$ylabel)
@@ -512,6 +514,46 @@ print.scplot <- function(x, ...) {
   # add legend
 
   p <- p + theme(legend.position = "none")
+
+  # add marks -----
+
+  if (!is.null(object$marks)) {
+
+    cases <- unique(data_long$case)
+
+    for(i in seq_along(object$marks)) {
+
+      filter <- rep(TRUE, nrow(data_long))
+
+      # filter cases
+      if (!identical(object$marks[[i]]$case, "all"))
+        filter <- filter & data_long$case %in% cases[object$marks[[i]]$case]
+
+      # filter mt
+      if (is.character(object$marks[[i]]$positions)) {
+        .marks <- eval(
+          str2expression(object$marks[[i]]$positions), envir = data_long
+        )
+        object$marks[[i]]$positions <- which(.marks)
+      }
+      filter <- filter & data_long[[mvar]] %in% object$marks[[i]]$position
+
+      dat <- data_long[filter, ]
+
+      if (object$marks[[i]]$variable == ".dvar") object$marks[[i]]$variable <- dvar
+      names(dat)[which(names(dat) == object$marks[[i]]$variable)] <- "dvar"
+      names(dat)[which(names(dat) == mvar)] <- "mvar"
+
+      p <- p + geom_point(
+        data = dat,
+        mapping = aes(x = mvar, y = dvar),
+        color = object$marks[[i]]$color,
+        size = object$marks[[i]]$size,
+        shape = object$marks[[i]]$shape
+      )
+    }
+
+  }
 
   # out -----------
   print(p)

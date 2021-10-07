@@ -18,10 +18,10 @@
 \alias{add_statline}
 \alias{set_background}
 \alias{set_panel}
-\alias{scplot}
 \alias{add_theme}
-\alias{set_theme_element}
 \alias{add_marks}
+\alias{scplot}
+\alias{set_theme_element}
 \alias{add_text}
 \alias{add_arrow}
 \alias{add_ridge}
@@ -198,11 +198,7 @@ set_panel(
   alpha = NULL
 )
 
-scplot(data)
-
 add_theme(object, theme, ...)
-
-set_theme_element(object, ...)
 
 add_marks(
   object,
@@ -213,6 +209,10 @@ add_marks(
   shape = 1,
   variable = ".dvar"
 )
+
+scplot(data)
+
+set_theme_element(object, ...)
 
 add_text(object, case = 1, x, y, label, color = NULL, size = NULL, angle = 0)
 
@@ -248,7 +248,7 @@ a proper scale based on the given data.}
 
 \item{increment}{An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.}
 
-\item{positions}{Either a vector indicating the dot to be highlighted or a
+\item{positions}{Either a vector indicating the dots to be highlighted or a
 character string with a logical expression (e.g. values < mean(values))}
 
 \item{parse}{If TRUE, the label is interpreted as an expression. Default = FALSE.}
