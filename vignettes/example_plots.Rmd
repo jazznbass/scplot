@@ -21,8 +21,7 @@ Here are a few plots that have been generated with `scplot` to demonstrate its p
 
 ```{r}
 scplot(exampleAB) %>%
-  add_statline("mean", color = "darkred") %>%
-  set_ylabel(angle = 0)
+  add_statline("mean", color = "darkred")
 
 ```
 
@@ -30,11 +29,12 @@ scplot(exampleAB) %>%
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
-  add_theme("default", "small") %>% 
   set_xaxis(increment = 5, increment_from = 0) %>%
-  set_panel(fill = c("grey90", "grey80")) %>%
   set_yaxis(limits = c(NA, 50)) %>%
   set_ylabel(angle = 0) %>%
+  add_theme("small") %>% 
+  set_casenames(type = "strip") %>% #angle = 270, hjust = 0.5) %>%
+  set_panel(fill = c("grey90", "grey80")) %>%
   add_grid(color = "grey")
 ```
 
@@ -43,7 +43,7 @@ scplot(exampleA1B1A2B2) %>%
 ```{r}
 scplot(exampleABC) %>% 
   set_xaxis(increment = 2) %>%
-  add_labels(color = "black", box = "grey98", size = 2, nudge_y = 17) %>%
+  add_labels(color = "black", box = "grey98", size = 0.5, nudge_y = 15) %>%
   set_yaxis(limits = c(30, 120)) %>%
   add_theme("phase_color")
  
@@ -54,15 +54,15 @@ scplot(exampleABC) %>%
 ```{r}
 scplot(example_A24) %>% 
   add_statline("movingMean", col = "darkred") %>%
-  set_xaxis(size = 10, angle = 35) %>%
+  set_xaxis(size = 0.8, angle = 35) %>%
   set_dataline(size = 0) %>%
   add_legend(x = 2010, y = 250) %>%
-  set_phasenames("no speedlimit", "with speedlimit", x = "centre", y = "top", 
-                 size = 3, box = "white") %>%
+ set_phasenames("no speedlimit", "with speedlimit", x = "centre", y = "top", 
+                 box = "white") %>%
   set_casenames("") %>%
   add_title("Effect of a speedlimit on the A24") %>%
   add_grid(color = "white", size = 0.3, linetype = "solid") %>%
-  add_caption("Note: Moving mean calculated with lag two.", size = 10, face = 3)
+  add_caption("Note: Moving mean calculated with lag two.", face = 3)
   
 ```
 
@@ -86,7 +86,7 @@ scplot(exampleAB_add) %>%
   add_marks(case = 1, positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3)%>%
   set_xaxis(increment = 5) %>%
   set_phasenames(x = "left", hjust = 0) %>%
-  set_casenames(y = 40, x = 35, size = 6, color = "darkred") %>%
+  set_casenames(y = 40, x = 35, color = "darkred") %>%
   add_legend(x = 30, y = 45) %>%
   add_theme("phase_color")
 
@@ -97,22 +97,22 @@ scplot(exampleAB_add) %>%
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
-  set_xaxis(increment = 4, size = 4, color = "brown") %>%
-  set_yaxis(color = "sienna3", size = 4) %>%
-  set_ylabel("Points", color = "sienna3", size = 7, angle = 0) %>%
-  set_xlabel("Weeks", size = 7, color = "brown") %>%
-  add_title("Points by week", color = "sienna4", size = 12, face = 3) %>%
+  set_xaxis(increment = 4, color = "brown") %>%
+  set_yaxis(color = "sienna3") %>%
+  set_ylabel("Points", color = "sienna3", angle = 0) %>%
+  set_xlabel("Weeks", size = rel(1), color = "brown") %>%
+  add_title("Points by week", color = "sienna4", face = 3) %>%
   add_caption("Note: An extensive Example.", 
-              color = "black", size = 7, face = 3) %>%
+              color = "black", size = rel(1), face = 3) %>%
   set_phasenames("Baseline", "Intervention", "Fall-Back", "Intervention_2", 
-                 color = "darkgreen") %>%
+                 color = "darkgreen", size = 0.7) %>%
   add_ridge(alpha("lightblue", 0.5)) %>%
-  set_casenames(sample_names(3), color = "steelblue4", size = 3) %>%
-  set_panel(fill = c("grey80", "grey95"), color = "sienna4", alpha = 0.5) %>%
-  add_grid(color = "grey85", size = 0.5) %>%
-  set_dataline(color = "black", width = 1, linetype = "solid", 
-               dots = "sienna4", size = 1, shape = 18) %>%
-  add_labels(color = "sienna", size = 0.5) %>%
+  set_casenames(sample_names(3), color = "steelblue4", size = 0.7) %>%
+  set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
+  add_grid(color = "grey85", size = rel(0.5)) %>%
+  set_dataline(color = "black", width = rel(1), linetype = "solid", 
+               dots = "sienna4", size = rel(1), shape = 18) %>%
+  add_labels(color = "sienna", size = 0.7, nudge_y = 4) %>%
   set_seperator(extent = 0.8, width = 0.5, 
                 linetype = "solid", color = "sienna") %>%
   add_statline(stat = "trendA", color = "tomato2") %>%
@@ -122,10 +122,9 @@ scplot(exampleA1B1A2B2) %>%
             color = "blue3", size = 1.5) %>%
   add_marks(positions = outlier(exampleABAB), color = "brown", size = 2) %>%
   add_text(case = 1, x = 5, y = 35, label = "Interesting", 
-           color = "darkgreen", angle = 20, size = 3) %>%
+           color = "darkgreen", angle = 20, size = 0.7) %>%
   add_arrow(case = 1, 5, 30, 5, 22, color = "steelblue") %>%
-  set_background(fill = "sienna1") %>%
-  add_legend(case = 2, title = "Legend") %>%
-  set_theme_element(legend.text.size = 0.5)
+  set_background(fill = "grey95") %>%
+  add_legend(case = 2, title = "Legend")
 
 ```

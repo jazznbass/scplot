@@ -4,8 +4,11 @@
 
 .scplot_themes$default = list(
 
+  text = element_text(colour = "black", size = 11),
+
   plot.background = element_blank(),
   panel.background = element_blank(),
+  panel.spacing.y = unit(2, "lines"),
 
   dataline.col = "black",
   dataline.width = 0.5,
@@ -23,38 +26,41 @@
   axis.ticks.length = unit(2.75, "points"),
   axis.ticks = element_line(color = "black", size = 0.4, linetype = "solid"),
 
-  axis.title.y = element_text(color = "black",
+  axis.title.y = element_text(color = "black", size = rel(1),
                               angle = 90, margin = margin(r = 1.5)),
-  axis.title.x = element_text(color = "black",
+  axis.title.x = element_text(color = "black", size = rel(1),
                               angle = 0, margin = margin(t = 1.5)),
 
-  axis.text.x = element_text(color = "black", angle = 0, size = 7,
+  axis.text.x = element_text(color = "black", size = rel(1),
                              hjust = 0.5, margin = margin(t = 1.5)),
-  axis.text.y = element_text(color = "black", angle = 0, size = 7,
+  axis.text.y = element_text(color = "black", size = rel(1),
                              hjust = 1, margin = margin(r = 1.5)),
 
 
   plot.title = element_text(color = "black",
                             margin = margin(0,0,2,0, unit = "lines"),
-                            hjust = 0.5),
+                            hjust = 0.5, size = rel(1)),
 
   plot.caption = element_text(color = "black",
                               margin = margin(0,0,0,2, unit = "lines"),
-                              hjust = 0),
+                              hjust = 0, size = rel(1)),
 
   plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
-  casenames = element_text(color = "black", size = 4, vjust = 1, hjust = 0,
-                           angle = 0),
+  casenames = element_text(color = "black", vjust = 1, hjust = 0,
+                           angle = 0, size = rel(1),
+                           margin = margin(0.3, 0.3, 0.3, 0.3, unit = "lines")),
 
-  casenames.strip = element_rect(color = "black", fill = "grey80", size = 1,
+  casenames.strip = element_rect(color = "grey60",
+                                 fill = "grey98",
+                                 size = 0.5,
                                  linetype = "solid"),
 
   casenames.type = "within",
 
   phasenames = element_text(
     color = "black",
-    size = 4,
+    size = 1,
     vjust = 0,
     hjust = 0.5,
     angle = 0,
@@ -69,7 +75,7 @@
   seperators.extent = "full",
 
   labels.text = element_text(color = "black", vjust = 0.5, hjust = 0.5,
-                             angle = 0, size = 3),
+                             angle = 0, size = rel(1)),
 
   labels.box = element_rect(fill = NULL, colour = "black"),
   labels.padding = 0.1,
@@ -84,39 +90,21 @@
   panel.background = element_rect(fill = "grey95", size = 0)
 )
 
-
-.scplot_themes$tiny <- list(
-
-  xaxis.title.size = 0.5, yaxis.title.size = 0.5,
-  xaxis.text.size = 0.5, yaxis.text.size = 0.5,
-  casenames.size = 0.5,
-  phasenames.size = 0.5,
-  grid.width = 0.7,
-  dataline.width = 0.7,
-  datadots.size = 0.5,
-  seperators.width = 0.7
-
+.scplot_themes$small <- list(
+  text = element_text(size = 8),
+  panel.spacing.y = unit(1, "lines")
 )
 
-.scplot_themes$small <- list(
 
-  xaxis.title.size = 0.75, yaxis.title.size = 0.75,
-  xaxis.text.size = 0.75, yaxis.text.size = 0.75,
-  casenames.size = 0.75, phasenames.size = 0.75,
-  grid.width = 0.85,
-  dataline.width = 0.85,
-  datadots.size = 0.75,
-  seperators.width = 0.85
+
+.scplot_themes$tiny <- list(
+  text = element_text(size = 6),
+  panel.spacing.y = unit(0.5, "lines")
 )
 
 .scplot_themes$big <- list(
-  xaxis.title.size = 1.25, yaxis.title.size = 1.25,
-  xaxis.text.size = 1.25, yaxis.text.size = 1.25,
-  casenames.size = 1.25, phasename.sizes = 1.25,
-  grid.width = 1.5,
-  dataline.width = 1.5,
-  datadots.size = 1.25,
-  seperators.width = 1.5
+  text = element_text(size = 14),
+  panel.spacing.y = unit(1.5, "lines")
 )
 
 

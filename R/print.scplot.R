@@ -18,6 +18,8 @@ print.scplot <- function(x, ...) {
   pvar <- object$pvar
   mvar <- object$mvar
 
+  base_size <- theme$text$size
+
   N <- length(data)
 
   # rename casesnames --------
@@ -115,7 +117,8 @@ print.scplot <- function(x, ...) {
     aes(x = !!sym(mvar), y = !!sym(dvar))
   )
 
-  p <- p + theme_void()
+  p <- p + theme_void(base_size = base_size)
+  p <- p + theme(text = theme$text)
   p <- p + theme(plot.margin = theme$plot.margin)
 
   # set yaxis ticks and text  --------
@@ -154,9 +157,9 @@ print.scplot <- function(x, ...) {
   # create facets --------------------
 
   p <- p + facet_grid(as.factor(case) ~ ., scales = "free")
-  p <- p + theme(panel.spacing.y = unit(2, "lines"))
-  p <- p + theme(strip.text.y = object$theme$casenames)
-  p <- p + theme(strip.background = object$theme$casenames.strip)
+  p <- p + theme(panel.spacing.y = theme$panel.spacing.y)
+  p <- p + theme(strip.text.y = theme$casenames)
+  p <- p + theme(strip.background = theme$casenames.strip)
   if (theme$casenames.type == "within")
     p <- p + theme(strip.text.y = element_blank())
 
@@ -206,6 +209,7 @@ print.scplot <- function(x, ...) {
     # add ridge
 
     if (!is.null(theme$ridge.col)) {
+      #if (object$datalines[[i]]$variable)
       p <- p + geom_ribbon(
         aes(ymax = !!sym(object$datalines[[i]]$variable),
             ymin = ylim[1],
@@ -248,7 +252,7 @@ print.scplot <- function(x, ...) {
       p <- p + geom_text(
         aes(label = !!sym(dvar), y = !!sym(dvar)),
         colour =  theme$labels.text$colour,
-        size = theme$labels.text$size,
+        size = .size(theme$labels.text$size, base_size),
         hjust = theme$labels.text$hjust,
         vjust = theme$labels.text$vjust,
         #lineheight = theme$labels.text$lineheight,
@@ -263,7 +267,7 @@ print.scplot <- function(x, ...) {
       p <- p + geom_label(
         aes(label = !!sym(dvar), y = !!sym(dvar)),
         colour =  theme$labels.text$colour,
-        size = theme$labels.text$size,
+        size = .size(theme$labels.text$size, base_size),
         hjust = theme$labels.text$hjust,
         vjust = theme$labels.text$vjust,
         angle = theme$labels.text$angle,
@@ -298,7 +302,7 @@ print.scplot <- function(x, ...) {
       data = data_casenames,
       mapping = aes(x = x, y = y, label =  case),
       colour =  theme$casenames$colour,
-      size = theme$casenames$size,
+      size = .size(theme$casenames$size, base_size),
       hjust = theme$casenames$hjust,
       vjust = theme$casenames$vjust,
       #lineheight = theme$labels.text$lineheight,
@@ -323,9 +327,9 @@ print.scplot <- function(x, ...) {
   p <- p + geom_vline(
     data = data_phase,
     aes(xintercept = x),
-    linetype = object$theme$seperators$linetype,
-    color = object$theme$seperators$colour,
-    size =object$theme$seperators$size
+    linetype = theme$seperators$linetype,
+    color = theme$seperators$colour,
+    size = theme$seperators$size
   )
 
   p <- p + coord_cartesian(clip = "off")
@@ -349,7 +353,7 @@ print.scplot <- function(x, ...) {
     data = data_phasenames,
     aes(label = phase, x = x, y = Inf),
     colour =  theme$phasenames$colour,
-    size = theme$phasenames$size,
+    size = .size(theme$phasenames$size, base_size),
     hjust = theme$phasenames$hjust,
     vjust = theme$phasenames$vjust,
     family = theme$phasenames$family,
@@ -360,10 +364,10 @@ print.scplot <- function(x, ...) {
 
   # add axis.line -----------
 
-  p <- p + theme(axis.line.x = object$theme$axis.line.x)
-  p <- p + theme(axis.line.y = object$theme$axis.line.x)
-  p <- p + theme(axis.ticks.length = object$theme$axis.ticks.length)
-  p <- p + theme(axis.ticks = object$theme$axis.ticks)
+  p <- p + theme(axis.line.x = theme$axis.line.x)
+  p <- p + theme(axis.line.y = theme$axis.line.x)
+  p <- p + theme(axis.ticks.length = theme$axis.ticks.length)
+  p <- p + theme(axis.ticks = theme$axis.ticks)
 
 
   #axis.ticks
@@ -372,7 +376,7 @@ print.scplot <- function(x, ...) {
   # add grid ------------
 
   if (!is.null(theme$grid)) {
-    p <- p + theme(panel.grid = object$theme$grid)
+    p <- p + theme(panel.grid = theme$grid)
   }
 
 
@@ -380,7 +384,7 @@ print.scplot <- function(x, ...) {
 
   if (!is.null(object$title)) {
     p <- p + ggtitle(object$title) +
-    theme(plot.title = object$theme$plot.title)
+    theme(plot.title = theme$plot.title)
   }
 
   # add caption -------------
@@ -571,9 +575,38 @@ print.scplot <- function(x, ...) {
         data = dat,
         mapping = aes(x = x, y = y, label = label),
         colour = object$texts[[i]]$colour,
-        size = object$texts[[i]]$size,
+        size = .size(object$texts[[i]]$size, base_size),
         angle = object$texts[[i]]$angle
 
+      )
+    }
+  }
+
+
+  # add arrows ---------
+
+  if (length(object$arrows) > 0) {
+    for(i in seq_along(object$arrows)) {
+      dat <- data.frame(
+        x0 = object$arrows[[i]]$x0,
+        y0 = object$arrows[[i]]$y0,
+        x1 = object$arrows[[i]]$x1,
+        y1 = object$arrows[[i]]$y1,
+        case = unique(data_long$case)[object$arrows[[i]]$case]
+      )
+
+      arrow_par <- arrow(
+        object$arrows[[i]]$angle,
+        object$arrows[[i]]$length,
+        object$arrows[[i]]$ends,
+        object$arrows[[i]]$type
+      )
+
+      p <- p + geom_segment(
+        data = dat,
+        mapping = aes(x = x0, y = y0, xend = x1, yend = y1),
+        colour = object$arrows[[i]]$colour,
+        arrow = arrow_par
       )
     }
   }

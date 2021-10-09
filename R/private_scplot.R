@@ -16,3 +16,11 @@
 
 }
 
+.size <- function(x, base) {
+
+  #if (!"rel" %in% class(x))
+  x <- base * x
+  x <- x / ggplot2:::.pt
+  x
+
+}
