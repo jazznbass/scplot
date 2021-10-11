@@ -123,13 +123,32 @@ scplot(exampleABC) %>%
 
 
 
+# it's gppplot ->
+
+p1 <- scplot(exampleABC) %>% set_xaxis(increment = 4) %>% print()
+p2 <- scplot(example_A24) %>% set_xaxis(angle = 90, increment = 2) %>% print()
+
+gridExtra::grid.arrange(p1, p2, ncol = 2,
+                        top = "Just an example",
+                        bottom = "Two scplots arranged with ggplot2.")
 
 
-p <- scplot(exampleABC)
 
-p <- print(p)
+p1 <- scplot(exampleABC$Marie) %>% set_xaxis(increment = 4) %>% print()
 
-p <- p + theme(legend.position = c(.95, .95))
+
+mytheme <- gridExtra::ttheme_default(base_size = 6, padding = unit(c(2, 2), "mm"))
+
+t1 <- gridExtra::tableGrob(example_A24[[1]], theme = mytheme)
+
+gridExtra::grid.arrange(
+  t1,
+  p2,
+  ncol = 2,
+  widths = c(1, 2),
+  clip = FALSE
+)
+
 
 
 # Right -> inside the plot area
@@ -139,66 +158,4 @@ p + theme(
   legend.box.just = "right",
   legend.margin = margin(6, 6, 6, 6)
 )
-
-
-# crap --------------------------------------------------------------------
-scplot(exampleA1B1A2B2) %>%
-  add_ridge("white") %>%
-  set_xaxis(increment = 4, size = 3, color = "brown") %>%
-  set_yaxis(color = "sienna3", size = 1) %>%
-  set_ylabel("Points", color = "sienna3", size = 7, orientation = 0) %>%
-  set_xlabel("Weeks", size = 7, color = "brown") %>%
-  add_title("Points by week", color = "sienna4", size = 12, face = 3) %>%
-  add_caption("Note: An extensive Example.", color = "black", size = 7, face = 3) %>%
-  set_phasenames("Baseline", "Intervention", "Fall-Back", "Intervention 2", color = "darkgreen", size = 3) %>%
-  set_casenames(sample_names(3), color = "steelblue4", size = 3) %>%
-  set_panel(fill = c("grey94", "grey99"), color = "sienna4") %>%
-  add_grid(color = "grey85", size = 0.5) %>%
-  set_dataline(color = "black", width = 1, linetype = "solid", dots = "sienna4", size = 1, shape = 18) %>%
-  add_labels(color = "sienna", size = 0.5) %>%
-  set_seperator(extent = 0.8, width = 0.5, linetype = "solid", color = "sienna") %>%
-  add_statline(stat = "trendA", color = "tomato2") %>%
-  add_statline(stat = "maxA", color = "lightblue") %>%
-  add_marks(case = 1:2, positions = 14, color = "red3", size = 2, shape = 4) %>%
-  add_marks(case = "all", positions = 'points < quantile(points, 0.1)', color = "blue3", size = 1.5) %>%
-  add_marks(positions = outlier(exampleABAB), color = "brown", size = 2) %>%
-  add_text(case = 1, x = 5, y = 35, "Interesting", color = "darkgreen", angle = 20, size = 0.5) %>%
-  add_arrow(case = 1, 5, 30, 5, 22, color = "steelblue") %>%
-  set_background(fill = "sienna1") #%>%
-#add_legend(case = 2, title = "Legend") %>%
-#set_theme_element(legend.text.size = 0.5)
-
-
-
-#' #' @rdname scplot
-#' #' @export
-#' style_box <- function(fill = NULL, size = NULL, linetype = NULL,
-#'                       color = NULL) {
-#'
-#'   #structure(,
-#'   #class = c("scplot_style_box"))
-#'   style <- list(
-#'     fill = fill, color = color, size = size,
-#'     linetype = linetype
-#'   )
-#'   style
-#' }
-#'
-#' #' @rdname scplot
-#' #' @export
-#' style_text <- function (family = NULL, face = NULL, size = NULL,
-#'                         hjust = NULL, vjust = NULL, angle = NULL,
-#'                         lineheight = NULL, color = NULL, margin = NULL) {
-#'
-#'   style <- list(family = family, face = face, color = color,
-#'                 size = size, hjust = hjust, vjust = vjust, angle = angle,
-#'                 lineheight = lineheight, margin = margin)
-#' }
-
-dat <- as.data.frame(exampleABC)
-
-dat_stat <- dat %>% group_by(case, !!sym(pvar)) %>% summarise(stat = mean(values, na.rm = TRUE))
-
-
-full_join(dat, dat_stat, by = c("case", "phase"))
 
