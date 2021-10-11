@@ -107,20 +107,6 @@
   panel.spacing.y = unit(1.5, "lines")
 )
 
-
-.scplot_themes$chart <- list(
-  ridge.col = "grey50",
-  panel.col = "grey98",
-
-  grid.col = "grey75",
-  yaxis.title.size = 0.8, xaxis.title.size = 0.8,
-  casenames.size = 0.8, phasenames.size = 0.8,
-  dataline.width = 0.7,
-  labels.col = "black"
-
-)
-
-
 .scplot_themes$grid2 <- list(
   ridge.col = "white", grid.col = "lightgreen", panel.frame.col = "black",
   panel.col = "grey95",

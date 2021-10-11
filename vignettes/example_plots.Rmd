@@ -1,6 +1,4 @@
----
-bibliography: references.bib
----
+
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
@@ -11,29 +9,36 @@ library(scplot)
 
 ## scplot examples
 
-Starting with `scan` version 0.53 we introduced the new plotting function `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function. `scplot()` was designed to encompass a pipe style coding. For now, `scan` imports the `%>%` pipe operator from the `magrittr` package and exports it to the user namespace after executing `library(scan)`. Recently, with version 4.1, R implemented a pipe operator `|>` which also works fine with `scplot`.
+Starting with `scan` version 0.54 we introduced the new plotting function `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function. `scplot()` was designed to encompass a pipe style coding. 
 
-`scplot` is already much more versatile then `plot.scdf` has been. But we will keep `plot.scdf` as it is in new upgrades of `scan`. We consider the state of `scplot` to be *experimental*. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.
+`scplot` is already much more versatile then `plot.scdf` has been. We consider the state of `scplot` to be *experimental*. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.
+
+But we will keep the "old" `plot.scdf` in future versions of `scan`.
 
 Here are a few plots that have been generated with `scplot` to demonstrate its possibilities.
 
 ### The standard style with an added statline
 
 ```{r}
+scplot(exampleABC)
+```
+
+### Add statlines
+
+```{r}
 scplot(exampleAB) %>%
   add_statline("mean", color = "darkred")
-
 ```
 
 ### A simple style with axis settings
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
-  set_xaxis(increment = 5, increment_from = 0) %>%
+  set_xaxis(increment_from = 0, increment = 5) %>%
   set_yaxis(limits = c(NA, 50)) %>%
   set_ylabel(angle = 0) %>%
   add_theme("small") %>% 
-  set_casenames(type = "strip") %>% #angle = 270, hjust = 0.5) %>%
+  set_casenames(type = "strip") %>%
   set_panel(fill = c("grey90", "grey80")) %>%
   add_grid(color = "grey")
 ```
@@ -43,9 +48,9 @@ scplot(exampleA1B1A2B2) %>%
 ```{r}
 scplot(exampleABC) %>% 
   set_xaxis(increment = 2) %>%
-  add_labels(color = "black", box = "grey98", size = 0.5, nudge_y = 15) %>%
+  add_labels(color = "black", box = "grey98", size = 1, nudge_y = 15) %>%
   set_yaxis(limits = c(30, 120)) %>%
-  add_theme("phase_color")
+  add_theme("phase_color", "tiny")
  
 ```
 
@@ -53,24 +58,25 @@ scplot(exampleABC) %>%
 
 ```{r}
 scplot(example_A24) %>% 
-  add_statline("movingMean", col = "darkred") %>%
+  add_statline("movingMean", col = "darkred", width = 1.5) %>%
   set_xaxis(size = 0.8, angle = 35) %>%
   set_dataline(size = 0) %>%
   add_legend(x = 2010, y = 250) %>%
- set_phasenames("no speedlimit", "with speedlimit", x = "centre", y = "top", 
-                 box = "white") %>%
+  set_phasenames("no speedlimit", "with speedlimit", x = "left", 
+                 hjust = 0, vjust = 1, box = "white") %>%
   set_casenames("") %>%
   add_title("Effect of a speedlimit on the A24") %>%
   add_grid(color = "white", size = 0.3, linetype = "solid") %>%
-  add_caption("Note: Moving mean calculated with lag two.", face = 3)
+  add_caption("Note: Moving mean calculated with lag two.", face = 3) %>%
+  add_ridge(color = "lightblue")
   
 ```
 
-### The chart theme
+### Add a ridge
 
 ```{r}
 scplot(exampleA1B1A2B2_zvt) %>% 
-  add_theme("chart") %>%
+  add_ridge("yellow") %>%
   set_yaxis(limits = c(40, 90))
 ```
 
@@ -78,17 +84,17 @@ scplot(exampleA1B1A2B2_zvt) %>%
 
 ```{r}
 scplot(exampleAB_add) %>%
-  add_dataline("depression", color = "darkred") %>% 
-  add_dataline("cigarrets", color = "lightblue") %>%
+  add_dataline("cigarrets", color = "black", size = 1) %>%
   add_statline("trend", linetype = "dashed") %>%
-  add_statline("mean", variable = "depression", color = "red") %>%
+  add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_marks(case = 1, positions = c(14,20), size = 3, variable = "cigarrets")%>%
   add_marks(case = 1, positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3)%>%
   set_xaxis(increment = 5) %>%
   set_phasenames(x = "left", hjust = 0) %>%
   set_casenames(y = 40, x = 35, color = "darkred") %>%
   add_legend(x = 30, y = 45) %>%
-  add_theme("phase_color")
+  add_theme("phase_color") %>%
+   add_ridge(color = "lightblue", variable = "cigarrets")
 
 
 ```

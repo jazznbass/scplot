@@ -686,6 +686,14 @@ set_theme_element <- function(object, ...) {
 #' @export
 add_ridge <- function(object, color = "grey98", variable = ".dvar") {
 
+  new_ridge <- list(
+    variable = variable,
+    colour = color
+  )
+
+  object$ridges <- c(object$ridges, list(new_ridge))
+
+
   object$theme$ridge.col <- color
   object
 }

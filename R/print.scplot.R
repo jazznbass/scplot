@@ -204,19 +204,32 @@ print.scplot <- function(x, ...) {
 
   # add dataline and dots ---------------------------
 
-  for (i in 1:length(object$datalines)) {
-
-    # add ridge
-
-    if (!is.null(theme$ridge.col)) {
-      #if (object$datalines[[i]]$variable)
+  if (!is.null(object$ridges)) {
+    for(i in seq_along(object$ridges)) {
+      if (object$ridges[[i]]$variable == ".dvar")
+        object$ridges[[i]]$variable <- dvar
       p <- p + geom_ribbon(
-        aes(ymax = !!sym(object$datalines[[i]]$variable),
+        aes(ymax = !!sym(object$ridges[[i]]$variable),
             ymin = ylim[1],
             group = !!sym(pvar)),
-        fill = theme$ridge.col
+        fill = object$ridges[[i]]$colour
       )
     }
+  }
+
+  for (i in 1:length(object$datalines)) {
+
+#    # add ridge
+#
+#    if (!is.null(theme$ridge.col)) {
+#      #if (object$datalines[[i]]$variable)
+#      p <- p + geom_ribbon(
+#        aes(ymax = !!sym(object$datalines[[i]]$variable),
+#            ymin = ylim[1],
+#            group = !!sym(pvar)),
+#        fill = theme$ridge.col
+#      )
+#    }
 
     p <- p + geom_line(
       aes(
