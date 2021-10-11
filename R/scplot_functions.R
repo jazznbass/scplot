@@ -517,37 +517,6 @@ set_panel <- function(object,
   object
 }
 
-.merge_element <- function(new, old) {
-
-  #class(new) <- class(old)
-  #modifyList(new, old, keep.null = TRUE)
-  merge_element(new, old)
-
-}
-
-.merge_theme <- function(new, old) {
-
-  out <- old
-
-  ids <- which(!(names(new) %in% names(old)) | !sapply(new, is.list))
-
-  out[names(new)[ids]] <- new[ids]
-
-  if (length(ids) > 1) new <- new[-ids]
-
-  for(i in seq_along(new)) {
-    label <- names(new)[i]
-    if ("element" %in% class(out[[label]])) {
-      out[[label]] <- merge_element(new[[i]], out[[label]])
-    } else if ("list" %in% class(out[[label]])) {
-      out[[label]] <- modifyList(out[[label]], new[[i]])
-    }
-  }
-
-  out
-
-}
-
 #' @rdname scplot
 #' @param theme A character string with a predefined graphical theme.
 #' Possible values: default, yaxis, tiny, small, big, chart, ridge,
@@ -608,7 +577,6 @@ add_marks <- function(object,
       )
     )
   }
-
 
   object
 }
@@ -692,9 +660,6 @@ add_ridge <- function(object, color = "grey98", variable = ".dvar") {
   )
 
   object$ridges <- c(object$ridges, list(new_ridge))
-
-
-  object$theme$ridge.col <- color
   object
 }
 

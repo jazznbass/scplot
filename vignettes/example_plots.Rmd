@@ -106,18 +106,18 @@ scplot(exampleA1B1A2B2) %>%
   set_xaxis(increment = 4, color = "brown") %>%
   set_yaxis(color = "sienna3") %>%
   set_ylabel("Points", color = "sienna3", angle = 0) %>%
-  set_xlabel("Weeks", size = rel(1), color = "brown") %>%
+  set_xlabel("Weeks", size = 1, color = "brown") %>%
   add_title("Points by week", color = "sienna4", face = 3) %>%
   add_caption("Note: An extensive Example.", 
-              color = "black", size = rel(1), face = 3) %>%
+              color = "black", size = 1, face = 3) %>%
   set_phasenames("Baseline", "Intervention", "Fall-Back", "Intervention_2", 
                  color = "darkgreen", size = 0.7) %>%
   add_ridge(alpha("lightblue", 0.5)) %>%
   set_casenames(sample_names(3), color = "steelblue4", size = 0.7) %>%
   set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
-  add_grid(color = "grey85", size = rel(0.5)) %>%
-  set_dataline(color = "black", width = rel(1), linetype = "solid", 
-               dots = "sienna4", size = rel(1), shape = 18) %>%
+  add_grid(color = "grey85", size = 0.5) %>%
+  set_dataline(color = "black", width = 0.5, linetype = "solid", 
+               dots = "sienna4", size = 0.5, shape = 18) %>%
   add_labels(color = "sienna", size = 0.7, nudge_y = 4) %>%
   set_seperator(extent = 0.8, width = 0.5, 
                 linetype = "solid", color = "sienna") %>%

@@ -126,7 +126,7 @@
 
 .moving_average <- function(x, xlag, fun) {
   if (length(x) < xlag * 2 + 1) {
-    warning("To few datapoints to calculate with lag ", xlag)
+    warning("Too few datapoints to calculate with lag ", xlag)
     return(x)
   }
   for(i in (xlag + 1):(length(x) - xlag))
