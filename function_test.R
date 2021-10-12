@@ -152,8 +152,7 @@ gridExtra::grid.arrange(
 
 scplot(exampleAB_add) %>%
   set_xaxis(increment = 4) %>%
-  set_dataline(color = "green") %>%
-  add_dataline("depression", color = "blue", dots = "green") %>%
+  add_dataline("depression", color = "blue") %>%
   add_dataline("cigarrets", color = "darkred")  %>%
   add_legend()
 p <- q %>% print()

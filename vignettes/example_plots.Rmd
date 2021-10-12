@@ -61,7 +61,7 @@ scplot(example_A24) %>%
   add_statline("movingMean", col = "darkred", width = 1.5) %>%
   set_xaxis(size = 0.8, angle = 35) %>%
   set_dataline(size = 0) %>%
-  add_legend(x = 2010, y = 250) %>%
+  add_legend(position = c(0.8, 0.8)) %>%
   set_phasenames("no speedlimit", "with speedlimit", x = "left", 
                  hjust = 0, vjust = 1, box = "white") %>%
   set_casenames("") %>%
@@ -84,15 +84,15 @@ scplot(exampleA1B1A2B2_zvt) %>%
 
 ```{r}
 scplot(exampleAB_add) %>%
-  add_dataline("cigarrets", color = "black", size = 1) %>%
+  add_dataline("cigarrets", color = "darkblue", size = 1) %>%
   add_statline("trend", linetype = "dashed") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_marks(case = 1, positions = c(14,20), size = 3, variable = "cigarrets")%>%
   add_marks(case = 1, positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3)%>%
   set_xaxis(increment = 5) %>%
-  set_phasenames(x = "left", hjust = 0) %>%
-  set_casenames(y = 40, x = 35, color = "darkred") %>%
-  add_legend(x = 30, y = 45) %>%
+  set_phasenames(size = 0) %>%
+  set_casenames(type = "strip") %>%
+  add_legend(position = "right") %>%
   add_theme("phase_color") %>%
    add_ridge(color = "lightblue", variable = "cigarrets")
 
@@ -111,7 +111,7 @@ scplot(exampleA1B1A2B2) %>%
   add_caption("Note: An extensive Example.", 
               color = "black", size = 1, face = 3) %>%
   set_phasenames("Baseline", "Intervention", "Fall-Back", "Intervention_2", 
-                 color = "darkgreen", size = 0.7) %>%
+                 size = 0) %>%
   add_ridge(alpha("lightblue", 0.5)) %>%
   set_casenames(sample_names(3), color = "steelblue4", size = 0.7) %>%
   set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
@@ -130,7 +130,7 @@ scplot(exampleA1B1A2B2) %>%
   add_text(case = 1, x = 5, y = 35, label = "Interesting", 
            color = "darkgreen", angle = 20, size = 0.7) %>%
   add_arrow(case = 1, 5, 30, 5, 22, color = "steelblue") %>%
-  set_background(fill = "grey95") %>%
-  add_legend(case = 2, title = "Legend")
+  set_background(fill = "white") %>%
+  add_legend()
 
 ```
