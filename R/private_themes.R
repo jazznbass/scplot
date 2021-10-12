@@ -82,6 +82,11 @@
 
   grid = element_blank(),
 
+  # legend
+
+  legend.position = "none",
+
+
   NULL
 )
 

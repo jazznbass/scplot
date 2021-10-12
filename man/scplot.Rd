@@ -234,8 +234,7 @@ add_legend(
   object,
   labels = ".default",
   case = 1,
-  x,
-  y,
+  position = "right",
   datalines = TRUE,
   statlines = TRUE,
   title = NULL

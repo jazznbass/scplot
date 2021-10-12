@@ -150,10 +150,65 @@ gridExtra::grid.arrange(
 )
 
 
+scplot(exampleAB_add) %>%
+  set_xaxis(increment = 4) %>%
+  set_dataline(color = "green") %>%
+  add_dataline("depression", color = "blue", dots = "green") %>%
+  add_dataline("cigarrets", color = "darkred")  %>%
+  add_legend()
+p <- q %>% print()
+q
+
+object <- q
+
+object$datalines[[1]]$col <- "black"
+.color <- unlist(lapply(object$datalines, function(x) x$col))
+.color <- setNames(.color, .color)
+
+object$datalines[[1]]$variable <- "wellbeing"
+.label <- unlist(lapply(object$datalines, function(x) x$variable))
+
+
+
+p +
+  #geom_line(aes(y = 0, colour = "black")) +
+  #geom_point(aes(y = 0, colour = "")) +
+  theme(legend.position = "right") +
+  #scale_color_identity(guide = "legend") +
+  scale_colour_manual(
+    name = "Lines",
+  values = .color,
+    labels = .label
+    )
+
+
+dat <- as.data.frame(exampleAB_add)
+
+col <- c("wellbeing", "cigarrets")
+
+ggplot(dat, aes(x = day, group = phase)) +
+  theme_void() +
+  geom_line(aes(y = !!sym(col[1]), colour = col[1])) +
+  geom_line(aes(y = !!sym(col[2]), colour = col[2])) +
+  geom_point(aes(y = !!sym(col[2])), colour = "green") +
+  facet_grid(as.factor(case) ~ .) +
+  scale_colour_manual(
+    name = "Lines",
+    values = c(cigarrets = "black", wellbeing = "blue", "red")
+  )#+
+  #scale_color_identity(guide = "legend")
+
+  #add_legend()
+
 
 # Right -> inside the plot area
+p <- scplot(exampleAB_add) %>%
+  set_xaxis(increment = 4) %>%
+  add_dataline("depression") %>%
+  print()
+
 p + theme(
-  legend.position = c(.95, .95),
+  legend.position = "right",#c(.95, .95),
   legend.justification = c("right", "top"),
   legend.box.just = "right",
   legend.margin = margin(6, 6, 6, 6)

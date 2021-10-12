@@ -114,7 +114,7 @@ print.scplot <- function(x, ...) {
 
   p <- ggplot(
     data = data_long,
-    aes(x = !!sym(mvar), y = !!sym(dvar))
+    aes(x = !!sym(mvar))
   )
 
   p <- p + theme_void(base_size = base_size)
@@ -202,7 +202,7 @@ print.scplot <- function(x, ...) {
 
   p <- p + theme(panel.background = theme$panel.background)
 
-  # add dataline and dots ---------------------------
+  # add ridges ---------------------------
 
   if (!is.null(object$ridges)) {
     for(i in seq_along(object$ridges)) {
@@ -217,31 +217,21 @@ print.scplot <- function(x, ...) {
     }
   }
 
+  # add dataline and dots ---------------------------
+
   for (i in 1:length(object$datalines)) {
-
-#    # add ridge
-#
-#    if (!is.null(theme$ridge.col)) {
-#      #if (object$datalines[[i]]$variable)
-#      p <- p + geom_ribbon(
-#        aes(ymax = !!sym(object$datalines[[i]]$variable),
-#            ymin = ylim[1],
-#            group = !!sym(pvar)),
-#        fill = theme$ridge.col
-#      )
-#    }
-
     p <- p + geom_line(
       aes(
         y = !!sym(object$datalines[[i]]$variable),
-        group = !!sym(pvar)
+        group = !!sym(pvar),
+        colour = !!object$datalines[[i]]$col
       ),
-      colour =  object$datalines[[i]]$col,
+      #colour =  object$datalines[[i]]$col,
       size = object$datalines[[i]]$width,
       linetype = object$datalines[[i]]$linetype
     )
 
-      # add datapoints
+     # add datapoints
 
       if (!is.null(object$datalines[[i]]$dots)) {
         p <- p + geom_point(
@@ -254,8 +244,6 @@ print.scplot <- function(x, ...) {
 
 
   }
-
-
 
   # add value labels ---------------------------
 
@@ -528,9 +516,7 @@ print.scplot <- function(x, ...) {
 
   p <- p + theme(plot.background = theme$plot.background)
 
-  # add legend
 
-  p <- p + theme(legend.position = "none")
 
   # add marks -----
 
@@ -623,6 +609,22 @@ print.scplot <- function(x, ...) {
       )
     }
   }
+
+
+
+  # add legend ------
+
+  .color <- unlist(lapply(object$datalines, function(x) x$col))
+  .color <- setNames(.color, .color)
+  .label <- unlist(lapply(object$datalines, function(x) x$variable))
+
+  p <- p +
+    theme(legend.position = theme$legend.position) +
+    scale_colour_manual(
+      name = "Lines",
+      values = .color,
+      labels = .label
+    )
 
 
   # out -----------
