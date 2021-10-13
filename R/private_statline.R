@@ -1,11 +1,9 @@
 
-.statline_fixed_each <- function(data, line, dvar, mvar, pvar, fun) {
+.statline_each <- function(data, line, fun) {
 
-  data <- .rename_scdf_var(data, dvar, mvar, pvar)
-
-  if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
-
-
+  #data <- .rename_scdf_var(data, dvar, mvar, pvar)
+#
+ # if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
   dat_stat <- data %>%
     group_by(case, phase) %>%
     summarise(y = do.call(fun, c(list(values), line$args)))
@@ -15,16 +13,20 @@
   .statline_geom_phase(data, line$line)
 }
 
-.statline_fixed_first <- function(data, line, dvar, mvar, pvar, fun) {
+.statline <- function(data, line, dvar, mvar, pvar, fun, reference_phase = 1) {
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
-
   if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
 
-  first_phase <- levels(data$phase)[1]
+  if (is.null(reference_phase)) {
+    return(.statline_each(data, line, fun))
+  }
+
+  if (is.numeric(reference_phase))
+    reference_phase <- levels(data$phase)[reference_phase]
 
   dat_stat <- data %>%
-    filter(phase == first_phase) %>%
+    filter(phase %in% reference_phase) %>%
     group_by(case) %>%
     summarise(y = do.call(fun, c(list(values), line$args)))
 
@@ -59,17 +61,17 @@
   .statline_geom_phase(data, line$line)
 }
 
-.statline_trendA <- function(data, line, dvar, mvar, pvar) {
+.statline_trend_one <- function(data, line, dvar, mvar, pvar, reference_phase = 1) {
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
-  first_phase <- levels(data$phase)[1]
+  reference_phase <- levels(data$phase)[reference_phase]
 
   dat_stat <- data %>%
     group_by(case) %>%
     summarise(
-      int = coef(lm(values ~ mt, subset = phase == first_phase))[1],
-      b = coef(lm(values ~ mt, subset = phase == first_phase))[2]
+      int = coef(lm(values ~ mt, subset = phase %in% reference_phase))[1],
+      b = coef(lm(values ~ mt, subset = phase %in% reference_phase))[2]
     )
 
   data$y <- NA
@@ -102,21 +104,24 @@
   .statline_geom(data, line$line)
 }
 
-.statline_loreg <- function(data, line, dvar, mvar, pvar) {
+.statline_loreg <- function(data, line, dvar, mvar, pvar, fun) {
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
-  if (is.null(line$args$f)) line$args$f <- 0.5
+  #if (fun = "lowess") {
+  #  if (is.null(line$args$f)) line$args$f <- 0.5
+  #}
 
   data$y <- NA
 
   for(case in unique(data$case)) {
     filter <- which(data$case == case)
-    data$y[filter] <-
-      do.call(
-        "lowess",
-        c(list(data$values[filter] ~ data$mt[filter]), line$args)
-      )$y
+    model <- do.call(fun,
+      c(list(data$values[filter] ~ data$mt[filter]), line$args)
+    )
+
+    if (fun == "lowess") data$y[filter] <- model$y
+    if (fun == "loess") data$y[filter] <- model$fitted
   }
 
   .statline_geom(data, line$line)

@@ -4,6 +4,8 @@
 #'
 #' @return A ggplot2 object
 #' @export
+#'
+#' @examples
 as_ggplot <- function(scplot) {
 
   # set global variables --------
@@ -409,64 +411,13 @@ as_ggplot <- function(scplot) {
       if (object$statlines[[j]]$variable == ".dvar")
         object$statlines[[j]]$variable <- object$dvar[1]
 
-      if (object$statlines[[j]]$stat == "mean") {
-        p <- p + .statline_fixed_each(
-          data_long, object$statlines[[j]],
+      possible_fixed_stats <- c("mean", "median", "min", "max", "quantile")
+      if (object$statlines[[j]]$stat %in% possible_fixed_stats) {
+        p <- p + .statline(data_long,
+          line = object$statlines[[j]],
           object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "mean"
-        )
-      }
-      if (object$statlines[[j]]$stat == "median") {
-        p <- p + .statline_fixed_each(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "median"
-        )
-      }
-      if (object$statlines[[j]]$stat == "min") {
-        p <- p + .statline_fixed_each(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "min"
-        )
-      }
-      if (object$statlines[[j]]$stat == "max") {
-        p <- p + .statline_fixed_each(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "max"
-        )
-      }
-
-      if (object$statlines[[j]]$stat == "meanA") {
-        p <- p + .statline_fixed_first(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "mean"
-        )
-      }
-
-      if (object$statlines[[j]]$stat == "medianA") {
-        p <- p + .statline_fixed_first(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "median"
-        )
-      }
-
-      if (object$statlines[[j]]$stat == "maxA") {
-        p <- p + .statline_fixed_first(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "max"
-        )
-      }
-
-      if (object$statlines[[j]]$stat == "minA") {
-        p <- p + .statline_fixed_first(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = "min"
+          fun = object$statlines[[j]]$stat,
+          reference_phase = object$statlines[[j]]$phase
         )
       }
 
@@ -477,8 +428,8 @@ as_ggplot <- function(scplot) {
         )
       }
 
-      if (object$statlines[[j]]$stat == "trendA") {
-        p <- p + .statline_trendA(
+      if (object$statlines[[j]]$stat %in% "trendA") {
+        p <- p + .statline_trend_one(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable, object$mvar, object$pvar
         )
@@ -498,10 +449,19 @@ as_ggplot <- function(scplot) {
         )
       }
 
-      if (object$statlines[[j]]$stat == "loreg") {
+      if (object$statlines[[j]]$stat %in% c("loreg", "lowess")) {
         p <- p + .statline_loreg(
           data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar
+          object$statlines[[j]]$variable, object$mvar, object$pvar,
+          fun = "lowess"
+        )
+      }
+
+      if (object$statlines[[j]]$stat == "loess") {
+        p <- p + .statline_loreg(
+          data_long, object$statlines[[j]],
+          object$statlines[[j]]$variable, object$mvar, object$pvar,
+          fun = "loess"
         )
       }
 

@@ -1,4 +1,7 @@
-
+---
+title: Examples
+author: Jürgen Wilbert
+---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
@@ -20,13 +23,13 @@ Here are a few plots that have been generated with `scplot` to demonstrate its p
 ### The standard style with an added statline
 
 ```{r}
-scplot(exampleABC)
+scplot(exampleAB)
 ```
 
 ### Add statlines
 
 ```{r}
-scplot(exampleAB) %>%
+scplot(exampleABC) %>%
   add_statline("mean", color = "darkred")
 ```
 
@@ -58,7 +61,9 @@ scplot(exampleABC) %>%
 
 ```{r}
 scplot(example_A24) %>% 
-  add_statline("movingMean", col = "darkred", width = 1.5) %>%
+  add_statline("lowess", color = "darkred", width = 1.5) %>%
+  add_statline("loess", color = "red", width = 1.5) %>%
+  add_statline("movingMean", color = "lightpink", width = 1.5) %>%
   set_xaxis(size = 0.8, angle = 35) %>%
   set_dataline(size = 0) %>%
   add_legend(position = c(0.8, 0.8)) %>%
@@ -127,7 +132,7 @@ scplot(exampleA1B1A2B2) %>%
   set_seperator(extent = 0.8, width = 0.5, 
                 linetype = "solid", color = "sienna") %>%
   add_statline(stat = "trendA", color = "tomato2") %>%
-  add_statline(stat = "maxA", color = "lightblue") %>%
+  add_statline(stat = "max", phase = c(1, 3), linetype = "dashed") %>%
   add_marks(case = 1:2, positions = 14, color = "red3", size = 2, shape = 4) %>%
   add_marks(case = "all", positions = "values < quantile(values, 0.1)", 
             color = "blue3", size = 1.5) %>%
