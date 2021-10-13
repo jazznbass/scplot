@@ -68,7 +68,8 @@ scplot(example_A24) %>%
   add_title("Effect of a speedlimit on the A24") %>%
   add_grid(color = "white", size = 0.3, linetype = "solid") %>%
   add_caption("Note: Moving mean calculated with lag two.", face = 3) %>%
-  add_ridge(color = "lightblue")
+  add_ridge(color = "lightblue") %>%
+  set_theme_element(legend.background = element_rect(color = NA))
   
 ```
 
@@ -94,7 +95,11 @@ scplot(exampleAB_add) %>%
   set_casenames(type = "strip") %>%
   add_legend(position = "right") %>%
   add_theme("phase_color") %>%
-   add_ridge(color = "lightblue", variable = "cigarrets")
+  add_ridge(color = "lightblue", variable = "cigarrets") %>%
+  set_theme_element(
+    legend.background = element_rect(fill = "snow"),
+    legend.text = element_text(color = "black")
+  )
 
 
 ```
