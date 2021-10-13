@@ -96,7 +96,7 @@ single-cases." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/example_plots.html">UNKNOWN TITLE</a>
+      <a href="../articles/example_plots.html">Examples</a>
     </li>
   </ul>
 </li>
@@ -282,6 +282,7 @@ single-cases.</p>
 <span class='fu'>add_statline</span><span class='op'>(</span>
   <span class='va'>object</span>,
   <span class='va'>stat</span>,
+  phase <span class='op'>=</span> <span class='cn'>NULL</span>,
   color <span class='op'>=</span> <span class='cn'>NULL</span>,
   width <span class='op'>=</span> <span class='cn'>NULL</span>,
   linetype <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -354,10 +355,6 @@ single-cases.</p>
       <td><p>A character string or a number defining the color of an element.</p></td>
     </tr>
     <tr>
-      <th>size</th>
-      <td><p>A number deifning the size of an element.</p></td>
-    </tr>
-    <tr>
       <th>limits</th>
       <td><p>Lower and upper limits of the axis (e.g., <code>limits = c(0,
 20)</code> sets the axis to a scale from 0 to 20). With multiple single-cases
@@ -397,10 +394,10 @@ If set to FALSE, no automatic linebreak is set.</p></td>
     </tr>
     <tr>
       <th>width</th>
-      <td><p>A number defining the line width</p></td>
+      <td><p>A number deifning the width of the line.</p></td>
     </tr>
     <tr>
-      <th>type</th>
+      <th>linetype</th>
       <td><p>A character string with the line type: "solid", "dashed", "dotted"</p></td>
     </tr>
     <tr>
@@ -417,10 +414,15 @@ If set to FALSE, no automatic linebreak is set.</p></td>
     </tr>
     <tr>
       <th>stat</th>
-      <td><p>A character string defining a line or curve to be
-plotted. Possible values: "median", "mean", "trend", "trendA",
-"trendA_bisplit", "trendA_trisplit", "maxA", "minA", "meanA", "medianA",
-"plm", "movingMean", "movingMedian", "loreg"</p></td>
+      <td><p>A character string for defining a statistical line or curve to
+be plotted. Possible values: "median", "mean", "min", "max", "quantile",
+"trend", "trendA",
+"trendA_bisplit", "trendA_trisplit",
+"movingMean", "movingMedian", "loreg".</p></td>
+    </tr>
+    <tr>
+      <th>phase</th>
+      <td><p>Either a numeric or a character vector specifying the reference phase (see details)</p></td>
     </tr>
     <tr>
       <th>theme</th>
@@ -465,6 +467,18 @@ annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An scplot object that creates a ggplot2 plot when printed.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The 'phase' argument defines the reference phase for some statistiscal functions ("median", "mean", "min", "max", "quantile"). The default is NULL which calculates and plots statistics for each phase seperately. The arguments takes a numeric vector (phase number(s)) or a character vector (phase name(s)). When more than one phase is defines, statistics are based on the combined values of these phases.
+Some of the functions defined in 'stats' have additional arguments.
+The 'mean' function has a trim argument (e.g. 'trim = 0.1').
+'quantile has a proportion argument (e.g. prob = 0.75 for calculating
+the 75<!-- % quantile). -->
+'movingMean' and 'movingMedian' have a lag argument (e.g. lag = 2).
+The local-regression curve function 'lowess' (or 'loreg') has a proportion
+argument (e.g. f = 0.5) and the
+local-regression curve function 'loess' has a span argument
+(e.g. span = 0.75).</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Juergen Wilbert</p>
