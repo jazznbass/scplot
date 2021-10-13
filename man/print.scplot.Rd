@@ -2,18 +2,16 @@
 % Please edit documentation in R/print.scplot.R
 \name{print.scplot}
 \alias{print.scplot}
-\title{print.scplot
-ggplot2 graphic plots from scdf files}
+\title{print.scplot}
 \usage{
 \method{print}{scplot}(x, ...)
 }
 \arguments{
-\item{object}{An scplot object}
+\item{x}{An scplot object}
 }
 \value{
-A ggplot2 object
+Creates a single-case plot
 }
 \description{
 print.scplot
-ggplot2 graphic plots from scdf files
 }

@@ -85,6 +85,9 @@
   # legend
 
   legend.position = "none",
+  legend.background = element_rect(),
+  legend.text = element_text(),
+  legend.margin = margin(0.3, 0.3, 0.3, 0.3, unit = "lines"),
 
 
   NULL
