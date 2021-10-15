@@ -5,8 +5,8 @@ author: Jürgen Wilbert
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-library(tidyverse)
-library(scan)
+#library(tidyverse)
+#library(scan)
 library(scplot)
 ```
 

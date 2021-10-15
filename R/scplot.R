@@ -6,6 +6,9 @@
 #' @return An scplot object that creates a ggplot2 plot when printed.
 #' @author Juergen Wilbert
 #' @export
+#' @import scan
+#' @import ggplot2
+#' @importFrom dplyr summarise full_join group_by filter
 
 scplot <- function(data) {
 

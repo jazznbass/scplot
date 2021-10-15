@@ -4,8 +4,6 @@
 #'
 #' @return Creates a single-case plot
 #' @export
-#' @import scan
-#' @import ggplot2
 
 print.scplot <- function(x, ...) {
   args <- list(...)
