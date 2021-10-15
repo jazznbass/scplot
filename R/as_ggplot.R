@@ -438,14 +438,14 @@ as_ggplot <- function(scplot) {
       if (object$statlines[[j]]$stat == "movingMean") {
         p <- p + .statline_moving_average(
           data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar, mean
+          object$statlines[[j]]$variable, object$mvar, object$pvar, "mean"
         )
       }
 
       if (object$statlines[[j]]$stat == "movingMedian") {
         p <- p + .statline_moving_average(
           data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar, median
+          object$statlines[[j]]$variable, object$mvar, object$pvar, "median"
         )
       }
 
@@ -500,7 +500,9 @@ as_ggplot <- function(scplot) {
 
       dat <- data_long[filter, ]
 
-      if (object$marks[[i]]$variable == ".dvar") object$marks[[i]]$variable <- dvar
+      if (object$marks[[i]]$variable == ".dvar")
+        object$marks[[i]]$variable <- dvar
+
       names(dat)[which(names(dat) == object$marks[[i]]$variable)] <- "dvar"
       names(dat)[which(names(dat) == mvar)] <- "mvar"
 
@@ -573,21 +575,41 @@ as_ggplot <- function(scplot) {
 
   .color <- unlist(lapply(object$datalines, function(x) x$col))
   .color <- setNames(.color, .color)
-  .label <- unlist(lapply(object$datalines, function(x) x$variable))
+  labels <- unlist(lapply(object$datalines, function(x) x$variable))
 
+  if (!is.null(object$statlines)) {
+    labels_statlines <-
+      paste(
+        unlist(lapply(object$statlines, function(x) x$stat)),
+        unlist(lapply(object$statlines, function(x) x$variable))
+      )
+
+    labels <- c(labels, labels_statlines)
+
+    .color <- c(
+      .color,
+      setNames(
+        unlist(lapply(object$statlines, function(x) x$line$colour)),
+        labels_statlines
+      )
+    )
+  }
   p <- p +
-    theme(legend.position = theme$legend.position,
-          legend.background = theme$legend.background,
-          legend.text = theme$legend.text,
-          legend.margin = theme$legend.margin) +
     scale_colour_manual(
       name = "Lines",
       values = .color,
-      labels = .label
+      labels = labels
     )
 
+  if (!is.null(object$legend)) {
+    p <- p +
+      theme(legend.position = theme$legend.position,
+            legend.background = theme$legend.background,
+            legend.text = theme$legend.text,
+            legend.margin = theme$legend.margin)
+  } else p <- p + theme(legend.position = "None")
 
   # out -----------
-  #print(p)
+
   p
 }

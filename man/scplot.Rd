@@ -64,7 +64,6 @@ set_xaxis(
   increment_from = NULL,
   color = NULL,
   size = NULL,
-  line = NULL,
   angle = NULL,
   positions = NULL
 )
@@ -90,8 +89,7 @@ add_title(
   vjust = NULL,
   angle = NULL,
   lineheight = NULL,
-  margin = NULL,
-  parse = NULL
+  margin = NULL
 )
 
 add_caption(
@@ -102,9 +100,7 @@ add_caption(
   face = NULL,
   hjust = NULL,
   vjust = NULL,
-  wrap = NULL,
-  margin = NULL,
-  parse = NULL
+  margin = NULL
 )
 
 set_casenames(
@@ -238,7 +234,7 @@ add_legend(
   position = "right",
   datalines = TRUE,
   statlines = TRUE,
-  title = NULL
+  title = "Lines"
 )
 }
 \arguments{
@@ -256,11 +252,6 @@ a proper scale based on the given data.}
 
 \item{positions}{Either a vector indicating the dots to be highlighted or a
 character string with a logical expression (e.g. values < mean(values))}
-
-\item{parse}{If TRUE, the label is interpreted as an expression. Default = FALSE.}
-
-\item{wrap}{Number that defines the maximum characters per line before a break.
-If set to FALSE, no automatic linebreak is set.}
 
 \item{...}{various style parameter}
 
@@ -305,6 +296,11 @@ annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
 \item{orientation}{of the label: 0 = vertical; 1 = horizontal}
 
 \item{align}{Character string. One of "left", "right", "center"}
+
+\item{wrap}{Number that defines the maximum characters per line before a break.
+If set to FALSE, no automatic linebreak is set.}
+
+\item{parse}{If TRUE, the label is interpreted as an expression. Default = FALSE.}
 }
 \value{
 An scplot object that creates a ggplot2 plot when printed.

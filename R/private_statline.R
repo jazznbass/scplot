@@ -1,25 +1,24 @@
 
-.statline_each <- function(data, line, fun) {
+.statline_each <- function(data, line, fun, label) {
 
-  #data <- .rename_scdf_var(data, dvar, mvar, pvar)
-#
- # if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
   dat_stat <- data %>%
     group_by(case, phase) %>%
     summarise(y = do.call(fun, c(list(values), line$args)))
 
   data <- full_join(data, dat_stat, by = c("case", "phase"))
 
-  .statline_geom_phase(data, line$line)
+  .statline_geom_phase(data, line$line, label = label)
 }
 
 .statline <- function(data, line, dvar, mvar, pvar, fun, reference_phase = 1) {
+
+  label <- paste(fun, dvar)
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
   if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
 
   if (is.null(reference_phase)) {
-    return(.statline_each(data, line, fun))
+    return(.statline_each(data, line, fun, label))
   }
 
   if (is.numeric(reference_phase))
@@ -32,10 +31,12 @@
 
   data <- full_join(data, dat_stat, by = c("case"))
 
-  .statline_geom(data, line$line)
+  .statline_geom(data, line$line, label = label)
 }
 
 .statline_trend <- function(data, line, dvar, mvar, pvar) {
+
+  label <- paste("trend", dvar)
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
@@ -58,11 +59,13 @@
     data[filter, "y"] <- data$mt[filter] * b + int
   }
 
-  .statline_geom_phase(data, line$line)
+  .statline_geom_phase(data, line$line, label = label)
 }
 
-.statline_trend_one <- function(data, line, dvar, mvar, pvar, reference_phase = 1) {
+.statline_trend_one <- function(data, line, dvar, mvar, pvar,
+                                reference_phase = 1) {
 
+  label <- paste("trendA", dvar)
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   reference_phase <- levels(data$phase)[reference_phase]
@@ -85,10 +88,13 @@
     data$y[filter] <- data$mt[filter] * b + int
   }
 
-  .statline_geom(data, line$line)
+  .statline_geom(data, line$line, label = label)
 }
 
 .statline_moving_average <- function(data, line, dvar, mvar, pvar, fun) {
+
+  if (fun == "mean") label <- paste("movingMean", dvar)
+  if (fun == "median") label <- paste("movingMedian", dvar)
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
@@ -101,16 +107,14 @@
     data$y[filter] <- .moving_average(data$values[filter], line$args$lag, fun)
   }
 
-  .statline_geom(data, line$line)
+  .statline_geom(data, line$line, label = label)
 }
 
 .statline_loreg <- function(data, line, dvar, mvar, pvar, fun) {
 
-  data <- .rename_scdf_var(data, dvar, mvar, pvar)
+  label <- paste(fun, dvar)
 
-  #if (fun = "lowess") {
-  #  if (is.null(line$args$f)) line$args$f <- 0.5
-  #}
+  data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   data$y <- NA
 
@@ -124,7 +128,7 @@
     if (fun == "loess") data$y[filter] <- model$fitted
   }
 
-  .statline_geom(data, line$line)
+  .statline_geom(data, line$line, label = label)
 
 }
 
@@ -135,30 +139,30 @@
     return(x)
   }
   for(i in (xlag + 1):(length(x) - xlag))
-    x[i] <- fun(x[(i - xlag):(i + xlag)], na.rm = TRUE)
+    x[i] <- do.call(fun, list(x[(i - xlag):(i + xlag)], na.rm = TRUE))
 
   x
 }
 
-.statline_geom <- function(data, line) {
+.statline_geom <- function(data, line, label) {
 
   geom_line(
     data = data,
-    aes(x = mt, y = y),
+    aes(x = mt, y = y, color = !!label),
     linetype = line$linetype,
-    color = line$colour,
+    #color = line$colour,
     size = line$size
   )
 
 }
 
-.statline_geom_phase <- function(data, line) {
+.statline_geom_phase <- function(data, line, label) {
 
   geom_line(
     data = data,
-    aes(x = mt, y = y, group = phase),
+    aes(x = mt, y = y, group = phase, color = !!label),
     linetype = line$linetype,
-    color = line$colour,
+    #color = line$colour,
     size = line$size
   )
 

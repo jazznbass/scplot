@@ -74,7 +74,7 @@ scplot(example_A24) %>%
   add_grid(color = "white", size = 0.3, linetype = "solid") %>%
   add_caption("Note: Moving mean calculated with lag two.", face = 3) %>%
   add_ridge(color = "lightblue") %>%
-  set_theme_element(legend.background = element_rect(color = NA))
+  set_theme_element(legend.background = element_rect(color = "grey50"))
   
 ```
 

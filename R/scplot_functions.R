@@ -73,11 +73,8 @@ set_xaxis <- function(object,
                       increment_from = NULL,
                       color = NULL,
                       size = NULL,
-                      line = NULL,
                       angle = NULL,
                       positions = NULL) {
-
-  #  if (!is.null(line)) object$theme$vjust.xlab <- line
 
   if (!is.null(limits)) object$xaxis$lim <- limits
   if (!is.null(increment)) object$xaxis$inc <- increment
@@ -144,12 +141,9 @@ add_title <- function(object,
                       vjust = NULL,
                       angle = NULL,
                       lineheight = NULL,
-                      margin = NULL,
-                      parse = NULL) {
+                      margin = NULL) {
 
-  # if (!is.null(parse)) object$theme$title.parse <- parse
-
-  if (!is.null(size)) size <- rel(size)
+   if (!is.null(size)) size <- rel(size)
 
   object$theme$plot.title <- .merge_element(
     element_text(
@@ -167,13 +161,12 @@ add_title <- function(object,
 #' @rdname scplot
 #' @param label Character string.
 #' @export
-add_caption <- function(object, label, color = NULL, size = NULL, face = NULL, hjust= NULL, vjust = NULL,
-                        wrap = NULL, margin = NULL, parse = NULL) {
+add_caption <- function(object, label, color = NULL, size = NULL, face = NULL,
+                        hjust= NULL, vjust = NULL,
+                        margin = NULL) {
 
 
-  #if (!is.null(wrap)) object$theme$caption.wrap <- wrap
-  #if (!is.null(margin)) object$theme$caption.margin <- margin
-  #if (!is.null(parse)) object$theme$caption.parse <- parse
+
 
   object$caption <- label
 
@@ -232,7 +225,7 @@ set_casenames <- function(object, ...,
       colour = color,
       size = size,
       hjust = hjust,
-      vjust = vjust,#,
+      vjust = vjust,
       angle = angle,
       #lineheight = lineheight,
       #margin = margin
@@ -682,13 +675,13 @@ add_legend <- function(object,
                        position = "right",
                        datalines = TRUE,
                        statlines = TRUE,
-                       title = NULL) {
+                       title = "Lines") {
 
   object$legend$labels <- labels
   object$legend$statlines <- statlines
   object$legend$datalines <- datalines
   #object$theme$legend.position.case <- case
-  #object$legend$title <- title
+  object$legend$title <- title
   object$theme$legend.position <- position
   object
 }
