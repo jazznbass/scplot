@@ -27,8 +27,10 @@
 
 .merge_element <- function(new, old) {
 
-  #class(new) <- class(old)
-  #modifyList(new, old, keep.null = TRUE)
+  if (class(new) == "list") {
+    new <- do.call(class(old)[1], new)
+  }
+
   merge_element(new, old)
 
 }

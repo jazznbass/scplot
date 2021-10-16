@@ -29,95 +29,40 @@
 \usage{
 scplot(data)
 
-set_xlabel(
-  object,
-  label = NULL,
-  color = NULL,
-  size = NULL,
-  family = NULL,
-  face = NULL,
-  hjust = NULL,
-  vjust = NULL,
-  angle = NULL,
-  lineheight = NULL,
-  margin = NULL
-)
+set_xlabel(object, label = NULL, ...)
 
-set_ylabel(
-  object,
-  label,
-  color = NULL,
-  size = NULL,
-  family = NULL,
-  face = NULL,
-  hjust = NULL,
-  vjust = NULL,
-  angle = NULL,
-  lineheight = NULL,
-  margin = NULL
-)
+set_ylabel(object, label, ...)
 
 set_xaxis(
   object,
   limits = NULL,
   increment = NULL,
   increment_from = NULL,
-  color = NULL,
-  size = NULL,
-  angle = NULL,
-  positions = NULL
+  positions = NULL,
+  ...
 )
 
 set_yaxis(
   object,
   limits = NULL,
-  color = NULL,
-  size = NULL,
   increment = NULL,
   increment_from = NULL,
-  positions = NULL
+  positions = NULL,
+  ...
 )
 
-add_title(
-  object,
-  label,
-  color = NULL,
-  size = NULL,
-  family = NULL,
-  face = NULL,
-  hjust = NULL,
-  vjust = NULL,
-  angle = NULL,
-  lineheight = NULL,
-  margin = NULL
-)
+add_title(object, label, ...)
 
-add_caption(
-  object,
-  label,
-  color = NULL,
-  size = NULL,
-  face = NULL,
-  hjust = NULL,
-  vjust = NULL,
-  margin = NULL
-)
+add_caption(object, label, ...)
 
 set_casenames(
   object,
   ...,
   x = NULL,
   y = NULL,
-  color = NULL,
-  size = NULL,
-  hjust = NULL,
-  vjust = NULL,
-  width = NULL,
-  angle = NULL,
-  fill = NULL,
-  linetype = NULL,
-  frame = NULL,
-  type = NULL
+  type = NULL,
+  text = list(),
+  background = list()
 )
 
 set_phasenames(
@@ -127,33 +72,12 @@ set_phasenames(
   size = NULL,
   x = NULL,
   y = NULL,
-  hjust = NULL,
-  vjust = NULL,
-  angle = NULL,
-  box = NULL,
-  frame = NULL,
-  face = NULL,
-  family = NULL
+  text = list()
 )
 
-set_seperator(
-  object,
-  color = NULL,
-  width = NULL,
-  linetype = NULL,
-  extent = NULL,
-  label = NULL,
-  size = NULL
-)
+set_seperator(object, extent = NULL, label = NULL, ...)
 
-add_grid(
-  object,
-  color = NULL,
-  size = NULL,
-  linetype = NULL,
-  lineend = NULL,
-  arrow = NULL
-)
+add_grid(object, ...)
 
 add_labels(
   object,
@@ -166,7 +90,9 @@ add_labels(
   angle = NULL,
   round,
   box = NULL,
-  frame = NULL
+  frame = NULL,
+  text = list(),
+  background = list()
 )
 
 add_dataline(object, variable, color, width, linetype, dots, shape, size)
@@ -184,16 +110,9 @@ add_statline(
   ...
 )
 
-set_background(object, color = NULL, fill = NULL, linetype = NULL, size = NULL)
+set_background(object, ...)
 
-set_panel(
-  object,
-  color = NULL,
-  fill = NULL,
-  linetype = NULL,
-  size = NULL,
-  alpha = NULL
-)
+set_panel(object, alpha = NULL, ...)
 
 add_theme(object, theme, ...)
 
@@ -240,7 +159,7 @@ add_legend(
 \arguments{
 \item{label}{Character string.}
 
-\item{color}{A character string or a number defining the color of an element.}
+\item{...}{various style parameter}
 
 \item{limits}{Lower and upper limits of the axis (e.g., \code{limits = c(0,
 20)} sets the axis to a scale from 0 to 20). With multiple single-cases
@@ -253,19 +172,19 @@ a proper scale based on the given data.}
 \item{positions}{Either a vector indicating the dots to be highlighted or a
 character string with a logical expression (e.g. values < mean(values))}
 
-\item{...}{various style parameter}
-
 \item{x}{x position}
 
 \item{y}{y position}
 
-\item{width}{A number deifning the width of the line.}
-
-\item{linetype}{A character string with the line type: "solid", "dashed", "dotted"}
+\item{color}{A character string or a number defining the color of an element.}
 
 \item{extent}{A number between 0 and 1 given the proportion of the plot that is covert by the line or character string "full" or "scale".}
 
 \item{round}{Number of digits of the labels.}
+
+\item{width}{A number deifning the width of the line.}
+
+\item{linetype}{A character string with the line type: "solid", "dashed", "dotted"}
 
 \item{shape}{Number. See pch graphical parameter on par help page.}
 

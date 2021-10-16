@@ -1,30 +1,14 @@
 
 #' @rdname scplot
 #' @export
-set_xlabel <- function(object,
-                       label = NULL,
-                       color = NULL,
-                       size = NULL,
-                       family = NULL,
-                       face = NULL,
-                       hjust = NULL,
-                       vjust = NULL,
-                       angle = NULL,
-                       lineheight = NULL,
-                       margin = NULL) {
+set_xlabel <- function(object, label = NULL, ...) {
 
+  args <- list(...)
 
   if (!is.null(label)) object$xlabel <- label
+  if (!is.null(args$size)) args$size <- rel(args$size)
 
-  if (!is.null(size)) size <- rel(size)
-
-  object$theme$axis.title.x <- .merge_element(
-    element_text(
-      family = family, face = face, colour = color, size = size,
-      hjust = hjust, vjust = vjust, angle = angle, lineheight = lineheight,
-      margin = margin
-    ), object$theme$axis.title.x
-  )
+  object$theme$axis.title.x <- .merge_element(args, object$theme$axis.title.x)
 
   object
 }
@@ -32,29 +16,14 @@ set_xlabel <- function(object,
 #' @rdname scplot
 #' @param orientation of the label: 0 = vertical; 1 = horizontal
 #' @export
-set_ylabel <- function(object, label,
-                       color = NULL,
-                       size = NULL,
-                       family = NULL,
-                       face = NULL,
-                       hjust = NULL,
-                       vjust = NULL,
-                       angle = NULL,
-                       lineheight = NULL,
-                       margin = NULL) {
+set_ylabel <- function(object, label, ...) {
+
+  args <- list(...)
 
   if (!missing(label)) object$ylabel <- label
+  if (!is.null(args$size)) args$size <- rel(args$size)
 
-  if (!is.null(size)) size <- rel(size)
-
-  object$theme$axis.title.y <- .merge_element(
-    element_text(
-      family = family, face = face, colour = color,
-      size = size,
-      hjust = hjust, vjust = vjust, angle = angle, lineheight = lineheight,
-      margin = margin
-    ), object$theme$axis.title.y
-  )
+  object$theme$axis.title.y <- .merge_element(args, object$theme$axis.title.y)
 
   object
 }
@@ -71,25 +40,19 @@ set_xaxis <- function(object,
                       limits = NULL,
                       increment = NULL,
                       increment_from = NULL,
-                      color = NULL,
-                      size = NULL,
-                      angle = NULL,
-                      positions = NULL) {
+                      positions = NULL, ...) {
+
+
+  args <- list(...)
 
   if (!is.null(limits)) object$xaxis$lim <- limits
   if (!is.null(increment)) object$xaxis$inc <- increment
   if (!is.null(increment_from)) object$xaxis$inc_from <- increment_from
   if (!is.null(positions)) object$xaxis$pos <- positions
 
-  if (!is.null(size)) size <- rel(size)
+  if (!is.null(args$size)) args$size <- rel(args$size)
 
-  object$theme$axis.text.x <- .merge_element(
-    element_text(
-      colour = color,
-      size = size,
-      angle = angle
-    ),
-    object$theme$axis.text.x)
+  object$theme$axis.text.x <- .merge_element(args, object$theme$axis.text.x)
 
   object
 }
@@ -98,27 +61,21 @@ set_xaxis <- function(object,
 #' @export
 set_yaxis <- function(object,
                       limits = NULL,
-                      color = NULL,
-                      size = NULL,
                       increment = NULL,
                       increment_from = NULL,
-                      positions = NULL) {
+                      positions = NULL,
+                      ...) {
 
+  args <- list(...)
 
   if (!is.null(limits)) object$yaxis$lim <- limits
   if (!is.null(increment)) object$yaxis$inc <- increment
   if (!is.null(increment_from)) object$yaxis$inc_from <- increment_from
   if (!is.null(positions)) object$yaxis$pos <- positions
 
-  if (!is.null(size)) size <- rel(size)
+  if (!is.null(args$size)) args$size <- rel(args$size)
 
-  object$theme$axis.text.y <- .merge_element(
-    element_text(
-      colour = color,
-      size = size,
-    ),
-    object$theme$axis.text.y
-  )
+  object$theme$axis.text.y <- .merge_element(args, object$theme$axis.text.y)
 
   object
 }
@@ -131,58 +88,30 @@ set_yaxis <- function(object,
 #' If set to FALSE, no automatic linebreak is set.
 #' @param parse If TRUE, the label is interpreted as an expression. Default = FALSE.
 #' @export
-add_title <- function(object,
-                      label,
-                      color = NULL,
-                      size = NULL,
-                      family = NULL,
-                      face = NULL,
-                      hjust = NULL,
-                      vjust = NULL,
-                      angle = NULL,
-                      lineheight = NULL,
-                      margin = NULL) {
+add_title <- function(object, label, ...) {
 
-   if (!is.null(size)) size <- rel(size)
+  args <- list(...)
 
-  object$theme$plot.title <- .merge_element(
-    element_text(
-      family = family, face = face, colour = color, size = size,
-      hjust = hjust, vjust = vjust, angle = angle, lineheight = lineheight,
-      margin = margin
-    ), object$theme$plot.title
-  )
+   if (!is.null(args$size)) args$size <- rel(args$size)
 
-
+  object$theme$plot.title <- .merge_element(args, object$theme$plot.title)
   object$title <- label
+
   object
 }
 
 #' @rdname scplot
 #' @param label Character string.
 #' @export
-add_caption <- function(object, label, color = NULL, size = NULL, face = NULL,
-                        hjust= NULL, vjust = NULL,
-                        margin = NULL) {
+add_caption <- function(object, label, ...) {
 
-
-
+  args <- list(...)
 
   object$caption <- label
 
-  if (!is.null(size)) size <- rel(size)
+  if (!is.null(args$size)) args$size <- rel(args$size)
 
-  object$theme$plot.caption <- .merge_element(
-    element_text(
-      colour = color,
-      size = size,
-      face = face,
-      hjust = hjust,
-      vjust = vjust,
-      margin = margin
-    ), object$theme$plot.caption
-  )
-
+  object$theme$plot.caption <- .merge_element(args, object$theme$plot.caption)
 
   object
 }
@@ -192,45 +121,28 @@ add_caption <- function(object, label, color = NULL, size = NULL, face = NULL,
 #' @export
 set_casenames <- function(object, ...,
                           x = NULL, y = NULL,
-                          color  = NULL,
-                          size = NULL,
-                          hjust = NULL, vjust = NULL,
-                          width = NULL,
-                          angle = NULL,
-                          fill = NULL,
-                          linetype = NULL,
-                          frame = NULL,
-                          type = NULL) {
+                          type = NULL,
+                          text = list(),
+                          background = list()) {
+
+  args_text <- text
+  args_rect <- background
 
   labels <-  c(...)
   if (!is.null(labels)) object$casenames$labels <- labels
 
   if (!is.null(type)) object$theme$casenames.type <- type
-  if (!is.null(size)) size <- rel(size)
+  if (!is.null(args_text$size)) args_text$size <- rel(args_text$size)
 
   if (identical(type, "strip")) {
-    if (is.null(angle)) angle <- 270
-    if (is.null(hjust)) hjust <- 0.5
+    if (is.null(args_text$angle)) args_text$angle <- 270
+    if (is.null(args_text$hjust)) args_text$hjust <- 0.5
   }
 
   object$theme$casenames.strip <- .merge_element(
-    element_rect(
-      colour = frame, fill = fill, size = width, linetype = linetype
-    ), object$theme$casenames.strip
-  )
+    args_rect, object$theme$casenames.strip)
 
-  object$theme$casenames <- .merge_element(
-    element_text(
-      #family = family, face = face,
-      colour = color,
-      size = size,
-      hjust = hjust,
-      vjust = vjust,
-      angle = angle,
-      #lineheight = lineheight,
-      #margin = margin
-    ), object$theme$casenames
-  )
+  object$theme$casenames <- .merge_element(args_text, object$theme$casenames)
 
   object
 }
@@ -242,30 +154,16 @@ set_phasenames <- function(object, ...,
                            size = NULL,
                            x = NULL,
                            y = NULL,
-                           hjust = NULL,
-                           vjust = NULL,
-                           angle = NULL,
-                           box = NULL,
-                           frame = NULL,
-                           face = NULL,
-                           family = NULL) {
+                           text = list()) {
+
+  args_text <- text
+  if (!is.null(args_text$size)) args_text$size <- rel(args_text$size)
 
   labels <-  c(...)
   if (!is.null(labels)) object$phasenames$labels <- labels
-
   if (!is.null(x)) object$theme$phasenames.position.x <- x
 
-  object$theme$phasenames <- .merge_element(
-    element_text(
-      family = family,
-      face = face,
-      colour = color,
-      size = size,
-      hjust = hjust,
-      vjust = vjust,
-      angle = angle,
-    ), object$theme$phasenames
-  )
+  object$theme$phasenames <- .merge_element(args_text, object$theme$phasenames)
 
   object
 }
@@ -273,14 +171,11 @@ set_phasenames <- function(object, ...,
 #' @rdname scplot
 #' @param extent A number between 0 and 1 given the proportion of the plot that is covert by the line or character string "full" or "scale".
 #' @export
-set_seperator <- function(object, color = NULL, width = NULL, linetype = NULL, extent = NULL, label = NULL, size = NULL) {
+set_seperator <- function(object, extent = NULL, label = NULL, ...) {
 
+  args <- list(...)
   object$theme$seperators <- .merge_element(
-    element_line(
-      colour = color,
-      size = width,
-      linetype = linetype
-    ), object$theme$seperators
+    args, object$theme$seperators
   )
 
   object
@@ -289,20 +184,10 @@ set_seperator <- function(object, color = NULL, width = NULL, linetype = NULL, e
 
 #' @rdname scplot
 #' @export
-add_grid <- function(object,
-                     color = NULL,
-                     size = NULL,
-                     linetype = NULL,
-                     lineend = NULL,
-                     arrow = NULL) {
+add_grid <- function(object, ...) {
 
-  object$theme$grid <- element_line(
-    colour = color,
-    size = size,
-    linetype = linetype,
-    lineend = lineend,
-    arrow = arrow,
-  )
+  args <- do.call("element_line", list(...))
+  object$theme$grid <- args
 
   object
 }
@@ -312,37 +197,24 @@ add_grid <- function(object,
 #' @param round Number of digits of the labels.
 #' @export
 add_labels <- function(object,
-                       color = NULL,
-                       size = NULL,
                        nudge_y,
                        nudge_x,
-                       vjust = NULL,
-                       hjust = NULL,
-                       angle = NULL,
                        round,
-                       box = NULL,
-                       frame = NULL) {
+                       text = list(),
+                       background = list()) {
+
+  args_text <- text
+  args_rect <- background
 
   if (!missing(nudge_y)) object$theme$labels.nudge_y <- nudge_y
   if (!missing(nudge_x)) object$theme$labels.nudge_x <- nudge_x
   if (!missing(round)) object$theme$labels.round <- round
 
   object$theme$labels.text <- .merge_element(
-    element_text(
-      #family = family, face = face,
-      colour = color, size = size,
-      hjust = hjust, vjust = vjust,#,
-      angle = angle,
-      #lineheight = lineheight,
-      #margin = margin
-    ), object$theme$labels.text
-  )
+    args_text, object$theme$labels.text)
 
   object$theme$labels.box <- .merge_element(
-    element_rect(
-      colour = frame, fill = box,
-    ), object$theme$labels.box
-  )
+    args_rect, object$theme$labels.box)
 
   object$labels <- TRUE
 
@@ -351,7 +223,14 @@ add_labels <- function(object,
 
 #' @rdname scplot
 #' @export
-add_dataline <- function(object, variable, color, width, linetype, dots, shape, size) {
+add_dataline <- function(object,
+                         variable,
+                         color,
+                         width,
+                         linetype,
+                         dots,
+                         shape,
+                         size) {
 
   object$dvar <- c(object$dvar, variable)
 
@@ -379,7 +258,14 @@ add_dataline <- function(object, variable, color, width, linetype, dots, shape, 
 
 #' @rdname scplot
 #' @export
-set_dataline <- function(object, variable, color, width, linetype, dots, shape, size) {
+set_dataline <- function(object,
+                         variable,
+                         color,
+                         width,
+                         linetype,
+                         dots,
+                         shape,
+                         size) {
 
   if (missing(variable)) variable <- ".dvar"
 
@@ -472,51 +358,29 @@ add_statline <- function(object,
 
 #' @rdname scplot
 #' @export
-set_background <- function(object, color = NULL, fill = NULL, linetype = NULL, size = NULL) {
+set_background <- function(object, ...) {
 
-  if (!is.null(fill)) object$theme$plot.background.fill <- fill
-  if (!is.null(frame)) object$theme$plot.background.col <- color
-
+  args <- list(...)
   object$theme$plot.background <- .merge_element(
-    element_rect(
-      colour = color,
-      fill = fill,
-      size = size,
-      linetype = linetype
-    ), object$theme$plot.background
-  )
+    args, object$theme$plot.background)
 
   object
 }
 
 #' @rdname scplot
 #' @export
-set_panel <- function(object,
-                      color = NULL,
-                      fill = NULL,
-                      linetype = NULL,
-                      size = NULL,
-                      alpha = NULL) {
+set_panel <- function(object, alpha = NULL, ...) {
 
-  if (!is.null(fill)) object$theme$panel.col <- fill
-  if (!is.null(color)) object$theme$panel.frame.col <- color
-  if (!is.null(size)) object$theme$panel.frame.width <- size
-  if (!is.null(linetype)) object$theme$panel.frame.linetype <- linetype
+  args <- list(...)
 
   if (is.null(alpha)) {
-    if (length(fill > 1)) alpha <- 0.5 else alpha <- 1
+    if (length(args$fill > 1)) alpha <- 0.5 else alpha <- 1
   }
 
-  if (!is.null(fill)) fill <- alpha(fill, alpha)
+  if (!is.null(args$fill)) args$fill <- alpha(args$fill, alpha)
 
   object$theme$panel.background <- .merge_element(
-    element_rect(
-      colour = color,
-      fill = fill,
-      size = size,
-      linetype = linetype
-    ), object$theme$panel.background
-  )
+    args, object$theme$panel.background)
 
   object
 }

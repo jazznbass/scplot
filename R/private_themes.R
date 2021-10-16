@@ -6,8 +6,8 @@
 
   text = element_text(colour = "black", size = 11),
 
-  plot.background = element_blank(),
-  panel.background = element_blank(),
+  plot.background = element_rect(),
+  panel.background = element_rect(),
   panel.spacing.y = unit(2, "lines"),
 
   dataline.col = "black",
@@ -80,7 +80,7 @@
   labels.box = element_rect(fill = NULL, colour = "black"),
   labels.padding = 0.1,
 
-  grid = element_blank(),
+  grid = element_line(),
 
   # legend
 
