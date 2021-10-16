@@ -104,7 +104,11 @@ scplot(exampleAB_add) %>%
   set_theme_element(
     legend.background = element_rect(fill = "snow"),
     legend.text = element_text(color = "black")
-  )
+  ) %>%
+   add_labels(variable = "cigarrets", nudge_y = 3, 
+              text = list(color = "blue", size = 0.5)) %>%
+    add_labels(nudge_y = 3, text = list(color = "black", size = 0.5),
+               background = list(fill = "white"))
 
 
 ```

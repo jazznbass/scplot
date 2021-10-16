@@ -81,18 +81,12 @@ add_grid(object, ...)
 
 add_labels(
   object,
-  color = NULL,
-  size = NULL,
-  nudge_y,
-  nudge_x,
-  vjust = NULL,
-  hjust = NULL,
-  angle = NULL,
-  round,
-  box = NULL,
-  frame = NULL,
+  nudge_y = NULL,
+  nudge_x = NULL,
+  round = NULL,
   text = list(),
-  background = list()
+  background = list(),
+  variable = ".dvar"
 )
 
 add_dataline(object, variable, color, width, linetype, dots, shape, size)

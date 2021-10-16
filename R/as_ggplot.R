@@ -246,37 +246,43 @@ as_ggplot <- function(scplot) {
 
   # add value labels ---------------------------
 
-  if (isTRUE(object$labels)) {
+  if (!is.null(object$labels)) {
 
-    if (is.null(theme$labels.box$fill))
-      p <- p + geom_text(
-        aes(label = !!sym(dvar), y = !!sym(dvar)),
-        colour =  theme$labels.text$colour,
-        size = .size(theme$labels.text$size, base_size),
-        hjust = theme$labels.text$hjust,
-        vjust = theme$labels.text$vjust,
-        #lineheight = theme$labels.text$lineheight,
-        #family = theme$labels.text$family,
-        #fontface = theme$labels.text$face,
-        angle = theme$labels.text$angle,
-        nudge_x = theme$labels.nudge_x,
-        nudge_y = theme$labels.nudge_y,
-      )
+    for(i in seq_along(object$labels)){
 
-    if (!is.null(theme$labels.box$fill))
-      p <- p + geom_label(
-        aes(label = !!sym(dvar), y = !!sym(dvar)),
-        colour =  theme$labels.text$colour,
-        size = .size(theme$labels.text$size, base_size),
-        hjust = theme$labels.text$hjust,
-        vjust = theme$labels.text$vjust,
-        angle = theme$labels.text$angle,
-        #lineheight = theme$labels.text$lineheight,
-        fill = theme$labels.box$fill,
-        nudge_x = theme$labels.nudge_x,
-        nudge_y = theme$labels.nudge_y,
-        label.padding = unit(theme$labels.padding, "lines")
-      )
+      label <- object$labels[[i]]
+      if (label$variable == ".dvar") label$variable <- dvar
+
+      if (is.null(label$background$fill))
+        p <- p + geom_text(
+          aes(label = !!sym(label$variable), y = !!sym(label$variable)),
+          colour =  label$text$colour,
+          size = .size(label$text$size, base_size),
+          hjust = label$text$hjust,
+          vjust = label$text$vjust,
+          #lineheight = theme$labels.text$lineheight,
+          #family = theme$labels.text$family,
+          #fontface = theme$labels.text$face,
+          angle = label$text$angle,
+          nudge_x = label$nudge_x,
+          nudge_y = label$nudge_y
+        )
+
+      if (!is.null(label$background$fill))
+        p <- p + geom_label(
+          aes(label = !!sym(label$variable), y = !!sym(label$variable)),
+          colour =  label$text$colour,
+          size = .size(label$text$size, base_size),
+          hjust = label$text$hjust,
+          vjust = label$text$vjust,
+          angle = label$text$angle,
+          #lineheight = theme$labels.text$lineheight,
+          fill = label$background$fill,
+          nudge_x = label$nudge_x,
+          nudge_y = label$nudge_y,
+          label.padding = unit(theme$labels.padding, "lines")
+        )
+    }
   }
 
   # add casenames ------------------

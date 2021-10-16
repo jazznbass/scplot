@@ -197,26 +197,28 @@ add_grid <- function(object, ...) {
 #' @param round Number of digits of the labels.
 #' @export
 add_labels <- function(object,
-                       nudge_y,
-                       nudge_x,
-                       round,
+                       nudge_y = NULL,
+                       nudge_x = NULL,
+                       round = NULL,
                        text = list(),
-                       background = list()) {
+                       background = list(),
+                       variable = ".dvar") {
 
   args_text <- text
   args_rect <- background
 
-  if (!missing(nudge_y)) object$theme$labels.nudge_y <- nudge_y
-  if (!missing(nudge_x)) object$theme$labels.nudge_x <- nudge_x
-  if (!missing(round)) object$theme$labels.round <- round
-
-  object$theme$labels.text <- .merge_element(
-    args_text, object$theme$labels.text)
-
-  object$theme$labels.box <- .merge_element(
-    args_rect, object$theme$labels.box)
-
-  object$labels <- TRUE
+  new <- list(
+    variable = variable,
+    nudge_x = nudge_x,
+    nudge_y = nudge_y,
+    round = round,
+    text = .merge_element(args_text, object$theme$label.text),
+    background = .merge_element(args_rect, object$theme$label.background)
+  )
+  object$labels <- c(
+    object$label,
+    list(new)
+  )
 
   object
 }

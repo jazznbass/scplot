@@ -74,10 +74,10 @@
 
   seperators.extent = "full",
 
-  labels.text = element_text(color = "black", vjust = 0.5, hjust = 0.5,
-                             angle = 0, size = rel(1)),
+  label.text = element_text(
+    color = "black", vjust = 0.5, hjust = 0.5, angle = 0, size = rel(1)),
+  label.background = element_rect(),
 
-  labels.box = element_rect(fill = NULL, colour = "black"),
   labels.padding = 0.1,
 
   grid = element_line(),
