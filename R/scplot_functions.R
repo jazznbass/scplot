@@ -119,16 +119,15 @@ add_caption <- function(object, label, ...) {
 
 #' @rdname scplot
 #' @export
-set_casenames <- function(object, ...,
+set_casenames <- function(object, labels = NULL,
                           x = NULL, y = NULL,
                           type = NULL,
-                          text = list(),
+                          ...,
                           background = list()) {
 
-  args_text <- text
+  args_text <- list(...)
   args_rect <- background
 
-  labels <-  c(...)
   if (!is.null(labels)) object$casenames$labels <- labels
 
   if (!is.null(type)) object$theme$casenames.type <- type
@@ -149,19 +148,15 @@ set_casenames <- function(object, ...,
 
 #' @rdname scplot
 #' @export
-set_phasenames <- function(object, ...,
-                           color = NULL,
-                           size = NULL,
-                           x = NULL,
-                           y = NULL,
-                           text = list()) {
+set_phasenames <- function(object, labels = NULL,
+                           position = NULL,
+                           ...) {
 
-  args_text <- text
+  args_text <- list(...)
   if (!is.null(args_text$size)) args_text$size <- rel(args_text$size)
 
-  labels <-  c(...)
   if (!is.null(labels)) object$phasenames$labels <- labels
-  if (!is.null(x)) object$theme$phasenames.position.x <- x
+  if (!is.null(position)) object$theme$phasenames.position.x <- position
 
   object$theme$phasenames <- .merge_element(args_text, object$theme$phasenames)
 
@@ -197,21 +192,25 @@ add_grid <- function(object, ...) {
 #' @param round Number of digits of the labels.
 #' @export
 add_labels <- function(object,
-                       nudge_y = NULL,
-                       nudge_x = NULL,
+                       nudge_y = 5,
+                       nudge_x = 0,
                        round = NULL,
                        text = list(),
                        background = list(),
-                       variable = ".dvar") {
+                       variable = ".dvar",
+                       padding = NULL) {
 
   args_text <- text
   args_rect <- background
+
+  if (is.null(padding)) padding <- object$theme$label.padding
 
   new <- list(
     variable = variable,
     nudge_x = nudge_x,
     nudge_y = nudge_y,
     round = round,
+    padding = padding,
     text = .merge_element(args_text, object$theme$label.text),
     background = .merge_element(args_rect, object$theme$label.background)
   )
@@ -541,14 +540,27 @@ add_legend <- function(object,
                        position = "right",
                        datalines = TRUE,
                        statlines = TRUE,
-                       title = "Lines") {
+                       title = NULL,
+                       text = NULL,
+                       background = NULL
+                       #title.label = "Lines"
+                       ) {
 
   object$legend$labels <- labels
   object$legend$statlines <- statlines
   object$legend$datalines <- datalines
-  #object$theme$legend.position.case <- case
-  object$legend$title <- title
+
+  object$theme$legend.title <-
+    .merge_element(title, object$theme$legend.title)
+
+  object$theme$legend.text <-
+    .merge_element(text, object$theme$legend.text)
+
+  object$theme$legend.background <-
+    .merge_element(background, object$theme$legend.background)
+
   object$theme$legend.position <- position
+
   object
 }
 

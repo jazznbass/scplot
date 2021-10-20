@@ -78,15 +78,16 @@
     color = "black", vjust = 0.5, hjust = 0.5, angle = 0, size = rel(1)),
   label.background = element_rect(),
 
-  labels.padding = 0.1,
+  label.padding = 0.1,
 
-  grid = element_line(),
+  grid = element_blank(),
 
   # legend
 
   legend.position = "none",
   legend.background = element_rect(),
-  legend.text = element_text(),
+  legend.text = element_text(size = rel(0.7), colour = "black"),
+  legend.title = element_text(size = rel(0.7), colour = "black"),
   legend.margin = margin(0.3, 0.3, 0.3, 0.3, unit = "lines"),
 
 
@@ -103,8 +104,6 @@
   panel.spacing.y = unit(1, "lines")
 )
 
-
-
 .scplot_themes$tiny <- list(
   text = element_text(size = 6),
   panel.spacing.y = unit(0.5, "lines")
@@ -114,6 +113,26 @@
   text = element_text(size = 14),
   panel.spacing.y = unit(1.5, "lines")
 )
+
+.scplot_themes$minimal = list(
+
+  panel.spacing.y = unit(1, "lines"),
+  panel.background = element_blank(),
+  datadots.size = 1.5,
+
+  axis.ticks.length = unit(0, "points"),
+  axis.ticks = element_blank(),
+
+  axis.line.x = element_blank(),
+
+  axis.text.x = element_blank(),
+  axis.text.y = element_blank(),
+
+  seperators = element_line(color = "black", size = 0.3, linetype = "solid"),
+  grid = element_blank(),
+  NULL
+)
+
 
 .scplot_themes$grid2 <- list(
   ridge.col = "white", grid.col = "lightgreen", panel.frame.col = "black",

@@ -280,7 +280,7 @@ as_ggplot <- function(scplot) {
           fill = label$background$fill,
           nudge_x = label$nudge_x,
           nudge_y = label$nudge_y,
-          label.padding = unit(theme$labels.padding, "lines")
+          label.padding = unit(label$padding, "lines")
         )
     }
   }
@@ -371,7 +371,7 @@ as_ggplot <- function(scplot) {
   # add axis.line -----------
 
   p <- p + theme(axis.line.x = theme$axis.line.x)
-  p <- p + theme(axis.line.y = theme$axis.line.x)
+  p <- p + theme(axis.line.y = theme$axis.line.y)
   p <- p + theme(axis.ticks.length = theme$axis.ticks.length)
   p <- p + theme(axis.ticks = theme$axis.ticks)
 
@@ -381,9 +381,9 @@ as_ggplot <- function(scplot) {
 
   # add grid ------------
 
-  if (!is.null(theme$grid)) {
+  #if (!is.null(theme$grid$colour)) {
     p <- p + theme(panel.grid = theme$grid)
-  }
+  #}
 
 
   # add title ------------------------
@@ -602,7 +602,6 @@ as_ggplot <- function(scplot) {
   }
   p <- p +
     scale_colour_manual(
-      name = "Lines",
       values = .color,
       labels = labels
     )
@@ -612,7 +611,10 @@ as_ggplot <- function(scplot) {
       theme(legend.position = theme$legend.position,
             legend.background = theme$legend.background,
             legend.text = theme$legend.text,
+            legend.title = theme$legend.title,
             legend.margin = theme$legend.margin)
+    p <- p + guides(fill = guide_legend(title = "Phases"))
+    p <- p + guides(colour = guide_legend(title = "Lines"))
   } else p <- p + theme(legend.position = "None")
 
   # out -----------

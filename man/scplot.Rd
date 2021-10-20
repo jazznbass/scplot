@@ -57,23 +57,15 @@ add_caption(object, label, ...)
 
 set_casenames(
   object,
-  ...,
+  labels = NULL,
   x = NULL,
   y = NULL,
   type = NULL,
-  text = list(),
+  ...,
   background = list()
 )
 
-set_phasenames(
-  object,
-  ...,
-  color = NULL,
-  size = NULL,
-  x = NULL,
-  y = NULL,
-  text = list()
-)
+set_phasenames(object, labels = NULL, position = NULL, ...)
 
 set_seperator(object, extent = NULL, label = NULL, ...)
 
@@ -81,12 +73,13 @@ add_grid(object, ...)
 
 add_labels(
   object,
-  nudge_y = NULL,
-  nudge_x = NULL,
+  nudge_y = 5,
+  nudge_x = 0,
   round = NULL,
   text = list(),
   background = list(),
-  variable = ".dvar"
+  variable = ".dvar",
+  padding = NULL
 )
 
 add_dataline(object, variable, color, width, linetype, dots, shape, size)
@@ -147,7 +140,9 @@ add_legend(
   position = "right",
   datalines = TRUE,
   statlines = TRUE,
-  title = "Lines"
+  title = NULL,
+  text = NULL,
+  background = NULL
 )
 }
 \arguments{
@@ -170,11 +165,11 @@ character string with a logical expression (e.g. values < mean(values))}
 
 \item{y}{y position}
 
-\item{color}{A character string or a number defining the color of an element.}
-
 \item{extent}{A number between 0 and 1 given the proportion of the plot that is covert by the line or character string "full" or "scale".}
 
 \item{round}{Number of digits of the labels.}
+
+\item{color}{A character string or a number defining the color of an element.}
 
 \item{width}{A number deifning the width of the line.}
 

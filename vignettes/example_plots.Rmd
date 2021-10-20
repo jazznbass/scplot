@@ -10,17 +10,22 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(scplot)
 ```
 
-## scplot examples
+# scplot
 
-Starting with `scan` version 0.54 we introduced the new plotting function `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function. `scplot()` was designed to encompass a pipe style coding. 
+We started developing a new add-on package to `scan`for visualizing single-case data: `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function already included in `scan` and finally be included into to the `scan` package. 
+Here are some advantages of using `scplot` over the standard scan `plot` function:
 
-`scplot` is already much more versatile then `plot.scdf` has been. We consider the state of `scplot` to be *experimental*. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.
+- `scplot` is already much more versatile than `plot` has been. 
+- `scplot` was designed to encompass a pipe style coding which is much cleaner, more intelligible and easier to code. 
+- `scplot` is based on `ggplot2` and produces a `ggplot2` object which can be modified and extended to any wishes.
+
+We consider the state of `scplot` to be *experimental*. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.
 
 But we will keep the "old" `plot.scdf` in future versions of `scan`.
 
 Here are a few plots that have been generated with `scplot` to demonstrate its possibilities.
 
-### The standard style with an added statline
+### The standard style
 
 ```{r}
 scplot(exampleAB)
@@ -33,27 +38,36 @@ scplot(exampleABC) %>%
   add_statline("mean", color = "darkred")
 ```
 
+### Add a legend
+
+```{r}
+scplot(exampleABC) %>%
+  add_statline("mean", color = "darkred") %>%
+  add_statline("min", phase = "B", width = 0.2, color = "darkblue") %>%
+  add_legend()
+```
+
 ### A simple style with axis settings
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
   set_xaxis(increment_from = 0, increment = 5) %>%
-  set_yaxis(limits = c(NA, 50)) %>%
+  set_yaxis(limits = c(0, 50)) %>%
   set_ylabel(angle = 0) %>%
-  add_theme("small") %>% 
+  add_theme("default", "small") %>% 
   set_casenames(type = "strip") %>%
-  set_panel(fill = c("grey90", "grey80")) %>%
-  add_grid(color = "grey")
+  set_panel(fill = c("grey90", "grey80"))
 ```
 
-### A dark style for presentations
+### Add labels
 
 ```{r}
 scplot(exampleABC) %>% 
   set_xaxis(increment = 2) %>%
-  add_labels(text = list(color = "black", size = 1), background = list(fill = "grey98"), nudge_y = 15) %>%
-  set_yaxis(limits = c(30, 120)) %>%
-  add_theme("phase_color", "tiny")
+  set_yaxis(color = NA) %>%
+  add_labels(text = list(color = "black", size = 0.7), 
+             background = list(fill = "grey98"), nudge_y = 7) %>%
+  add_theme("minimal")
  
 ```
 
@@ -61,20 +75,19 @@ scplot(exampleABC) %>%
 
 ```{r}
 scplot(example_A24) %>% 
+  add_theme("default") %>%
   add_statline("lowess", color = "darkred", width = 1.5) %>%
   add_statline("loess", color = "red", width = 1.5) %>%
   add_statline("movingMean", color = "lightpink", width = 1.5) %>%
   set_xaxis(size = 0.8, angle = 35) %>%
   set_dataline(size = 0) %>%
-  add_legend(position = c(0.8, 0.8)) %>%
-  set_phasenames("no speedlimit", "with speedlimit", x = "left", 
-                 hjust = 0, vjust = 1, box = "white") %>%
+  add_legend(position = c(0.8, 0.75), background = list(color = "grey50")) %>%
+  set_phasenames(c("no speedlimit", "with speedlimit"), position = "left", 
+                 hjust = 0, vjust = 1) %>%
   set_casenames("") %>%
   add_title("Effect of a speedlimit on the A24") %>%
-  add_grid(color = "white", size = 0.3, linetype = "solid") %>%
   add_caption("Note: Moving mean calculated with lag two.", face = 3) %>%
-  add_ridge(color = "lightblue") %>%
-  set_theme_element(legend.background = element_rect(color = "grey50"))
+  add_ridge(color = "lightblue")
   
 ```
 
@@ -82,8 +95,7 @@ scplot(example_A24) %>%
 
 ```{r}
 scplot(exampleA1B1A2B2_zvt) %>% 
-  add_ridge("yellow") %>%
-  set_yaxis(limits = c(40, 90))
+  add_ridge("yellow")
 ```
 
 ### Mulitple variables in a plot with an added legend
@@ -93,21 +105,19 @@ scplot(exampleAB_add) %>%
   add_dataline("cigarrets", color = "darkblue", size = 1) %>%
   add_statline("trend", linetype = "dashed") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
-  add_marks(case = 1, positions = c(14,20), size = 3, variable = "cigarrets")%>%
-  add_marks(case = 1, positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3)%>%
+  add_marks(positions = c(14,20), size = 3, variable = "cigarrets")%>%
+  add_marks(positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3)%>%
   set_xaxis(increment = 5) %>%
-  set_phasenames(size = 0) %>%
+  set_phasenames(color = NA) %>%
   set_casenames(type = "strip") %>%
-  add_legend(position = "right") %>%
-  add_theme("phase_color") %>%
-  add_ridge(color = "lightblue", variable = "cigarrets") %>%
-  set_theme_element(
-    legend.background = element_rect(fill = "snow"),
-    legend.text = element_text(color = "black")
-  ) %>%
-   add_labels(variable = "cigarrets", nudge_y = 3, 
+  add_legend(position = "right", 
+             title = list(size = 0),
+             text = list(face = 3)) %>%
+  set_panel(fill = c("lightblue", "grey80")) %>%
+  add_ridge(color = "snow", variable = "cigarrets") %>%
+  add_labels(variable = "cigarrets", nudge_y = 2, 
               text = list(color = "blue", size = 0.5)) %>%
-    add_labels(nudge_y = 3, text = list(color = "black", size = 0.5),
+  add_labels(nudge_y = 2, text = list(color = "black", size = 0.5),
                background = list(fill = "white"))
 
 
@@ -124,10 +134,10 @@ scplot(exampleA1B1A2B2) %>%
   add_title("Points by week", color = "sienna4", face = 3) %>%
   add_caption("Note: An extensive Example.",
               color = "black", size = 1, face = 3) %>%
-  set_phasenames("Baseline", "Intervention", "Fall-Back", "Intervention_2", 
-                 text = list(size = 0)) %>%
+  set_phasenames(c("Baseline", "Intervention", "Fall-Back", "Intervention_2"), 
+                 size = 0) %>%
   add_ridge(alpha("lightblue", 0.5)) %>%
-  set_casenames(sample_names(3), text = list(color = "steelblue4", size = 0.7)) %>%
+  set_casenames(labels = sample_names(3), color = "steelblue4", size = 0.7) %>%
   set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
   add_grid(color = "grey85", size = 0.5) %>%
   set_dataline(color = "black", width = 0.5, linetype = "solid", 
