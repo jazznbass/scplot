@@ -100,25 +100,25 @@ scplot(exampleA1B1A2B2_zvt) %>%
 
 ### Mulitple variables in a plot with an added legend
 
-```{r}
+```{r multi-variables}
 scplot(exampleAB_add) %>%
   add_dataline("cigarrets", color = "darkblue", size = 1) %>%
   add_statline("trend", linetype = "dashed") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_marks(positions = c(14,20), size = 3, variable = "cigarrets")%>%
-  add_marks(positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3)%>%
+  add_marks(positions = "cigarrets > quantile(cigarrets, 0.75)", size = 3) %>%
   set_xaxis(increment = 5) %>%
   set_phasenames(color = NA) %>%
   set_casenames(type = "strip") %>%
-  add_legend(position = "right", 
-             title = list(size = 0),
-             text = list(face = 3)) %>%
+  add_legend(position = "right", title = list(color = NA)) %>% #, 
+  #           title = list(size = 0),
+  #           text = list(face = 3)) #%>%
   set_panel(fill = c("lightblue", "grey80")) %>%
   add_ridge(color = "snow", variable = "cigarrets") %>%
   add_labels(variable = "cigarrets", nudge_y = 2, 
-              text = list(color = "blue", size = 0.5)) %>%
+             text = list(color = "blue", size = 0.5)) %>%
   add_labels(nudge_y = 2, text = list(color = "black", size = 0.5),
-               background = list(fill = "white"))
+             background = list(fill = "white"))
 
 
 ```
