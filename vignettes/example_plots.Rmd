@@ -110,9 +110,7 @@ scplot(exampleAB_add) %>%
   set_xaxis(increment = 5) %>%
   set_phasenames(color = NA) %>%
   set_casenames(type = "strip") %>%
-  add_legend(position = "right", title = list(color = NA)) %>% #, 
-  #           title = list(size = 0),
-  #           text = list(face = 3)) #%>%
+  add_legend(title = list(color = NA), text = list(face = 3)) %>%
   set_panel(fill = c("lightblue", "grey80")) %>%
   add_ridge(color = "snow", variable = "cigarrets") %>%
   add_labels(variable = "cigarrets", nudge_y = 2, 
