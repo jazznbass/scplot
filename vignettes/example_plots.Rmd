@@ -25,20 +25,27 @@ But we will keep the "old" `plot.scdf` in future versions of `scan`.
 
 Here are a few plots that have been generated with `scplot` to demonstrate its possibilities.
 
-### The standard style
+## Install `scplot`
+
+scplot is hosted as a gitHub project at https://github.com/jazznbass/scplot.
+You can install it with `devtools::install_github("jazznbass/scplot", dependencies = TRUE)` from your R console.
+Make sure you have the package `devtools` installed before.
+The package has to be compiled. When you are running R on a Windows machine you also have to install Rtools. Rtools is not an R package and can be downloaded from CRAN at https://cran.r-project.org/bin/windows/Rtools/. MacOs and Linux users usually do not need to take this extra step.
+
+## The standard style
 
 ```{r}
 scplot(exampleAB)
 ```
 
-### Add statlines
+## Add statlines
 
 ```{r}
 scplot(exampleABC) %>%
   add_statline("mean", color = "darkred")
 ```
 
-### Add a legend
+## Add a legend
 
 ```{r}
 scplot(exampleABC) %>%
@@ -47,7 +54,7 @@ scplot(exampleABC) %>%
   add_legend()
 ```
 
-### A simple style with axis settings
+## A simple style with axis settings
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
@@ -59,7 +66,7 @@ scplot(exampleA1B1A2B2) %>%
   set_panel(fill = c("grey90", "grey80"))
 ```
 
-### Add labels
+## Add labels
 
 ```{r}
 scplot(exampleABC) %>% 
@@ -71,7 +78,7 @@ scplot(exampleABC) %>%
  
 ```
 
-### Rotated axis values, removed dots, and some adjustments on phasenames
+## Rotated axis values, removed dots, and some adjustments on phasenames
 
 ```{r}
 scplot(example_A24) %>% 
@@ -91,14 +98,14 @@ scplot(example_A24) %>%
   
 ```
 
-### Add a ridge
+## Add a ridge
 
 ```{r}
 scplot(exampleA1B1A2B2_zvt) %>% 
   add_ridge("yellow")
 ```
 
-### Mulitple variables in a plot with an added legend
+## Mulitple variables in a plot with an added legend
 
 ```{r multi-variables}
 scplot(exampleAB_add) %>%
@@ -121,7 +128,7 @@ scplot(exampleAB_add) %>%
 
 ```
 
-### An entensive example to show-off
+## An entensive example to show-off
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 

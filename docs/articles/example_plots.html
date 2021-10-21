@@ -101,24 +101,30 @@
 <p>We consider the state of <code>scplot</code> to be <em>experimental</em>. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.</p>
 <p>But we will keep the “old” <code>plot.scdf</code> in future versions of <code>scan</code>.</p>
 <p>Here are a few plots that have been generated with <code>scplot</code> to demonstrate its possibilities.</p>
-<div id="the-standard-style" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-standard-style" class="anchor"></a>The standard style</h3>
+<div id="install-scplot" class="section level2">
+<h2 class="hasAnchor">
+<a href="#install-scplot" class="anchor"></a>Install <code>scplot</code>
+</h2>
+<p>scplot is hosted as a gitHub project at <a href="https://github.com/jazznbass/scplot" class="uri">https://github.com/jazznbass/scplot</a>. You can install it with <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("jazznbass/scplot", dependencies = TRUE)</a></code> from your R console. Make sure you have the package <code>devtools</code> installed before. The package has to be compiled. When you are running R on a Windows machine you also have to install Rtools. Rtools is not an R package and can be downloaded from CRAN at <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a>. MacOs and Linux users usually do not need to take this extra step.</p>
+</div>
+<div id="the-standard-style" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-standard-style" class="anchor"></a>The standard style</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 </div>
-<div id="add-statlines" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-statlines" class="anchor"></a>Add statlines</h3>
+<div id="add-statlines" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-statlines" class="anchor"></a>Add statlines</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/scplot.html">add_statline</a></span><span class="op">(</span><span class="st">"mean"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
-<div id="add-a-legend" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-a-legend" class="anchor"></a>Add a legend</h3>
+<div id="add-a-legend" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-a-legend" class="anchor"></a>Add a legend</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/scplot.html">add_statline</a></span><span class="op">(</span><span class="st">"mean"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -126,9 +132,9 @@
   <span class="fu"><a href="../reference/scplot.html">add_legend</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
-<div id="a-simple-style-with-axis-settings" class="section level3">
-<h3 class="hasAnchor">
-<a href="#a-simple-style-with-axis-settings" class="anchor"></a>A simple style with axis settings</h3>
+<div id="a-simple-style-with-axis-settings" class="section level2">
+<h2 class="hasAnchor">
+<a href="#a-simple-style-with-axis-settings" class="anchor"></a>A simple style with axis settings</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/scplot.html">set_xaxis</a></span><span class="op">(</span>increment_from <span class="op">=</span> <span class="fl">0</span>, increment <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -139,9 +145,9 @@
   <span class="fu"><a href="../reference/scplot.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"grey90"</span>, <span class="st">"grey80"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
-<div id="add-labels" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-labels" class="anchor"></a>Add labels</h3>
+<div id="add-labels" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-labels" class="anchor"></a>Add labels</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/scplot.html">set_xaxis</a></span><span class="op">(</span>increment <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -151,9 +157,9 @@
   <span class="fu"><a href="../reference/scplot.html">add_theme</a></span><span class="op">(</span><span class="st">"minimal"</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
-<div id="rotated-axis-values-removed-dots-and-some-adjustments-on-phasenames" class="section level3">
-<h3 class="hasAnchor">
-<a href="#rotated-axis-values-removed-dots-and-some-adjustments-on-phasenames" class="anchor"></a>Rotated axis values, removed dots, and some adjustments on phasenames</h3>
+<div id="rotated-axis-values-removed-dots-and-some-adjustments-on-phasenames" class="section level2">
+<h2 class="hasAnchor">
+<a href="#rotated-axis-values-removed-dots-and-some-adjustments-on-phasenames" class="anchor"></a>Rotated axis values, removed dots, and some adjustments on phasenames</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">example_A24</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/scplot.html">add_theme</a></span><span class="op">(</span><span class="st">"default"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -171,17 +177,17 @@
   <span class="fu"><a href="../reference/scplot.html">add_ridge</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 </div>
-<div id="add-a-ridge" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-a-ridge" class="anchor"></a>Add a ridge</h3>
+<div id="add-a-ridge" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-a-ridge" class="anchor"></a>Add a ridge</h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2_zvt</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/scplot.html">add_ridge</a></span><span class="op">(</span><span class="st">"yellow"</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
-<div id="mulitple-variables-in-a-plot-with-an-added-legend" class="section level3">
-<h3 class="hasAnchor">
-<a href="#mulitple-variables-in-a-plot-with-an-added-legend" class="anchor"></a>Mulitple variables in a plot with an added legend</h3>
+<div id="mulitple-variables-in-a-plot-with-an-added-legend" class="section level2">
+<h2 class="hasAnchor">
+<a href="#mulitple-variables-in-a-plot-with-an-added-legend" class="anchor"></a>Mulitple variables in a plot with an added legend</h2>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_add</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/scplot.html">add_dataline</a></span><span class="op">(</span><span class="st">"cigarrets"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -201,9 +207,9 @@
              background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="example_plots_files/figure-html/multi-variables-1.png" width="700"></p>
 </div>
-<div id="an-entensive-example-to-show-off" class="section level3">
-<h3 class="hasAnchor">
-<a href="#an-entensive-example-to-show-off" class="anchor"></a>An entensive example to show-off</h3>
+<div id="an-entensive-example-to-show-off" class="section level2">
+<h2 class="hasAnchor">
+<a href="#an-entensive-example-to-show-off" class="anchor"></a>An entensive example to show-off</h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/scplot.html">set_xaxis</a></span><span class="op">(</span>increment <span class="op">=</span> <span class="fl">4</span>, color <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span> <span class="op">%&gt;%</span>
