@@ -1,4 +1,4 @@
-# scplot
+# scplot <img src='man/scplot_hex.png' align="right" height = "135" />
 
 Addon package for scan for scdf plots based on ggplot2.
 
@@ -10,4 +10,4 @@ Make sure you have **Rtools** (https://cran.r-project.org/bin/windows/Rtools/) i
 
 The package is in an experimental stage.
 
-<img src='scplot hex.png' align="left" />
+
