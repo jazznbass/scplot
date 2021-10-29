@@ -1,6 +1,6 @@
-# scplot <img src='man/scplot_hex.png' align="right" height = "135" />
+# scplot <img src='man/figures/logo.png' align="right" height = "135" />
 
-Addon package for scan for scdf plots based on ggplot2.
+Add on package for scan for scdf plots based on ggplot2.
 
 Install with:
 
