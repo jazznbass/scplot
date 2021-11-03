@@ -20,7 +20,7 @@
 
   #if (!"rel" %in% class(x))
   x <- base * x
-  x <- x / ggplot2:::.pt
+  x <- x / ggplot2::.pt
   x
 
 }
