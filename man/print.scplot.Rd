@@ -7,7 +7,9 @@
 \method{print}{scplot}(x, ...)
 }
 \arguments{
-\item{x}{An scplot object}
+\item{x}{An scplot object.}
+
+\item{...}{Not implemented.}
 }
 \value{
 Creates a single-case plot

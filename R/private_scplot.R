@@ -50,7 +50,7 @@
     if ("element" %in% class(out[[label]])) {
       out[[label]] <- merge_element(new[[i]], out[[label]])
     } else if ("list" %in% class(out[[label]])) {
-      out[[label]] <- modifyList(out[[label]], new[[i]])
+      out[[label]] <- utils::modifyList(out[[label]], new[[i]])
     }
   }
 

@@ -1,6 +1,7 @@
 #' print.scplot
 #'
-#' @param x An scplot object
+#' @param x An scplot object.
+#' @param ... Not implemented.
 #'
 #' @return Creates a single-case plot
 #' @export

@@ -1,11 +1,9 @@
-#' Creates a ggplot2 obekct from an scplot object
+#' Creates a ggplot2 object from an scplot object
 #'
 #' @param scplot An scplot object
 #'
 #' @return A ggplot2 object
 #' @export
-#'
-#' @examples
 as_ggplot <- function(scplot) {
 
   # set global variables --------

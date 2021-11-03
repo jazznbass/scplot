@@ -16,11 +16,11 @@ set_xlabel <- function(object, label = NULL, ...) {
 #' @rdname scplot
 #' @param orientation of the label: 0 = vertical; 1 = horizontal
 #' @export
-set_ylabel <- function(object, label, ...) {
+set_ylabel <- function(object, label = NULL, ...) {
 
   args <- list(...)
 
-  if (!missing(label)) object$ylabel <- label
+  if (!is.null(label)) object$ylabel <- label
   if (!is.null(args$size)) args$size <- rel(args$size)
 
   object$theme$axis.title.y <- .merge_element(args, object$theme$axis.title.y)
@@ -35,6 +35,7 @@ set_ylabel <- function(object, label, ...) {
 #' of each case. \code{limits} is not set by default, which makes \code{scan} set
 #' a proper scale based on the given data.
 #' @param increment An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.
+#' @param increment_from Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...
 #' @export
 set_xaxis <- function(object,
                       limits = NULL,
@@ -82,11 +83,6 @@ set_yaxis <- function(object,
 
 
 #' @rdname scplot
-#' @param label Character string.
-#' @param align Character string. One of "left", "right", "center"
-#' @param wrap Number that defines the maximum characters per line before a break.
-#' If set to FALSE, no automatic linebreak is set.
-#' @param parse If TRUE, the label is interpreted as an expression. Default = FALSE.
 #' @export
 add_title <- function(object, label, ...) {
 
@@ -101,7 +97,6 @@ add_title <- function(object, label, ...) {
 }
 
 #' @rdname scplot
-#' @param label Character string.
 #' @export
 add_caption <- function(object, label, ...) {
 
@@ -147,6 +142,7 @@ set_casenames <- function(object, labels = NULL,
 }
 
 #' @rdname scplot
+#' @position CHaracter string either 'left' or 'center'.
 #' @export
 set_phasenames <- function(object, labels = NULL,
                            position = NULL,
@@ -164,9 +160,8 @@ set_phasenames <- function(object, labels = NULL,
 }
 
 #' @rdname scplot
-#' @param extent A number between 0 and 1 given the proportion of the plot that is covert by the line or character string "full" or "scale".
 #' @export
-set_seperator <- function(object, extent = NULL, label = NULL, ...) {
+set_seperator <- function(object, ...) {
 
   args <- list(...)
   object$theme$seperators <- .merge_element(
@@ -189,7 +184,10 @@ add_grid <- function(object, ...) {
 
 
 #' @rdname scplot
+#' @param nudge_y Offset on the y-axis.
+#' @param nudge_x Offset on the x-axis.
 #' @param round Number of digits of the labels.
+#' @param padding Padding size around text.
 #' @export
 add_labels <- function(object,
                        nudge_y = 5,
@@ -270,8 +268,9 @@ set_dataline <- function(object,
 
   if (missing(variable)) variable <- ".dvar"
 
-  vars <- sapply(object$datalines,
-                 function(x) if(is.null(x$variable)) ".dvar" else x$variable
+  vars <- sapply(
+    object$datalines,
+    function(x) if(is.null(x$variable)) ".dvar" else x$variable
   )
   id <- which(vars == variable)
 
@@ -283,21 +282,6 @@ set_dataline <- function(object,
   if (!missing(dots)) object$datalines[[id]]$dots <- dots
   if (!missing(shape)) object$datalines[[id]]$shape <-shape
   if (!missing(size)) object$datalines[[id]]$size <- size
-
-  #object$datalines[[id]]$line <- .merge_element(
-  #  element_line(
-  #    colour = color, size = width,
-  #    linetype = linetype,
-  #  ), object$theme$dataline
-  #)
-
-  #object$datalines[[id]]$dots <- .merge_element(
-  #  list(
-  #    colour = dots, size = size,
-  #    shape = shape,
-  #  ), object$theme$datadots
-  #)
-
 
   object
 }

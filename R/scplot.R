@@ -2,13 +2,11 @@
 #'
 #' This function provides a plot of a single-case or multiple
 #' single-cases.
-#'
+#' @inheritParams .inheritParams
+#' @param data A single-case data-frame object (scdf).
 #' @return An scplot object that creates a ggplot2 plot when printed.
 #' @author Juergen Wilbert
 #' @export
-#' @import scan
-#' @import ggplot2
-#' @importFrom dplyr summarise full_join group_by filter
 
 scplot <- function(data) {
 

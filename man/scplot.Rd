@@ -31,7 +31,7 @@ scplot(data)
 
 set_xlabel(object, label = NULL, ...)
 
-set_ylabel(object, label, ...)
+set_ylabel(object, label = NULL, ...)
 
 set_xaxis(
   object,
@@ -67,7 +67,7 @@ set_casenames(
 
 set_phasenames(object, labels = NULL, position = NULL, ...)
 
-set_seperator(object, extent = NULL, label = NULL, ...)
+set_seperator(object, ...)
 
 add_grid(object, ...)
 
@@ -146,7 +146,11 @@ add_legend(
 )
 }
 \arguments{
-\item{label}{Character string.}
+\item{data}{A single-case data-frame object (scdf).}
+
+\item{object}{An scplot object returned from the `scplot()` function.}
+
+\item{label}{A Character vector with text labels.}
 
 \item{...}{various style parameter}
 
@@ -158,6 +162,8 @@ a proper scale based on the given data.}
 
 \item{increment}{An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.}
 
+\item{increment_from}{Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...}
+
 \item{positions}{Either a vector indicating the dots to be highlighted or a
 character string with a logical expression (e.g. values < mean(values))}
 
@@ -165,9 +171,19 @@ character string with a logical expression (e.g. values < mean(values))}
 
 \item{y}{y position}
 
-\item{extent}{A number between 0 and 1 given the proportion of the plot that is covert by the line or character string "full" or "scale".}
+\item{background}{A list with background styling arguments (fill, color, size, linetype).}
+
+\item{nudge_y}{Offset on the y-axis.}
+
+\item{nudge_x}{Offset on the x-axis.}
 
 \item{round}{Number of digits of the labels.}
+
+\item{text}{A list with text styling arguments (color, size, face, family, hjust, vjust, lineheight, angle).}
+
+\item{variable}{Name of the dataline variable to apply the style.}
+
+\item{padding}{Padding size around text.}
 
 \item{color}{A character string or a number defining the color of an element.}
 
@@ -202,13 +218,6 @@ annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
 \item{length}{Size of the aroow angels.}
 
 \item{orientation}{of the label: 0 = vertical; 1 = horizontal}
-
-\item{align}{Character string. One of "left", "right", "center"}
-
-\item{wrap}{Number that defines the maximum characters per line before a break.
-If set to FALSE, no automatic linebreak is set.}
-
-\item{parse}{If TRUE, the label is interpreted as an expression. Default = FALSE.}
 }
 \value{
 An scplot object that creates a ggplot2 plot when printed.

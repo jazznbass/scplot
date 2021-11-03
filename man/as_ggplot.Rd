@@ -2,7 +2,7 @@
 % Please edit documentation in R/as_ggplot.R
 \name{as_ggplot}
 \alias{as_ggplot}
-\title{Creates a ggplot2 obekct from an scplot object}
+\title{Creates a ggplot2 object from an scplot object}
 \usage{
 as_ggplot(scplot)
 }
@@ -13,5 +13,5 @@ as_ggplot(scplot)
 A ggplot2 object
 }
 \description{
-Creates a ggplot2 obekct from an scplot object
+Creates a ggplot2 object from an scplot object
 }

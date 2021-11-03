@@ -141,19 +141,26 @@
 )
 
 .scplot_themes$dark <- list(
-  panel.col = "#16213E",
 
-  plot.background.fill = "#1A1A2E",
+  panel.background = element_rect(fill = "#16213E"),
+  plot.background = element_rect(fill = "#1A1A2E"),
 
-  grid.col = "#999999",
-  casenames.col = "white", phasenames.col = "white",
-  xaxis.title.col = "white", yaxis.title.col = "white",
-  xaxis.text.col = "white", yaxis.text.col = "white",
-  xaxis.line.col = "#DDDDDD", xaxis.ticks.col = "#DDDDDD",
-  yaxis.line.col = "#DDDDDD", yaxis.ticks.col = "#DDDDDD",
+  grid = element_line(colour = "#999999", size = 0.2),
 
+  casenames = element_text(color = "white"),
 
-  seperators.col = "gold",
+  phasenames = element_text(colour  = "white"),
+
+  axis.title.y = element_text(color = "white"),
+  axis.title.x = element_text(color = "white"),
+
+  axis.text.x = element_text(color = "white"),
+  axis.text.y = element_text(color = "white"),
+
+  axis.ticks = element_line(color = "#DDDDDD"),
+
+  seperators = element_line(color = "gold", size = 0.3, linetype = "solid"),
+
 
   dataline.col = "#DDDDDD",
   dataline.width = 2,
