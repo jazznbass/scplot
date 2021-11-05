@@ -81,7 +81,7 @@ single-cases." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -104,7 +104,7 @@ single-cases." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/example_plots.html">Examples</a>
+      <a href="../articles/examples.html">examples</a>
     </li>
   </ul>
 </li>
@@ -141,7 +141,7 @@ single-cases.</p>
 
 <span class='fu'>set_xlabel</span><span class='op'>(</span><span class='va'>object</span>, label <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>set_ylabel</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>label</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>set_ylabel</span><span class='op'>(</span><span class='va'>object</span>, label <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='fu'>set_xaxis</span><span class='op'>(</span>
   <span class='va'>object</span>,
@@ -165,21 +165,15 @@ single-cases.</p>
 
 <span class='fu'>add_caption</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>label</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>set_casenames</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  labels <span class='op'>=</span> <span class='cn'>NULL</span>,
-  x <span class='op'>=</span> <span class='cn'>NULL</span>,
-  y <span class='op'>=</span> <span class='cn'>NULL</span>,
-  type <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>,
-  background <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>)</span>
+<span class='fu'>set_casenames</span><span class='op'>(</span><span class='va'>object</span>, labels <span class='op'>=</span> <span class='cn'>NULL</span>, position <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, background <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='fu'>set_phasenames</span><span class='op'>(</span><span class='va'>object</span>, labels <span class='op'>=</span> <span class='cn'>NULL</span>, position <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>set_seperator</span><span class='op'>(</span><span class='va'>object</span>, extent <span class='op'>=</span> <span class='cn'>NULL</span>, label <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>set_seperator</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='fu'>add_grid</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>set_base_text</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='fu'>add_labels</span><span class='op'>(</span>
   <span class='va'>object</span>,
@@ -259,8 +253,16 @@ single-cases.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>data</th>
+      <td><p>A single-case data-frame object (scdf).</p></td>
+    </tr>
+    <tr>
+      <th>object</th>
+      <td><p>An scplot object returned from the `scplot()` function.</p></td>
+    </tr>
+    <tr>
       <th>label</th>
-      <td><p>Character string.</p></td>
+      <td><p>A Character vector with text labels.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -279,25 +281,41 @@ a proper scale based on the given data.</p></td>
       <td><p>An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.</p></td>
     </tr>
     <tr>
+      <th>increment_from</th>
+      <td><p>Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...</p></td>
+    </tr>
+    <tr>
       <th>positions</th>
       <td><p>Either a vector indicating the dots to be highlighted or a
 character string with a logical expression (e.g. values &lt; mean(values))</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>x position</p></td>
+      <th>background</th>
+      <td><p>A list with background styling arguments (fill, color, size, linetype).</p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p>y position</p></td>
+      <th>nudge_y</th>
+      <td><p>Offset on the y-axis.</p></td>
     </tr>
     <tr>
-      <th>extent</th>
-      <td><p>A number between 0 and 1 given the proportion of the plot that is covert by the line or character string "full" or "scale".</p></td>
+      <th>nudge_x</th>
+      <td><p>Offset on the x-axis.</p></td>
     </tr>
     <tr>
       <th>round</th>
       <td><p>Number of digits of the labels.</p></td>
+    </tr>
+    <tr>
+      <th>text</th>
+      <td><p>A list with text styling arguments (color, size, face, family, hjust, vjust, lineheight, angle).</p></td>
+    </tr>
+    <tr>
+      <th>variable</th>
+      <td><p>Name of the dataline variable to apply the style.</p></td>
+    </tr>
+    <tr>
+      <th>padding</th>
+      <td><p>Padding size around text.</p></td>
     </tr>
     <tr>
       <th>color</th>
@@ -338,6 +356,14 @@ annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade</p></td>
       <td><p>Numerical vector with the csae number or character string "all" for all cases.</p></td>
     </tr>
     <tr>
+      <th>x</th>
+      <td><p>x position</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>y position</p></td>
+    </tr>
+    <tr>
       <th>x0</th>
       <td><p>Origin x position of the line.</p></td>
     </tr>
@@ -360,19 +386,6 @@ annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade</p></td>
     <tr>
       <th>orientation</th>
       <td><p>of the label: 0 = vertical; 1 = horizontal</p></td>
-    </tr>
-    <tr>
-      <th>align</th>
-      <td><p>Character string. One of "left", "right", "center"</p></td>
-    </tr>
-    <tr>
-      <th>wrap</th>
-      <td><p>Number that defines the maximum characters per line before a break.
-If set to FALSE, no automatic linebreak is set.</p></td>
-    </tr>
-    <tr>
-      <th>parse</th>
-      <td><p>If TRUE, the label is interpreted as an expression. Default = FALSE.</p></td>
     </tr>
     </table>
 

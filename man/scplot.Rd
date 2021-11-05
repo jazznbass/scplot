@@ -12,6 +12,7 @@
 \alias{set_phasenames}
 \alias{set_seperator}
 \alias{add_grid}
+\alias{set_base_text}
 \alias{add_labels}
 \alias{add_dataline}
 \alias{set_dataline}
@@ -55,21 +56,15 @@ add_title(object, label, ...)
 
 add_caption(object, label, ...)
 
-set_casenames(
-  object,
-  labels = NULL,
-  x = NULL,
-  y = NULL,
-  type = NULL,
-  ...,
-  background = list()
-)
+set_casenames(object, labels = NULL, position = NULL, ..., background = list())
 
 set_phasenames(object, labels = NULL, position = NULL, ...)
 
 set_seperator(object, ...)
 
 add_grid(object, ...)
+
+set_base_text(object, ...)
 
 add_labels(
   object,
@@ -167,10 +162,6 @@ a proper scale based on the given data.}
 \item{positions}{Either a vector indicating the dots to be highlighted or a
 character string with a logical expression (e.g. values < mean(values))}
 
-\item{x}{x position}
-
-\item{y}{y position}
-
 \item{background}{A list with background styling arguments (fill, color, size, linetype).}
 
 \item{nudge_y}{Offset on the y-axis.}
@@ -206,6 +197,10 @@ Possible values: default, yaxis, tiny, small, big, chart, ridge,
 annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
 
 \item{case}{Numerical vector with the csae number or character string "all" for all cases.}
+
+\item{x}{x position}
+
+\item{y}{y position}
 
 \item{x0}{Origin x position of the line.}
 

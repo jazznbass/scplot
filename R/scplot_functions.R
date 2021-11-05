@@ -115,8 +115,7 @@ add_caption <- function(object, label, ...) {
 #' @rdname scplot
 #' @export
 set_casenames <- function(object, labels = NULL,
-                          x = NULL, y = NULL,
-                          type = NULL,
+                          position = NULL,
                           ...,
                           background = list()) {
 
@@ -125,10 +124,10 @@ set_casenames <- function(object, labels = NULL,
 
   if (!is.null(labels)) object$casenames$labels <- labels
 
-  if (!is.null(type)) object$theme$casenames.type <- type
+  if (!is.null(position)) object$theme$casenames.position <- position
   if (!is.null(args_text$size)) args_text$size <- rel(args_text$size)
 
-  if (identical(type, "strip")) {
+  if (identical(position, "strip")) {
     if (is.null(args_text$angle)) args_text$angle <- 270
     if (is.null(args_text$hjust)) args_text$hjust <- 0.5
   }
@@ -178,6 +177,16 @@ add_grid <- function(object, ...) {
 
   args <- do.call("element_line", list(...))
   object$theme$grid <- args
+
+  object
+}
+
+#' @rdname scplot
+#' @export
+set_base_text <- function(object, ...) {
+
+  args <- do.call("element_text", list(...))
+  object$theme$text <- merge_element(args, object$theme$text)
 
   object
 }

@@ -2,13 +2,18 @@
 
 .scplot_themes <- list()
 
-.scplot_themes$default = list(
 
-  text = element_text(colour = "black", size = 11),
+# default -----------------------------------------------------------------
+
+.scplot_themes$basic = list(
+
+  text = element_text(colour = "black", size = 11, family = "sans",
+                      face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
+                      lineheight = 1),
 
   plot.background = element_rect(),
   panel.background = element_rect(),
-  panel.spacing.y = unit(2, "lines"),
+  panel.spacing.y = unit(1.5, "lines"),
 
   dataline.col = "black",
   dataline.width = 0.5,
@@ -26,29 +31,24 @@
   axis.ticks.length = unit(2.75, "points"),
   axis.ticks = element_line(color = "black", size = 0.4, linetype = "solid"),
 
-  axis.title.y = element_text(color = "black", size = rel(1),
-                              angle = 90, margin = margin(r = 1.5)),
-  axis.title.x = element_text(color = "black", size = rel(1),
-                              angle = 0, margin = margin(t = 1.5)),
+  axis.title.y = element_text(angle = 90, margin = margin(r = 1.5)),
+  axis.title.x = element_text(margin = margin(t = 1.5)),
 
-  axis.text.x = element_text(color = "black", size = rel(1),
-                             hjust = 0.5, margin = margin(t = 1.5)),
-  axis.text.y = element_text(color = "black", size = rel(1),
-                             hjust = 1, margin = margin(r = 1.5)),
+  axis.text.x = element_text(size = rel(0.8), hjust = 0.5,
+                             margin = margin(t = 1.5)),
+  axis.text.y = element_text(size = rel(0.8), hjust = 1,
+                             margin = margin(r = 1.5)),
 
-
-  plot.title = element_text(color = "black",
+  plot.title = element_text(
                             margin = margin(0,0,2,0, unit = "lines"),
-                            hjust = 0.5, size = rel(1)),
+                            hjust = 0.5),
 
-  plot.caption = element_text(color = "black",
-                              margin = margin(0,0,0,2, unit = "lines"),
-                              hjust = 0, size = rel(1)),
+  plot.caption = element_text(margin = margin(0,0,0,2, unit = "lines"),
+                              hjust = 0),
 
   plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
-  casenames = element_text(color = "black", vjust = 1, hjust = 0,
-                           angle = 0, size = rel(1),
+  casenames = element_text(vjust = 1, hjust = 0,
                            margin = margin(0.3, 0.3, 0.3, 0.3, unit = "lines")),
 
   casenames.strip = element_rect(color = "grey60",
@@ -56,17 +56,9 @@
                                  size = 0.5,
                                  linetype = "solid"),
 
-  casenames.type = "within",
+  casenames.position = "topleft",
 
-  phasenames = element_text(
-    color = "black",
-    size = 1,
-    vjust = 0,
-    hjust = 0.5,
-    angle = 0,
-    family = "sans", face = "plain",
-    margin = margin(b = 1.5)
-  ),
+  phasenames = element_text(vjust = 0, hjust = 0.5, margin = margin(b = 1.5)),
 
   phasenames.position.x = "centre",
 
@@ -94,10 +86,20 @@
   NULL
 )
 
+
+# grid --------------------------------------------------------------------
+
 .scplot_themes$grid <- list(
   grid = element_line(colour = "lightblue", size = 0.2),
   panel.background = element_rect(fill = "grey95", size = 0)
 )
+
+
+# default -----------------------------------------------------------------
+
+.scplot_themes$default <- .merge_theme(.scplot_themes$grid, .scplot_themes$basic)
+
+# sizes -------------------------------------------------------------------
 
 .scplot_themes$small <- list(
   text = element_text(size = 8),
@@ -113,6 +115,8 @@
   text = element_text(size = 14),
   panel.spacing.y = unit(1.5, "lines")
 )
+
+# minimal -----------------------------------------------------------------
 
 .scplot_themes$minimal = list(
 
@@ -133,12 +137,7 @@
   NULL
 )
 
-
-.scplot_themes$grid2 <- list(
-  ridge.col = "white", grid.col = "lightgreen", panel.frame.col = "black",
-  panel.col = "grey95",
-  lwd.line = 0.7, pch = 1, xaxis.text.size = 0.8, yaxis.text.size = 0.8
-)
+# dark --------------------------------------------------------------------
 
 .scplot_themes$dark <- list(
 
@@ -161,48 +160,33 @@
 
   seperators = element_line(color = "gold", size = 0.3, linetype = "solid"),
 
-
   dataline.col = "#DDDDDD",
-  dataline.width = 2,
-  dataline.linetype = "solid",
-
   datadots.col = "#E94560",
-  datadots.shape = 17,
-  datadots.size = 0.8
+  datadots.shape = 17
 )
 
-.scplot_themes$nodots <- list(
-  ridge.col = "grey95",
-  datadots.col = NULL,
 
-  plot.background.fill = "grey95",
-
-  grid.col = "grey80", panel.col = "grey99"
-)
+# sienna ------------------------------------------------------------------
 
 .scplot_themes$sienna <- list(
-  grid.col = "orange",
 
-  plot.background.fill = "seashell",
+  grid = element_line(colour = "orange", size = 0.2),
 
-  panel.col = "moccasin", panel.frame.col = "darkseagreen",
+  panel.background = element_rect(colour = "#16213E", fill = "white"),
+  plot.background = element_rect(fill = "moccasin", colour = "darkseagreen"),
 
-  casenames.col = "sienna4", phasenames.col = "sienna4",
-  yaxis.title.size = 0.8, xaxis.title.size = 0.8, xaxis.text.size = 0.7, yaxis.text.size = 0.7,
-  casenames.size = 0.8, phasenames.size = 0.8,
+  casenames = element_text(color = "sienna4"),
+  phasenames = element_text(colour  = "sienna4"),
 
-  seperators.col = "sienna4",
-
+  seperators = element_line(color = "sienna4"),
 
   dataline.col = "darkolivegreen",
-  dataline.width = 2,
-  dataline.linetype = "solid",
 
   datadots.col = "seagreen4",
   datadots.shape = 18,
-  datadots.size = 0.8,
 
-  font = "serif"
+  text = element_text(family = "serif")
+
 )
 
 .scplot_themes$phase_color <- list(
@@ -214,6 +198,22 @@
   panel.background = element_rect(
     fill = alpha(c("grey80", "grey99", "grey90"), 0.5))
 )
+
+
+
+
+
+
+# !!! translation missing ---------------------------------------------------
+
+.scplot_themes$grid2 <- list(
+  ridge.col = "white", grid.col = "lightgreen", panel.frame.col = "black",
+  panel.col = "grey95",
+  lwd.line = 0.7, pch = 1, xaxis.text.size = 0.8, yaxis.text.size = 0.8
+)
+
+
+
 
 
 

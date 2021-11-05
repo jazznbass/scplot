@@ -157,7 +157,7 @@ as_ggplot <- function(scplot) {
   p <- p + theme(panel.spacing.y = theme$panel.spacing.y)
   p <- p + theme(strip.text.y = theme$casenames)
   p <- p + theme(strip.background = theme$casenames.strip)
-  if (theme$casenames.type == "within")
+  if (!identical(theme$casenames.position, "strip"))
     p <- p + theme(strip.text.y = element_blank())
 
   # add panel background ------------
@@ -285,22 +285,38 @@ as_ggplot <- function(scplot) {
 
   # add casenames ------------------
 
-  if (theme$casenames.type == "within") {
-    if (is.null(theme$casenames.position.x)) x <- xlim[1]
-    else if (identical(theme$casenames.position.x, "left")) x <- xlim[1]
-    else if (identical(theme$casenames.position.x, "right")) x <- xlim[2]
-    else x <- theme$casenames.position.x
+  if (!identical(theme$casenames.position, "strip")) {
 
-    if (is.null(theme$casenames.position.y)) y <- ylim[2]
-    else if (theme$casenames.position.y == "top") y <- ylim[2]
-    else if (theme$casenames.position.y == "bottom") y <- ylim[1]
-    else y <- theme$casenames.position.y
+    if (identical(theme$casenames.position, "topleft")) {
+      x <- xlim[1]
+      y <- ylim[2]
+    }
+    if (identical(theme$casenames.position, "topright")) {
+      x <- xlim[2]
+      y <- ylim[2]
+    }
+    if (identical(theme$casenames.position, "bottomleft")) {
+      x <- xlim[1]
+      y <- ylim[1]
+    }
+    if (identical(theme$casenames.position, "bottomright")) {
+      x <- xlim[2]
+      y <- ylim[1]
+    }
+
+    if(length(theme$case.position) == 2) {
+      x <- theme$casenames.position[1]
+      y <- theme$casenames.position[2]
+    }
 
     data_casenames <- data.frame(
       x = rep(x, N),
       y = rep(y, N),
       case = object$casenames$labels
     )
+
+    if (is.null(theme$casenames$size)) theme$casenames$size <- 1
+    theme$casenames <- merge_element(theme$casenames, theme$text)
 
     p <- p + geom_text(
       data = data_casenames,
@@ -309,12 +325,10 @@ as_ggplot <- function(scplot) {
       size = .size(theme$casenames$size, base_size),
       hjust = theme$casenames$hjust,
       vjust = theme$casenames$vjust,
-      #lineheight = theme$labels.text$lineheight,
-      #family = theme$labels.text$family,
-      #fontface = theme$labels.text$face,
-      angle = theme$casenames$angle,
-      #nudge_x = theme$casenames.nudge_x,
-      #nudge_y = theme$casenames$margin$b,
+      lineheight = theme$casenames$lineheight,
+      family = theme$casenames$family,
+      fontface = theme$casenames$face,
+      angle = theme$casenames$angle
     )
   }
 
@@ -353,6 +367,10 @@ as_ggplot <- function(scplot) {
     phase = unlist(lapply(design, function(x) x$values)),
     x = unlist(x)
   )
+
+  if (is.null(theme$phasenames$size)) theme$phasenames$size <- 1
+  theme$phasenames <- merge_element(theme$phasenames, theme$text)
+
   p <- p + geom_text(
     data = data_phasenames,
     aes(label = phase, x = x, y = Inf),
@@ -363,7 +381,7 @@ as_ggplot <- function(scplot) {
     family = theme$phasenames$family,
     fontface = theme$phasenames$face,
     angle = theme$phasenames$angle,
-    #nudge_y = (ylim[2] - ylim[1]) * 0.03,
+    lineheight = theme$phasenames$lineheight
   )
 
   # add axis.line -----------
