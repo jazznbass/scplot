@@ -125,6 +125,76 @@ scplot(exampleAB_add) %>%
   add_statline("trend", linetype = "dashed")
 ```
 
+## Annotate and mark
+
+### Add marks
+
+```{r}
+scplot(exampleABC) %>%
+  add_marks(case = 1, positions = c(7, 12)) %>%
+  add_marks(case = 3, positions = c(3, 17), color = "blue", size = 7)
+```
+
+```{r}
+scplot(exampleABC) %>%
+  add_marks(case = 1, positions = "mt > 15") %>%
+  add_marks(case = 2, positions = 'phase == "B"', color = "green", size = 5) %>%
+  add_marks(case = 3, positions = "values > quantile(values, probs = 0.80)", color = "blue", size = 7) %>%
+  add_marks(case = "all", positions = "values < quantile(values, probs = 0.20)", color = "yellow", size = 7) %>%
+  add_caption("Note.
+red: mt > 15 in case 1; 
+green: phase 'B' in case 2; 
+blue: values > 80% quantile of case 3; 
+yellow: values < 20% quantile of all cases")
+```
+
+### Add text
+
+```{r}
+scplot(exampleABC) %>%
+  add_text("Here!", case = 2, x = 10, y = 80, color = "red")
+```
+
+### Add arrow
+
+```{r}
+scplot(exampleABC) %>%
+  add_arrow(case = 1, 6, 90, 3, 63) %>%
+  add_text("Problem", case = 1, x = 6, y = 94, color = "red", size = 1 ) 
+```
+
+## Change appearance
+
+### Data line
+
+```{r}
+scplot(exampleABC) %>%
+  set_dataline(color = "blue", width = 1, linetype = "dotted", 
+               dots = "red", size = 1, shape = 2)
+  
+```
+### Background
+
+```{r}
+scplot(exampleABC) %>%
+  set_background(fill = "grey90", color = "black", size = 2)
+```
+### Panel
+
+```{r}
+scplot(exampleABC) %>%
+  set_panel(fill = "grey90", color = "black", size = 2)
+```
+
+### Different panel color for each phase
+
+```{r}
+scplot(exampleABC) %>%
+  set_panel(fill = c("grey80", "white", "blue4"))
+```
+
+
+
 ## Themes
 
 Function `add_theme("theme_name")`
@@ -135,7 +205,6 @@ Possible themes:
 themes <- paste0("`", names(scplot:::.scplot_themes), "`")
 cat(paste0(themes, collapse = ", "))
 ```
-
 
 ### default
 
@@ -266,8 +335,7 @@ scplot(exampleAB_mpd) %>%
   add_ridge("grey50")
 ```
 
-
-### Complex example 1
+## Complexs examples
 
 ```{r}
 scplot(example_A24) %>% 
@@ -286,10 +354,6 @@ scplot(example_A24) %>%
   add_ridge(color = "lightblue")
   
 ```
-
-
-
-## Mulitple variables in a plot with an added legend
 
 ```{r multi-variables}
 scplot(exampleAB_add) %>%
@@ -311,8 +375,6 @@ scplot(exampleAB_add) %>%
 
 
 ```
-
-## An entensive example to show-off
 
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
