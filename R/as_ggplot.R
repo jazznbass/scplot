@@ -505,22 +505,22 @@ as_ggplot <- function(scplot) {
 
     for(i in seq_along(object$marks)) {
 
-      filter <- rep(TRUE, nrow(data_long))
+      dat <- data_long
 
       # filter cases
       if (!identical(object$marks[[i]]$case, "all"))
-        filter <- filter & data_long$case %in% cases[object$marks[[i]]$case]
+        dat <- dat[dat$case %in% cases[object$marks[[i]]$case], ]
 
       # filter mt
       if (is.character(object$marks[[i]]$positions)) {
-        .marks <- eval(
-          str2expression(object$marks[[i]]$positions), envir = data_long
+        filter <- eval(
+          str2expression(object$marks[[i]]$positions), envir = dat
         )
-        object$marks[[i]]$positions <- which(.marks)
+      } else {
+        filter <- dat[[mvar]] %in% object$marks[[i]]$position
       }
-      filter <- filter & data_long[[mvar]] %in% object$marks[[i]]$position
 
-      dat <- data_long[filter, ]
+      dat <- dat[filter, ]
 
       if (object$marks[[i]]$variable == ".dvar")
         object$marks[[i]]$variable <- dvar
