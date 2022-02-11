@@ -14,7 +14,6 @@ set_xlabel <- function(object, label = NULL, ...) {
 }
 
 #' @rdname scplot
-#' @param orientation of the label: 0 = vertical; 1 = horizontal
 #' @export
 set_ylabel <- function(object, label = NULL, ...) {
 
@@ -453,8 +452,10 @@ add_text <- function(object,
                      x,
                      y,
                      color = "black",
-                     size = 2,
-                     angle = 0) {
+                     size = 1,
+                     angle = 0,
+                     hjust = 0.5,
+                     vjust = 0.5) {
 
   text <- list(
     case = case, labels = label,
@@ -462,7 +463,9 @@ add_text <- function(object,
     y = y,
     colour = color,
     size = size,
-    angle = angle
+    angle = angle,
+    hjust = hjust,
+    vjust = vjust
   )
 
   object$texts <- c(object$texts, list(text))
