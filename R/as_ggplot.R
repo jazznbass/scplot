@@ -556,7 +556,9 @@ as_ggplot <- function(scplot) {
         mapping = aes(x = x, y = y, label = label),
         colour = object$texts[[i]]$colour,
         size = .size(object$texts[[i]]$size, base_size),
-        angle = object$texts[[i]]$angle
+        angle = object$texts[[i]]$angle,
+        hjust = object$texts[[i]]$hjust,
+        vjust = object$texts[[i]]$vjust
 
       )
     }

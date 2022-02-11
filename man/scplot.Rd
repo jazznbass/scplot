@@ -108,7 +108,18 @@ add_marks(
   variable = ".dvar"
 )
 
-add_text(object, label, case = 1, x, y, color = "black", size = 2, angle = 0)
+add_text(
+  object,
+  label,
+  case = 1,
+  x,
+  y,
+  color = "black",
+  size = 1,
+  angle = 0,
+  hjust = 0.5,
+  vjust = 0.5
+)
 
 add_arrow(
   object,
@@ -211,8 +222,6 @@ annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
 \item{y1}{End y position of the line.}
 
 \item{length}{Size of the aroow angels.}
-
-\item{orientation}{of the label: 0 = vertical; 1 = horizontal}
 }
 \value{
 An scplot object that creates a ggplot2 plot when printed.
