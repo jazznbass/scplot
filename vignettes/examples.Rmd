@@ -280,8 +280,8 @@ scplot(exampleABC) %>%
   add_statline("mean", color = "darkred") %>%
   add_legend(
     position = "left", 
-    title = element_text(colour = "blue", size = 14),
-    background = element_rect(fill = "slategray1", colour = "black")
+    title = element_text(size = 12, face = "italic"),
+    background = element_rect(fill = "grey95", colour = "black")
   )
 ```
 
