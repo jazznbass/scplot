@@ -345,9 +345,9 @@ as_ggplot <- function(scplot) {
   p <- p + geom_vline(
     data = data_phase,
     aes(xintercept = x),
-    linetype = theme$seperators$linetype,
-    color = theme$seperators$colour,
-    size = theme$seperators$size
+    linetype = theme$separators$linetype,
+    color = theme$separators$colour,
+    size = theme$separators$size
   )
 
   p <- p + coord_cartesian(clip = "off")

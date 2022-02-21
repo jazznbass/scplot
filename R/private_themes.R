@@ -62,9 +62,9 @@
 
   phasenames.position.x = "centre",
 
-  seperators = element_line(color = "black", size = 0.4, linetype = "dashed"),
+  separators = element_line(color = "black", size = 0.4, linetype = "dashed"),
 
-  seperators.extent = "full",
+  separators.extent = "full",
 
   label.text = element_text(
     color = "black", vjust = 0.5, hjust = 0.5, angle = 0, size = rel(1)),
@@ -132,7 +132,7 @@
   axis.text.x = element_blank(),
   axis.text.y = element_blank(),
 
-  seperators = element_line(color = "black", size = 0.3, linetype = "solid"),
+  separators = element_line(color = "black", size = 0.3, linetype = "solid"),
   grid = element_blank(),
   NULL
 )
@@ -158,7 +158,7 @@
 
   axis.ticks = element_line(color = "#DDDDDD"),
 
-  seperators = element_line(color = "gold", size = 0.3, linetype = "solid"),
+  separators = element_line(color = "gold", size = 0.3, linetype = "solid"),
 
   dataline.col = "#DDDDDD",
   datadots.col = "#E94560",
@@ -178,7 +178,7 @@
   casenames = element_text(color = "sienna4"),
   phasenames = element_text(colour  = "sienna4"),
 
-  seperators = element_line(color = "sienna4"),
+  separators = element_line(color = "sienna4"),
 
   dataline.col = "darkolivegreen",
 
@@ -199,20 +199,12 @@
     fill = alpha(c("grey80", "grey99", "grey90"), 0.5))
 )
 
-
-
-
-
-
-# !!! translation missing ---------------------------------------------------
+# grid2 ---------------------------------------------------
 
 .scplot_themes$grid2 <- list(
-  ridge.col = "white", grid.col = "lightgreen", panel.frame.col = "black",
-  panel.col = "grey95",
-  lwd.line = 0.7, pch = 1, xaxis.text.size = 0.8, yaxis.text.size = 0.8
+  grid = element_line(colour = "lightgreen", size = 0.2),
+  panel.background = element_rect(fill = "grey95", size = 1)
 )
-
-
 
 
 

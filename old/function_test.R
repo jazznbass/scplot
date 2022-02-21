@@ -78,7 +78,7 @@ scplot(exampleABC) %>%
 # set separator ----------------
 
 scplot(exampleABC) %>%
-  set_seperator(color = "orange", width = 0.3, linetype = "solid")
+  set_separator(color = "orange", width = 0.3, linetype = "solid")
 
 # add_statline
 
