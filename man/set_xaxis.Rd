@@ -5,23 +5,9 @@
 \alias{set_yaxis}
 \title{Set axis parameters of an scplot}
 \usage{
-set_xaxis(
-  object,
-  limits = NULL,
-  increment = NULL,
-  increment_from = NULL,
-  positions = NULL,
-  ...
-)
+set_xaxis(object, limits = NULL, increment = NULL, increment_from = NULL, ...)
 
-set_yaxis(
-  object,
-  limits = NULL,
-  increment = NULL,
-  increment_from = NULL,
-  positions = NULL,
-  ...
-)
+set_yaxis(object, limits = NULL, increment = NULL, increment_from = NULL, ...)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`

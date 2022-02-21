@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^docs$
+^doc$
 ^LICENSE.md$
 ^_pkgdown.yml$
 ^pkgdown$

@@ -2,9 +2,12 @@
 % Please edit documentation in R/add_title_caption.R
 \name{add_title}
 \alias{add_title}
+\alias{add_caption}
 \title{Add title and caption to an scplot}
 \usage{
 add_title(object, label, ...)
+
+add_caption(object, label, ...)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`

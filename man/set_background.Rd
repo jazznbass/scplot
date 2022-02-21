@@ -7,7 +7,7 @@
 \usage{
 set_background(object, ...)
 
-set_panel(object, alpha = NULL, ...)
+set_panel(object, ...)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`

@@ -1,5 +1,6 @@
 #' Add title and caption to an scplot
 #'
+#'
 #' @inheritParams .inherit_scplot
 #' @export
 add_title <- function(object, label, ...) {
@@ -14,7 +15,7 @@ add_title <- function(object, label, ...) {
   object
 }
 
-#' @rdname add_titel
+#' @rdname add_title
 #' @export
 add_caption <- function(object, label, ...) {
 

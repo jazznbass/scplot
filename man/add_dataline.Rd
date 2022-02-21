@@ -14,6 +14,19 @@ set_dataline(object, variable, color, width, linetype, dots, shape, size)
 function.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
+
+\item{color}{A character string or a number defining the color of an element.}
+
+\item{width}{A number defining the width of the line.}
+
+\item{linetype}{A character string with the line type: "solid", "dashed",
+"dotted"}
+
+\item{dots}{Color if datapoints. If set NULL, no points are plotted.}
+
+\item{shape}{Number. See pch graphical parameter on par help page.}
+
+\item{size}{Text size relative to the base text size.}
 }
 \description{
 Set and add datalines of an scplot

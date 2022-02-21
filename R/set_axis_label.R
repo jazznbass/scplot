@@ -2,7 +2,6 @@
 #'
 #' @inheritParams .inherit_scplot
 #'
-#' @return
 #' @export
 set_xlabel <- function(object, label = NULL, ...) {
 

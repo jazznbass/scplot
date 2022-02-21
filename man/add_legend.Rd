@@ -20,8 +20,18 @@ add_legend(
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
 function.}
 
+\item{labels}{A Character vector with text labels.}
+
 \item{case}{Numerical vector with the case number or character string "all"
 for all cases.}
+
+\item{position}{The position ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
+
+\item{datalines}{If TRUE, a legend for the datalines is generated.}
+
+\item{statlines}{If TRUE, a legend for the statlines is generated.}
+
+\item{title}{A list with text style parameters for the title.}
 
 \item{text}{A list with text styling arguments (color, size, face, family,
 hjust, vjust, lineheight, angle).}

@@ -29,6 +29,16 @@ for all cases.}
 \item{x}{x position}
 
 \item{y}{y position}
+
+\item{color}{A character string or a number defining the color of an element.}
+
+\item{size}{Text size relative to the base text size.}
+
+\item{angle}{Angle (in [0,360])}
+
+\item{hjust}{Horizontal justification (in [0,1])}
+
+\item{vjust}{Vertical justification (in [0,1])}
 }
 \description{
 Add test to an scplot

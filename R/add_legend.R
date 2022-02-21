@@ -1,6 +1,10 @@
 #' Add a legend to an scplot
 #'
 #' @inheritParams .inherit_scplot
+#' @param position The position ("none", "left", "right", "bottom", "top", or two-element numeric vector)
+#' @param datalines If TRUE, a legend for the datalines is generated.
+#' @param statlines If TRUE, a legend for the statlines is generated.
+#' @param title A list with text style parameters for the title.
 #' @export
 add_legend <- function(object,
                        labels = ".default",

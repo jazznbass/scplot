@@ -10,6 +10,8 @@ add_ridge(object, color = "grey98", variable = ".dvar")
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
 function.}
 
+\item{color}{A character string or a number defining the color of an element.}
+
 \item{variable}{Name of the dataline variable to apply the style.}
 }
 \description{

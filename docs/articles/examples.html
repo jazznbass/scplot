@@ -213,7 +213,7 @@
   <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">2</span>, positions <span class="op">=</span> <span class="st">'phase == "B"'</span>, color <span class="op">=</span> <span class="st">"green"</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">3</span>, positions <span class="op">=</span> <span class="st">"values &gt; quantile(values, probs = 0.80)"</span>, color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">7</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="st">"all"</span>, positions <span class="op">=</span> <span class="st">"values &lt; quantile(values, probs = 0.20)"</span>, color <span class="op">=</span> <span class="st">"yellow"</span>, size <span class="op">=</span> <span class="fl">7</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">add_caption</span><span class="op">(</span><span class="st">"Note.
+  <span class="fu"><a href="../reference/add_title.html">add_caption</a></span><span class="op">(</span><span class="st">"Note.
 red: mt &gt; 15 in case 1; 
 green: phase 'B' in case 2; 
 blue: values &gt; 80% quantile of case 3; 
@@ -344,7 +344,7 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_decreasing</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_title</a></span><span class="op">(</span><span class="st">"A new plot"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, size <span class="op">=</span> <span class="fl">1.3</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">add_caption</span><span class="op">(</span><span class="st">"Note. What a nice plot!"</span>, face <span class="op">=</span> <span class="st">"italic"</span>, colour <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/add_title.html">add_caption</a></span><span class="op">(</span><span class="st">"Note. What a nice plot!"</span>, face <span class="op">=</span> <span class="st">"italic"</span>, colour <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-26-1.png" width="700"></p>
 </div>
 <div id="add-a-legend" class="section level2">
@@ -434,7 +434,7 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
                  hjust <span class="op">=</span> <span class="fl">0</span>, vjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_title</a></span><span class="op">(</span><span class="st">"Effect of a speedlimit on the A24"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">add_caption</span><span class="op">(</span><span class="st">"Note: Moving mean calculated with lag two."</span>, face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_title.html">add_caption</a></span><span class="op">(</span><span class="st">"Note: Moving mean calculated with lag two."</span>, face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_ridge.html">add_ridge</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-35-1.png" width="700"></p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
@@ -462,7 +462,7 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
   <span class="fu"><a href="../reference/set_xlabel.html">set_ylabel</a></span><span class="op">(</span><span class="st">"Points"</span>, color <span class="op">=</span> <span class="st">"sienna3"</span>, angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_xlabel.html">set_xlabel</a></span><span class="op">(</span><span class="st">"Weeks"</span>, size <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_title</a></span><span class="op">(</span><span class="st">"Points by week"</span>, color <span class="op">=</span> <span class="st">"sienna4"</span>, face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">add_caption</span><span class="op">(</span><span class="st">"Note: An extensive Example."</span>,
+  <span class="fu"><a href="../reference/add_title.html">add_caption</a></span><span class="op">(</span><span class="st">"Note: An extensive Example."</span>,
               color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">1</span>, face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_phasenames.html">set_phasenames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Baseline"</span>, <span class="st">"Intervention"</span>, <span class="st">"Fall-Back"</span>, <span class="st">"Intervention_2"</span><span class="op">)</span>, 
                  size <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span>

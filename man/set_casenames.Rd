@@ -4,16 +4,20 @@
 \alias{set_casenames}
 \title{Set casenames of an scplot}
 \usage{
-set_casenames(object, labels = NULL, position = NULL, ..., background = list())
+set_casenames(object, labels = NULL, position = NULL, background = list(), ...)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
 function.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{labels}{A Character vector with text labels.}
+
+\item{position}{Either "strip", "topleft", "bottomleft", "topright", "bottomright", or a numerical vector of length 2 with the x and y position (e.g. c(19, 20)).}
 
 \item{background}{A list with background styling arguments (fill, color, size,
 linetype).}
+
+\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Set casenames of an scplot

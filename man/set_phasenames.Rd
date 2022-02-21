@@ -10,6 +10,10 @@ set_phasenames(object, labels = NULL, position = NULL, ...)
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
 function.}
 
+\item{labels}{A Character vector with text labels.}
+
+\item{position}{Character string either 'left' or 'center'.}
+
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{

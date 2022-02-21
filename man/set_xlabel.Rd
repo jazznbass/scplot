@@ -17,9 +17,6 @@ function.}
 
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
-\value{
-
-}
 \description{
 Set label for axis
 }

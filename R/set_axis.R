@@ -13,7 +13,7 @@ set_xaxis <- function(object,
                       limits = NULL,
                       increment = NULL,
                       increment_from = NULL,
-                      positions = NULL, ...) {
+                      ...) {
 
 
   args <- list(...)
@@ -21,8 +21,6 @@ set_xaxis <- function(object,
   if (!is.null(limits)) object$xaxis$lim <- limits
   if (!is.null(increment)) object$xaxis$inc <- increment
   if (!is.null(increment_from)) object$xaxis$inc_from <- increment_from
-  if (!is.null(positions)) object$xaxis$pos <- positions
-
   if (!is.null(args$size)) args$size <- rel(args$size)
 
   object$theme$axis.text.x <- .merge_element(args, object$theme$axis.text.x)
@@ -36,7 +34,6 @@ set_yaxis <- function(object,
                       limits = NULL,
                       increment = NULL,
                       increment_from = NULL,
-                      positions = NULL,
                       ...) {
 
   args <- list(...)
@@ -44,8 +41,6 @@ set_yaxis <- function(object,
   if (!is.null(limits)) object$yaxis$lim <- limits
   if (!is.null(increment)) object$yaxis$inc <- increment
   if (!is.null(increment_from)) object$yaxis$inc_from <- increment_from
-  if (!is.null(positions)) object$yaxis$pos <- positions
-
   if (!is.null(args$size)) args$size <- rel(args$size)
 
   object$theme$axis.text.y <- .merge_element(args, object$theme$axis.text.y)

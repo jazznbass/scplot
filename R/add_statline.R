@@ -8,11 +8,6 @@
 #'   "movingMean", "movingMedian", "loreg".
 #' @param phase Either a numeric or a character vector specifying the reference
 #'   phase (see details)
-#' @param width A number defining the line width
-#' @param color A character string or a number defining the color of an element.
-#' @param width A number deifning the width of the line.
-#' @param linetype A character string with the line type: "solid", "dashed",
-#'   "dotted"
 #' @param ... additional parameters passed to the statistical function.
 #' @details The 'phase' argument defines the reference phase for some
 #'   statistiscal functions ("median", "mean", "min", "max", "quantile").

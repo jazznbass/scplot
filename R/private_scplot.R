@@ -27,7 +27,7 @@
 
 .merge_element <- function(new, old) {
 
-  if (class(new) == "list") {
+  if ("list" %in% class(new)) {
     new <- do.call(class(old)[1], new)
   }
 

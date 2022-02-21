@@ -24,6 +24,10 @@ for all cases.}
 \item{positions}{Either a vector indicating the dots to be highlighted or a
 character string with a logical expression (e.g. values < mean(values))}
 
+\item{color}{A character string or a number defining the color of an element.}
+
+\item{size}{Text size relative to the base text size.}
+
 \item{shape}{Number. See pch graphical parameter on par help page.}
 
 \item{variable}{Name of the dataline variable to apply the style.}

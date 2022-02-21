@@ -30,7 +30,7 @@ phase (see details)}
 
 \item{color}{A character string or a number defining the color of an element.}
 
-\item{width}{A number deifning the width of the line.}
+\item{width}{A number defining the width of the line.}
 
 \item{linetype}{A character string with the line type: "solid", "dashed",
 "dotted"}

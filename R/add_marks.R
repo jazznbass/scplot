@@ -3,7 +3,6 @@
 #' @inheritParams .inherit_scplot
 #' @param positions Either a vector indicating the dots to be highlighted or a
 #' character string with a logical expression (e.g. values < mean(values))
-#' @param shape Number. See pch graphical parameter on par help page.
 #' @export
 add_marks <- function(object,
                       case = 1,

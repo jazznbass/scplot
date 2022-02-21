@@ -4,15 +4,49 @@
 \alias{.inherit_scplot}
 \title{Dummy function to inherit global descriptions of parameters}
 \usage{
-.inherit_scplot(...)
+.inherit_scplot(
+  object,
+  label,
+  labels,
+  color,
+  size,
+  hjust,
+  vjust,
+  angle,
+  width,
+  linetype,
+  shape,
+  text,
+  background,
+  case,
+  variable,
+  ...
+)
 }
 \arguments{
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
-
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
 function.}
 
 \item{label}{A Character vector with text labels.}
+
+\item{labels}{A Character vector with text labels.}
+
+\item{color}{A character string or a number defining the color of an element.}
+
+\item{size}{Text size relative to the base text size.}
+
+\item{hjust}{Horizontal justification (in [0,1])}
+
+\item{vjust}{Vertical justification (in [0,1])}
+
+\item{angle}{Angle (in [0,360])}
+
+\item{width}{A number defining the width of the line.}
+
+\item{linetype}{A character string with the line type: "solid", "dashed",
+"dotted"}
+
+\item{shape}{Number. See pch graphical parameter on par help page.}
 
 \item{text}{A list with text styling arguments (color, size, face, family,
 hjust, vjust, lineheight, angle).}
@@ -24,6 +58,8 @@ linetype).}
 for all cases.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
+
+\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Dummy function to inherit global descriptions of parameters

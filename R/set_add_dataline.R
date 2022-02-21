@@ -1,6 +1,7 @@
 #' Set and add datalines of an scplot
 #'
 #' @inheritParams .inherit_scplot
+#' @param dots Color if datapoints. If set NULL, no points are plotted.
 #' @export
 add_dataline <- function(object,
                          variable,
