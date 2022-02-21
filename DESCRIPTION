@@ -1,8 +1,8 @@
 Package: scplot
 Type: Package
 Title: Single-case plots for scan
-Version: 0.1.1
-Date: 2021-11-03
+Version: 0.2
+Date: 2022-2-21
 Authors@R:
     person("Juergen", "Wilbert", 
     email = "juergen.wilbert@uni-potsdam.de", 
@@ -11,7 +11,6 @@ Authors@R:
 Description: An add on package for the scan package that provides ggplot2 based 
     plots of single-case data frames (scdf).
 Imports: 
-  dplyr,
   stats,
   utils
 Depends: 

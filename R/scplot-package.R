@@ -8,7 +8,6 @@
 #' @keywords package
 #' @import scan
 #' @import ggplot2
-#' @importFrom dplyr summarise full_join group_by filter
 #' @import stats
 #' @import utils
 NULL

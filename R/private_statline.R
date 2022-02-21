@@ -2,10 +2,13 @@
 .statline_each <- function(data, line, fun, label) {
 
   dat_stat <- data %>%
-    group_by(case, phase) %>%
-    summarise(y = do.call(fun, c(list(values), line$args)))
+    split(~case + phase) %>%
+    lapply(function(x)
+      c(y = as.numeric(do.call(fun, c(list(x$values), line$args))))
+    ) %>%
+    .ungroup()
 
-  data <- full_join(data, dat_stat, by = c("case", "phase"))
+  data <- merge(data, dat_stat, by=c("case", "phase"), all = TRUE, sort = FALSE)
 
   .statline_geom_phase(data, line$line, label = label)
 }
@@ -24,12 +27,15 @@
   if (is.numeric(reference_phase))
     reference_phase <- levels(data$phase)[reference_phase]
 
-  dat_stat <- data %>%
-    filter(phase %in% reference_phase) %>%
-    group_by(case) %>%
-    summarise(y = do.call(fun, c(list(values), line$args)))
 
-  data <- full_join(data, dat_stat, by = c("case"))
+  dat_stat <- data[data$phase %in% reference_phase,] %>%
+    split(~case) %>%
+    lapply(function(x)
+      c(y = as.numeric(do.call(fun, c(list(x$values), line$args))))
+    ) %>%
+    .ungroup()
+
+  data <- merge(data, dat_stat, by = "case", all = TRUE, sort = FALSE)
 
   .statline_geom(data, line$line, label = label)
 }
@@ -41,11 +47,13 @@
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   dat_stat <- data %>%
-    group_by(case, phase) %>%
-    summarise(
-      int = coef(lm(values ~ mt))[1],
-      b = coef(lm(values ~ mt))[2]
+    split(~case + phase) %>%
+    lapply(function(x) c(
+      int = as.numeric(coef(lm(x$values~x$mt))[1]),
+      b = as.numeric(coef(lm(x$values~x$mt))[2])
     )
+    ) %>%
+    .ungroup()
 
   data$y <- NA
 
@@ -71,11 +79,17 @@
   reference_phase <- levels(data$phase)[reference_phase]
 
   dat_stat <- data %>%
-    group_by(case) %>%
-    summarise(
-      int = coef(lm(values ~ mt, subset = phase %in% reference_phase))[1],
-      b = coef(lm(values ~ mt, subset = phase %in% reference_phase))[2]
-    )
+    split(~case) %>%
+    lapply(function(x) c(
+        int = as.numeric(
+          coef(lm(x$values~x$mt, subset= x$phase %in% reference_phase))[1]
+        ),
+        b = as.numeric(
+          coef(lm(x$values~x$mt, subset=x$phase %in% reference_phase))[2]
+        )
+      )
+    ) %>%
+    .ungroup()
 
   data$y <- NA
 
@@ -132,7 +146,6 @@
 
 }
 
-
 .moving_average <- function(x, xlag, fun) {
   if (length(x) < xlag * 2 + 1) {
     warning("Too few datapoints to calculate with lag ", xlag)
@@ -143,6 +156,8 @@
 
   x
 }
+
+# geom_functions --------
 
 .statline_geom <- function(data, line, label) {
 
@@ -177,3 +192,11 @@
 
 }
 
+.ungroup <- function(data, groups = c("case", "phase")) {
+  data <- do.call("rbind", data)
+  df <- do.call("rbind", strsplit(row.names(data), ".", fixed = "TRUE"))
+  colnames(df) <- groups[1:ncol(df)]
+  out <- cbind(as.data.frame(df), data)
+  row.names(out) <- 1:nrow(out)
+  out
+}
