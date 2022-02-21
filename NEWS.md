@@ -1,11 +1,11 @@
-# 0.2
+# scplot 0.2
 
 - replaced all dplyr functions with base R functions.
 - each scplot function is now in a separate file.
 
-# 0.1.0 
+# scplot 0.1.0 
 
-### New experimental function for ploting
+## New experimental function for ploting
 
 The new `scplot()` function is here! It allows for a more tidy coding and the use of `%>%` (or `|>`) operators. `scplot` is in an experimental state and code with
 current syntax might not work in  a later version due to changes in function and argument names. Still, `scplot()` works in many cases.

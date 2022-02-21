@@ -81,7 +81,7 @@ single-cases." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2</span>
       </span>
     </div>
 
@@ -137,273 +137,20 @@ single-cases." />
 single-cases.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scplot</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
-
-<span class='fu'>set_xlabel</span><span class='op'>(</span><span class='va'>object</span>, label <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>set_ylabel</span><span class='op'>(</span><span class='va'>object</span>, label <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>set_xaxis</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  limits <span class='op'>=</span> <span class='cn'>NULL</span>,
-  increment <span class='op'>=</span> <span class='cn'>NULL</span>,
-  increment_from <span class='op'>=</span> <span class='cn'>NULL</span>,
-  positions <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span>
-
-<span class='fu'>set_yaxis</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  limits <span class='op'>=</span> <span class='cn'>NULL</span>,
-  increment <span class='op'>=</span> <span class='cn'>NULL</span>,
-  increment_from <span class='op'>=</span> <span class='cn'>NULL</span>,
-  positions <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span>
-
-<span class='fu'>add_title</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>label</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>add_caption</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>label</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>set_casenames</span><span class='op'>(</span><span class='va'>object</span>, labels <span class='op'>=</span> <span class='cn'>NULL</span>, position <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, background <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>set_phasenames</span><span class='op'>(</span><span class='va'>object</span>, labels <span class='op'>=</span> <span class='cn'>NULL</span>, position <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>set_seperator</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>add_grid</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>set_base_text</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>add_labels</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  nudge_y <span class='op'>=</span> <span class='fl'>5</span>,
-  nudge_x <span class='op'>=</span> <span class='fl'>0</span>,
-  round <span class='op'>=</span> <span class='cn'>NULL</span>,
-  text <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
-  background <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
-  variable <span class='op'>=</span> <span class='st'>".dvar"</span>,
-  padding <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span>
-
-<span class='fu'>add_dataline</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>variable</span>, <span class='va'>color</span>, <span class='va'>width</span>, <span class='va'>linetype</span>, <span class='va'>dots</span>, <span class='va'>shape</span>, <span class='va'>size</span><span class='op'>)</span>
-
-<span class='fu'>set_dataline</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>variable</span>, <span class='va'>color</span>, <span class='va'>width</span>, <span class='va'>linetype</span>, <span class='va'>dots</span>, <span class='va'>shape</span>, <span class='va'>size</span><span class='op'>)</span>
-
-<span class='fu'>add_statline</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  <span class='va'>stat</span>,
-  phase <span class='op'>=</span> <span class='cn'>NULL</span>,
-  color <span class='op'>=</span> <span class='cn'>NULL</span>,
-  width <span class='op'>=</span> <span class='cn'>NULL</span>,
-  linetype <span class='op'>=</span> <span class='cn'>NULL</span>,
-  variable <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span>
-
-<span class='fu'>set_background</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>set_panel</span><span class='op'>(</span><span class='va'>object</span>, alpha <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>add_theme</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>theme</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>add_marks</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  case <span class='op'>=</span> <span class='fl'>1</span>,
-  <span class='va'>positions</span>,
-  color <span class='op'>=</span> <span class='st'>"red"</span>,
-  size <span class='op'>=</span> <span class='fl'>1</span>,
-  shape <span class='op'>=</span> <span class='fl'>1</span>,
-  variable <span class='op'>=</span> <span class='st'>".dvar"</span>
-<span class='op'>)</span>
-
-<span class='fu'>add_text</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>label</span>, case <span class='op'>=</span> <span class='fl'>1</span>, <span class='va'>x</span>, <span class='va'>y</span>, color <span class='op'>=</span> <span class='st'>"black"</span>, size <span class='op'>=</span> <span class='fl'>2</span>, angle <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
-
-<span class='fu'>add_arrow</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  case <span class='op'>=</span> <span class='fl'>1</span>,
-  <span class='va'>x0</span>,
-  <span class='va'>y0</span>,
-  <span class='va'>x1</span>,
-  <span class='va'>y1</span>,
-  color <span class='op'>=</span> <span class='st'>"black"</span>,
-  angle <span class='op'>=</span> <span class='fl'>30</span>,
-  length <span class='op'>=</span> <span class='fu'>unit</span><span class='op'>(</span><span class='fl'>5</span>, <span class='st'>"points"</span><span class='op'>)</span>,
-  ends <span class='op'>=</span> <span class='st'>"last"</span>,
-  type <span class='op'>=</span> <span class='st'>"open"</span>
-<span class='op'>)</span>
-
-<span class='fu'>set_theme_element</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>add_ridge</span><span class='op'>(</span><span class='va'>object</span>, color <span class='op'>=</span> <span class='st'>"grey98"</span>, variable <span class='op'>=</span> <span class='st'>".dvar"</span><span class='op'>)</span>
-
-<span class='fu'>add_legend</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  labels <span class='op'>=</span> <span class='st'>".default"</span>,
-  case <span class='op'>=</span> <span class='fl'>1</span>,
-  position <span class='op'>=</span> <span class='st'>"right"</span>,
-  datalines <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  statlines <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  title <span class='op'>=</span> <span class='cn'>NULL</span>,
-  text <span class='op'>=</span> <span class='cn'>NULL</span>,
-  background <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>scplot</span><span class='op'>(</span><span class='va'>scdf</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
+      <th>scdf</th>
       <td><p>A single-case data-frame object (scdf).</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>An scplot object returned from the `scplot()` function.</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>A Character vector with text labels.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>various style parameter</p></td>
-    </tr>
-    <tr>
-      <th>limits</th>
-      <td><p>Lower and upper limits of the axis (e.g., <code>limits = c(0,
-20)</code> sets the axis to a scale from 0 to 20). With multiple single-cases
-you can use <code>limits = c(0, NA)</code> to scale the axis from 0 to the maximum
-of each case. <code>limits</code> is not set by default, which makes <code>scan</code> set
-a proper scale based on the given data.</p></td>
-    </tr>
-    <tr>
-      <th>increment</th>
-      <td><p>An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.</p></td>
-    </tr>
-    <tr>
-      <th>increment_from</th>
-      <td><p>Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...</p></td>
-    </tr>
-    <tr>
-      <th>positions</th>
-      <td><p>Either a vector indicating the dots to be highlighted or a
-character string with a logical expression (e.g. values &lt; mean(values))</p></td>
-    </tr>
-    <tr>
-      <th>background</th>
-      <td><p>A list with background styling arguments (fill, color, size, linetype).</p></td>
-    </tr>
-    <tr>
-      <th>nudge_y</th>
-      <td><p>Offset on the y-axis.</p></td>
-    </tr>
-    <tr>
-      <th>nudge_x</th>
-      <td><p>Offset on the x-axis.</p></td>
-    </tr>
-    <tr>
-      <th>round</th>
-      <td><p>Number of digits of the labels.</p></td>
-    </tr>
-    <tr>
-      <th>text</th>
-      <td><p>A list with text styling arguments (color, size, face, family, hjust, vjust, lineheight, angle).</p></td>
-    </tr>
-    <tr>
-      <th>variable</th>
-      <td><p>Name of the dataline variable to apply the style.</p></td>
-    </tr>
-    <tr>
-      <th>padding</th>
-      <td><p>Padding size around text.</p></td>
-    </tr>
-    <tr>
-      <th>color</th>
-      <td><p>A character string or a number defining the color of an element.</p></td>
-    </tr>
-    <tr>
-      <th>width</th>
-      <td><p>A number deifning the width of the line.</p></td>
-    </tr>
-    <tr>
-      <th>linetype</th>
-      <td><p>A character string with the line type: "solid", "dashed", "dotted"</p></td>
-    </tr>
-    <tr>
-      <th>shape</th>
-      <td><p>Number. See pch graphical parameter on par help page.</p></td>
-    </tr>
-    <tr>
-      <th>stat</th>
-      <td><p>A character string for defining a statistical line or curve to
-be plotted. Possible values: "median", "mean", "min", "max", "quantile",
-"trend", "trendA",
-"trendA_bisplit", "trendA_trisplit",
-"movingMean", "movingMedian", "loreg".</p></td>
-    </tr>
-    <tr>
-      <th>phase</th>
-      <td><p>Either a numeric or a character vector specifying the reference phase (see details)</p></td>
-    </tr>
-    <tr>
-      <th>theme</th>
-      <td><p>A character string with a predefined graphical theme.
-Possible values: default, yaxis, tiny, small, big, chart, ridge,
-annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade</p></td>
-    </tr>
-    <tr>
-      <th>case</th>
-      <td><p>Numerical vector with the csae number or character string "all" for all cases.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>x position</p></td>
-    </tr>
-    <tr>
-      <th>y</th>
-      <td><p>y position</p></td>
-    </tr>
-    <tr>
-      <th>x0</th>
-      <td><p>Origin x position of the line.</p></td>
-    </tr>
-    <tr>
-      <th>y0</th>
-      <td><p>Origin y position of the line.</p></td>
-    </tr>
-    <tr>
-      <th>x1</th>
-      <td><p>End x position of the line.</p></td>
-    </tr>
-    <tr>
-      <th>y1</th>
-      <td><p>End y position of the line.</p></td>
-    </tr>
-    <tr>
-      <th>length</th>
-      <td><p>Size of the aroow angels.</p></td>
-    </tr>
-    <tr>
-      <th>orientation</th>
-      <td><p>of the label: 0 = vertical; 1 = horizontal</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An scplot object that creates a ggplot2 plot when printed.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The 'phase' argument defines the reference phase for some statistiscal functions ("median", "mean", "min", "max", "quantile"). The default is NULL which calculates and plots statistics for each phase seperately. The arguments takes a numeric vector (phase number(s)) or a character vector (phase name(s)). When more than one phase is defines, statistics are based on the combined values of these phases.
-Some of the functions defined in 'stats' have additional arguments.
-The 'mean' function has a trim argument (e.g. 'trim = 0.1').
-'quantile has a proportion argument (e.g. prob = 0.75 for calculating
-the 75<!-- % quantile). -->
-'movingMean' and 'movingMedian' have a lag argument (e.g. lag = 2).
-The local-regression curve function 'lowess' (or 'loreg') has a proportion
-argument (e.g. f = 0.5) and the
-local-regression curve function 'loess' has a span argument
-(e.g. span = 0.75).</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Juergen Wilbert</p>
