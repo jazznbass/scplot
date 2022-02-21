@@ -1,3 +1,8 @@
+# 0.2
+
+- replaced all dplyr functions with base R functions.
+- each scplot function is now in a separate file.
+
 # 0.1.0 
 
 ### New experimental function for ploting
@@ -35,7 +40,7 @@ scplot(exampleABAB) %>%
   add_ridge("white") %>%
   set_casenames("MY", "FUNNY", "VALENTINE", colour = "steelblue4", size = 0.6) %>%
   add_box("sienna1", width = 2) %>%
-  set_seperator(extent = 0.9, width = 0.5, type = "solid", colour = "sienna")
+  set_separator(extent = 0.9, width = 0.5, type = "solid", colour = "sienna")
 ```
 
 
