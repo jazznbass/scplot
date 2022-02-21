@@ -104,24 +104,24 @@ scplot(exampleABC) %>%
 
 `mean` : `trim`  
 `quantile`: `probs`  
-`movingMean`, `movingMedian`: `lack`  
+`movingMean`, `movingMedian`: `lag`  
 `loess`: `span`  
 `lowess`: `f`  
 
 ```{r}
 scplot(exampleABC) %>%
-  add_statline("movingMean", lack = 1, color = "darkblue") %>%
+  add_statline("movingMean", lag = 1, color = "darkblue") %>%
   add_statline("quantile", probs = 0.75, color = "darkred")
 ```
 
 ### Specify data-line
 
-If you do not specify thew argument `variable` the default first data-line is addressed.
+If you do not specify the `variable` argument the default first data-line is addressed.
 
 ```{r}
 scplot(exampleAB_add) %>%
-  add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_dataline("cigarrets", color = "darkblue", size = 1) %>%
+  add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_statline("trend", linetype = "dashed")
 ```
 
@@ -129,11 +129,15 @@ scplot(exampleAB_add) %>%
 
 ### Add marks
 
+The positions argument can take a numeric vector:
+
 ```{r}
 scplot(exampleABC) %>%
   add_marks(case = 1, positions = c(7, 12)) %>%
   add_marks(case = 3, positions = c(3, 17), color = "blue", size = 7)
 ```
+
+The positions argument can also be a string containing a logical expression. This will be evaluated and the respective positions will be marked.
 
 ```{r}
 scplot(exampleABC) %>%
@@ -146,6 +150,14 @@ red: mt > 15 in case 1;
 green: phase 'B' in case 2; 
 blue: values > 80% quantile of case 3; 
 yellow: values < 20% quantile of all cases")
+```
+
+And the positions argument can take the results from a scan outlier analyses and mark the positions of the outliers of each case:
+
+
+```{r}
+scplot(exampleABC_outlier) %>% 
+  add_marks(positions = outlier(exampleABC_outlier), size = 3)
 ```
 
 ### Add text
@@ -163,7 +175,7 @@ scplot(exampleABC) %>%
   add_text("Problem", case = 1, x = 6, y = 94, color = "red", size = 1, hjust = 0 ) 
 ```
 
-## Change appearance
+## Change appearance of basic plot elements
 
 ### Data line
 
@@ -185,19 +197,21 @@ scplot(exampleABC) %>%
 
 ```{r}
 scplot(exampleABC) %>%
-  set_panel(fill = "grey90", color = "black", size = 2)
+  set_panel(fill = "tan1", color = "palevioletred", size = 2)
 ```
 
-### Different panel color for each phase
+### A different panel color for each phase
+
+Note: The colors are 50% transparent. So they might appear different.
 
 ```{r}
 scplot(exampleABC) %>%
   set_panel(fill = c("grey80", "white", "blue4"))
 ```
 
-
-
 ## Themes
+
+Themes are complete styles that define various elements of a plot.
 
 Function `add_theme("theme_name")`
 
@@ -208,34 +222,34 @@ themes <- paste0("`", names(scplot:::.scplot_themes), "`")
 cat(paste0(themes, collapse = ", "))
 ```
 
-### default
+### The 'default' theme
 
 ```{r}
 scplot(exampleABC)
 ```
 
-### basic
+### Theme 'basic'
 
 ```{r}
 scplot(exampleABC) %>%
   add_theme("basic")
 ```
 
-### minimal
+### Theme 'minimal'
 
 ```{r}
 scplot(exampleABC) %>%
   add_theme("minimal")
 ```
 
-### dark
+### Theme 'dark'
 
 ```{r}
 scplot(exampleABC) %>%
   add_theme("dark")
 ```
 
-### sienna
+### Theme 'sienna'
 
 ```{r}
 scplot(exampleABC) %>%
@@ -244,14 +258,24 @@ scplot(exampleABC) %>%
 
 ### Combine themes
 
+When providing multiple themes the order is important as the latter overwrites styles of the former.
+
 ```{r}
 scplot(exampleABC) %>%
   add_theme("sienna", "minimal", "small")
 ```
 
+is different from
+
+```{r}
+scplot(exampleABC) %>%
+  add_theme("small", "minimal", "sienna")
+```
+
+
 ### Set base text
 
-The base text size here is the absolute size. All other text sizes are relative to this base text size.
+The base text size is the absolute size. All other text sizes are relative to this base text size.
 
 ```{r}
 scplot(exampleAB_decreasing$Peter) %>%
@@ -289,6 +313,9 @@ scplot(exampleABC) %>%
 
 ## Customize axis settings
 
+When axis ticks are to close together set the increment argument to leave additional space (e.g. `increment = 2` will annotate every other value).
+When you set `increment_from = 0` an additional tick will be set at 1 although counting of the increments will start at 0.
+
 ```{r}
 scplot(exampleA1B1A2B2) %>% 
   set_xaxis(increment_from = 0, increment = 5, 
@@ -304,9 +331,7 @@ scplot(exampleA1B1A2B2) %>%
   set_xlabel("Session", color = "darkred")
 ```
 
-## Casenames
-
-Change casenanames:
+## Change Casenames
 
 ```{r}
 scplot(exampleA1B1A2B2) %>%
@@ -323,10 +348,20 @@ scplot(exampleA1B1A2B2) %>%
 
 ## Add value labels
 
+
 ```{r}
 scplot(exampleABC) %>% 
   add_labels(text = element_text(color = "black", size = 0.7), 
              background = element_rect(fill = "grey98"), nudge_y = 7)
+ 
+```
+
+If you set the `nudge_y` argument to 0, the label will be set on-top the datapoints:
+
+```{r}
+scplot(exampleABC) %>% 
+  add_labels(text = element_text(color = "black", size = 0.7), 
+             background = element_rect(fill = "grey98"), nudge_y = 0)
  
 ```
 
@@ -339,12 +374,14 @@ scplot(exampleAB_mpd) %>%
 
 ## Complexs examples
 
+Here are some more complex examples 
+
 ```{r}
 scplot(example_A24) %>% 
   add_theme("default") %>%
   add_statline("lowess", color = "darkred", width = 1.5) %>%
   add_statline("loess", color = "red", width = 1.5) %>%
-  add_statline("movingMean", color = "lightpink", width = 1.5) %>%
+  add_statline("movingMean", lag = 3, color = "lightpink", width = 1.5) %>%
   set_xaxis(size = 0.8, angle = 35) %>%
   set_dataline(size = 0) %>%
   add_legend(position = c(0.8, 0.75), background = list(color = "grey50")) %>%
@@ -352,7 +389,7 @@ scplot(example_A24) %>%
                  hjust = 0, vjust = 1) %>%
   set_casenames("") %>%
   add_title("Effect of a speedlimit on the A24") %>%
-  add_caption("Note: Moving mean calculated with lag two.", face = 3) %>%
+  add_caption("Note: Moving mean calculated with lag three", face = 3) %>%
   add_ridge(color = "lightblue")
   
 ```

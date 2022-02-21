@@ -135,15 +135,28 @@
     <p>Dummy function to inherit global descriptions of parameters</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.inherit_scplot</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.inherit_scplot</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>label</span>,
+  <span class='va'>labels</span>,
+  <span class='va'>color</span>,
+  <span class='va'>size</span>,
+  <span class='va'>hjust</span>,
+  <span class='va'>vjust</span>,
+  <span class='va'>angle</span>,
+  <span class='va'>width</span>,
+  <span class='va'>linetype</span>,
+  <span class='va'>shape</span>,
+  <span class='va'>text</span>,
+  <span class='va'>background</span>,
+  <span class='va'>case</span>,
+  <span class='va'>variable</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.</p></td>
-    </tr>
     <tr>
       <th>object</th>
       <td><p>An scplot object (class `scplot`) returned from the `scplot()`
@@ -208,6 +221,10 @@ for all cases.</p></td>
     <tr>
       <th>variable</th>
       <td><p>Name of the dataline variable to apply the style.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.</p></td>
     </tr>
     </table>
 
