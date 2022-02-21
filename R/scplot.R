@@ -2,15 +2,15 @@
 #'
 #' This function provides a plot of a single-case or multiple
 #' single-cases.
-#' @inheritParams .inheritParams
-#' @param data A single-case data-frame object (scdf).
+#' @inheritParams .inherit_scplot
+#' @param scdf A single-case data-frame object (scdf).
 #' @return An scplot object that creates a ggplot2 plot when printed.
 #' @author Juergen Wilbert
 #' @export
 
-scplot <- function(data) {
+scplot <- function(scdf) {
 
-  data <- scan:::.prepare_scdf(data)
+  scdf <- scan:::.prepare_scdf(scdf)
 
   theme <- .scplot_themes[["default"]]
 
@@ -25,10 +25,10 @@ scplot <- function(data) {
   )
 
   out <- list(
-    scdf = data,
-    dvar = scdf_attr(data, scan:::.opt$dv),
-    pvar = scdf_attr(data, scan:::.opt$phase),
-    mvar = scdf_attr(data, scan:::.opt$mt),
+    scdf = scdf,
+    dvar = scdf_attr(scdf, scan:::.opt$dv),
+    pvar = scdf_attr(scdf, scan:::.opt$phase),
+    mvar = scdf_attr(scdf, scan:::.opt$mt),
     datalines = list(default_line),
     statlines = NULL,
     ridges = NULL,
@@ -45,7 +45,7 @@ scplot <- function(data) {
     labels = list(),
     phasenames = list(labels = ".default"),
     legend = NULL,
-    casenames = list(labels = scan:::.case_names(names(data), length(data)))
+    casenames = list(labels = scan:::.case_names(names(scdf), length(scdf)))
   )
 
   class(out) <- "scplot"

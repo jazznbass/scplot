@@ -1,0 +1,49 @@
+#' Add a legend to an scplot
+#'
+#' @inheritParams .inherit_scplot
+#' @export
+add_legend <- function(object,
+                       labels = ".default",
+                       case = 1,
+                       position = "right",
+                       datalines = TRUE,
+                       statlines = TRUE,
+                       title = NULL,
+                       text = NULL,
+                       background = NULL
+                       #title.label = "Lines"
+) {
+
+  object$legend$labels <- labels
+  object$legend$statlines <- statlines
+  object$legend$datalines <- datalines
+
+  object$theme$legend.title <-
+    .merge_element(title, object$theme$legend.title)
+
+  object$theme$legend.text <-
+    .merge_element(text, object$theme$legend.text)
+
+  object$theme$legend.background <-
+    .merge_element(background, object$theme$legend.background)
+
+  object$theme$legend.position <- position
+
+  object
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
