@@ -19,9 +19,7 @@
   dataline.width = 0.5,
   dataline.linetype = "solid",
 
-  datadots.col = "black",
-  datadots.shape = 16,
-  datadots.size = 2,
+  datapoint = element_point(colour = "black", shape = 16, size = 2),
 
   statline = element_line(color = "grey", size = 0.7, linetype = "solid"),
 
@@ -122,7 +120,7 @@
 
   panel.spacing.y = unit(1, "lines"),
   panel.background = element_blank(),
-  datadots.size = 1.5,
+  datapoint = element_point(size = 1.5),
 
   axis.ticks.length = unit(0, "points"),
   axis.ticks = element_blank(),
@@ -160,9 +158,10 @@
 
   separators = element_line(color = "gold", size = 0.3, linetype = "solid"),
 
+
   dataline.col = "#DDDDDD",
-  datadots.col = "#E94560",
-  datadots.shape = 17
+
+  datapoint = element_point(colour = "#E94560", shape = 17)
 )
 
 
@@ -182,8 +181,7 @@
 
   dataline.col = "darkolivegreen",
 
-  datadots.col = "seagreen4",
-  datadots.shape = 18,
+  datapoint = element_point(colour = "seagreen4", shape = 18),
 
   text = element_text(family = "serif")
 

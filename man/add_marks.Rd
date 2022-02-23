@@ -21,7 +21,7 @@ function.}
 \item{case}{Numerical vector with the case number or character string "all"
 for all cases.}
 
-\item{positions}{Either a vector indicating the dots to be highlighted or a
+\item{positions}{Either a vector indicating the points to be highlighted or a
 character string with a logical expression (e.g. values < mean(values))}
 
 \item{color}{A character string or a number defining the color of an element.}

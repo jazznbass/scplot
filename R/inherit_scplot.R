@@ -20,5 +20,6 @@
 #' @param case Numerical vector with the case number or character string "all"
 #'   for all cases.
 #' @param variable Name of the dataline variable to apply the style.
+#' @param point A list (class element_point) with datapoint attributes: colour, shape, size.
 #' @param ... Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.
-.inherit_scplot <- function(object,label, labels, color, size, hjust, vjust, angle, width, linetype, shape, text, background, case, variable, ...) {}
+.inherit_scplot <- function(object,label, labels, color, size, hjust, vjust, angle, width, linetype, shape, text, background, case, variable, point, ...) {}

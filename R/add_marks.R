@@ -1,7 +1,7 @@
 #' Add marks to an scplot
 #'
 #' @inheritParams .inherit_scplot
-#' @param positions Either a vector indicating the dots to be highlighted or a
+#' @param positions Either a vector indicating the points to be highlighted or a
 #' character string with a logical expression (e.g. values < mean(values))
 #' @export
 add_marks <- function(object,

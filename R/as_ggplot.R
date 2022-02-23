@@ -65,14 +65,9 @@ as_ggplot <- function(scplot) {
   if (is.null(object$datalines[[1]]$linetype))
     object$datalines[[1]]$linetype <- theme$dataline.linetype
 
-  if (is.null(object$datalines[[1]]$dots))
-    object$datalines[[1]]$dots <- theme$datadots.col
+  if (is.null(object$datalines[[1]]$point))
+    object$datalines[[1]]$point <- theme$datapoint
 
-  if (is.null(object$datalines[[1]]$shape))
-    object$datalines[[1]]$shape <- theme$datadots.shape
-
-  if (is.null(object$datalines[[1]]$size))
-    object$datalines[[1]]$size <- theme$datadots.size
 
   # set x/y label --------
 
@@ -214,7 +209,7 @@ as_ggplot <- function(scplot) {
     }
   }
 
-  # add dataline and dots ---------------------------
+  # add dataline and points ---------------------------
 
   for (i in 1:length(object$datalines)) {
     p <- p + geom_line(
@@ -230,15 +225,14 @@ as_ggplot <- function(scplot) {
 
     # add datapoints
 
-    if (!is.null(object$datalines[[i]]$dots)) {
+    if (!is.null(object$datalines[[i]]$point)) {
       p <- p + geom_point(
         aes(y = !!sym(object$datalines[[i]]$variable)),
-        colour = object$datalines[[i]]$dots,
-        size = object$datalines[[i]]$size,
-        shape = object$datalines[[i]]$shape,
+        colour = object$datalines[[i]]$point$colour,
+        size = object$datalines[[i]]$point$size,
+        shape = object$datalines[[i]]$point$shape
       )
     }
-
 
   }
 

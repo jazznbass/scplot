@@ -1,34 +1,29 @@
 #' Set and add datalines of an scplot
 #'
 #' @inheritParams .inherit_scplot
-#' @param dots Color if datapoints. If set NULL, no points are plotted.
 #' @export
 add_dataline <- function(object,
                          variable,
                          color,
                          width,
                          linetype,
-                         dots,
-                         shape,
-                         size) {
+                         point) {
 
   object$dvar <- c(object$dvar, variable)
 
   if (missing(color)) color <- object$theme$dataline.col
   if (missing(width)) width <- object$theme$dataline.width
   if (missing(linetype)) linetype <- object$theme$dataline.linetype
-  if (missing(dots)) dots <- color
-  if (missing(shape)) shape <- object$theme$datadots.shape
-  if (missing(size)) size <- object$theme$datadots.size
+
+  point <- .merge_element(point, object$theme$datapoint)
+  if (is.null(point$color)) point$color <- color
 
   new_line <- list(
     variable = variable,
     col = color,
     width = width,
     linetype = linetype,
-    dots = dots,
-    shape = shape,
-    size = size
+    point = point
   )
 
   object$datalines <- c(object$datalines, list(new_line))
@@ -43,9 +38,7 @@ set_dataline <- function(object,
                          color,
                          width,
                          linetype,
-                         dots,
-                         shape,
-                         size) {
+                         point) {
 
   if (missing(variable)) variable <- ".dvar"
 
@@ -60,9 +53,12 @@ set_dataline <- function(object,
   if (!missing(color)) object$datalines[[id]]$col <- color
   if (!missing(width)) object$datalines[[id]]$width <- width
   if (!missing(linetype)) object$datalines[[id]]$linetype <- linetype
-  if (!missing(dots)) object$datalines[[id]]$dots <- dots
-  if (!missing(shape)) object$datalines[[id]]$shape <-shape
-  if (!missing(size)) object$datalines[[id]]$size <- size
+
+  point <- .merge_element(point, object$theme$datapoint)
+  if (is.null(point$color)) point$color <- object$datalines[[id]]$col
+  object$datalines[[id]]$point <- point
+
+
 
   object
 }

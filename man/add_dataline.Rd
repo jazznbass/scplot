@@ -5,9 +5,9 @@
 \alias{set_dataline}
 \title{Set and add datalines of an scplot}
 \usage{
-add_dataline(object, variable, color, width, linetype, dots, shape, size)
+add_dataline(object, variable, color, width, linetype, point)
 
-set_dataline(object, variable, color, width, linetype, dots, shape, size)
+set_dataline(object, variable, color, width, linetype, point)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
@@ -22,11 +22,7 @@ function.}
 \item{linetype}{A character string with the line type: "solid", "dashed",
 "dotted"}
 
-\item{dots}{Color if datapoints. If set NULL, no points are plotted.}
-
-\item{shape}{Number. See pch graphical parameter on par help page.}
-
-\item{size}{Text size relative to the base text size.}
+\item{point}{A list (class element_point) with datapoint attributes: colour, shape, size.}
 }
 \description{
 Set and add datalines of an scplot

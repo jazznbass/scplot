@@ -20,6 +20,7 @@
   background,
   case,
   variable,
+  point,
   ...
 )
 }
@@ -58,6 +59,8 @@ linetype).}
 for all cases.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
+
+\item{point}{A list (class element_point) with datapoint attributes: colour, shape, size.}
 
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }

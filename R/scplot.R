@@ -18,9 +18,7 @@ scplot <- function(scdf) {
     col = NULL,
     width = NULL,
     linetype = NULL,
-    dots = NULL,
-    shape = NULL,
-    size = NULL
+    point = NULL
   )
 
   out <- list(
