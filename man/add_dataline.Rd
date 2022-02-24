@@ -5,9 +5,17 @@
 \alias{set_dataline}
 \title{Set and add datalines of an scplot}
 \usage{
-add_dataline(object, variable, color, width, linetype, point)
+add_dataline(
+  object,
+  variable,
+  color,
+  width,
+  linetype,
+  point,
+  type = "continuous"
+)
 
-set_dataline(object, variable, color, width, linetype, point)
+set_dataline(object, variable, color, width, linetype, point, type)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`

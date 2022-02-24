@@ -212,20 +212,35 @@ as_ggplot <- function(scplot) {
   # add dataline and points ---------------------------
 
   for (i in 1:length(object$datalines)) {
-    p <- p + geom_line(
-      aes(
-        y = !!sym(object$datalines[[i]]$variable),
-        group = !!sym(pvar),
-        colour = !!object$datalines[[i]]$col
-      ),
-      #colour =  object$datalines[[i]]$col,
-      size = object$datalines[[i]]$width,
-      linetype = object$datalines[[i]]$linetype
-    )
+    if(object$datalines[[i]]$type == "continuous") {
+      p <- p + geom_line(
+        aes(
+          y = !!sym(object$datalines[[i]]$variable),
+          group = !!sym(pvar),
+          colour = !!object$datalines[[i]]$col
+        ),
+        size = object$datalines[[i]]$width,
+        linetype = object$datalines[[i]]$linetype
+      )
+    }
+
+    if(object$datalines[[i]]$type == "discrete") {
+      p <- p + geom_step(
+        aes(
+          y = !!sym(object$datalines[[i]]$variable),
+          group = !!sym(pvar),
+          colour = !!object$datalines[[i]]$col
+        ),
+        size = object$datalines[[i]]$width,
+        linetype = object$datalines[[i]]$linetype
+      )
+    }
+
 
     # add datapoints
 
-    if (!is.null(object$datalines[[i]]$point)) {
+    #if (!is.null(object$datalines[[i]]$point)) {
+    if (!identical(object$datalines[[i]]$point, "none")) {
       p <- p + geom_point(
         aes(y = !!sym(object$datalines[[i]]$variable)),
         colour = object$datalines[[i]]$point$colour,

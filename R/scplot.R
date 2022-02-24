@@ -18,7 +18,8 @@ scplot <- function(scdf) {
     col = NULL,
     width = NULL,
     linetype = NULL,
-    point = NULL
+    point = NULL,
+    type = "continuous"
   )
 
   out <- list(
