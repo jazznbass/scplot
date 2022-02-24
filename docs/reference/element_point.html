@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add marks to an scplot — add_marks • scplot</title>
+<title>Point element
+In conjunction with ggplot an object to represent point attributes. — element_point • scplot</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +47,10 @@
 
 
 
-<meta property="og:title" content="Add marks to an scplot — add_marks" />
-<meta property="og:description" content="Add marks to an scplot" />
+<meta property="og:title" content="Point element
+In conjunction with ggplot an object to represent point attributes. — element_point" />
+<meta property="og:description" content="Point element
+In conjunction with ggplot an object to represent point attributes." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -126,58 +129,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add marks to an scplot</h1>
+    <h1>Point element
+In conjunction with ggplot an object to represent point attributes.</h1>
     
-    <div class="hidden name"><code>add_marks.Rd</code></div>
+    <div class="hidden name"><code>element_point.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Add marks to an scplot</p>
+    <p>Point element
+In conjunction with ggplot an object to represent point attributes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_marks</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  case <span class='op'>=</span> <span class='fl'>1</span>,
-  <span class='va'>positions</span>,
-  color <span class='op'>=</span> <span class='st'>"red"</span>,
-  size <span class='op'>=</span> <span class='fl'>1</span>,
-  shape <span class='op'>=</span> <span class='fl'>1</span>,
-  variable <span class='op'>=</span> <span class='st'>".dvar"</span>
+    <pre class="usage"><span class='fu'>element_point</span><span class='op'>(</span>
+  colour <span class='op'>=</span> <span class='cn'>NULL</span>,
+  size <span class='op'>=</span> <span class='cn'>NULL</span>,
+  shape <span class='op'>=</span> <span class='cn'>NULL</span>,
+  color <span class='op'>=</span> <span class='cn'>NULL</span>,
+  inherit.blank <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>An scplot object (class `scplot`) returned from the `scplot()`
-function.</p></td>
-    </tr>
-    <tr>
-      <th>case</th>
-      <td><p>Numerical vector with the case number or character string "all"
-for all cases.</p></td>
-    </tr>
-    <tr>
-      <th>positions</th>
-      <td><p>Either a vector indicating the points to be highlighted or a
-character string with a logical expression (e.g. values &lt; mean(values))</p></td>
-    </tr>
-    <tr>
-      <th>color</th>
-      <td><p>A character string or a number defining the color of an element.</p></td>
+      <th>colour</th>
+      <td><p>Point colour.</p></td>
     </tr>
     <tr>
       <th>size</th>
-      <td><p>Text size relative to the base text size.</p></td>
+      <td><p>Relative size.</p></td>
     </tr>
     <tr>
       <th>shape</th>
-      <td><p>Number. See pch graphical parameter on par help page.</p></td>
+      <td><p>Point shape.</p></td>
     </tr>
     <tr>
-      <th>variable</th>
-      <td><p>Name of the dataline variable to apply the style.</p></td>
+      <th>color</th>
+      <td><p>Point colour.</p></td>
     </tr>
     </table>
 
