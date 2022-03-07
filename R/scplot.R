@@ -18,8 +18,8 @@ scplot <- function(scdf) {
     #col = NULL,
     #width = NULL,
     #linetype = NULL,
-    line = theme$dataline[[1]],
-    point = theme$datapoint[[1]],
+    line = NULL, #theme$dataline[[1]],
+    point = NULL, #theme$datapoint[[1]],
     type = "continuous"
   )
 

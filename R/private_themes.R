@@ -19,20 +19,20 @@
   dataline.linetype = "solid",
 
   dataline = list(
-    element_line(colour = "#000000", linetype = "solid", size = 0.5),
-    element_line(colour = "#0072B2", linetype = "solid", size = 0.5),
-    element_line(colour = "#D55E00", linetype = "solid", size = 0.5),
-    element_line(colour = "#009E73", linetype = "solid", size = 0.5),
-    element_line(colour = "#E69F00", linetype = "solid", size = 0.5)
+    "1" = element_line(colour = "#000000", linetype = "solid", size = 0.5),
+    "2" = element_line(colour = "#0072B2", linetype = "solid", size = 0.5),
+    "3" = element_line(colour = "#D55E00", linetype = "solid", size = 0.5),
+    "4" = element_line(colour = "#009E73", linetype = "solid", size = 0.5),
+    "5" = element_line(colour = "#E69F00", linetype = "solid", size = 0.5)
   ),
 
 
   datapoint = list(
-    element_point(colour = "#000000", shape = 16, size = 2),
-    element_point(colour = "#0072B2", shape = 16, size = 2),
-    element_point(colour = "#D55E00", shape = 16, size = 2),
-    element_point(colour = "#009E73", shape = 16, size = 2),
-    element_point(colour = "#E69F00", shape = 16, size = 2)
+    "1" = element_point(colour = "#000000", shape = 16, size = 2),
+    "2" = element_point(colour = "#0072B2", shape = 16, size = 2),
+    "3" = element_point(colour = "#D55E00", shape = 16, size = 2),
+    "4" = element_point(colour = "#009E73", shape = 16, size = 2),
+    "5" = element_point(colour = "#E69F00", shape = 16, size = 2)
   ),
 
   statline = element_line(color = "grey", size = 0.7, linetype = "solid"),
@@ -173,9 +173,9 @@
   separators = element_line(color = "gold", size = 0.3, linetype = "solid"),
 
   dataline = list(
-    element_line(colour = "#DDDDDD")),
+    "1" = element_line(colour = "#DDDDDD")),
   datapoint = list(
-    element_point(colour = "#E94560", shape = 17))
+    "1" = element_point(colour = "#E94560", shape = 17))
 )
 
 
@@ -194,9 +194,9 @@
   separators = element_line(color = "sienna4"),
 
   dataline = list(
-    element_line(colour = "darkolivegreen")),
+    "1" = element_line(colour = "darkolivegreen")),
   datapoint = list(
-    element_point(colour = "seagreen4", shape = 18)),
+    "2" = element_point(colour = "seagreen4", shape = 18)),
 
   text = element_text(family = "serif")
 
