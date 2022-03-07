@@ -5,22 +5,14 @@
 \title{Point element
 In conjunction with ggplot an object to represent point attributes.}
 \usage{
-element_point(
-  colour = NULL,
-  size = NULL,
-  shape = NULL,
-  color = NULL,
-  inherit.blank = FALSE
-)
+element_point(colour = NULL, size = NULL, shape = NULL, color = NULL)
 }
 \arguments{
-\item{colour}{Point colour.}
-
 \item{size}{Relative size.}
 
 \item{shape}{Point shape.}
 
-\item{color}{Point colour.}
+\item{color, colour}{Point colour..}
 }
 \description{
 Point element

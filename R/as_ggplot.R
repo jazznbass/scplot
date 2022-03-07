@@ -56,19 +56,6 @@ as_ggplot <- function(scplot) {
   if (is.null(object$datalines[[1]]$variable))
     object$datalines[[1]]$variable <- object$dvar[1]
 
-  if (is.null(object$datalines[[1]]$col))
-    object$datalines[[1]]$col <- theme$dataline.col
-
-  if (is.null(object$datalines[[1]]$width))
-    object$datalines[[1]]$width <- theme$dataline.width
-
-  if (is.null(object$datalines[[1]]$linetype))
-    object$datalines[[1]]$linetype <- theme$dataline.linetype
-
-  if (is.null(object$datalines[[1]]$point))
-    object$datalines[[1]]$point <- theme$datapoint
-
-
   # set x/y label --------
 
   if (is.null(object$xlabel)) {
@@ -217,10 +204,10 @@ as_ggplot <- function(scplot) {
         aes(
           y = !!sym(object$datalines[[i]]$variable),
           group = !!sym(pvar),
-          colour = !!object$datalines[[i]]$col
+          colour = !!object$datalines[[i]]$line$colour #col
         ),
-        size = object$datalines[[i]]$width,
-        linetype = object$datalines[[i]]$linetype
+        size = object$datalines[[i]]$line$size, # width
+        linetype = object$datalines[[i]]$line$linetype # linetype
       )
     }
 
@@ -229,10 +216,10 @@ as_ggplot <- function(scplot) {
         aes(
           y = !!sym(object$datalines[[i]]$variable),
           group = !!sym(pvar),
-          colour = !!object$datalines[[i]]$col
+          colour = !!object$datalines[[i]]$line$colour
         ),
-        size = object$datalines[[i]]$width,
-        linetype = object$datalines[[i]]$linetype
+        size = object$datalines[[i]]$line$width,
+        linetype = object$datalines[[i]]$line$linetype
       )
     }
 
@@ -606,7 +593,7 @@ as_ggplot <- function(scplot) {
 
   # add legend ------
 
-  .color <- unlist(lapply(object$datalines, function(x) x$col))
+  .color <- unlist(lapply(object$datalines, function(x) x$line$colour))
   .color <- setNames(.color, .color)
   labels <- unlist(lapply(object$datalines, function(x) x$variable))
 

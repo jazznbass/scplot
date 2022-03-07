@@ -51,8 +51,7 @@ scplot(exampleAB)
 
 ```{r}
 scplot(exampleAB_add) %>%
-  add_dataline("depression", color = "darkred", linetype = "dotted", 
-               point = list(shape = 17))
+  add_dataline("depression")
 ```
 
 ## Add statlines
@@ -121,7 +120,7 @@ If you do not specify the `variable` argument the default first data-line is add
 
 ```{r}
 scplot(exampleAB_add) %>%
-  add_dataline("cigarrets", color = "darkblue", point = list(size = 1)) %>%
+  add_dataline("cigarrets") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_statline("trend", linetype = "dashed")
 ```
@@ -182,7 +181,7 @@ scplot(exampleABC) %>%
 
 ```{r}
 scplot(exampleABC) %>%
-  set_dataline(color = "blue", width = 1, linetype = "dotted", 
+  set_dataline(line = list(colour = "blue", size = 1, linetype = "dotted"), 
                point = list(colour = "red", size = 1, shape = 2))
   
 ```
@@ -397,7 +396,7 @@ scplot(example_A24) %>%
 
 ```{r multi-variables}
 scplot(exampleAB_add) %>%
-  add_dataline("cigarrets", color = "darkblue", point = list(size = 1)) %>%
+  add_dataline("cigarrets", point = list(size = 1)) %>%
   add_statline("trend", linetype = "dashed") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_marks(positions = c(14,20), size = 3, variable = "cigarrets")%>%
@@ -431,7 +430,7 @@ scplot(exampleA1B1A2B2) %>%
   set_casenames(labels = sample_names(3), color = "steelblue4", size = 0.7) %>%
   set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
   add_grid(color = "grey85", size = 0.5) %>%
-  set_dataline(color = "black", width = 0.5, linetype = "solid", 
+  set_dataline(line = list(size = 0.5, linetype = "solid"), 
                point = list(colour = "sienna4", size = 0.5, 
                                      shape = 18)) %>%
   add_labels(text = list(color = "sienna", size = 0.7), nudge_y = 4) %>%

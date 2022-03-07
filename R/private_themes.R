@@ -18,9 +18,22 @@
   dataline.width = 0.5,
   dataline.linetype = "solid",
 
-  dataline = element_line(colour = "black", linetype = "solid", size = 0.5),
+  dataline = list(
+    element_line(colour = "#000000", linetype = "solid", size = 0.5),
+    element_line(colour = "#0072B2", linetype = "solid", size = 0.5),
+    element_line(colour = "#D55E00", linetype = "solid", size = 0.5),
+    element_line(colour = "#009E73", linetype = "solid", size = 0.5),
+    element_line(colour = "#E69F00", linetype = "solid", size = 0.5)
+  ),
 
-  datapoint = element_point(colour = "black", shape = 16, size = 2),
+
+  datapoint = list(
+    element_point(colour = "#000000", shape = 16, size = 2),
+    element_point(colour = "#0072B2", shape = 16, size = 2),
+    element_point(colour = "#D55E00", shape = 16, size = 2),
+    element_point(colour = "#009E73", shape = 16, size = 2),
+    element_point(colour = "#E69F00", shape = 16, size = 2)
+  ),
 
   statline = element_line(color = "grey", size = 0.7, linetype = "solid"),
 
@@ -159,11 +172,10 @@
 
   separators = element_line(color = "gold", size = 0.3, linetype = "solid"),
 
-
-  dataline.col = "#DDDDDD",
-
-  dataline = element_line(colour = "#DDDDDD"),
-  datapoint = element_point(colour = "#E94560", shape = 17)
+  dataline = list(
+    element_line(colour = "#DDDDDD")),
+  datapoint = list(
+    element_point(colour = "#E94560", shape = 17))
 )
 
 
@@ -181,10 +193,10 @@
 
   separators = element_line(color = "sienna4"),
 
-  dataline.col = "darkolivegreen",
-
-  dataline = element_line(colour = "darkolivegreen"),
-  datapoint = element_point(colour = "seagreen4", shape = 18),
+  dataline = list(
+    element_line(colour = "darkolivegreen")),
+  datapoint = list(
+    element_point(colour = "seagreen4", shape = 18)),
 
   text = element_text(family = "serif")
 

@@ -15,11 +15,11 @@ scplot <- function(scdf) {
 
   default_line <- list(
     variable = NULL,
-    col = NULL,
-    width = NULL,
-    linetype = NULL,
-    line = NULL,
-    point = NULL,
+    #col = NULL,
+    #width = NULL,
+    #linetype = NULL,
+    line = theme$dataline[[1]],
+    point = theme$datapoint[[1]],
     type = "continuous"
   )
 

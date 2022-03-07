@@ -21,6 +21,7 @@
   case,
   variable,
   point,
+  line,
   ...
 )
 }
@@ -42,7 +43,7 @@ function.}
 
 \item{angle}{Angle (in [0,360])}
 
-\item{width}{A number defining the width of the line.}
+\item{width}{Line width.}
 
 \item{linetype}{A character string with the line type: "solid", "dashed",
 "dotted"}
@@ -61,6 +62,8 @@ for all cases.}
 \item{variable}{Name of the dataline variable to apply the style.}
 
 \item{point}{A list (class element_point) with datapoint attributes: colour, shape, size.}
+
+\item{line}{A list (class element_line) with datapoint attributes: colour, linetype, size.}
 
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
