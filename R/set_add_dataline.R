@@ -76,3 +76,43 @@ set_dataline <- function(object,
 
   object
 }
+
+#' @rdname add_dataline
+#' @export
+# add_data <- function(object,
+#                      variable,
+#                      line,
+#                      color,
+#                      width,
+#                      linetype,
+#                      point,
+#                      type = "continuous") {
+#
+#   if (missing(point)) point <- list()
+#   if (missing(line)) line <- list()
+#
+#   line <- .merge_element(line, object$theme$dataline)
+#
+#   if (identical(class(point), "character")) {
+#     if (!identical(point, "none")) point = list(colour = point)
+#   }
+#   point <- .merge_element(point, object$theme$datapoint)
+#   if (is.null(point$color)) point$color <- color
+#
+#
+#
+#   new_line <- list(
+#     variable = variable,
+#     col = color,
+#     width = width,
+#     linetype = linetype,
+#     line = line,
+#     point = point,
+#     type = type
+#   )
+#
+#   object$dvar <- c(object$dvar, variable)
+#   object$datalines <- c(object$datalines, list(new_line))
+#
+#   object
+# }

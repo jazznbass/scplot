@@ -18,6 +18,7 @@ scplot <- function(scdf) {
     col = NULL,
     width = NULL,
     linetype = NULL,
+    line = NULL,
     point = NULL,
     type = "continuous"
   )

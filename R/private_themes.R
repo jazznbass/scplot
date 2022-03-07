@@ -2,7 +2,6 @@
 
 .scplot_themes <- list()
 
-
 # default -----------------------------------------------------------------
 
 .scplot_themes$basic = list(
@@ -18,6 +17,8 @@
   dataline.col = "black",
   dataline.width = 0.5,
   dataline.linetype = "solid",
+
+  dataline = element_line(colour = "black", linetype = "solid", size = 0.5),
 
   datapoint = element_point(colour = "black", shape = 16, size = 2),
 
@@ -161,6 +162,7 @@
 
   dataline.col = "#DDDDDD",
 
+  dataline = element_line(colour = "#DDDDDD"),
   datapoint = element_point(colour = "#E94560", shape = 17)
 )
 
@@ -181,6 +183,7 @@
 
   dataline.col = "darkolivegreen",
 
+  dataline = element_line(colour = "darkolivegreen"),
   datapoint = element_point(colour = "seagreen4", shape = 18),
 
   text = element_text(family = "serif")
