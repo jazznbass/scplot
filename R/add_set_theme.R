@@ -2,8 +2,6 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @param theme A character string with a predefined graphical theme.
-#'   Possible values: default, yaxis, tiny, small, big, chart, ridge,
-#'   annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade
 #' @export
 add_theme <- function(object, theme, ...) {
 

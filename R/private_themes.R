@@ -84,7 +84,7 @@
 
   label.padding = 0.1,
 
-  grid = element_blank(),
+  grid = element_line(),
 
   # legend
 
@@ -134,10 +134,11 @@
 
   panel.spacing.y = unit(1, "lines"),
   panel.background = element_blank(),
-  datapoint = element_point(size = 1.5),
+  datapoint = list(
+    "1" = element_point(size = 1.5)),
 
   axis.ticks.length = unit(0, "points"),
-  axis.ticks = element_blank(),
+  axis.ticks =  element_blank(),
 
   axis.line.x = element_blank(),
 
@@ -174,8 +175,10 @@
 
   dataline = list(
     "1" = element_line(colour = "#DDDDDD")),
+
   datapoint = list(
     "1" = element_point(colour = "#E94560", shape = 17))
+
 )
 
 

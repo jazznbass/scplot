@@ -13,9 +13,7 @@ set_theme_element(object, ...)
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
 function.}
 
-\item{theme}{A character string with a predefined graphical theme.
-Possible values: default, yaxis, tiny, small, big, chart, ridge,
-annotate, grid, grid2, dark, nodots, sienna, phase_color, phase_shade}
+\item{theme}{A character string with a predefined graphical theme.}
 
 \item{...}{various style parameter}
 }

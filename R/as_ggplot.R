@@ -60,9 +60,6 @@ as_ggplot <- function(scplot) {
   if (is.null(object$datalines[[1]]$point))
     object$datalines[[1]]$point <- object$theme$datapoint[[1]]
 
-  print(object$datalines[[1]]$point)
-  print(object$datalines[[1]]$line)
-
 
   # set x/y label --------
 

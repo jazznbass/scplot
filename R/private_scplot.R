@@ -37,26 +37,59 @@
 
 .merge_theme <- function(new, old) {
 
+  names_old <- names(old)
+  names_new <- names(new)
+
   out <- old
 
-  ids <- which(!(names(new) %in% names(old)) | !sapply(new, is.list))
+  replace_items <- names(new)[names_new %in% names_old]
 
-  out[names(new)[ids]] <- new[ids]
-
-  if (length(ids) > 1) new <- new[-ids]
-
-  for(i in seq_along(new)) {
-    label <- names(new)[i]
-    if ("element" %in% class(out[[label]])) {
-      out[[label]] <- merge_element(new[[i]], out[[label]])
-    } else if ("list" %in% class(out[[label]])) {
-      out[[label]] <- utils::modifyList(out[[label]], new[[i]])
+  for(i in replace_items) {
+    if ("list" %in% class(old[[i]])) {
+      out[[i]] <- .merge_theme(old[[i]], new[[i]])
+    } else if("element_blank" %in% class(new[[i]])) {
+      out[[i]] <- element_blank()#do.call(class(old[[i]])[1], list())
+    } else if ("element" %in% class(old[[i]])){
+      class_old <- class(old[[i]])
+      class(old[[i]]) <- "list"
+      class(new[[i]]) <- "list"
+      out[[i]] <- .merge_theme(old[[i]], new[[i]])
+      class(out[[i]]) <- class_old
+    } else {
+      if (!is.null(new[[i]])) out[[i]] <- new[[i]]
     }
   }
 
-  out
+  new_items <- names(new)[!names_new %in% names_old]
+  out[new_items] <- new[new_items]
 
+  out
 }
+
+
+
+# .merge_theme <- function(new, old) {
+#
+#   out <- old
+#
+#   ids <- which(!(names(new) %in% names(old)) | !sapply(new, is.list))
+#
+#   out[names(new)[ids]] <- new[ids]
+#
+#   if (length(ids) > 1) new <- new[-ids]
+#
+#   for(i in seq_along(new)) {
+#     label <- names(new)[i]
+#     if ("element" %in% class(out[[label]])) {
+#       out[[label]] <- merge_element(new[[i]], out[[label]])
+#     } else if ("list" %in% class(out[[label]])) {
+#       out[[label]] <- utils::modifyList(out[[label]], new[[i]])
+#     }
+#   }
+#
+#   out
+#
+# }
 
 
 
