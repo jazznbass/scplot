@@ -53,13 +53,14 @@ as_ggplot <- function(scplot) {
 
   # set dataline for first dvar ---------------------
 
-  if (is.null(object$datalines[[1]]$variable))
-    object$datalines[[1]]$variable <- object$dvar[1]
-  if (is.null(object$datalines[[1]]$line))
+  if (isTRUE(object$datalines[[1]]$.default)) {
     object$datalines[[1]]$line <- object$theme$dataline[[1]]
-  if (is.null(object$datalines[[1]]$point))
     object$datalines[[1]]$point <- object$theme$datapoint[[1]]
+    object$datalines[[1]]$type <- "continuous"
+    object$datalines[[1]]$.default <- FALSE
+  }
 
+  object$datalines[[1]]$variable <- object$dvar[1]
 
   # set x/y label --------
 

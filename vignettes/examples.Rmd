@@ -182,7 +182,7 @@ scplot(exampleABC) %>%
 ```{r}
 scplot(exampleABC) %>%
   set_dataline(line = list(colour = "blue", size = 1, linetype = "dotted"), 
-               point = list(colour = "red", size = 1, shape = 2))
+               point = list(colour = "red", size = 1, shape = 2)) 
   
 ```
 

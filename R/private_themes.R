@@ -2,7 +2,7 @@
 
 .scplot_themes <- list()
 
-# default -----------------------------------------------------------------
+# basic -----------------------------------------------------------------
 
 .scplot_themes$basic = list(
 
@@ -10,13 +10,9 @@
                       face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
                       lineheight = 1),
 
-  plot.background = element_rect(),
-  panel.background = element_rect(),
+  plot.background = element_rect(fill = "white"),
+  panel.background = element_rect(fill = "white"),
   panel.spacing.y = unit(1.5, "lines"),
-
-  dataline.col = "black",
-  dataline.width = 0.5,
-  dataline.linetype = "solid",
 
   dataline = list(
     "1" = element_line(colour = "#000000", linetype = "solid", size = 0.5),
@@ -25,7 +21,6 @@
     "4" = element_line(colour = "#009E73", linetype = "solid", size = 0.5),
     "5" = element_line(colour = "#E69F00", linetype = "solid", size = 0.5)
   ),
-
 
   datapoint = list(
     "1" = element_point(colour = "#000000", shape = 16, size = 2),
@@ -84,7 +79,7 @@
 
   label.padding = 0.1,
 
-  grid = element_line(),
+  grid = element_line(size = 0),
 
   # legend
 
@@ -199,7 +194,7 @@
   dataline = list(
     "1" = element_line(colour = "darkolivegreen")),
   datapoint = list(
-    "2" = element_point(colour = "seagreen4", shape = 18)),
+    "1" = element_point(colour = "seagreen4", shape = 18)),
 
   text = element_text(family = "serif")
 

@@ -46,14 +46,14 @@
 
   for(i in replace_items) {
     if ("list" %in% class(old[[i]])) {
-      out[[i]] <- .merge_theme(old[[i]], new[[i]])
+      out[[i]] <- .merge_theme(new[[i]], old[[i]])
     } else if("element_blank" %in% class(new[[i]])) {
       out[[i]] <- element_blank()#do.call(class(old[[i]])[1], list())
     } else if ("element" %in% class(old[[i]])){
       class_old <- class(old[[i]])
       class(old[[i]]) <- "list"
       class(new[[i]]) <- "list"
-      out[[i]] <- .merge_theme(old[[i]], new[[i]])
+      out[[i]] <- .merge_theme(new[[i]], old[[i]])
       class(out[[i]]) <- class_old
     } else {
       if (!is.null(new[[i]])) out[[i]] <- new[[i]]

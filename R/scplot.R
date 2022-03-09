@@ -14,13 +14,7 @@ scplot <- function(scdf) {
   theme <- .scplot_themes[["default"]]
 
   default_line <- list(
-    variable = NULL,
-    #col = NULL,
-    #width = NULL,
-    #linetype = NULL,
-    line = NULL, #theme$dataline[[1]],
-    point = NULL, #theme$datapoint[[1]],
-    type = "continuous"
+    .default = TRUE
   )
 
   out <- list(

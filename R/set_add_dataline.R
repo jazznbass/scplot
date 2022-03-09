@@ -56,8 +56,18 @@ set_dataline <- function(object,
 
   if (length(id) != 1) stop("Wrong variable defintion.")
 
+  if (id == 1) {
+    if (isTRUE(object$datalines[[1]]$.default)) {
+      object$datalines[[1]]$line <- object$theme$dataline[[1]]
+      object$datalines[[1]]$point <- object$theme$datapoint[[1]]
+      object$datalines[[1]]$type <- "continuous"
+      object$datalines[[1]]$.default <- FALSE
+    }
+  }
+
   if (missing(point)) point <- list()
   if (missing(line)) line <- list()
+
 
   object$datalines[[id]]$line <- .merge_element(line,
                                                 object$datalines[[id]]$line)
