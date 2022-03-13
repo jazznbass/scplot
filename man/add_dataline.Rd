@@ -21,7 +21,8 @@ function.}
 
 \item{type}{Either "continuous" or "descrete"}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{As a shortcut, arguments passed hear are bundled as
+`line` arguments. E.g. colour = "res", size = 2.}
 }
 \description{
 Set and add datalines of an scplot

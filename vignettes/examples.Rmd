@@ -181,9 +181,14 @@ scplot(exampleABC) %>%
 
 ```{r}
 scplot(exampleABC) %>%
-  set_dataline(line = list(colour = "blue", size = 1, linetype = "dotted"), 
-               point = list(colour = "red", size = 1, shape = 2)) 
-  
+  set_dataline(colour = "blue", size = 1, linetype = "dotted", 
+               point = list(colour = "red", size = 1, shape = 2) )
+
+# Equivalent_
+# scplot(exampleABC) %>%
+#   set_dataline(line = list(colour = "blue", size = 1, linetype = "dotted"), 
+#                point = list(colour = "red", size = 1, shape = 2)) 
+
 ```
 
 ### Background
@@ -430,9 +435,8 @@ scplot(exampleA1B1A2B2) %>%
   set_casenames(labels = sample_names(3), color = "steelblue4", size = 0.7) %>%
   set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
   add_grid(color = "grey85", size = 0.5) %>%
-  set_dataline(line = list(size = 0.5, linetype = "solid"), 
-               point = list(colour = "sienna4", size = 0.5, 
-                                     shape = 18)) %>%
+  set_dataline(size = 0.5, linetype = "solid", 
+               point = list(colour = "sienna4", size = 0.5, shape = 18)) %>%
   add_labels(text = list(color = "sienna", size = 0.7), nudge_y = 4) %>%
   set_separator(size = 0.5, linetype = "solid", color = "sienna") %>%
   add_statline(stat = "trendA", color = "tomato2") %>%

@@ -225,7 +225,7 @@ as_ggplot <- function(scplot) {
 
     # add datapoints
 
-    if (!identical(object$datalines[[i]]$point, "none")) {
+    if (!identical(theme$datapoint[[i]], "none")) {
       p <- p + geom_point(
         aes(y = !!sym(object$datalines[[i]]$variable)),
         colour = theme$datapoint[[i]]$colour,

@@ -26,9 +26,10 @@ add_dataline <- function(object,
 
   if (identical(class(point), "character")) {
     if (!identical(point, "none")) point = list(colour = point)
+  } else {
+    point <- .merge_element(point, object$theme$datapoint[[n_lines + 1]])
+    if (is.null(point$colour)) point$colour <- line$colour
   }
-  point <- .merge_element(point, object$theme$datapoint[[n_lines + 1]])
-  if (is.null(point$colour)) point$colour <- line$colour
 
   new_line <- list(variable = variable, type = type)
 
@@ -74,47 +75,13 @@ set_dataline <- function(object,
   object$theme$dataline[[id]] <- .merge_element(
     line, object$theme$dataline[[id]]
   )
-  object$theme$datapoint[[id]] <- .merge_element(
-    point, object$theme$datapoint[[id]]
-  )
+
+  if (!identical(point, "none")) {
+    point <- .merge_element(point, object$theme$datapoint[[id]])
+  }
+
+  object$theme$datapoint[[id]] <- point
 
   object
 }
 
-
-
-
-# add_dataline <- function(object,
-#                          variable,
-#                          color,
-#                          width,
-#                          linetype,
-#                          point,
-#                          type = "continuous") {
-#
-#   object$dvar <- c(object$dvar, variable)
-#
-#   if (missing(color)) color <- object$theme$dataline.col
-#   if (missing(width)) width <- object$theme$dataline.width
-#   if (missing(linetype)) linetype <- object$theme$dataline.linetype
-#
-#   if (missing(point)) point <- list()
-#   if (identical(class(point), "character")) {
-#     if (!identical(point, "none")) point = list(colour = point)
-#   }
-#   point <- .merge_element(point, object$theme$datapoint)
-#   if (is.null(point$color)) point$color <- color
-#
-#   new_line <- list(
-#     variable = variable,
-#     col = color,
-#     width = width,
-#     linetype = linetype,
-#     point = point,
-#     type = type
-#   )
-#
-#   object$datalines <- c(object$datalines, list(new_line))
-#
-#   object
-# }
