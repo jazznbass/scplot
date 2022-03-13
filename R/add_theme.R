@@ -1,4 +1,4 @@
-#' Add and set the theme of an scplot
+#' Add a theme of to an scplot
 #'
 #' @inheritParams .inherit_scplot
 #' @param theme A character string with a predefined graphical theme.
@@ -18,13 +18,3 @@ add_theme <- function(object, theme, ...) {
 
 }
 
-#' @rdname add_theme
-#' @param ... various style parameter
-#'
-#' @export
-set_theme_element <- function(object, ...) {
-
-
-  object$theme <- .merge_theme(list(...), object$theme)
-  object
-}
