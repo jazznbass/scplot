@@ -5,9 +5,9 @@
 \alias{set_dataline}
 \title{Set and add datalines of an scplot}
 \usage{
-add_dataline(object, variable, line, point, type = "continuous")
+add_dataline(object, variable, line, point, type = "continuous", ...)
 
-set_dataline(object, variable, line, point, type)
+set_dataline(object, variable, line, point, type, ...)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
@@ -20,6 +20,8 @@ function.}
 \item{point}{A list (class element_point) with datapoint attributes: colour, shape, size.}
 
 \item{type}{Either "continuous" or "descrete"}
+
+\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Set and add datalines of an scplot

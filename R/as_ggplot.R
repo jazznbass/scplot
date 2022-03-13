@@ -53,13 +53,6 @@ as_ggplot <- function(scplot) {
 
   # set dataline for first dvar ---------------------
 
-  if (isTRUE(object$datalines[[1]]$.default)) {
-    object$datalines[[1]]$line <- object$theme$dataline[[1]]
-    object$datalines[[1]]$point <- object$theme$datapoint[[1]]
-    object$datalines[[1]]$type <- "continuous"
-    object$datalines[[1]]$.default <- FALSE
-  }
-
   object$datalines[[1]]$variable <- object$dvar[1]
 
   # set x/y label --------
@@ -210,10 +203,10 @@ as_ggplot <- function(scplot) {
         aes(
           y = !!sym(object$datalines[[i]]$variable),
           group = !!sym(pvar),
-          colour = !!object$datalines[[i]]$line$colour #col
+          colour = !!theme$dataline[[i]]$colour
         ),
-        size = object$datalines[[i]]$line$size, # width
-        linetype = object$datalines[[i]]$line$linetype # linetype
+        size = theme$dataline[[i]]$size,
+        linetype = theme$dataline[[i]]$linetype
       )
     }
 
@@ -222,23 +215,22 @@ as_ggplot <- function(scplot) {
         aes(
           y = !!sym(object$datalines[[i]]$variable),
           group = !!sym(pvar),
-          colour = !!object$datalines[[i]]$line$colour
+          colour = !!theme$dataline[[i]]$colour
         ),
-        size = object$datalines[[i]]$line$width,
-        linetype = object$datalines[[i]]$line$linetype
+        size = theme$dataline[[i]]$size,
+        linetype = theme$dataline[[i]]$linetype
       )
     }
 
 
     # add datapoints
 
-    #if (!is.null(object$datalines[[i]]$point)) {
     if (!identical(object$datalines[[i]]$point, "none")) {
       p <- p + geom_point(
         aes(y = !!sym(object$datalines[[i]]$variable)),
-        colour = object$datalines[[i]]$point$colour,
-        size = object$datalines[[i]]$point$size,
-        shape = object$datalines[[i]]$point$shape
+        colour = theme$datapoint[[i]]$colour,
+        size = theme$datapoint[[i]]$size,
+        shape = theme$datapoint[[i]]$shape
       )
     }
 
@@ -599,7 +591,7 @@ as_ggplot <- function(scplot) {
 
   # add legend ------
 
-  .color <- unlist(lapply(object$datalines, function(x) x$line$colour))
+  .color <- unlist(lapply(theme$dataline[1:length(object$datalines)], function(x) x$colour))
   .color <- setNames(.color, .color)
   labels <- unlist(lapply(object$datalines, function(x) x$variable))
 

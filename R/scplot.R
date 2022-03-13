@@ -14,7 +14,7 @@ scplot <- function(scdf) {
   theme <- .scplot_themes[["default"]]
 
   default_line <- list(
-    .default = TRUE
+    type = "continuous"
   )
 
   out <- list(

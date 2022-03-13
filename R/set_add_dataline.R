@@ -7,11 +7,15 @@ add_dataline <- function(object,
                      variable,
                      line,
                      point,
-                     type = "continuous") {
+                     type = "continuous",
+                     ...) {
+
+  line_args <- list(...)
+  if (missing(line)) {
+    if (length(line_args) > 0) line <- line_args else line <- list()
+  }
 
   if (missing(point)) point <- list()
-  if (missing(line)) line <- list()
-
 
   n_lines <- length(object$datalines)
   if (n_lines == length(object$theme$dataline)) n_lines <- 1
@@ -24,15 +28,14 @@ add_dataline <- function(object,
   point <- .merge_element(point, object$theme$datapoint[[n_lines + 1]])
   if (is.null(point$colour)) point$colour <- line$colour
 
-  new_line <- list(
-    variable = variable,
-    line = line,
-    point = point,
-    type = type
-  )
+  new_line <- list(variable = variable, type = type)
 
   object$dvar <- c(object$dvar, variable)
   object$datalines <- c(object$datalines, list(new_line))
+
+  n_element <- length(object$datalines)
+  object$theme$dataline[[n_element]] <- line
+  object$theme$datapoint[[n_element]] <- point
 
   object
 }
@@ -44,7 +47,8 @@ set_dataline <- function(object,
                          variable,
                          line,
                          point,
-                         type) {
+                         type,
+                         ...) {
 
   if (missing(variable)) variable <- ".dvar"
 
@@ -56,25 +60,22 @@ set_dataline <- function(object,
 
   if (length(id) != 1) stop("Wrong variable defintion.")
 
-  if (id == 1) {
-    if (isTRUE(object$datalines[[1]]$.default)) {
-      object$datalines[[1]]$line <- object$theme$dataline[[1]]
-      object$datalines[[1]]$point <- object$theme$datapoint[[1]]
-      object$datalines[[1]]$type <- "continuous"
-      object$datalines[[1]]$.default <- FALSE
-    }
+  line_args <- list(...)
+  if (missing(line)) {
+    if (length(line_args) > 0) line <- line_args else line <- list()
   }
 
   if (missing(point)) point <- list()
-  if (missing(line)) line <- list()
-
-
-  object$datalines[[id]]$line <- .merge_element(line,
-                                                object$datalines[[id]]$line)
-  object$datalines[[id]]$point <- .merge_element(point,
-                                                object$datalines[[id]]$point)
 
   if (!missing(type)) object$datalines[[id]]$type <- type
+
+  object$theme$dataline[[id]] <- .merge_element(
+    line, object$theme$dataline[[id]]
+  )
+  object$theme$datapoint[[id]] <- .merge_element(
+    point, object$theme$datapoint[[id]]
+  )
+
   object
 }
 
