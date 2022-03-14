@@ -4,6 +4,11 @@
 #' @param position The position ("none", "left", "right", "bottom", "top", or two-element numeric vector)
 #' @param datalines If TRUE, a legend for the datalines is generated.
 #' @param statlines If TRUE, a legend for the statlines is generated.
+#' @param labels A character vector. Replaces the automatically build labels.
+#'   When a vector element is NA, the corresponding element will not be replaced
+#'   (e.g. c(NA, "Variable 2", NA, "Variable 4")).
+#' @param section_labels A character vector of length two.
+#'   The labels for the lines section and phase section.
 #' @param title A list with text style parameters for the title.
 #' @export
 add_legend <- function(object,

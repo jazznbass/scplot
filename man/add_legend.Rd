@@ -21,7 +21,12 @@ add_legend(
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
 function.}
 
-\item{labels}{A Character vector with text labels.}
+\item{labels}{A character vector. Replaces the automatically build labels.
+When a vector element is NA, the corresponding element will not be replaced
+(e.g. c(NA, "Variable 2", NA, "Variable 4")).}
+
+\item{section_labels}{A character vector of length two.
+The labels for the lines section and phase section.}
 
 \item{case}{Numerical vector with the case number or character string "all"
 for all cases.}

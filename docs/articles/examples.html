@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -79,7 +75,7 @@
 
       
 
-      </header><script src="examples_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>examples</h1>
@@ -92,10 +88,10 @@
 
     
     
-<div id="scplot" class="section level1">
-<h1 class="hasAnchor">
-<a href="#scplot" class="anchor"></a>scplot</h1>
-<p>We started developing a new add-on package to <code>scan</code>for visualizing single-case data: <code>scplot</code>. This function will gradually replace the <code>plot.scdf()</code> (short: <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code>) function already included in <code>scan</code> and finally be included into to the <code>scan</code> package. Here are some advantages of using <code>scplot</code> over the standard scan <code>plot</code> function:</p>
+<div class="section level2">
+<h2 id="scplot">scplot<a class="anchor" aria-label="anchor" href="#scplot"></a>
+</h2>
+<p>We started developing a new add-on package to <code>scan</code>for visualizing single-case data: <code>scplot</code>. This function will gradually replace the <code>plot.scdf()</code> (short: <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>) function already included in <code>scan</code> and finally be included into to the <code>scan</code> package. Here are some advantages of using <code>scplot</code> over the standard scan <code>plot</code> function:</p>
 <ul>
 <li>
 <code>scplot</code> is already much more versatile than <code>plot</code> has been.</li>
@@ -107,34 +103,32 @@
 <p>We consider the state of <code>scplot</code> to be <em>experimental</em>. That is, the code and syntax might change in future versions so backward compatibility is not guaranteed.</p>
 <p>But we will keep the “old” <code>plot.scdf</code> in future versions of <code>scan</code>.</p>
 <p>Here are a few plots that have been generated with <code>scplot</code> to demonstrate its possibilities.</p>
-<div id="install-scplot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#install-scplot" class="anchor"></a>Install <code>scplot</code>
-</h2>
-<p>scplot is hosted as a gitHub project at <a href="https://github.com/jazznbass/scplot" class="uri">https://github.com/jazznbass/scplot</a>. You can install it with <code>devtools::install_github("jazznbass/scplot", dependencies = TRUE)</code> from your R console. Make sure you have the package <code>devtools</code> installed before. The package has to be compiled. When you are running R on a Windows machine you also have to install Rtools. Rtools is not an R package and can be downloaded from CRAN at <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a>. MacOs and Linux users usually do not need to take this extra step.</p>
+<div class="section level3">
+<h3 id="install-scplot">Install <code>scplot</code><a class="anchor" aria-label="anchor" href="#install-scplot"></a>
+</h3>
+<p>scplot is hosted as a gitHub project at <a href="https://github.com/jazznbass/scplot" class="external-link uri">https://github.com/jazznbass/scplot</a>. You can install it with <code>devtools::install_github("jazznbass/scplot", dependencies = TRUE)</code> from your R console. Make sure you have the package <code>devtools</code> installed before. The package has to be compiled. When you are running R on a Windows machine you also have to install Rtools. Rtools is not an R package and can be downloaded from CRAN at <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link uri">https://cran.r-project.org/bin/windows/Rtools/</a>. MacOs and Linux users usually do not need to take this extra step.</p>
 </div>
-<div id="the-standard-style" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-standard-style" class="anchor"></a>The standard style</h2>
+<div class="section level3">
+<h3 id="the-standard-style">The standard style<a class="anchor" aria-label="anchor" href="#the-standard-style"></a>
+</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
-<div id="add-datalines" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-datalines" class="anchor"></a>Add datalines</h2>
+<div class="section level3">
+<h3 id="add-datalines">Add datalines<a class="anchor" aria-label="anchor" href="#add-datalines"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_add</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_dataline.html">add_dataline</a></span><span class="op">(</span><span class="st">"depression"</span>, color <span class="op">=</span> <span class="st">"darkred"</span>, linetype <span class="op">=</span> <span class="st">"dotted"</span>, 
-               point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">17</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/add_dataline.html">add_dataline</a></span><span class="op">(</span><span class="st">"depression"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
-<div id="add-statlines" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-statlines" class="anchor"></a>Add statlines</h2>
-<div id="lines-indicating-a-constant-for-each-phase" class="section level3">
-<h3 class="hasAnchor">
-<a href="#lines-indicating-a-constant-for-each-phase" class="anchor"></a>Lines indicating a constant for each phase</h3>
+<div class="section level3">
+<h3 id="add-statlines">Add statlines<a class="anchor" aria-label="anchor" href="#add-statlines"></a>
+</h3>
+<div class="section level4">
+<h4 id="lines-indicating-a-constant-for-each-phase">Lines indicating a constant for each phase<a class="anchor" aria-label="anchor" href="#lines-indicating-a-constant-for-each-phase"></a>
+</h4>
 <p>Possible functions: <code>mean</code>, <code>min</code>, <code>max</code>, <code>quantile</code></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -143,21 +137,21 @@
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"min"</span>, color <span class="op">=</span> <span class="st">"brown"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
-<div id="lines-indicating-a-constant-for-a-specific-phase" class="section level3">
-<h3 class="hasAnchor">
-<a href="#lines-indicating-a-constant-for-a-specific-phase" class="anchor"></a>Lines indicating a constant for a specific phase</h3>
+<div class="section level4">
+<h4 id="lines-indicating-a-constant-for-a-specific-phase">Lines indicating a constant for a specific phase<a class="anchor" aria-label="anchor" href="#lines-indicating-a-constant-for-a-specific-phase"></a>
+</h4>
 <p>Set the <code>phase</code> argument with one or multiple phase-names or phase-numbers</p>
 <p>Possible functions: <code>mean</code>, <code>min</code>, <code>max</code>, <code>quantile</code></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"mean"</span>, phase <span class="op">=</span> <span class="st">"A"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"max"</span>, phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"min"</span>, phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"orange"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"max"</span>, phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"min"</span>, phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"orange"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
-<div id="trend-lines" class="section level3">
-<h3 class="hasAnchor">
-<a href="#trend-lines" class="anchor"></a>Trend-lines</h3>
+<div class="section level4">
+<h4 id="trend-lines">Trend-lines<a class="anchor" aria-label="anchor" href="#trend-lines"></a>
+</h4>
 <p><code>trend</code> (separate trend-line for each phase), <code>trendA</code> (extrapolated trend-line of first phase):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -165,9 +159,9 @@
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"trendA"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 </div>
-<div id="smoothed-curves" class="section level3">
-<h3 class="hasAnchor">
-<a href="#smoothed-curves" class="anchor"></a>Smoothed curves</h3>
+<div class="section level4">
+<h4 id="smoothed-curves">Smoothed curves<a class="anchor" aria-label="anchor" href="#smoothed-curves"></a>
+</h4>
 <p>Possible functions: <code>movingMean</code>, <code>movingMedian</code>, <code>loess</code>, <code>lowess</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -175,9 +169,9 @@
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"movingMean"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
-<div id="refine-with-addidtional-arguments" class="section level3">
-<h3 class="hasAnchor">
-<a href="#refine-with-addidtional-arguments" class="anchor"></a>Refine with addidtional arguments</h3>
+<div class="section level4">
+<h4 id="refine-with-addidtional-arguments">Refine with addidtional arguments<a class="anchor" aria-label="anchor" href="#refine-with-addidtional-arguments"></a>
+</h4>
 <p><code>mean</code> : <code>trim</code><br><code>quantile</code>: <code>probs</code><br><code>movingMean</code>, <code>movingMedian</code>: <code>lag</code><br><code>loess</code>: <code>span</code><br><code>lowess</code>: <code>f</code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -185,29 +179,29 @@
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"quantile"</span>, probs <span class="op">=</span> <span class="fl">0.75</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
-<div id="specify-data-line" class="section level3">
-<h3 class="hasAnchor">
-<a href="#specify-data-line" class="anchor"></a>Specify data-line</h3>
+<div class="section level4">
+<h4 id="specify-data-line">Specify data-line<a class="anchor" aria-label="anchor" href="#specify-data-line"></a>
+</h4>
 <p>If you do not specify the <code>variable</code> argument the default first data-line is addressed.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_add</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_dataline.html">add_dataline</a></span><span class="op">(</span><span class="st">"cigarrets"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_dataline.html">add_dataline</a></span><span class="op">(</span><span class="st">"cigarrets"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"mean"</span>, variable <span class="op">=</span> <span class="st">"cigarrets"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"trend"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>
-<div id="annotate-and-mark" class="section level2">
-<h2 class="hasAnchor">
-<a href="#annotate-and-mark" class="anchor"></a>Annotate and mark</h2>
-<div id="add-marks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-marks" class="anchor"></a>Add marks</h3>
+<div class="section level3">
+<h3 id="annotate-and-mark">Annotate and mark<a class="anchor" aria-label="anchor" href="#annotate-and-mark"></a>
+</h3>
+<div class="section level4">
+<h4 id="add-marks">Add marks<a class="anchor" aria-label="anchor" href="#add-marks"></a>
+</h4>
 <p>The positions argument can take a numeric vector:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">1</span>, positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">3</span>, positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">17</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">1</span>, positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">3</span>, positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">17</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 <p>The positions argument can also be a string containing a logical expression. This will be evaluated and the respective positions will be marked.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -228,17 +222,17 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
   <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>positions <span class="op">=</span> <span class="fu">outlier</span><span class="op">(</span><span class="va">exampleABC_outlier</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 </div>
-<div id="add-text" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-text" class="anchor"></a>Add text</h3>
+<div class="section level4">
+<h4 id="add-text">Add text<a class="anchor" aria-label="anchor" href="#add-text"></a>
+</h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_text.html">add_text</a></span><span class="op">(</span><span class="st">"Here!"</span>, case <span class="op">=</span> <span class="fl">2</span>, x <span class="op">=</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">80</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 </div>
-<div id="add-arrow" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-arrow" class="anchor"></a>Add arrow</h3>
+<div class="section level4">
+<h4 id="add-arrow">Add arrow<a class="anchor" aria-label="anchor" href="#add-arrow"></a>
+</h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_arrow.html">add_arrow</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">1</span>, x0 <span class="op">=</span> <span class="fl">6</span>, y0 <span class="op">=</span> <span class="fl">90</span>, x1 <span class="op">=</span> <span class="fl">3</span>, y1 <span class="op">=</span> <span class="fl">63</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -246,239 +240,249 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
 <p><img src="examples_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
 </div>
 </div>
-<div id="change-appearance-of-basic-plot-elements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#change-appearance-of-basic-plot-elements" class="anchor"></a>Change appearance of basic plot elements</h2>
-<div id="data-line" class="section level3">
-<h3 class="hasAnchor">
-<a href="#data-line" class="anchor"></a>Data line</h3>
+<div class="section level3">
+<h3 id="change-appearance-of-basic-plot-elements">Change appearance of basic plot elements<a class="anchor" aria-label="anchor" href="#change-appearance-of-basic-plot-elements"></a>
+</h3>
+<div class="section level4">
+<h4 id="data-line">Data line<a class="anchor" aria-label="anchor" href="#data-line"></a>
+</h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_dataline.html">set_dataline</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, width <span class="op">=</span> <span class="fl">1</span>, linetype <span class="op">=</span> <span class="st">"dotted"</span>, 
-               point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span>, shape <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/add_dataline.html">set_dataline</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1</span>, linetype <span class="op">=</span> <span class="st">"dotted"</span>, 
+               point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span>, shape <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
-</div>
-<div id="background" class="section level3">
-<h3 class="hasAnchor">
-<a href="#background" class="anchor"></a>Background</h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co"># Equivalent_</span>
+<span class="co"># scplot(exampleABC) %&gt;%</span>
+<span class="co">#   set_dataline(line = list(colour = "blue", size = 1, linetype = "dotted"), </span>
+<span class="co">#                point = list(colour = "red", size = 1, shape = 2)) </span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
+</h4>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_background.html">set_background</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey90"</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-16-1.png" width="700"></p>
 </div>
-<div id="panel" class="section level3">
-<h3 class="hasAnchor">
-<a href="#panel" class="anchor"></a>Panel</h3>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="panel">Panel<a class="anchor" aria-label="anchor" href="#panel"></a>
+</h4>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"tan1"</span>, color <span class="op">=</span> <span class="st">"palevioletred"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-17-1.png" width="700"></p>
 </div>
-<div id="a-different-panel-color-for-each-phase" class="section level3">
-<h3 class="hasAnchor">
-<a href="#a-different-panel-color-for-each-phase" class="anchor"></a>A different panel color for each phase</h3>
+<div class="section level4">
+<h4 id="a-different-panel-color-for-each-phase">A different panel color for each phase<a class="anchor" aria-label="anchor" href="#a-different-panel-color-for-each-phase"></a>
+</h4>
 <p>Note: The colors are 50% transparent. So they might appear different.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"white"</span>, <span class="st">"blue4"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"white"</span>, <span class="st">"blue4"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-18-1.png" width="700"></p>
 </div>
 </div>
-<div id="themes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#themes" class="anchor"></a>Themes</h2>
+<div class="section level3">
+<h3 id="themes">Themes<a class="anchor" aria-label="anchor" href="#themes"></a>
+</h3>
 <p>Themes are complete styles that define various elements of a plot.</p>
 <p>Function <code>add_theme("theme_name")</code></p>
 <p>Possible themes:</p>
 <p><code>basic</code>, <code>grid</code>, <code>default</code>, <code>small</code>, <code>tiny</code>, <code>big</code>, <code>minimal</code>, <code>dark</code>, <code>sienna</code>, <code>phase_color</code>, <code>phase_shade</code>, <code>grid2</code></p>
-<div id="the-default-theme" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-default-theme" class="anchor"></a>The ‘default’ theme</h3>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="the-default-theme">The ‘default’ theme<a class="anchor" aria-label="anchor" href="#the-default-theme"></a>
+</h4>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-20-1.png" width="700"></p>
 </div>
-<div id="theme-basic" class="section level3">
-<h3 class="hasAnchor">
-<a href="#theme-basic" class="anchor"></a>Theme ‘basic’</h3>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="theme-basic">Theme ‘basic’<a class="anchor" aria-label="anchor" href="#theme-basic"></a>
+</h4>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="st">"basic"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-21-1.png" width="700"></p>
 </div>
-<div id="theme-minimal" class="section level3">
-<h3 class="hasAnchor">
-<a href="#theme-minimal" class="anchor"></a>Theme ‘minimal’</h3>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="theme-minimal">Theme ‘minimal’<a class="anchor" aria-label="anchor" href="#theme-minimal"></a>
+</h4>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="st">"minimal"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-22-1.png" width="700"></p>
 </div>
-<div id="theme-dark" class="section level3">
-<h3 class="hasAnchor">
-<a href="#theme-dark" class="anchor"></a>Theme ‘dark’</h3>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="theme-dark">Theme ‘dark’<a class="anchor" aria-label="anchor" href="#theme-dark"></a>
+</h4>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="st">"dark"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-23-1.png" width="700"></p>
 </div>
-<div id="theme-sienna" class="section level3">
-<h3 class="hasAnchor">
-<a href="#theme-sienna" class="anchor"></a>Theme ‘sienna’</h3>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="theme-sienna">Theme ‘sienna’<a class="anchor" aria-label="anchor" href="#theme-sienna"></a>
+</h4>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="st">"sienna"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-24-1.png" width="700"></p>
 </div>
-<div id="combine-themes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#combine-themes" class="anchor"></a>Combine themes</h3>
+<div class="section level4">
+<h4 id="combine-themes">Combine themes<a class="anchor" aria-label="anchor" href="#combine-themes"></a>
+</h4>
 <p>When providing multiple themes the order is important as the latter overwrites styles of the former.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="st">"sienna"</span>, <span class="st">"minimal"</span>, <span class="st">"small"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-25-1.png" width="700"></p>
 <p>is different from</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="st">"small"</span>, <span class="st">"minimal"</span>, <span class="st">"sienna"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-26-1.png" width="700"></p>
 </div>
-<div id="set-base-text" class="section level3">
-<h3 class="hasAnchor">
-<a href="#set-base-text" class="anchor"></a>Set base text</h3>
+<div class="section level4">
+<h4 id="set-base-text">Set base text<a class="anchor" aria-label="anchor" href="#set-base-text"></a>
+</h4>
 <p>The base text size is the absolute size. All other text sizes are relative to this base text size.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_decreasing</span><span class="op">$</span><span class="va">Peter</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_base_text.html">set_base_text</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"blue"</span>, family <span class="op">=</span> <span class="st">"serif"</span>, face <span class="op">=</span> <span class="st">"italic"</span>, size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-27-1.png" width="700"></p>
 </div>
 </div>
-<div id="add-title-and-caption" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-title-and-caption" class="anchor"></a>Add title and caption</h2>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="add-title-and-caption">Add title and caption<a class="anchor" aria-label="anchor" href="#add-title-and-caption"></a>
+</h3>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_decreasing</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_title</a></span><span class="op">(</span><span class="st">"A new plot"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, size <span class="op">=</span> <span class="fl">1.3</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_caption</a></span><span class="op">(</span><span class="st">"Note. What a nice plot!"</span>, face <span class="op">=</span> <span class="st">"italic"</span>, colour <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-28-1.png" width="700"></p>
 </div>
-<div id="add-a-legend" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-a-legend" class="anchor"></a>Add a legend</h2>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="add-a-legend">Add a legend<a class="anchor" aria-label="anchor" href="#add-a-legend"></a>
+</h3>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"mean"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"min"</span>, phase <span class="op">=</span> <span class="st">"B"</span>, width <span class="op">=</span> <span class="fl">0.2</span>, color <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"min"</span>, phase <span class="op">=</span> <span class="st">"B"</span>, size <span class="op">=</span> <span class="fl">0.2</span>, color <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-29-1.png" width="700"></p>
 <p>and set specific elements</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"mean"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span>
     position <span class="op">=</span> <span class="st">"left"</span>, 
-    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span>,
-    background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey95"</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>
+    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span>,
+    background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey95"</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-30-1.png" width="700"></p>
 </div>
-<div id="customize-axis-settings" class="section level2">
-<h2 class="hasAnchor">
-<a href="#customize-axis-settings" class="anchor"></a>Customize axis settings</h2>
+<div class="section level3">
+<h3 id="customize-axis-settings">Customize axis settings<a class="anchor" aria-label="anchor" href="#customize-axis-settings"></a>
+</h3>
 <p>When axis ticks are to close together set the increment argument to leave additional space (e.g. <code>increment = 2</code> will annotate every other value). When you set <code>increment_from = 0</code> an additional tick will be set at 1 although counting of the increments will start at 0.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/set_xaxis.html">set_xaxis</a></span><span class="op">(</span>increment_from <span class="op">=</span> <span class="fl">0</span>, increment <span class="op">=</span> <span class="fl">5</span>, 
             color <span class="op">=</span> <span class="st">"darkred"</span>, size <span class="op">=</span> <span class="fl">0.7</span>, angle <span class="op">=</span> <span class="op">-</span><span class="fl">90</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/set_xaxis.html">set_yaxis</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.7</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> </code></pre></div>
+  <span class="fu"><a href="../reference/set_xaxis.html">set_yaxis</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.7</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> </code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-31-1.png" width="700"></p>
 </div>
-<div id="customize-axis-labels" class="section level2">
-<h2 class="hasAnchor">
-<a href="#customize-axis-labels" class="anchor"></a>Customize axis labels</h2>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="customize-axis-labels">Customize axis labels<a class="anchor" aria-label="anchor" href="#customize-axis-labels"></a>
+</h3>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/set_xlabel.html">set_ylabel</a></span><span class="op">(</span><span class="st">"Score"</span>, color <span class="op">=</span> <span class="st">"darkred"</span>, angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_xlabel.html">set_xlabel</a></span><span class="op">(</span><span class="st">"Session"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-32-1.png" width="700"></p>
 </div>
-<div id="change-casenames" class="section level2">
-<h2 class="hasAnchor">
-<a href="#change-casenames" class="anchor"></a>Change Casenames</h2>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<p><img src="examples_files/figure-html/unnamed-chunk-33-1.png" width="700"></p>
-<p>Casenames as strips:</p>
+<div class="section level3">
+<h3 id="change-casenames">Change Casenames<a class="anchor" aria-label="anchor" href="#change-casenames"></a>
+</h3>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<p><img src="examples_files/figure-html/unnamed-chunk-33-1.png" width="700"></p>
+<p>Casenames as strips:</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"strip"</span>, 
-                background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+                background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-34-1.png" width="700"></p>
 </div>
-<div id="add-value-labels" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-value-labels" class="anchor"></a>Add value labels</h2>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, 
-             background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey98"</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></code></pre></div>
-<p><img src="examples_files/figure-html/unnamed-chunk-35-1.png" width="700"></p>
-<p>If you set the <code>nudge_y</code> argument to 0, the label will be set on-top the datapoints:</p>
+<div class="section level3">
+<h3 id="add-value-labels">Add value labels<a class="anchor" aria-label="anchor" href="#add-value-labels"></a>
+</h3>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, 
-             background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey98"</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, 
+             background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey98"</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></code></pre></div>
+<p><img src="examples_files/figure-html/unnamed-chunk-35-1.png" width="700"></p>
+<p>If you set the <code>nudge_y</code> argument to 0, the label will be set on-top the datapoints:</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, 
+             background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey98"</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-36-1.png" width="700"></p>
 </div>
-<div id="add-a-ridge" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-a-ridge" class="anchor"></a>Add a ridge</h2>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="add-a-ridge">Add a ridge<a class="anchor" aria-label="anchor" href="#add-a-ridge"></a>
+</h3>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_mpd</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/add_ridge.html">add_ridge</a></span><span class="op">(</span><span class="st">"grey50"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-37-1.png" width="700"></p>
 </div>
-<div id="complexs-examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#complexs-examples" class="anchor"></a>Complexs examples</h2>
+<div class="section level3">
+<h3 id="complexs-examples">Complexs examples<a class="anchor" aria-label="anchor" href="#complexs-examples"></a>
+</h3>
 <p>Here are some more complex examples</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">example_A24</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="st">"default"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"lowess"</span>, color <span class="op">=</span> <span class="st">"darkred"</span>, width <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"loess"</span>, color <span class="op">=</span> <span class="st">"red"</span>, width <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"movingMean"</span>, lag <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"lightpink"</span>, width <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"lowess"</span>, color <span class="op">=</span> <span class="st">"darkred"</span>, size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"loess"</span>, color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"movingMean"</span>, lag <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"lightpink"</span>, size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_xaxis.html">set_xaxis</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.8</span>, angle <span class="op">=</span> <span class="fl">35</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_dataline.html">set_dataline</a></span><span class="op">(</span>point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.75</span><span class="op">)</span>, background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/set_phasenames.html">set_phasenames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"no speedlimit"</span>, <span class="st">"with speedlimit"</span><span class="op">)</span>, position <span class="op">=</span> <span class="st">"left"</span>, 
+  <span class="fu"><a href="../reference/add_dataline.html">set_dataline</a></span><span class="op">(</span>point <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.75</span><span class="op">)</span>, background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/set_phasenames.html">set_phasenames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no speedlimit"</span>, <span class="st">"with speedlimit"</span><span class="op">)</span>, position <span class="op">=</span> <span class="st">"left"</span>, 
                  hjust <span class="op">=</span> <span class="fl">0</span>, vjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_title</a></span><span class="op">(</span><span class="st">"Effect of a speedlimit on the A24"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_caption</a></span><span class="op">(</span><span class="st">"Note: Moving mean calculated with lag three"</span>, face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_ridge.html">add_ridge</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/unnamed-chunk-38-1.png" width="700"></p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_add</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_dataline.html">add_dataline</a></span><span class="op">(</span><span class="st">"cigarrets"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span>, point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_dataline.html">add_dataline</a></span><span class="op">(</span><span class="st">"cigarrets"</span>, point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"trend"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span><span class="st">"mean"</span>, variable <span class="op">=</span> <span class="st">"cigarrets"</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>,<span class="fl">20</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span>, variable <span class="op">=</span> <span class="st">"cigarrets"</span><span class="op">)</span><span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">14</span>,<span class="fl">20</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span>, variable <span class="op">=</span> <span class="st">"cigarrets"</span><span class="op">)</span><span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>positions <span class="op">=</span> <span class="st">"cigarrets &gt; quantile(cigarrets, 0.75)"</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_xaxis.html">set_xaxis</a></span><span class="op">(</span>increment <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_phasenames.html">set_phasenames</a></span><span class="op">(</span>color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"strip"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>, text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"grey80"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span>
+    section_labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">""</span><span class="op">)</span>,
+    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Trend of wellbeing"</span>, <span class="st">"Mean of cigarrets"</span><span class="op">)</span>,
+    text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"grey80"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_ridge.html">add_ridge</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"snow"</span>, variable <span class="op">=</span> <span class="st">"cigarrets"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="st">"cigarrets"</span>, nudge_y <span class="op">=</span> <span class="fl">2</span>, 
-             text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>nudge_y <span class="op">=</span> <span class="fl">2</span>, text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,
-             background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+             text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>nudge_y <span class="op">=</span> <span class="fl">2</span>, text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,
+             background <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="examples_files/figure-html/multi-variables-1.png" width="700"></p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/set_xaxis.html">set_xaxis</a></span><span class="op">(</span>increment <span class="op">=</span> <span class="fl">4</span>, color <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_xaxis.html">set_yaxis</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"sienna3"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -487,19 +491,18 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
   <span class="fu"><a href="../reference/add_title.html">add_title</a></span><span class="op">(</span><span class="st">"Points by week"</span>, color <span class="op">=</span> <span class="st">"sienna4"</span>, face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_title.html">add_caption</a></span><span class="op">(</span><span class="st">"Note: An extensive Example."</span>,
               color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">1</span>, face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/set_phasenames.html">set_phasenames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Baseline"</span>, <span class="st">"Intervention"</span>, <span class="st">"Fall-Back"</span>, <span class="st">"Intervention_2"</span><span class="op">)</span>, 
+  <span class="fu"><a href="../reference/set_phasenames.html">set_phasenames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Baseline"</span>, <span class="st">"Intervention"</span>, <span class="st">"Fall-Back"</span>, <span class="st">"Intervention_2"</span><span class="op">)</span>, 
                  size <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_ridge.html">add_ridge</a></span><span class="op">(</span><span class="fu">alpha</span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">sample_names</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"steelblue4"</span>, size <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"grey95"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"sienna4"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"grey95"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"sienna4"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_grid.html">add_grid</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"grey85"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_dataline.html">set_dataline</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, width <span class="op">=</span> <span class="fl">0.5</span>, linetype <span class="op">=</span> <span class="st">"solid"</span>, 
-               point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"sienna4"</span>, size <span class="op">=</span> <span class="fl">0.5</span>, 
-                                     shape <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"sienna"</span>, size <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_dataline.html">set_dataline</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, linetype <span class="op">=</span> <span class="st">"solid"</span>, 
+               point <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"sienna4"</span>, size <span class="op">=</span> <span class="fl">0.5</span>, shape <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_labels.html">add_labels</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"sienna"</span>, size <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/set_separator.html">set_separator</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, linetype <span class="op">=</span> <span class="st">"solid"</span>, color <span class="op">=</span> <span class="st">"sienna"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"trendA"</span>, color <span class="op">=</span> <span class="st">"tomato2"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"max"</span>, phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"max"</span>, phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, positions <span class="op">=</span> <span class="fl">14</span>, color <span class="op">=</span> <span class="st">"red3"</span>, size <span class="op">=</span> <span class="fl">2</span>, shape <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="st">"all"</span>, positions <span class="op">=</span> <span class="st">"values &lt; quantile(values, 0.1)"</span>, 
             color <span class="op">=</span> <span class="st">"blue3"</span>, size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -525,11 +528,13 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
 
 
       <footer><div class="copyright">
-  <p>Developed by Juergen Wilbert.</p>
+  <p></p>
+<p>Developed by Juergen Wilbert.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -537,6 +542,8 @@ yellow: values &lt; 20% quantile of all cases"</span><span class="op">)</span></
 
   
 
+
+  
 
   </body>
 </html>
