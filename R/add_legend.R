@@ -7,7 +7,8 @@
 #' @param title A list with text style parameters for the title.
 #' @export
 add_legend <- function(object,
-                       labels = ".default",
+                       labels = NULL,
+                       section_labels = c("Lines", "Phases"),
                        case = 1,
                        position = "right",
                        datalines = TRUE,
@@ -15,12 +16,13 @@ add_legend <- function(object,
                        title = NULL,
                        text = NULL,
                        background = NULL
-                       #title.label = "Lines"
 ) {
 
   object$legend$labels <- labels
+  object$legend$section_labels <- section_labels
   object$legend$statlines <- statlines
   object$legend$datalines <- datalines
+
 
   object$theme$legend.title <-
     .merge_element(title, object$theme$legend.title)

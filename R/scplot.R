@@ -13,16 +13,12 @@ scplot <- function(scdf) {
 
   theme <- .scplot_themes[["default"]]
 
-  default_line <- list(
-    type = "continuous"
-  )
-
   out <- list(
     scdf = scdf,
     dvar = scdf_attr(scdf, scan:::.opt$dv),
     pvar = scdf_attr(scdf, scan:::.opt$phase),
     mvar = scdf_attr(scdf, scan:::.opt$mt),
-    datalines = list(default_line),
+    datalines = list(list(type = "continuous")),
     statlines = NULL,
     ridges = NULL,
     marks = NULL,

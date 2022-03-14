@@ -612,6 +612,12 @@ as_ggplot <- function(scplot) {
       )
     )
   }
+
+  if (!is.null(object$legend$labels)) {
+    .ids <- which(!is.na(object$legend$labels))
+    labels[.ids] <- object$legend$labels[.ids]
+  }
+
   p <- p +
     scale_colour_manual(
       values = .color,
@@ -625,8 +631,8 @@ as_ggplot <- function(scplot) {
             legend.text = theme$legend.text,
             legend.title = theme$legend.title,
             legend.margin = theme$legend.margin)
-    p <- p + guides(fill = guide_legend(title = "Phases"))
-    p <- p + guides(colour = guide_legend(title = "Lines"))
+    p <- p + guides(fill = guide_legend(title = object$legend$section_label[2]))
+    p <- p + guides(colour = guide_legend(title = object$legend$section_label[1]))
   } else p <- p + theme(legend.position = "None")
 
   # out -----------

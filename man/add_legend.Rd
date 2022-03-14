@@ -6,7 +6,8 @@
 \usage{
 add_legend(
   object,
-  labels = ".default",
+  labels = NULL,
+  section_labels = c("Lines", "Phases"),
   case = 1,
   position = "right",
   datalines = TRUE,
