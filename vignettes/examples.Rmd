@@ -41,6 +41,16 @@ You can install it with `devtools::install_github("jazznbass/scplot", dependenci
 Make sure you have the package `devtools` installed before.
 The package has to be compiled. When you are running R on a Windows machine you also have to install Rtools. Rtools is not an R package and can be downloaded from CRAN at https://cran.r-project.org/bin/windows/Rtools/. MacOs and Linux users usually do not need to take this extra step.
 
+## Basic principal
+
+You start by providing an scdf object (a single-case data frame as returned from the `scdf()` function of scan) to the `scplot()` function (e.g. `scplot(exampleAB)`). Now you use a series of pipe-operators (`%>%`) to add and change characteristics of the resulting plot. For example:
+
+```{r eval=FALSE}
+scplot(exampleABC) %>%
+  add_title("My plot") %>%
+  add_caption("Note: A nice plot")
+```
+
 ## The standard style
 
 ```{r}
@@ -376,6 +386,32 @@ scplot(exampleABC) %>%
 scplot(exampleAB_mpd) %>% 
   add_ridge("grey50")
 ```
+
+## Extending scplot with ggplot2
+
+`scplot()` generates ggplot2 objects. You can keep the ggplot2 object and assign it into a new object with the `as_ggplot()` function. Thereby, you can use many ggplot2 functions to rework your graphics:
+
+
+```{r}
+
+p1 <- scplot(byHeart2011$`Lisa (Turkish)`) %>% 
+        add_theme("minimal") %>%
+        as_ggplot()
+p2 <- scplot(byHeart2011$`Patrick (Spanish)`) %>% 
+        add_theme("minimal") %>% 
+        as_ggplot()
+p3 <- scplot(byHeart2011$`Anna (Twi)`) %>% 
+        add_theme("minimal") %>% 
+        as_ggplot()
+p4 <- scplot(byHeart2011$`Melanie (Swedish)`) %>% 
+        add_theme("minimal") %>% 
+        as_ggplot()
+
+library(patchwork)
+p1 + p2 + p3 + p4 + plot_annotation(tag_levels = "I")
+
+```
+
 
 ## Complexs examples
 
