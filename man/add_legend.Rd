@@ -12,6 +12,7 @@ add_legend(
   position = "right",
   datalines = TRUE,
   statlines = TRUE,
+  phases = TRUE,
   title = NULL,
   text = NULL,
   background = NULL
@@ -36,6 +37,8 @@ for all cases.}
 \item{datalines}{If TRUE, a legend for the datalines is generated.}
 
 \item{statlines}{If TRUE, a legend for the statlines is generated.}
+
+\item{phases}{If TRUE, a legend for the phases is generated.}
 
 \item{title}{A list with text style parameters for the title.}
 

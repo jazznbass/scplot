@@ -14,7 +14,8 @@ add_arrow(
   color = "black",
   angle = 30,
   length = unit(5, "points"),
-  type = "open"
+  type = "open",
+  ends = "last"
 )
 }
 \arguments{
@@ -39,6 +40,8 @@ for all cases.}
 \item{length}{Size of the arrow angels.}
 
 \item{type}{One of "open" or "closed" indicating whether the arrow head should be a closed triangle.}
+
+\item{ends}{One of "last", "first", or "both", indicating which ends of the line to draw arrow heads.}
 }
 \description{
 Add arrrows to an scplot

@@ -7,6 +7,7 @@
 #' @param y1 End y position of the line.
 #' @param length Size of the arrow angels.
 #' @param type One of "open" or "closed" indicating whether the arrow head should be a closed triangle.
+#' @param ends One of "last", "first", or "both", indicating which ends of the line to draw arrow heads.
 #' @export
 add_arrow <- function(object,
                       case = 1,
@@ -14,7 +15,8 @@ add_arrow <- function(object,
                       color = "black",
                       angle = 30,
                       length = unit(5, "points"),
-                      type = "open") {
+                      type = "open",
+                      ends = "last") {
   arrow <- list(
     case = case,
     x0 = x0,
@@ -24,7 +26,7 @@ add_arrow <- function(object,
     colour = color,
     angle = angle,
     length = length,
-    ends = "last",
+    ends = ends,
     type = type
   )
   object$arrows <- c(object$arrows, list(arrow))

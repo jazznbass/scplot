@@ -408,7 +408,7 @@ p4 <- scplot(byHeart2011$`Melanie (Swedish)`) %>%
         as_ggplot()
 
 library(patchwork)
-p1 + p2 + p3 + p4 + plot_annotation(tag_levels = "I")
+p1 + p2 + p3 + p4 + plot_annotation(tag_levels = "a", tag_suffix =  ")")
 
 ```
 
@@ -427,7 +427,7 @@ scplot(example_A24) %>%
   set_dataline(point = "none") %>%
   add_legend(position = c(0.8, 0.75), background = list(color = "grey50")) %>%
   set_phasenames(c("no speedlimit", "with speedlimit"), position = "left", 
-                 hjust = 0, vjust = 1) %>%
+                 hjust = 0, vjust = 1, nudge_y = -10) %>%
   set_casenames("") %>%
   add_title("Effect of a speedlimit on the A24") %>%
   add_caption("Note: Moving mean calculated with lag three", face = 3) %>%

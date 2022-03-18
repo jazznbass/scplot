@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
       </span>
     </div>
 
@@ -57,9 +57,23 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">set_xaxis</span><span class="op">(</span><span class="va">object</span>, limits <span class="op">=</span> <span class="cn">NULL</span>, increment <span class="op">=</span> <span class="cn">NULL</span>, increment_from <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">set_xaxis</span><span class="op">(</span>
+  <span class="va">object</span>,
+  limits <span class="op">=</span> <span class="cn">NULL</span>,
+  increment <span class="op">=</span> <span class="cn">NULL</span>,
+  increment_from <span class="op">=</span> <span class="cn">NULL</span>,
+  line <span class="op">=</span> <span class="cn">NULL</span>,
+  <span class="va">...</span>
+<span class="op">)</span>
 
-<span class="fu">set_yaxis</span><span class="op">(</span><span class="va">object</span>, limits <span class="op">=</span> <span class="cn">NULL</span>, increment <span class="op">=</span> <span class="cn">NULL</span>, increment_from <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+<span class="fu">set_yaxis</span><span class="op">(</span>
+  <span class="va">object</span>,
+  limits <span class="op">=</span> <span class="cn">NULL</span>,
+  increment <span class="op">=</span> <span class="cn">NULL</span>,
+  increment_from <span class="op">=</span> <span class="cn">NULL</span>,
+  line <span class="op">=</span> <span class="cn">NULL</span>,
+  <span class="va">...</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -77,6 +91,8 @@ a proper scale based on the given data.</p></dd>
 <dd><p>An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.</p></dd>
 <dt>increment_from</dt>
 <dd><p>Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...</p></dd>
+<dt>line</dt>
+<dd><p>A list (class element_line) with datapoint attributes: colour, linetype, size.</p></dd>
 <dt>...</dt>
 <dd><p>Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.</p></dd>
 </dl></div>

@@ -14,7 +14,8 @@ add_text(
   size = 1,
   angle = 0,
   hjust = 0.5,
-  vjust = 0.5
+  vjust = 0.5,
+  face = 1
 )
 }
 \arguments{

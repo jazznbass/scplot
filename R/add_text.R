@@ -13,17 +13,20 @@ add_text <- function(object,
                      size = 1,
                      angle = 0,
                      hjust = 0.5,
-                     vjust = 0.5) {
+                     vjust = 0.5,
+                     face = 1) {
 
   text <- list(
-    case = case, labels = label,
+    case = case,
+    labels = label,
     x = x,
     y = y,
     colour = color,
     size = size,
     angle = angle,
     hjust = hjust,
-    vjust = vjust
+    vjust = vjust,
+    face = face
   )
 
   object$texts <- c(object$texts, list(text))

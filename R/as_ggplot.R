@@ -174,7 +174,8 @@ as_ggplot <- function(scplot) {
     p <- p + geom_rect(
       data = data_phase,
       aes(xmin = x1, xmax = x2, ymin = -Inf, ymax = Inf, fill = phase),
-      inherit.aes = FALSE
+      inherit.aes = FALSE,
+      show.legend = if (isFALSE(object$legend$phases)) FALSE else NA
     )
   }
 
@@ -365,6 +366,8 @@ as_ggplot <- function(scplot) {
   if (is.null(theme$phasenames$size)) theme$phasenames$size <- 1
   theme$phasenames <- merge_element(theme$phasenames, theme$text)
 
+
+
   p <- p + geom_text(
     data = data_phasenames,
     aes(label = phase, x = x, y = Inf),
@@ -385,16 +388,9 @@ as_ggplot <- function(scplot) {
   p <- p + theme(axis.ticks.length = theme$axis.ticks.length)
   p <- p + theme(axis.ticks = theme$axis.ticks)
 
-
-  #axis.ticks
-
-
   # add grid ------------
 
-  #if (!is.null(theme$grid$colour)) {
-    p <- p + theme(panel.grid = theme$grid)
-  #}
-
+  p <- p + theme(panel.grid = theme$grid)
 
   # add title ------------------------
 
@@ -552,8 +548,8 @@ as_ggplot <- function(scplot) {
         size = .size(object$texts[[i]]$size, base_size),
         angle = object$texts[[i]]$angle,
         hjust = object$texts[[i]]$hjust,
-        vjust = object$texts[[i]]$vjust
-
+        vjust = object$texts[[i]]$vjust,
+        fontface = object$texts[[i]]$face
       )
     }
   }
@@ -591,7 +587,9 @@ as_ggplot <- function(scplot) {
 
   # add legend ------
 
-  .color <- unlist(lapply(theme$dataline[1:length(object$datalines)], function(x) x$colour))
+  .color <- unlist(
+    lapply(theme$dataline[1:length(object$datalines)], function(x) x$colour)
+  )
   .color <- setNames(.color, .color)
   labels <- unlist(lapply(object$datalines, function(x) x$variable))
 

@@ -5,9 +5,23 @@
 \alias{set_yaxis}
 \title{Set axis parameters of an scplot}
 \usage{
-set_xaxis(object, limits = NULL, increment = NULL, increment_from = NULL, ...)
+set_xaxis(
+  object,
+  limits = NULL,
+  increment = NULL,
+  increment_from = NULL,
+  line = NULL,
+  ...
+)
 
-set_yaxis(object, limits = NULL, increment = NULL, increment_from = NULL, ...)
+set_yaxis(
+  object,
+  limits = NULL,
+  increment = NULL,
+  increment_from = NULL,
+  line = NULL,
+  ...
+)
 }
 \arguments{
 \item{object}{An scplot object (class `scplot`) returned from the `scplot()`
@@ -22,6 +36,8 @@ a proper scale based on the given data.}
 \item{increment}{An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.}
 
 \item{increment_from}{Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...}
+
+\item{line}{A list (class element_line) with datapoint attributes: colour, linetype, size.}
 
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
