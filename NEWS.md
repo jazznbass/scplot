@@ -1,3 +1,7 @@
+# scplot 0.3
+
+- `add_statline()`: New `type` "bar"  
+
 # scplot 0.2
 
 - replaced all dplyr functions with base R functions.

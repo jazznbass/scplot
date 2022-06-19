@@ -223,6 +223,21 @@ as_ggplot <- function(scplot) {
       )
     }
 
+    if(object$datalines[[i]]$type == "bar") {
+      #suppressWarnings(p <- p + scale_x_discrete())
+      p <- p + geom_bar(
+        aes(
+          #x = factor(!!sym(mvar)),
+          y = !!sym(object$datalines[[i]]$variable),
+          colour = !!theme$dataline[[i]]$colour
+        ),
+        #fill = theme$dataline[[i]]$colour,
+        stat = "identity",
+        #position = position_nudge(x = 0.5),
+        width = theme$dataline[[i]]$size,
+        linetype = theme$dataline[[i]]$linetype
+      )
+    }
 
     # add datapoints
 

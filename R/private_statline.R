@@ -46,13 +46,14 @@
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
+  #if (is.null(line$args$offset)) line$args$offset <- 0
+
   dat_stat <- data %>%
     split(~case + phase) %>%
-    lapply(function(x) c(
-      int = as.numeric(coef(lm(x$values~x$mt))[1]),
-      b = as.numeric(coef(lm(x$values~x$mt))[2])
-    )
-    ) %>%
+    lapply(function(x) {
+      c(int = as.numeric(coef(lm(x$values~x$mt))[1]),
+        b = as.numeric(coef(lm(x$values~x$mt))[2]))
+    }) %>%
     .ungroup()
 
   data$y <- NA
