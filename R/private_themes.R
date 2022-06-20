@@ -32,6 +32,8 @@
 
   statline = element_line(color = "grey", size = 0.7, linetype = "solid"),
 
+  axis.expand.x = c(0, 0.6, 0, 0.6),
+  axis.expand.y = c(0.05, 0, 0.05, 0),
   axis.line.x = element_line(color = "black", size = 0.4, linetype = "solid"),
   axis.line.y = element_line(color = "black", size = 0.4, linetype = "solid"),
 

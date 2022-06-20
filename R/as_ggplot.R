@@ -104,10 +104,12 @@ as_ggplot <- function(scplot) {
   if (!is.null(object$yaxis$inc)) {
     p <- p + scale_y_continuous(
       limits = c(ylim[1], ylim[2]),
-      breaks = seq(ylim[1], ylim[2], object$yaxis$inc)
+      breaks = seq(ylim[1], ylim[2], object$yaxis$inc),
+      expand = theme$axis.expand.y
     )
   } else {
-    p <- p + scale_y_continuous(limits = c(ylim[1], ylim[2]))
+    p <- p + scale_y_continuous(limits = c(ylim[1], ylim[2]),
+                                expand = theme$axis.expand.y)
   }
 
   p <- p + theme(axis.text.x= theme$axis.text.x)
@@ -124,7 +126,8 @@ as_ggplot <- function(scplot) {
 
   p <- p + scale_x_continuous(
     breaks = x, #seq(xlim[1], xlim[2], object$xaxis$inc),
-    limits = c(xlim[1], xlim[2])
+    limits = c(xlim[1], xlim[2]),
+    expand = theme$axis.expand.x
   )
 
   p <- p + theme(axis.text.y = theme$axis.text.y)

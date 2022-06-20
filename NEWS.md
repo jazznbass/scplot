@@ -1,6 +1,7 @@
 # scplot 0.3
 
 - `add_statline()`: New `type` "bar"  
+- `set_xaxis()` `set_yaxis()`: New argument expand (see ggplot scale_continuous).
 
 # scplot 0.2
 
