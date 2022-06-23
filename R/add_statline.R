@@ -19,6 +19,7 @@
 #'   The 'mean' function has a trim argument (e.g. 'trim = 0.1').
 #'   'quantile has a proportion argument (e.g. prob = 0.75 for calculating
 #'   the 75% quantile).
+#'   'trendA' has the argument 'method' which takes 'ols' or 'theil-sen'.
 #'   'movingMean' and 'movingMedian' have a lag argument (e.g. lag = 2).
 #'   The local-regression curve function 'lowess' (or 'loreg') has a proportion
 #'   argument (e.g. f = 0.5) and the

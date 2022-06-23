@@ -459,6 +459,13 @@ as_ggplot <- function(scplot) {
       }
 
       if (object$statlines[[j]]$stat %in% "trendA") {
+
+        if (is.null(object$statlines[[j]]$args$method))
+          object$statlines[[j]]$args$method <- "ols"
+
+        if (object$statlines[[j]]$args$method %in% c("theil-sen"))
+          object$statlines[[j]]$stat <- "trendA theil-sen"
+
         p <- p + .statline_trend_one(
           data_long, object$statlines[[j]],
           object$statlines[[j]]$variable, object$mvar, object$pvar

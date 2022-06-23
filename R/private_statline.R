@@ -42,19 +42,31 @@
 
 .statline_trend <- function(data, line, dvar, mvar, pvar) {
 
-  label <- paste("trend", dvar)
-
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
-  #if (is.null(line$args$offset)) line$args$offset <- 0
+  if (is.null(line$args$method)) line$args$method <- "lm"
+
+  label <- paste(line$stat, dvar)
 
   dat_stat <- data %>%
     split(~case + phase) %>%
     lapply(function(x) {
-      c(int = as.numeric(coef(lm(x$values~x$mt))[1]),
-        b = as.numeric(coef(lm(x$values~x$mt))[2]))
-    }) %>%
+      if(line$args$method %in% c("theil-sen", "mblm")) {
+        param <- coef(mblm::mblm(values ~ mt, data = x, repeated = FALSE))
+      } else if (line$args$method %in% c("lm", "ols")) {
+        param <- coef(lm(values ~ mt, data = x))
+      }
+      c(int = as.numeric(param[1]), b = as.numeric(param[2]))
+    } ) %>%
     .ungroup()
+
+  #dat_stat <- data %>%
+  #  split(~case + phase) %>%
+  #  lapply(function(x) {
+  #    c(int = as.numeric(coef(lm(x$values~x$mt))[1]),
+  #      b = as.numeric(coef(lm(x$values~x$mt))[2]))
+  #  }) %>%
+  #  .ungroup()
 
   data$y <- NA
 
@@ -74,22 +86,24 @@
 .statline_trend_one <- function(data, line, dvar, mvar, pvar,
                                 reference_phase = 1) {
 
-  label <- paste("trendA", dvar)
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   reference_phase <- levels(data$phase)[reference_phase]
 
+
+  label <- paste(line$stat, dvar)
+
   dat_stat <- data %>%
     split(~case) %>%
-    lapply(function(x) c(
-        int = as.numeric(
-          coef(lm(x$values~x$mt, subset= x$phase %in% reference_phase))[1]
-        ),
-        b = as.numeric(
-          coef(lm(x$values~x$mt, subset=x$phase %in% reference_phase))[2]
-        )
-      )
-    ) %>%
+    lapply(function(x) {
+      tmp_dat <- subset(x, phase %in% reference_phase)
+      if(line$args$method %in% c("theil-sen", "mblm")) {
+        param <- coef(mblm::mblm(values ~ mt, data = tmp_dat, repeated = FALSE))
+      } else if (line$args$method %in% c("lm", "ols")) {
+        param <- coef(lm(values ~ mt, data = tmp_dat))
+      }
+      c(int = as.numeric(param[1]), b = as.numeric(param[2]))
+    } ) %>%
     .ungroup()
 
   data$y <- NA
