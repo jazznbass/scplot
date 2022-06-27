@@ -7,34 +7,33 @@
 as_ggplot <- function(scplot) {
 
   # set global variables --------
-  object <- scplot
 
-  data <- object$scdf
-  theme <- object$theme
-  dvar <- object$dvar
-  pvar <- object$pvar
-  mvar <- object$mvar
+  scdf <- scplot$scdf
+  theme <- scplot$theme
+  dvar <- scplot$dvar
+  pvar <- scplot$pvar
+  mvar <- scplot$mvar
 
   base_size <- theme$text$size
 
-  N <- length(data)
+  n_cases <- length(scdf)
 
   # rename casesnames --------
 
-  names(data) <- object$casenames$labels
+  names(scdf) <- scplot$casenames$labels
 
   # rename phasenames ----------
 
-  if (!identical(object$phasenames$labels, ".default")) {
-    for(i in seq_along(data)) {
-      levels(data[[i]][[pvar]]) <- object$phasenames$labels
+  if (!identical(scplot$phasenames$labels, ".default")) {
+    for(i in seq_along(scdf)) {
+      levels(scdf[[i]][[pvar]]) <- scplot$phasenames$labels
     }
   }
 
   # convert to long format --------
 
-  data_long <- as.data.frame(data)
-  data_long$case <- factor(data_long$case, levels = object$casenames$labels)
+  data_long <- as.data.frame(scdf)
+  data_long$case <- factor(data_long$case, levels = scplot$casenames$labels)
   data_long[[pvar]] <- factor(data_long[[pvar]])
 
   # extract design --------
@@ -49,40 +48,40 @@ as_ggplot <- function(scplot) {
     phases
   }
 
-  design <- lapply(data, .design, pvar = pvar, mvar = mvar)
+  design <- lapply(scdf, .design, pvar = pvar, mvar = mvar)
 
   # set dataline for first dvar ---------------------
 
-  object$datalines[[1]]$variable <- object$dvar[1]
+  scplot$datalines[[1]]$variable <- scplot$dvar[1]
 
   # set x/y label --------
 
-  if (is.null(object$xlabel)) {
-    object$xlabel <- mvar
-    if (object$xlabel == "mt") object$xlabel <- "Measurement time"
-    object$xlabel <- .upperfirst(object$xlabel)
+  if (is.null(scplot$xlabel)) {
+    scplot$xlabel <- mvar
+    if (scplot$xlabel == "mt") scplot$xlabel <- "Measurement time"
+    scplot$xlabel <- .upperfirst(scplot$xlabel)
   }
-  if (is.null(object$ylabel)) {
-    if (length(object$dvar) == 1) {
-      object$ylabel <- object$dvar
-      object$ylabel <- .upperfirst(object$ylabel)
+  if (is.null(scplot$ylabel)) {
+    if (length(scplot$dvar) == 1) {
+      scplot$ylabel <- scplot$dvar
+      scplot$ylabel <- .upperfirst(scplot$ylabel)
     } else {
-      object$ylabel <- "Values"
+      scplot$ylabel <- "Values"
     }
   }
 
   # compute global xlim and ylim ---------
 
-  ylim <- object$yaxis$lim
-  xlim <- object$xaxis$lim
+  ylim <- scplot$yaxis$lim
+  xlim <- scplot$xaxis$lim
 
   if (is.null(ylim)) {
-    .dv <- unlist(lapply(data, function(x) x[, object$dvar]))
+    .dv <- unlist(lapply(scdf, function(x) x[, scplot$dvar]))
     ylim <- c(min(.dv, na.rm = TRUE), max(.dv, na.rm = TRUE))
   }
 
   if (is.null(xlim)) {
-    .mt     <- unlist(lapply(data, function(x) x[, mvar]))
+    .mt     <- unlist(lapply(scdf, function(x) x[, mvar]))
     xlim <- c(min(.mt, na.rm = TRUE), max(.mt, na.rm = TRUE))
   }
 
@@ -101,10 +100,10 @@ as_ggplot <- function(scplot) {
 
   # set yaxis ticks and text  --------
 
-  if (!is.null(object$yaxis$inc)) {
+  if (!is.null(scplot$yaxis$inc)) {
     p <- p + scale_y_continuous(
       limits = c(ylim[1], ylim[2]),
-      breaks = seq(ylim[1], ylim[2], object$yaxis$inc),
+      breaks = seq(ylim[1], ylim[2], scplot$yaxis$inc),
       expand = theme$axis.expand.y
     )
   } else {
@@ -116,16 +115,16 @@ as_ggplot <- function(scplot) {
 
   # set xaxis ticks and text  --------
 
-  if (!is.null(object$xaxis$inc_from)) {
-    x <- seq(object$xaxis$inc_from, xlim[2], object$xaxis$inc)
+  if (!is.null(scplot$xaxis$inc_from)) {
+    x <- seq(scplot$xaxis$inc_from, xlim[2], scplot$xaxis$inc)
     x <- x[x >= xlim[1]]
     x <- c(1, x)
   } else {
-    x <- seq(xlim[1], xlim[2], object$xaxis$inc)
+    x <- seq(xlim[1], xlim[2], scplot$xaxis$inc)
   }
 
   p <- p + scale_x_continuous(
-    breaks = x, #seq(xlim[1], xlim[2], object$xaxis$inc),
+    breaks = x, #seq(xlim[1], xlim[2], scplot$xaxis$inc),
     limits = c(xlim[1], xlim[2]),
     expand = theme$axis.expand.x
   )
@@ -178,7 +177,7 @@ as_ggplot <- function(scplot) {
       data = data_phase,
       aes(xmin = x1, xmax = x2, ymin = -Inf, ymax = Inf, fill = phase),
       inherit.aes = FALSE,
-      show.legend = if (isFALSE(object$legend$phases)) FALSE else NA
+      show.legend = if (isFALSE(scplot$legend$phases)) FALSE else NA
     )
   }
 
@@ -186,26 +185,26 @@ as_ggplot <- function(scplot) {
 
   # add ridges ---------------------------
 
-  if (!is.null(object$ridges)) {
-    for(i in seq_along(object$ridges)) {
-      if (object$ridges[[i]]$variable == ".dvar")
-        object$ridges[[i]]$variable <- dvar
+  if (!is.null(scplot$ridges)) {
+    for(i in seq_along(scplot$ridges)) {
+      if (scplot$ridges[[i]]$variable == ".dvar")
+        scplot$ridges[[i]]$variable <- dvar
       p <- p + geom_ribbon(
-        aes(ymax = !!sym(object$ridges[[i]]$variable),
+        aes(ymax = !!sym(scplot$ridges[[i]]$variable),
             ymin = ylim[1],
             group = !!sym(pvar)),
-        fill = object$ridges[[i]]$colour
+        fill = scplot$ridges[[i]]$colour
       )
     }
   }
 
   # add dataline and points ---------------------------
 
-  for (i in 1:length(object$datalines)) {
-    if(object$datalines[[i]]$type == "continuous") {
+  for (i in 1:length(scplot$datalines)) {
+    if(scplot$datalines[[i]]$type == "continuous") {
       p <- p + geom_line(
         aes(
-          y = !!sym(object$datalines[[i]]$variable),
+          y = !!sym(scplot$datalines[[i]]$variable),
           group = !!sym(pvar),
           colour = !!theme$dataline[[i]]$colour
         ),
@@ -214,10 +213,10 @@ as_ggplot <- function(scplot) {
       )
     }
 
-    if(object$datalines[[i]]$type == "discrete") {
+    if(scplot$datalines[[i]]$type == "discrete") {
       p <- p + geom_step(
         aes(
-          y = !!sym(object$datalines[[i]]$variable),
+          y = !!sym(scplot$datalines[[i]]$variable),
           group = !!sym(pvar),
           colour = !!theme$dataline[[i]]$colour
         ),
@@ -226,12 +225,12 @@ as_ggplot <- function(scplot) {
       )
     }
 
-    if(object$datalines[[i]]$type == "bar") {
+    if(scplot$datalines[[i]]$type == "bar") {
       #suppressWarnings(p <- p + scale_x_discrete())
       p <- p + geom_bar(
         aes(
           #x = factor(!!sym(mvar)),
-          y = !!sym(object$datalines[[i]]$variable),
+          y = !!sym(scplot$datalines[[i]]$variable),
           colour = !!theme$dataline[[i]]$colour
         ),
         #fill = theme$dataline[[i]]$colour,
@@ -246,7 +245,7 @@ as_ggplot <- function(scplot) {
 
     if (!identical(theme$datapoint[[i]], "none")) {
       p <- p + geom_point(
-        aes(y = !!sym(object$datalines[[i]]$variable)),
+        aes(y = !!sym(scplot$datalines[[i]]$variable)),
         colour = theme$datapoint[[i]]$colour,
         size = theme$datapoint[[i]]$size,
         shape = theme$datapoint[[i]]$shape
@@ -257,11 +256,11 @@ as_ggplot <- function(scplot) {
 
   # add value labels ---------------------------
 
-  if (!is.null(object$labels)) {
+  if (!is.null(scplot$labels)) {
 
-    for(i in seq_along(object$labels)){
+    for(i in seq_along(scplot$labels)){
 
-      label <- object$labels[[i]]
+      label <- scplot$labels[[i]]
       if (label$variable == ".dvar") label$variable <- dvar
 
       if (is.null(label$background$fill))
@@ -323,9 +322,9 @@ as_ggplot <- function(scplot) {
     }
 
     data_casenames <- data.frame(
-      x = rep(x, N),
-      y = rep(y, N),
-      case = object$casenames$labels
+      x = rep(x, n_cases),
+      y = rep(y, n_cases),
+      case = scplot$casenames$labels
     )
 
     if (is.null(theme$casenames$size)) theme$casenames$size <- 1
@@ -412,92 +411,92 @@ as_ggplot <- function(scplot) {
 
   # add title ------------------------
 
-  if (!is.null(object$title)) {
-    p <- p + ggtitle(object$title) +
+  if (!is.null(scplot$title)) {
+    p <- p + ggtitle(scplot$title) +
       theme(plot.title = theme$plot.title)
   }
 
   # add caption -------------
 
-  if (!is.null(object$caption)) {
-    p <- p + labs(caption = object$caption) +
+  if (!is.null(scplot$caption)) {
+    p <- p + labs(caption = scplot$caption) +
       theme(plot.caption = theme$plot.caption, plot.caption.position = "plot")
 
   }
 
   # add axis label ------
 
-  if (!is.null(object$ylabel)) p <- p + ylab(object$ylabel)
-  if (!is.null(object$xlabel)) p <- p + xlab(object$xlabel)
+  if (!is.null(scplot$ylabel)) p <- p + ylab(scplot$ylabel)
+  if (!is.null(scplot$xlabel)) p <- p + xlab(scplot$xlabel)
 
   p <- p + theme(axis.title.y = theme$axis.title.y)
   p <- p + theme(axis.title.x = theme$axis.title.x)
 
   # add statlines ------------------------------------------------------------
 
-  if (!is.null(object$statlines)) {
+  if (!is.null(scplot$statlines)) {
 
-    for(j in 1:length(object$statlines)) {
-      if (object$statlines[[j]]$variable == ".dvar")
-        object$statlines[[j]]$variable <- object$dvar[1]
+    for(j in 1:length(scplot$statlines)) {
+      if (scplot$statlines[[j]]$variable == ".dvar")
+        scplot$statlines[[j]]$variable <- scplot$dvar[1]
 
       possible_fixed_stats <- c("mean", "median", "min", "max", "quantile")
-      if (object$statlines[[j]]$stat %in% possible_fixed_stats) {
+      if (scplot$statlines[[j]]$stat %in% possible_fixed_stats) {
         p <- p + .statline(data_long,
-          line = object$statlines[[j]],
-          object$statlines[[j]]$variable,  object$mvar, object$pvar,
-          fun = object$statlines[[j]]$stat,
-          reference_phase = object$statlines[[j]]$phase
+          line = scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable,  scplot$mvar, scplot$pvar,
+          fun = scplot$statlines[[j]]$stat,
+          reference_phase = scplot$statlines[[j]]$phase
         )
       }
 
-      if (object$statlines[[j]]$stat == "trend") {
+      if (scplot$statlines[[j]]$stat == "trend") {
         p <- p + .statline_trend(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar
+          data_long, scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar
         )
       }
 
-      if (object$statlines[[j]]$stat %in% "trendA") {
+      if (scplot$statlines[[j]]$stat %in% "trendA") {
 
-        if (is.null(object$statlines[[j]]$args$method))
-          object$statlines[[j]]$args$method <- "ols"
+        if (is.null(scplot$statlines[[j]]$args$method))
+          scplot$statlines[[j]]$args$method <- "ols"
 
-        if (object$statlines[[j]]$args$method %in% c("theil-sen"))
-          object$statlines[[j]]$stat <- "trendA theil-sen"
+        if (scplot$statlines[[j]]$args$method %in% c("theil-sen"))
+          scplot$statlines[[j]]$stat <- "trendA theil-sen"
 
         p <- p + .statline_trend_one(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar
+          data_long, scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar
         )
       }
 
-      if (object$statlines[[j]]$stat == "movingMean") {
+      if (scplot$statlines[[j]]$stat == "movingMean") {
         p <- p + .statline_moving_average(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar, "mean"
+          data_long, scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar, "mean"
         )
       }
 
-      if (object$statlines[[j]]$stat == "movingMedian") {
+      if (scplot$statlines[[j]]$stat == "movingMedian") {
         p <- p + .statline_moving_average(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar, "median"
+          data_long, scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar, "median"
         )
       }
 
-      if (object$statlines[[j]]$stat %in% c("loreg", "lowess")) {
+      if (scplot$statlines[[j]]$stat %in% c("loreg", "lowess")) {
         p <- p + .statline_loreg(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar,
+          data_long, scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar,
           fun = "lowess"
         )
       }
 
-      if (object$statlines[[j]]$stat == "loess") {
+      if (scplot$statlines[[j]]$stat == "loess") {
         p <- p + .statline_loreg(
-          data_long, object$statlines[[j]],
-          object$statlines[[j]]$variable, object$mvar, object$pvar,
+          data_long, scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar,
           fun = "loess"
         )
       }
@@ -514,41 +513,41 @@ as_ggplot <- function(scplot) {
 
   # add marks -----
 
-  if (!is.null(object$marks)) {
+  if (!is.null(scplot$marks)) {
 
     cases <- unique(data_long$case)
 
-    for(i in seq_along(object$marks)) {
+    for(i in seq_along(scplot$marks)) {
 
       dat <- data_long
 
       # filter cases
-      if (!identical(object$marks[[i]]$case, "all"))
-        dat <- dat[dat$case %in% cases[object$marks[[i]]$case], ]
+      if (!identical(scplot$marks[[i]]$case, "all"))
+        dat <- dat[dat$case %in% cases[scplot$marks[[i]]$case], ]
 
       # filter mt
-      if (is.character(object$marks[[i]]$positions)) {
+      if (is.character(scplot$marks[[i]]$positions)) {
         filter <- eval(
-          str2expression(object$marks[[i]]$positions), envir = dat
+          str2expression(scplot$marks[[i]]$positions), envir = dat
         )
       } else {
-        filter <- dat[[mvar]] %in% object$marks[[i]]$position
+        filter <- dat[[mvar]] %in% scplot$marks[[i]]$position
       }
 
       dat <- dat[filter, ]
 
-      if (object$marks[[i]]$variable == ".dvar")
-        object$marks[[i]]$variable <- dvar
+      if (scplot$marks[[i]]$variable == ".dvar")
+        scplot$marks[[i]]$variable <- dvar
 
-      names(dat)[which(names(dat) == object$marks[[i]]$variable)] <- "dvar"
+      names(dat)[which(names(dat) == scplot$marks[[i]]$variable)] <- "dvar"
       names(dat)[which(names(dat) == mvar)] <- "mvar"
 
       p <- p + geom_point(
         data = dat,
         mapping = aes(x = mvar, y = dvar),
-        color = object$marks[[i]]$color,
-        size = object$marks[[i]]$size,
-        shape = object$marks[[i]]$shape
+        color = scplot$marks[[i]]$color,
+        size = scplot$marks[[i]]$size,
+        shape = scplot$marks[[i]]$shape
       )
     }
 
@@ -556,25 +555,25 @@ as_ggplot <- function(scplot) {
 
   # add text annotate -----
 
-  if (length(object$texts) > 0) {
+  if (length(scplot$texts) > 0) {
 
-    for(i in seq_along(object$texts)) {
+    for(i in seq_along(scplot$texts)) {
       dat <- data.frame(
-        x = object$texts[[i]]$x,
-        y = object$texts[[i]]$y,
-        label = object$texts[[i]]$labels,
-        case = unique(data_long$case)[object$texts[[i]]$case]
+        x = scplot$texts[[i]]$x,
+        y = scplot$texts[[i]]$y,
+        label = scplot$texts[[i]]$labels,
+        case = unique(data_long$case)[scplot$texts[[i]]$case]
       )
 
       p <- p + geom_text(
         data = dat,
         mapping = aes(x = x, y = y, label = label),
-        colour = object$texts[[i]]$colour,
-        size = .size(object$texts[[i]]$size, base_size),
-        angle = object$texts[[i]]$angle,
-        hjust = object$texts[[i]]$hjust,
-        vjust = object$texts[[i]]$vjust,
-        fontface = object$texts[[i]]$face
+        colour = scplot$texts[[i]]$colour,
+        size = .size(scplot$texts[[i]]$size, base_size),
+        angle = scplot$texts[[i]]$angle,
+        hjust = scplot$texts[[i]]$hjust,
+        vjust = scplot$texts[[i]]$vjust,
+        fontface = scplot$texts[[i]]$face
       )
     }
   }
@@ -582,27 +581,27 @@ as_ggplot <- function(scplot) {
 
   # add arrows ---------
 
-  if (length(object$arrows) > 0) {
-    for(i in seq_along(object$arrows)) {
+  if (length(scplot$arrows) > 0) {
+    for(i in seq_along(scplot$arrows)) {
       dat <- data.frame(
-        x0 = object$arrows[[i]]$x0,
-        y0 = object$arrows[[i]]$y0,
-        x1 = object$arrows[[i]]$x1,
-        y1 = object$arrows[[i]]$y1,
-        case = unique(data_long$case)[object$arrows[[i]]$case]
+        x0 = scplot$arrows[[i]]$x0,
+        y0 = scplot$arrows[[i]]$y0,
+        x1 = scplot$arrows[[i]]$x1,
+        y1 = scplot$arrows[[i]]$y1,
+        case = unique(data_long$case)[scplot$arrows[[i]]$case]
       )
 
       arrow_par <- arrow(
-        object$arrows[[i]]$angle,
-        object$arrows[[i]]$length,
-        object$arrows[[i]]$ends,
-        object$arrows[[i]]$type
+        scplot$arrows[[i]]$angle,
+        scplot$arrows[[i]]$length,
+        scplot$arrows[[i]]$ends,
+        scplot$arrows[[i]]$type
       )
 
       p <- p + geom_segment(
         data = dat,
         mapping = aes(x = x0, y = y0, xend = x1, yend = y1),
-        colour = object$arrows[[i]]$colour,
+        colour = scplot$arrows[[i]]$colour,
         arrow = arrow_par
       )
     }
@@ -613,16 +612,16 @@ as_ggplot <- function(scplot) {
   # add legend ------
 
   .color <- unlist(
-    lapply(theme$dataline[1:length(object$datalines)], function(x) x$colour)
+    lapply(theme$dataline[1:length(scplot$datalines)], function(x) x$colour)
   )
   .color <- setNames(.color, .color)
-  labels <- unlist(lapply(object$datalines, function(x) x$variable))
+  labels <- unlist(lapply(scplot$datalines, function(x) x$variable))
 
-  if (!is.null(object$statlines)) {
+  if (!is.null(scplot$statlines)) {
     labels_statlines <-
       paste(
-        unlist(lapply(object$statlines, function(x) x$stat)),
-        unlist(lapply(object$statlines, function(x) x$variable))
+        unlist(lapply(scplot$statlines, function(x) x$stat)),
+        unlist(lapply(scplot$statlines, function(x) x$variable))
       )
 
     labels <- c(labels, labels_statlines)
@@ -630,15 +629,15 @@ as_ggplot <- function(scplot) {
     .color <- c(
       .color,
       setNames(
-        unlist(lapply(object$statlines, function(x) x$line$colour)),
+        unlist(lapply(scplot$statlines, function(x) x$line$colour)),
         labels_statlines
       )
     )
   }
 
-  if (!is.null(object$legend$labels)) {
-    .ids <- which(!is.na(object$legend$labels))
-    labels[.ids] <- object$legend$labels[.ids]
+  if (!is.null(scplot$legend$labels)) {
+    .ids <- which(!is.na(scplot$legend$labels))
+    labels[.ids] <- scplot$legend$labels[.ids]
   }
 
   p <- p +
@@ -647,15 +646,15 @@ as_ggplot <- function(scplot) {
       labels = labels
     )
 
-  if (!is.null(object$legend)) {
+  if (!is.null(scplot$legend)) {
     p <- p +
       theme(legend.position = theme$legend.position,
             legend.background = theme$legend.background,
             legend.text = theme$legend.text,
             legend.title = theme$legend.title,
             legend.margin = theme$legend.margin)
-    p <- p + guides(fill = guide_legend(title = object$legend$section_label[2]))
-    p <- p + guides(colour = guide_legend(title = object$legend$section_label[1]))
+    p <- p + guides(fill = guide_legend(title = scplot$legend$section_label[2]))
+    p <- p + guides(colour = guide_legend(title = scplot$legend$section_label[1]))
   } else p <- p + theme(legend.position = "None")
 
   # out -----------
