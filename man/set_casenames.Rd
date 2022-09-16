@@ -12,7 +12,7 @@ function.}
 
 \item{labels}{A Character vector with text labels.}
 
-\item{position}{Either "strip", "topleft", "bottomleft", "topright", "bottomright", or a numerical vector of length 2 with the x and y position (e.g. c(19, 20)).}
+\item{position}{Either "topleft", "bottomleft", "topright", "bottomright", "strip-right", "strip-top", or a numerical vector of length 2 with the x and y position (e.g. c(19, 20)).}
 
 \item{background}{A list with background styling arguments (fill, color, size,
 linetype).}

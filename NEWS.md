@@ -2,6 +2,7 @@
 
 - `add_statline()`: New `type` "bar"  
 - `set_xaxis()` `set_yaxis()`: New argument expand (see ggplot scale_continuous).
+- `set_xaxis()`: Extended Argument `position` with `strip-right` and `strip-top`
 
 # scplot 0.2
 

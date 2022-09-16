@@ -1,7 +1,7 @@
 #' Set casenames of an scplot
 #'
 #' @inheritParams .inherit_scplot
-#' @param position Either "strip", "topleft", "bottomleft", "topright", "bottomright", or a numerical vector of length 2 with the x and y position (e.g. c(19, 20)).
+#' @param position Either "topleft", "bottomleft", "topright", "bottomright", "strip-right", "strip-top", or a numerical vector of length 2 with the x and y position (e.g. c(19, 20)).
 #' @export
 set_casenames <- function(object, labels = NULL,
                           position = NULL,
@@ -16,13 +16,36 @@ set_casenames <- function(object, labels = NULL,
   if (!is.null(position)) object$theme$casenames.position <- position
   if (!is.null(args_text$size)) args_text$size <- rel(args_text$size)
 
-  if (identical(position, "strip")) {
-    if (is.null(args_text$angle)) args_text$angle <- 270
-    if (is.null(args_text$hjust)) args_text$hjust <- 0.5
+  # backwards compatibility
+  if (identical(object$theme$casenames.position, "strip")) {
+    object$theme$casenames.position <- "strip-right"
+  }
+
+  if (identical(object$theme$casenames.position, "topright")) {
+    if (is.null(args_text$hjust)) args_text$hjust <- 1
+  }
+
+  if (identical(object$theme$casenames.position, "bottomleft")) {
+    if (is.null(args_text$vjust)) args_text$vjust <- 0
+  }
+
+  if (identical(object$theme$casenames.position, "bottomright")) {
+    if (is.null(args_text$hjust)) args_text$hjust <- 1
+    if (is.null(args_text$vjust)) args_text$vjust <- 0
+  }
+
+  if (identical(object$theme$casenames.position, "strip-right")) {
+      if (is.null(args_text$angle)) args_text$angle <- 270
+      if (is.null(args_text$hjust)) args_text$hjust <- 0.5
+  }
+  if (identical(object$theme$casenames.position, "strip-top")) {
+    if (is.null(args_text$hjust)) args_text$hjust <- 0
   }
 
   object$theme$casenames.strip <- .merge_element(
     args_rect, object$theme$casenames.strip)
+  object$theme$casenames.background <- .merge_element(
+    args_rect, object$theme$casenames.background)
 
   object$theme$casenames <- .merge_element(args_text, object$theme$casenames)
 

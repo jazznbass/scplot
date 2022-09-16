@@ -136,12 +136,26 @@ as_ggplot <- function(scplot) {
 
   # create facets --------------------
 
-  p <- p + facet_grid(as.factor(case) ~ ., scales = "free")
+  #p <- p + facet_grid(as.factor(case) ~ ., scales = "free", strip.position = theme$casenames.position)
+  p <- p + facet_wrap(
+    vars(case),
+    ncol = 1,
+    scales = "free",
+    strip.position =
+      if (identical(theme$casenames.position, "strip-right")) "right"
+      else if (identical(theme$casenames.position, "strip-top")) "top"
+      else "right"
+  )
   p <- p + theme(panel.spacing.y = theme$panel.spacing.y)
   p <- p + theme(strip.text.y = theme$casenames)
   p <- p + theme(strip.background = theme$casenames.strip)
-  if (!identical(theme$casenames.position, "strip"))
+
+  if (!theme$casenames.position[1] %in% c("strip-right","strip-top")) {
     p <- p + theme(strip.text.y = element_blank())
+    p <- p + theme(strip.text.x = element_blank())
+
+  }
+
 
   # add panel background ------------
 
@@ -297,7 +311,7 @@ as_ggplot <- function(scplot) {
 
   # add casenames ------------------
 
-  if (!identical(theme$casenames.position, "strip")) {
+  if (!theme$casenames.position[1] %in% c("strip-right","strip-top")) {
 
     if (identical(theme$casenames.position, "topleft")) {
       x <- xlim[1]
@@ -316,7 +330,7 @@ as_ggplot <- function(scplot) {
       y <- ylim[1]
     }
 
-    if(length(theme$case.position) == 2) {
+    if(length(theme$casenames.position) == 2) {
       x <- theme$casenames.position[1]
       y <- theme$casenames.position[2]
     }
@@ -330,18 +344,35 @@ as_ggplot <- function(scplot) {
     if (is.null(theme$casenames$size)) theme$casenames$size <- 1
     theme$casenames <- merge_element(theme$casenames, theme$text)
 
-    p <- p + geom_text(
-      data = data_casenames,
-      mapping = aes(x = x, y = y, label =  case),
-      colour =  theme$casenames$colour,
-      size = .size(theme$casenames$size, base_size),
-      hjust = theme$casenames$hjust,
-      vjust = theme$casenames$vjust,
-      lineheight = theme$casenames$lineheight,
-      family = theme$casenames$family,
-      fontface = theme$casenames$face,
-      angle = theme$casenames$angle
-    )
+    if (!is.null(theme$casenames.background$fill)){
+      p <- p + geom_label(
+        data = data_casenames,
+        mapping = aes(x = x, y = y, label =  case),
+        colour =  theme$casenames$colour,
+        fill = theme$casenames.background$fill,
+        label.size = theme$casenames.background$size,
+        size = .size(theme$casenames$size, base_size),
+        hjust = theme$casenames$hjust,
+        vjust = theme$casenames$vjust,
+        lineheight = theme$casenames$lineheight,
+        family = theme$casenames$family,
+        fontface = theme$casenames$face,
+        angle = theme$casenames$angle
+      )
+    } else {
+      p <- p + geom_text(
+        data = data_casenames,
+        mapping = aes(x = x, y = y, label =  case),
+        colour =  theme$casenames$colour,
+        size = .size(theme$casenames$size, base_size),
+        hjust = theme$casenames$hjust,
+        vjust = theme$casenames$vjust,
+        lineheight = theme$casenames$lineheight,
+        family = theme$casenames$family,
+        fontface = theme$casenames$face,
+        angle = theme$casenames$angle
+      )
+    }
   }
 
   # add phaselines ----------------------------------------------------------

@@ -11,6 +11,7 @@ set_xaxis(
   increment = NULL,
   increment_from = NULL,
   line = NULL,
+  expand = NULL,
   ...
 )
 
@@ -20,6 +21,7 @@ set_yaxis(
   increment = NULL,
   increment_from = NULL,
   line = NULL,
+  expand = NULL,
   ...
 )
 }

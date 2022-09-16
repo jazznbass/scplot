@@ -64,6 +64,8 @@
                                  fill = "grey98",
                                  size = 0.5,
                                  linetype = "solid"),
+  casenames.background = element_rect(size = 0.1,
+                                      linetype = "solid"),
 
   casenames.position = "topleft",
 
