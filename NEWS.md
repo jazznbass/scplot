@@ -1,5 +1,32 @@
 # scplot 0.3
 
+## new functions:
+
+- `extract_theme()`: returns the theme of an scplot object (instead of creating a plot). This theme can be reused in other plots with the `add_theme()` function.
+
+```{.r}
+new_theme <- scplot() %>% 
+  set_xaxis(color = "brown") %>%
+  set_yaxis(color = "sienna3") %>%
+  set_ylabel(color = "sienna3", angle = 0) %>%
+  set_xlabel(size = 1, color = "brown") %>%
+  add_title("", color = "sienna4", face = 3) %>%
+  set_casenames(color = "steelblue4", size = 0.7) %>%
+  set_phasenames(size = 0) %>% 
+  set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
+  add_grid(color = "grey85", size = 0.5) %>%
+  set_dataline(size = 0.5, linetype = "solid", 
+               point = list(colour = "sienna4", size = 0.5, shape = 18)) %>%
+  set_separator(size = 0.5, linetype = "solid", color = "sienna") %>%
+  set_background(fill = "grey99") %>%
+  extract_theme()
+
+scplot(exampleABC) %>% add_theme(new_theme)
+
+```
+
+## existing functions:
+
 - `add_statline()`: New `type` "bar"  
 - `set_xaxis()` `set_yaxis()`: New argument expand (see ggplot scale_continuous).
 - `set_xaxis()`: Extended Argument `position` with `strip-right` and `strip-top`

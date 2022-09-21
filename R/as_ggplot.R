@@ -2,6 +2,8 @@
 #'
 #' @param scplot An scplot object
 #'
+#' @details `as_ggplot()` is used when you like to return a ggplot2 object for
+#' further use with external ggplot functions.
 #' @return A ggplot2 object
 #' @export
 as_ggplot <- function(scplot) {

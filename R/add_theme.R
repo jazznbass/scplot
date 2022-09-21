@@ -5,14 +5,24 @@
 #' @export
 add_theme <- function(object, theme, ...) {
 
-  themes <- c(theme, ...)
+  theme_list <- list(theme, ...)
 
-  if (!(all(themes %in% names(.scplot_themes)))) {
-    stop("Unknown theme template.")
-  }
+  for(i in seq_along(theme_list)) {
 
-  for(i in themes)
-    object$theme <- .merge_theme(.scplot_themes[[i]], object$theme)
+    if(inherits(theme_list[[i]], "character")) {
+      theme_list[[i]] <- .scplot_themes[[theme_list[[i]]]]
+      if(is.null(theme_list[[i]])) {
+        stop(
+          "Unknown theme template. ",
+          "Available themes are: ",
+          paste0("'", names(.scplot_themes), "'", collapse = ", ")
+        )
+      }
+    }
+   }
+
+  for(i in theme_list)
+   object$theme <- .merge_theme(i, object$theme)
 
   object
 

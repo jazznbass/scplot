@@ -45,7 +45,7 @@
   replace_items <- names(new)[names_new %in% names_old]
 
   for(i in replace_items) {
-    if ("list" %in% class(old[[i]])) {
+    if (inherits(old[[i]], "list")) {
       out[[i]] <- .merge_theme(new[[i]], old[[i]])
     } else if("element_blank" %in% class(new[[i]])) {
       out[[i]] <- element_blank()#do.call(class(old[[i]])[1], list())

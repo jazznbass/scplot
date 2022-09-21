@@ -40,6 +40,8 @@ for all cases.}
 \item{hjust}{Horizontal justification (in [0,1])}
 
 \item{vjust}{Vertical justification (in [0,1])}
+
+\item{face}{Font face ("plain", "italic", "bold", "bold.italic")}
 }
 \description{
 Add test to an scplot

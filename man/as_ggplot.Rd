@@ -15,3 +15,7 @@ A ggplot2 object
 \description{
 Creates a ggplot2 object from an scplot object
 }
+\details{
+`as_ggplot()` is used when you like to return a ggplot2 object for
+further use with external ggplot functions.
+}

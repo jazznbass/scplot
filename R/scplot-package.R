@@ -10,6 +10,7 @@
 #' @import ggplot2
 #' @import stats
 #' @import utils
+#' @importFrom mblm mblm
 NULL
 
 

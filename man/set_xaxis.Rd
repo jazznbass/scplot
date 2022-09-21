@@ -41,6 +41,8 @@ a proper scale based on the given data.}
 
 \item{line}{A list (class element_line) with datapoint attributes: colour, linetype, size.}
 
+\item{expand}{Vector with two values.}
+
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
