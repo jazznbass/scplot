@@ -139,8 +139,9 @@ as_ggplot <- function(scplot) {
   # create facets --------------------
 
   #p <- p + facet_grid(as.factor(case) ~ ., scales = "free", strip.position = theme$casenames.position)
+
   p <- p + facet_wrap(
-    vars(case),
+    factor(case)~.,
     ncol = 1,
     scales = "free",
     strip.position =
