@@ -9,6 +9,8 @@ add_title <- function(object, label, ...) {
 
   if (!is.null(args$size)) args$size <- rel(args$size)
 
+  if (missing(label)) label <- ""
+
   object$theme$plot.title <- .merge_element(args, object$theme$plot.title)
   object$title <- label
 
@@ -20,7 +22,7 @@ add_title <- function(object, label, ...) {
 add_caption <- function(object, label, ...) {
 
   args <- list(...)
-
+  if (missing(label)) label <- ""
   object$caption <- label
 
   if (!is.null(args$size)) args$size <- rel(args$size)
