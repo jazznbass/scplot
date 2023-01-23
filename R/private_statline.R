@@ -208,6 +208,7 @@
 }
 
 .ungroup <- function(data, groups = c("case", "phase")) {
+  if (identical(names(data), "")) names(data) <- ".A"
   data <- do.call("rbind", data)
   df <- do.call("rbind", strsplit(row.names(data), ".", fixed = "TRUE"))
   colnames(df) <- groups[1:ncol(df)]
