@@ -3,7 +3,7 @@
 #' @inheritParams .inherit_scplot
 #' @param type Either "continuous" or "descrete"
 #' @param ... As a shortcut, arguments passed hear are bundled as
-#' `line` arguments. E.g. colour = "res", size = 2.
+#' `line` arguments. E.g. colour = "res", linewidth = 2.
 #' @export
 add_dataline <- function(object,
                      variable,

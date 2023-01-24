@@ -15,11 +15,11 @@
   panel.spacing.y = unit(1.5, "lines"),
 
   dataline = list(
-    "1" = element_line(colour = "#000000", linetype = "solid", size = 0.5),
-    "2" = element_line(colour = "#0072B2", linetype = "solid", size = 0.5),
-    "3" = element_line(colour = "#D55E00", linetype = "solid", size = 0.5),
-    "4" = element_line(colour = "#009E73", linetype = "solid", size = 0.5),
-    "5" = element_line(colour = "#E69F00", linetype = "solid", size = 0.5)
+    "1" = element_line(colour = "#000000", linetype = "solid", linewidth = 0.5),
+    "2" = element_line(colour = "#0072B2", linetype = "solid", linewidth = 0.5),
+    "3" = element_line(colour = "#D55E00", linetype = "solid", linewidth = 0.5),
+    "4" = element_line(colour = "#009E73", linetype = "solid", linewidth = 0.5),
+    "5" = element_line(colour = "#E69F00", linetype = "solid", linewidth = 0.5)
   ),
 
   datapoint = list(
@@ -30,15 +30,15 @@
     "5" = element_point(colour = "#E69F00", shape = 16, size = 2)
   ),
 
-  statline = element_line(color = "grey", size = 0.7, linetype = "solid"),
+  statline = element_line(color = "grey", linewidth = 0.7, linetype = "solid"),
 
   axis.expand.x = c(0, 0.6, 0, 0.6),
   axis.expand.y = c(0.05, 0, 0.05, 0),
-  axis.line.x = element_line(color = "black", size = 0.4, linetype = "solid"),
-  axis.line.y = element_line(color = "black", size = 0.4, linetype = "solid"),
+  axis.line.x = element_line(color = "black", linewidth = 0.4, linetype = "solid"),
+  axis.line.y = element_line(color = "black", linewidth = 0.4, linetype = "solid"),
 
   axis.ticks.length = unit(2.75, "points"),
-  axis.ticks = element_line(color = "black", size = 0.4, linetype = "solid"),
+  axis.ticks = element_line(color = "black", linewidth = 0.4, linetype = "solid"),
 
   axis.title.y = element_text(angle = 90, margin = margin(r = 1.5)),
   axis.title.x = element_text(margin = margin(t = 1.5)),
@@ -73,7 +73,7 @@
 
   phasenames.position.x = "centre",
 
-  separators = element_line(color = "black", size = 0.4, linetype = "dashed"),
+  separators = element_line(color = "black", linewidth = 0.4, linetype = "dashed"),
 
   separators.extent = "full",
 
@@ -83,7 +83,7 @@
 
   label.padding = 0.1,
 
-  grid = element_line(size = 0),
+  grid = element_line(linewidth = 0),
 
   # legend
 
@@ -101,7 +101,7 @@
 # grid --------------------------------------------------------------------
 
 .scplot_themes$grid <- list(
-  grid = element_line(colour = "lightblue", size = 0.2),
+  grid = element_line(colour = "lightblue", linewidth = 0.2),
   panel.background = element_rect(fill = "grey95", size = 0)
 )
 
@@ -144,7 +144,7 @@
   axis.text.x = element_blank(),
   axis.text.y = element_blank(),
 
-  separators = element_line(color = "black", size = 0.3, linetype = "solid"),
+  separators = element_line(color = "black", linewidth = 0.3, linetype = "solid"),
   grid = element_blank(),
   NULL
 )
@@ -156,7 +156,7 @@
   panel.background = element_rect(fill = "#16213E"),
   plot.background = element_rect(fill = "#1A1A2E"),
 
-  grid = element_line(colour = "#999999", size = 0.2),
+  grid = element_line(colour = "#999999", linewidth = 0.2),
 
   casenames = element_text(color = "white"),
 
@@ -170,7 +170,7 @@
 
   axis.ticks = element_line(color = "#DDDDDD"),
 
-  separators = element_line(color = "gold", size = 0.3, linetype = "solid"),
+  separators = element_line(color = "gold", linewidth = 0.3, linetype = "solid"),
 
   dataline = list(
     "1" = element_line(colour = "#DDDDDD")),
@@ -185,7 +185,7 @@
 
 .scplot_themes$sienna <- list(
 
-  grid = element_line(colour = "orange", size = 0.2),
+  grid = element_line(colour = "orange", linewidth = 0.2),
 
   panel.background = element_rect(colour = "#16213E", fill = "white"),
   plot.background = element_rect(fill = "moccasin", colour = "darkseagreen"),
@@ -217,7 +217,7 @@
 # grid2 ---------------------------------------------------
 
 .scplot_themes$grid2 <- list(
-  grid = element_line(colour = "lightgreen", size = 0.2),
+  grid = element_line(colour = "lightgreen", linewidth = 0.2),
   panel.background = element_rect(fill = "grey95", size = 1)
 )
 

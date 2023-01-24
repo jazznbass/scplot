@@ -181,7 +181,7 @@
     aes(x = mt, y = y, color = !!label),
     linetype = line$linetype,
     #color = line$colour,
-    size = line$size
+    linewidth = line$linewidth
   )
 
 }
@@ -193,7 +193,7 @@
     aes(x = mt, y = y, group = phase, color = !!label),
     linetype = line$linetype,
     #color = line$colour,
-    size = line$size
+    linewidth = line$linewidth
   )
 
 }

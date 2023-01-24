@@ -31,13 +31,15 @@ add_statline <- function(object,
                          stat,
                          phase = NULL,
                          color = NULL,
+                         linewidth = NULL,
                          size = NULL,
                          linetype = NULL,
                          variable = NULL,
                          ...) {
 
+  if (!is.null(size)) linewidth <- size
   if (is.null(color)) color <- object$theme$statline$colour
-  if (is.null(size)) size <- object$theme$statline$size
+  if (is.null(linewidth)) linewidth <- object$theme$statline$linewidth
   if (is.null(linetype)) linetype <- object$theme$statline$linetype
   if (is.null(variable)) variable <- ".dvar"
 
@@ -47,7 +49,7 @@ add_statline <- function(object,
     args = list(...),
     line = element_line(
       colour = color,
-      size = size,
+      linewidth = linewidth,
       linetype = linetype
     ),
     variable = variable

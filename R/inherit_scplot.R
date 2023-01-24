@@ -11,6 +11,7 @@
 #' @param vjust Vertical justification (in [0,1])
 #' @param angle Angle (in [0,360])
 #' @param face Font face ("plain", "italic", "bold", "bold.italic")
+#' @param linewidth A number with the width of the line.
 #' @param linetype A character string with the line type: "solid", "dashed",
 #'   "dotted"
 #' @param shape Number. See pch graphical parameter on par help page.
@@ -24,7 +25,7 @@
 #' @param point A list (class element_point) with datapoint attributes: colour, shape, size.
 #' @param line A list (class element_line) with datapoint attributes: colour, linetype, size.
 #' @param ... Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.
-.inherit_scplot <- function(object,label, labels, color, size, hjust, vjust,
+.inherit_scplot <- function(object,label, labels, color, size, linewidth, hjust, vjust,
                             angle, width, face,linetype, shape, text,
                             background, case, variable, point, line, ...) {
 

@@ -191,7 +191,7 @@ scplot(exampleABC) %>%
 
 ```{r line1}
 scplot(exampleABC) %>%
-  set_dataline(colour = "blue", size = 1, linetype = "dotted", 
+  set_dataline(colour = "blue", linewidth = 1, linetype = "dotted", 
                point = list(colour = "red", size = 1, shape = 2) )
 
 # Equivalent_
@@ -302,7 +302,7 @@ scplot(exampleAB_decreasing) %>%
 ```{r legend1}
 scplot(exampleABC) %>%
   add_statline("mean", color = "darkred") %>%
-  add_statline("min", phase = "B", size = 0.2, color = "darkblue") %>%
+  add_statline("min", phase = "B", linewidth = 0.2, color = "darkblue") %>%
   add_legend()
 ```
 
@@ -412,9 +412,9 @@ Here are some more complex examples
 ```{r complex1}
 scplot(example_A24) %>% 
   add_theme("default") %>%
-  add_statline("lowess", color = "darkred", size = 1.5) %>%
-  add_statline("loess", color = "red", size = 1.5) %>%
-  add_statline("movingMean", lag = 3, color = "lightpink", size = 1.5) %>%
+  add_statline("lowess", color = "darkred", linewidth = 1.5) %>%
+  add_statline("loess", color = "red", linewidth = 1.5) %>%
+  add_statline("movingMean", lag = 3, color = "lightpink", linewidth = 1.5) %>%
   set_xaxis(size = 0.8, angle = 35) %>%
   set_dataline(point = "none") %>%
   add_legend(position = c(0.8, 0.75), background = list(color = "grey50")) %>%
@@ -466,7 +466,7 @@ scplot(exampleA1B1A2B2) %>%
   add_ridge(alpha("lightblue", 0.5)) %>%
   set_casenames(labels = sample_names(3), color = "steelblue4", size = 0.7) %>%
   set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
-  add_grid(color = "grey85", size = 0.5) %>%
+  add_grid(color = "grey85", linewidth = 0.1) %>%
   set_dataline(size = 0.5, linetype = "solid", 
                point = list(colour = "sienna4", size = 0.5, shape = 18)) %>%
   add_labels(text = list(color = "sienna", size = 0.7), nudge_y = 4) %>%
@@ -495,7 +495,7 @@ Adding bars is a bit more complicated:
 ```{r complex4}
 scplot(exampleAB_add) %>%
   set_xaxis(expand = c(0, 0), limits = c(0, 41)) %>%
-  add_dataline("cigarrets", type = "bar", size = 0.6, point = "none") %>%
+  add_dataline("cigarrets", type = "bar", linewidth = 0.6, point = "none") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_statline("trend", linetype = "dashed") %>%
   set_casenames(position = "strip")

@@ -225,7 +225,7 @@ as_ggplot <- function(scplot) {
           group = !!sym(pvar),
           colour = !!theme$dataline[[i]]$colour
         ),
-        size = theme$dataline[[i]]$size,
+        linewidth = theme$dataline[[i]]$linewidth,
         linetype = theme$dataline[[i]]$linetype
       )
     }
@@ -237,7 +237,7 @@ as_ggplot <- function(scplot) {
           group = !!sym(pvar),
           colour = !!theme$dataline[[i]]$colour
         ),
-        size = theme$dataline[[i]]$size,
+        linewidth = theme$dataline[[i]]$linewidth,
         linetype = theme$dataline[[i]]$linetype
       )
     }
@@ -253,7 +253,7 @@ as_ggplot <- function(scplot) {
         #fill = theme$dataline[[i]]$colour,
         stat = "identity",
         #position = position_nudge(x = 0.5),
-        width = theme$dataline[[i]]$size,
+        width = theme$dataline[[i]]$linewidth,
         linetype = theme$dataline[[i]]$linetype
       )
     }
@@ -393,7 +393,7 @@ as_ggplot <- function(scplot) {
     aes(xintercept = x),
     linetype = theme$separators$linetype,
     color = theme$separators$colour,
-    size = theme$separators$size
+    linewidth = theme$separators$linewidth
   )
 
   p <- p + coord_cartesian(clip = "off")
