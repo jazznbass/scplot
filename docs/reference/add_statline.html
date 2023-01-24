@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
       </span>
     </div>
 
@@ -57,16 +57,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">add_statline</span><span class="op">(</span>
-  <span class="va">object</span>,
-  <span class="va">stat</span>,
-  phase <span class="op">=</span> <span class="cn">NULL</span>,
-  color <span class="op">=</span> <span class="cn">NULL</span>,
-  size <span class="op">=</span> <span class="cn">NULL</span>,
-  linetype <span class="op">=</span> <span class="cn">NULL</span>,
-  variable <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">add_statline</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  <span class="va">stat</span>,</span>
+<span>  phase <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  color <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  linewidth <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  linetype <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  variable <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -74,26 +75,45 @@
     <dl><dt>object</dt>
 <dd><p>An scplot object (class `scplot`) returned from the `scplot()`
 function.</p></dd>
+
+
 <dt>stat</dt>
 <dd><p>A character string for defining a statistical line or curve to
 be plotted. Possible values: "median", "mean", "min", "max", "quantile",
 "trend", "trendA",
 "trendA_bisplit", "trendA_trisplit",
 "movingMean", "movingMedian", "loreg".</p></dd>
+
+
 <dt>phase</dt>
 <dd><p>Either a numeric or a character vector specifying the reference
 phase (see details)</p></dd>
+
+
 <dt>color</dt>
 <dd><p>A character string or a number defining the color of an element.</p></dd>
+
+
+<dt>linewidth</dt>
+<dd><p>A number with the width of the line.</p></dd>
+
+
 <dt>size</dt>
 <dd><p>Text size relative to the base text size.</p></dd>
+
+
 <dt>linetype</dt>
 <dd><p>A character string with the line type: "solid", "dashed",
 "dotted"</p></dd>
+
+
 <dt>variable</dt>
 <dd><p>Name of the dataline variable to apply the style.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional parameters passed to the statistical function.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -107,6 +127,7 @@ phase (see details)</p></dd>
   The 'mean' function has a trim argument (e.g. 'trim = 0.1').
   'quantile has a proportion argument (e.g. prob = 0.75 for calculating
   the 75<!-- % quantile). -->
+  'trendA' has the argument 'method' which takes 'ols' or 'theil-sen'.
   'movingMean' and 'movingMedian' have a lag argument (e.g. lag = 2).
   The local-regression curve function 'lowess' (or 'loreg') has a proportion
   argument (e.g. f = 0.5) and the
@@ -126,7 +147,7 @@ phase (see details)</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

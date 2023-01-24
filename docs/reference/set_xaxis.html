@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
       </span>
     </div>
 
@@ -57,23 +57,25 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">set_xaxis</span><span class="op">(</span>
-  <span class="va">object</span>,
-  limits <span class="op">=</span> <span class="cn">NULL</span>,
-  increment <span class="op">=</span> <span class="cn">NULL</span>,
-  increment_from <span class="op">=</span> <span class="cn">NULL</span>,
-  line <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">set_yaxis</span><span class="op">(</span>
-  <span class="va">object</span>,
-  limits <span class="op">=</span> <span class="cn">NULL</span>,
-  increment <span class="op">=</span> <span class="cn">NULL</span>,
-  increment_from <span class="op">=</span> <span class="cn">NULL</span>,
-  line <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">set_xaxis</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  increment <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  increment_from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  line <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  expand <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">set_yaxis</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  increment <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  increment_from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  line <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  expand <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,20 +83,35 @@
     <dl><dt>object</dt>
 <dd><p>An scplot object (class `scplot`) returned from the `scplot()`
 function.</p></dd>
+
+
 <dt>limits</dt>
 <dd><p>Lower and upper limits of the axis (e.g., <code>limits = c(0,
 20)</code> sets the axis to a scale from 0 to 20). With multiple single-cases
 you can use <code>limits = c(0, NA)</code> to scale the axis from 0 to the maximum
 of each case. <code>limits</code> is not set by default, which makes <code>scplot</code> set
 a proper scale based on the given data.</p></dd>
+
+
 <dt>increment</dt>
 <dd><p>An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.</p></dd>
+
+
 <dt>increment_from</dt>
 <dd><p>Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...</p></dd>
+
+
 <dt>line</dt>
 <dd><p>A list (class element_line) with datapoint attributes: colour, linetype, size.</p></dd>
+
+
+<dt>expand</dt>
+<dd><p>Vector with two values.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.</p></dd>
+
 </dl></div>
 
   </div>
@@ -109,7 +126,7 @@ a proper scale based on the given data.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

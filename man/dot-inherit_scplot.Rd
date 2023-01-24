@@ -10,10 +10,12 @@
   labels,
   color,
   size,
+  linewidth,
   hjust,
   vjust,
   angle,
   width,
+  face,
   linetype,
   shape,
   text,
@@ -37,6 +39,8 @@ function.}
 
 \item{size}{Text size relative to the base text size.}
 
+\item{linewidth}{A number with the width of the line.}
+
 \item{hjust}{Horizontal justification (in [0,1])}
 
 \item{vjust}{Vertical justification (in [0,1])}
@@ -44,6 +48,8 @@ function.}
 \item{angle}{Angle (in [0,360])}
 
 \item{width}{Line width.}
+
+\item{face}{Font face ("plain", "italic", "bold", "bold.italic")}
 
 \item{linetype}{A character string with the line type: "solid", "dashed",
 "dotted"}
@@ -66,8 +72,6 @@ for all cases.}
 \item{line}{A list (class element_line) with datapoint attributes: colour, linetype, size.}
 
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
-
-\item{face}{Font face ("plain", "italic", "bold", "bold.italic")}
 }
 \description{
 Dummy function to inherit global descriptions of parameters

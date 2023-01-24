@@ -9,6 +9,7 @@ add_statline(
   stat,
   phase = NULL,
   color = NULL,
+  linewidth = NULL,
   size = NULL,
   linetype = NULL,
   variable = NULL,
@@ -29,6 +30,8 @@ be plotted. Possible values: "median", "mean", "min", "max", "quantile",
 phase (see details)}
 
 \item{color}{A character string or a number defining the color of an element.}
+
+\item{linewidth}{A number with the width of the line.}
 
 \item{size}{Text size relative to the base text size.}
 
