@@ -1,4 +1,4 @@
-# scplot 0.3
+# scplot 0.2.x
 
 ## new functions:
 
