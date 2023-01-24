@@ -29,6 +29,8 @@ scplot(exampleABC) %>% add_theme(new_theme)
 
 ## existing functions:
 
+- ggplot2 deprecated the size argument for lines and replaced it with linewidth. We adapted several functions to follow this change which now use the linewidth argument instead of size: `set_dataline(), add_dataline(), add_statline(), set_grid()`.
+
 - `add_statline()`: New `type` "bar"  
 - `set_xaxis()` `set_yaxis()`: New argument expand (see ggplot scale_continuous).
 - `set_xaxis()`: Extended Argument `position` with `strip-right` and `strip-top`
