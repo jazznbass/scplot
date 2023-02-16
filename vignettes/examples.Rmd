@@ -21,7 +21,7 @@ library(scplot)
 
 # scplot
 
-We started developing a new add-on package to `scan`for visualizing single-case data: `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function already included in `scan` and finally be included into to the `scan` package. 
+This is a new add-on package to `scan`for visualizing single-case data: `scplot`. This function will gradually replace the `plot.scdf()` (short: `plot()`) function already included in `scan` and finally be included into to the `scan` package. 
 Here are some advantages of using `scplot` over the standard scan `plot` function:
 
 - `scplot` is already much more versatile than `plot` has been. 
@@ -43,7 +43,7 @@ The package has to be compiled. When you are running R on a Windows machine you 
 
 ## Basic principal
 
-You start by providing an scdf object (a single-case data frame as returned from the `scdf()` function of scan) to the `scplot()` function (e.g. `scplot(exampleAB)`). Now you use a series of pipe-operators (`%>%`) to add and change characteristics of the resulting plot. For example:
+You start by providing an scdf object (a single-case data frame as returned from the `scdf()` function of scan) to the `scplot()` function (e.g. `scplot(exampleAB)`). Now you use a series of pipe-operators (`%>%` or `|>`) to add and change characteristics of the resulting plot. For example:
 
 ```{r basic1, eval=FALSE}
 scplot(exampleABC) %>%
@@ -439,7 +439,7 @@ scplot(exampleAB_add) %>%
   set_casenames(position = "strip") %>%
   add_legend(
     section_labels = c("", ""),
-    labels = c(NA, NA, "Trend of wellbeing", "Mean of cigarrets"),
+    labels = c(NA, NA, "Mean of cigarrets", "Trend of wellbeing"),
     text = list(face = 3)
   ) %>%
   set_panel(fill = c("lightblue", "grey80")) %>%

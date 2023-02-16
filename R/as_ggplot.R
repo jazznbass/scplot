@@ -314,7 +314,7 @@ as_ggplot <- function(scplot) {
 
   # add casenames ------------------
 
-  if (!theme$casenames.position[1] %in% c("strip-right","strip-top")) {
+  if (!theme$casenames.position[1] %in% c("strip-right","strip-top", "none")) {
 
     if (identical(theme$casenames.position, "topleft")) {
       x <- xlim[1]
@@ -400,37 +400,39 @@ as_ggplot <- function(scplot) {
 
   # add phasenames ---------
 
-  if (theme$phasenames.position.x == "centre") {
-    x <- lapply(design, function(x) (x$stop_mt - x$start_mt) / 2 + x$start_mt)
+  if (!identical(theme$phasenames.position.x, "none")) {
+
+    if (theme$phasenames.position.x == "centre") {
+      x <- lapply(design, function(x) (x$stop_mt - x$start_mt) / 2 + x$start_mt)
+    }
+
+    if (theme$phasenames.position.x == "left") {
+      x <- lapply(design, function(x) x$start_mt)
+    }
+
+    data_phasenames <- data.frame(
+      case = rep(names(design), sapply(design, function(x) length(x$values))),
+      phase = unlist(lapply(design, function(x) x$values)),
+      x = unlist(x)
+    )
+
+    if (is.null(theme$phasenames$size)) theme$phasenames$size <- 1
+    theme$phasenames <- merge_element(theme$phasenames, theme$text)
+
+    p <- p + geom_text(
+      data = data_phasenames,
+      aes(label = phase, x = x, y = Inf),
+      colour =  theme$phasenames$colour,
+      size = .size(theme$phasenames$size, base_size),
+      hjust = theme$phasenames$hjust,
+      vjust = theme$phasenames$vjust,
+      family = theme$phasenames$family,
+      fontface = theme$phasenames$face,
+      angle = theme$phasenames$angle,
+      lineheight = theme$phasenames$lineheight
+    )
+
   }
-
-  if (theme$phasenames.position.x == "left") {
-    x <- lapply(design, function(x) x$start_mt)
-  }
-
-  data_phasenames <- data.frame(
-    case = rep(names(design), sapply(design, function(x) length(x$values))),
-    phase = unlist(lapply(design, function(x) x$values)),
-    x = unlist(x)
-  )
-
-  if (is.null(theme$phasenames$size)) theme$phasenames$size <- 1
-  theme$phasenames <- merge_element(theme$phasenames, theme$text)
-
-
-
-  p <- p + geom_text(
-    data = data_phasenames,
-    aes(label = phase, x = x, y = Inf),
-    colour =  theme$phasenames$colour,
-    size = .size(theme$phasenames$size, base_size),
-    hjust = theme$phasenames$hjust,
-    vjust = theme$phasenames$vjust,
-    family = theme$phasenames$family,
-    fontface = theme$phasenames$face,
-    angle = theme$phasenames$angle,
-    lineheight = theme$phasenames$lineheight
-  )
 
   # add axis.line -----------
 
