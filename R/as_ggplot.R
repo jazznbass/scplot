@@ -22,6 +22,8 @@ as_ggplot <- function(scplot) {
 
   # rename casesnames --------
 
+  id <- which(duplicated(scplot$casenames$labels))
+  if (length(id) > 0) scplot$casenames$labels[id] <- paste0(".case ", id)
   names(scdf) <- scplot$casenames$labels
 
   # rename phasenames ----------
