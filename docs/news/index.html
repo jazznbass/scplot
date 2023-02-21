@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9</span>
       </span>
     </div>
 
@@ -79,6 +79,10 @@
 <span></span>
 <span><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_theme.html">add_theme</a></span><span class="op">(</span><span class="va">new_theme</span><span class="op">)</span></span></code></pre></div>
 </div>
+<div class="section level3">
+<h3 id="fixed-bugs-0-2">fixed bugs<a class="anchor" aria-label="anchor" href="#fixed-bugs-0-2"></a></h3>
+<ul><li>solved: scdf with dulicated casenames crash</li>
+</ul></div>
 <div class="section level3">
 <h3 id="existing-functions-0-2">existing functions:<a class="anchor" aria-label="anchor" href="#existing-functions-0-2"></a></h3>
 <ul><li><p>ggplot2 deprecated the size argument for lines and replaced it with linewidth. We adapted several functions to follow this change which now use the linewidth argument instead of size: <code>set_dataline(), add_dataline(), add_statline(), set_grid()</code>.</p></li>

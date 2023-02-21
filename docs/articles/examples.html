@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9</span>
       </span>
     </div>
 
@@ -91,13 +91,13 @@
 <div class="section level2">
 <h2 id="scplot">scplot<a class="anchor" aria-label="anchor" href="#scplot"></a>
 </h2>
-<p>We started developing a new add-on package to <code>scan</code>for
-visualizing single-case data: <code>scplot</code>. This function will
-gradually replace the <code>plot.scdf()</code> (short:
-<code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>) function already included in <code>scan</code> and
-finally be included into to the <code>scan</code> package. Here are some
-advantages of using <code>scplot</code> over the standard scan
-<code>plot</code> function:</p>
+<p>This is a new add-on package to <code>scan</code>for visualizing
+single-case data: <code>scplot</code>. This function will gradually
+replace the <code>plot.scdf()</code> (short: <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>)
+function already included in <code>scan</code> and finally be included
+into to the <code>scan</code> package. Here are some advantages of using
+<code>scplot</code> over the standard scan <code>plot</code>
+function:</p>
 <ul>
 <li>
 <code>scplot</code> is already much more versatile than
@@ -135,8 +135,9 @@ and Linux users usually do not need to take this extra step.</p>
 <p>You start by providing an scdf object (a single-case data frame as
 returned from the <code>scdf()</code> function of scan) to the
 <code><a href="../reference/scplot.html">scplot()</a></code> function (e.g. <code>scplot(exampleAB)</code>).
-Now you use a series of pipe-operators (<code>%&gt;%</code>) to add and
-change characteristics of the resulting plot. For example:</p>
+Now you use a series of pipe-operators (<code>%&gt;%</code> or
+<code>|&gt;</code>) to add and change characteristics of the resulting
+plot. For example:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="../reference/add_title.html">add_title</a></span><span class="op">(</span><span class="st">"My plot"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -550,7 +551,7 @@ functions to rework your graphics:</p>
 <span>  <span class="fu"><a href="../reference/set_casenames.html">set_casenames</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"strip"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span></span>
 <span>    section_labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">""</span><span class="op">)</span>,</span>
-<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Trend of wellbeing"</span>, <span class="st">"Mean of cigarrets"</span><span class="op">)</span>,</span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Mean of cigarrets"</span>, <span class="st">"Trend of wellbeing"</span><span class="op">)</span>,</span>
 <span>    text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>face <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="../reference/set_background.html">set_panel</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"grey80"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
