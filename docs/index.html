@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.10</span>
       </span>
     </div>
 
@@ -81,11 +81,40 @@
 <div class="section level1">
 <div class="page-header"><h1 id="scplot-">scplot <img src="reference/figures/logo-135px.png" align="right"><a class="anchor" aria-label="anchor" href="#scplot-"></a>
 </h1></div>
-<p>Add-on package for <em>scan</em>. Creates plots from <strong>s</strong>ingle-<strong>c</strong>ase-<strong>d</strong>ata-<strong>f</strong>rames (scdf) based on ggplot2.</p>
-<p>Install with:</p>
-<p><code>devtools::install_github("jazznbass/scplot", dependencies = TRUE)</code></p>
-<p>Make sure you have <strong>Rtools</strong> (<a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link uri">https://cran.r-project.org/bin/windows/Rtools/</a>) installed when you are working on a Windows OS.</p>
-<p>The package is in an experimental stage.</p>
+<p><em>scplot</em> is an add on package for <em>scan</em> which provides a convenient set of functions to create single-case graphics. <em>scplot</em> is based on ggplot2.</p>
+<div class="section level2">
+<h2 id="how-to-install-scplot">How to install <em>scplot</em>?<a class="anchor" aria-label="anchor" href="#how-to-install-scplot"></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Install R from CRAN (<a href="https://cloud.r-project.org/" class="external-link uri">https://cloud.r-project.org/</a>)</li>
+<li>Install R-Studio (<a href="https://posit.co/download/rstudio-desktop/" class="external-link uri">https://posit.co/download/rstudio-desktop/</a>)</li>
+<li>Windows users only: install Rtools (<a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link uri">https://cran.r-project.org/bin/windows/Rtools/</a>)</li>
+</ol>
+<p>From within R/R-Studio use the following commands:</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Install devtools: <code>install.packages("devtools")</code>
+</li>
+<li>Install the latest version of scan: <code>devtools::install_github("jazznbass/scan")</code>
+</li>
+<li>Install scplot: <code>devtools::install_github("jazznbass/scplot")</code>
+</li>
+</ol>
+<p>Or try all at once with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode .r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jazznbass/scan"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jazznbass/scplot"</span>)</span></code></pre></div>
+<p>If you get errors, look if a specific package is missing/ not found and try to install the missing package with <code>install.packages("[name-of-the-missing-package]")</code>.</p>
+</div>
+<div class="section level2">
+<h2 id="finding-help">Finding help<a class="anchor" aria-label="anchor" href="#finding-help"></a>
+</h2>
+<ul>
+<li>The “home” of <em>scan</em> is a good place to start from (<a href="https://jazznbass.github.io/scan/" class="external-link uri">https://jazznbass.github.io/scan/</a>)</li>
+<li>For <em>scplot</em> look at (<a href="https://jazznbass.github.io/scplot/" class="external-link uri">https://jazznbass.github.io/scplot/</a>)</li>
+<li>You find in depth information an <em>scan</em> in the book <a href="https://jazznbass.github.io/scan-Book/" class="external-link">Analyzing single-case data with R and scan</a>
+</li>
+</ul>
+</div>
 </div>
   </div>
 
