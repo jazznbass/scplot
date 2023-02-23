@@ -478,7 +478,9 @@ as_ggplot <- function(scplot) {
       if (scplot$statlines[[j]]$variable == ".dvar")
         scplot$statlines[[j]]$variable <- scplot$dvar[1]
 
-      possible_fixed_stats <- c("mean", "median", "min", "max", "quantile")
+      possible_fixed_stats <- c(
+        "mean", "median", "min", "max", "quantile", "sd", "mad"
+      )
       if (scplot$statlines[[j]]$stat %in% possible_fixed_stats) {
         p <- p + .statline(data_long,
           line = scplot$statlines[[j]],
