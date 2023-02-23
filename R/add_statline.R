@@ -28,7 +28,9 @@
 #'
 #' @export
 add_statline <- function(object,
-                         stat,
+                         stat = c("mean", "median", "min", "max", "quantile",
+                                  "sd", "mad", "trend", "trendA", "movingMean",
+                                  "movingMedian", "loreg", "lowess", "loess"),
                          phase = NULL,
                          color = NULL,
                          linewidth = NULL,
@@ -37,6 +39,7 @@ add_statline <- function(object,
                          variable = NULL,
                          ...) {
 
+  stat <- match.arg(stat)
   if (!is.null(size)) linewidth <- size
   if (is.null(color)) color <- object$theme$statline$colour
   if (is.null(linewidth)) linewidth <- object$theme$statline$linewidth
