@@ -6,8 +6,13 @@
 #' @param x1 End x position of the line.
 #' @param y1 End y position of the line.
 #' @param length Size of the arrow angels.
-#' @param type One of "open" or "closed" indicating whether the arrow head should be a closed triangle.
-#' @param ends One of "last", "first", or "both", indicating which ends of the line to draw arrow heads.
+#' @param type One of "open" or "closed" indicating whether the arrow head
+#'   should be a closed triangle.
+#' @param ends One of "last", "first", or "both", indicating which ends of the
+#'   line to draw arrow heads.
+#' @example
+#' p1 <- scplot(exampleAB$Anja) %>%
+#'   add_arrow(1, 2, 70, 6, 55, color = "darkred")
 #' @export
 add_arrow <- function(object,
                       case = 1,

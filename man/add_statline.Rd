@@ -6,7 +6,8 @@
 \usage{
 add_statline(
   object,
-  stat,
+  stat = c("mean", "median", "min", "max", "quantile", "sd", "mad", "trend", "trendA",
+    "movingMean", "movingMedian", "loreg", "lowess", "loess"),
   phase = NULL,
   color = NULL,
   linewidth = NULL,

@@ -1,6 +1,6 @@
 Package: scplot
 Type: Package
-Title: Single-case plots for scan
+Title: Single-Case Plots for Scan
 Version: 0.2.10
 Date: 2023-2-23
 Authors@R:
@@ -8,21 +8,21 @@ Authors@R:
     email = "juergen.wilbert@uni-potsdam.de", 
     role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-8392-2873"))
-Description: An add on package for the scan package that provides ggplot2 based 
-    plots of single-case data frames (scdf).
-Imports: 
-  stats,
-  utils,
-  mblm
+Description: An add on package for the scan package that creates ggplot2 based 
+    plots from single-case data frames (scdf).
 Depends: 
   R (>= 3.5.0),
   ggplot2,
   scan
+Imports: 
+  stats,
+  utils,
+  mblm
+Suggests: 
+    rmarkdown,
+    knitr
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
-Suggests: 
-    rmarkdown,
-    knitr
 VignetteBuilder: knitr

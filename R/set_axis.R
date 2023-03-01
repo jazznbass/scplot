@@ -2,13 +2,15 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @param limits Lower and upper limits of the axis (e.g., \code{limits = c(0,
-#' 20)} sets the axis to a scale from 0 to 20). With multiple single-cases
-#' you can use \code{limits = c(0, NA)} to scale the axis from 0 to the maximum
-#' of each case. \code{limits} is not set by default, which makes \code{scplot} set
-#' a proper scale based on the given data.
+#'   20)} sets the axis to a scale from 0 to 20). With multiple single-cases you
+#'   can use \code{limits = c(0, NA)} to scale the axis from 0 to the maximum of
+#'   each case. \code{limits} is not set by default, which makes \code{scplot}
+#'   set a proper scale based on the given data.
 #' @param expand Vector with two values.
-#' @param increment An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.
-#' @param increment_from Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...
+#' @param increment An integer. Increment of the x-axis. 1 :each mt value will
+#'   be printed, 2 : every other value, 3 : every third values etc.
+#' @param increment_from Number from which increment starts to count. Usually
+#'   set to 0 if you want marks like 1,5,10,15,...
 #' @export
 set_xaxis <- function(object,
                       limits = NULL,
@@ -27,7 +29,8 @@ set_xaxis <- function(object,
   if (!is.null(expand)) object$theme$axis.expand.x <- expand
   if (!is.null(args$size)) args$size <- rel(args$size)
 
-  if (!is.null(line)) object$theme$axis.line.x <- .merge_element(line, object$theme$axis.line.x)
+  if (!is.null(line)) object$theme$axis.line.x <- .merge_element(
+    line, object$theme$axis.line.x)
   object$theme$axis.text.x <- .merge_element(args, object$theme$axis.text.x)
 
   object
@@ -51,7 +54,8 @@ set_yaxis <- function(object,
   if (!is.null(expand)) object$theme$axis.expand.y <- expand
   if (!is.null(args$size)) args$size <- rel(args$size)
 
-  if (!is.null(line)) object$theme$axis.line.y <- .merge_element(line, object$theme$axis.line.y)
+  if (!is.null(line)) object$theme$axis.line.y <- .merge_element(
+    line, object$theme$axis.line.y)
   object$theme$axis.text.y <- .merge_element(args, object$theme$axis.text.y)
 
   object

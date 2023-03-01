@@ -11,7 +11,7 @@ scplot <- function(scdf) {
 
   if(missing(scdf)) {
     message("No scdf has been provided. Using `exampleAB` as a reference scdf.")
-    scdf <- exampleAB
+    scdf <- scan::exampleAB
   }
   scdf <- scan:::.prepare_scdf(scdf)
 

@@ -15,5 +15,6 @@ function.}
 \item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
-Add a theme of to an scplot
+Possible themes are: 'basic', 'grid', 'default', 'small', 'tiny', 'big',
+'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'.
 }

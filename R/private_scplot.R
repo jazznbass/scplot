@@ -65,31 +65,3 @@
 
   out
 }
-
-
-
-# .merge_theme <- function(new, old) {
-#
-#   out <- old
-#
-#   ids <- which(!(names(new) %in% names(old)) | !sapply(new, is.list))
-#
-#   out[names(new)[ids]] <- new[ids]
-#
-#   if (length(ids) > 1) new <- new[-ids]
-#
-#   for(i in seq_along(new)) {
-#     label <- names(new)[i]
-#     if ("element" %in% class(out[[label]])) {
-#       out[[label]] <- merge_element(new[[i]], out[[label]])
-#     } else if ("list" %in% class(out[[label]])) {
-#       out[[label]] <- utils::modifyList(out[[label]], new[[i]])
-#     }
-#   }
-#
-#   out
-#
-# }
-
-
-

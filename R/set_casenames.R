@@ -1,7 +1,9 @@
 #' Set casenames of an scplot
 #'
 #' @inheritParams .inherit_scplot
-#' @param position Either "topleft", "bottomleft", "topright", "bottomright", "strip-right", "strip-top", or a numerical vector of length 2 with the x and y position (e.g. c(19, 20)).
+#' @param position Either "topleft", "bottomleft", "topright", "bottomright",
+#'   "strip-right", "strip-top", or a numerical vector of length 2 with the x
+#'   and y position (e.g. c(19, 20)).
 #' @export
 set_casenames <- function(object, labels = NULL,
                           position = NULL,

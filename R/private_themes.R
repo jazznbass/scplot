@@ -34,11 +34,14 @@
 
   axis.expand.x = c(0, 0.6, 0, 0.6),
   axis.expand.y = c(0.05, 0, 0.05, 0),
-  axis.line.x = element_line(color = "black", linewidth = 0.4, linetype = "solid"),
-  axis.line.y = element_line(color = "black", linewidth = 0.4, linetype = "solid"),
+  axis.line.x = element_line(
+    color = "black", linewidth = 0.4, linetype = "solid"),
+  axis.line.y = element_line(
+    color = "black", linewidth = 0.4, linetype = "solid"),
 
   axis.ticks.length = unit(2.75, "points"),
-  axis.ticks = element_line(color = "black", linewidth = 0.4, linetype = "solid"),
+  axis.ticks = element_line(
+    color = "black", linewidth = 0.4, linetype = "solid"),
 
   axis.title.y = element_text(angle = 90, margin = margin(r = 1.5)),
   axis.title.x = element_text(margin = margin(t = 1.5)),
@@ -73,7 +76,8 @@
 
   phasenames.position.x = "centre",
 
-  separators = element_line(color = "black", linewidth = 0.4, linetype = "dashed"),
+  separators = element_line(
+    color = "black", linewidth = 0.4, linetype = "dashed"),
 
   separators.extent = "full",
 
@@ -108,7 +112,9 @@
 
 # default -----------------------------------------------------------------
 
-.scplot_themes$default <- .merge_theme(.scplot_themes$grid, .scplot_themes$basic)
+.scplot_themes$default <- .merge_theme(
+  .scplot_themes$grid, .scplot_themes$basic
+)
 
 # sizes -------------------------------------------------------------------
 
@@ -144,7 +150,9 @@
   axis.text.x = element_blank(),
   axis.text.y = element_blank(),
 
-  separators = element_line(color = "black", linewidth = 0.3, linetype = "solid"),
+  separators = element_line(
+    color = "black", linewidth = 0.3, linetype = "solid"),
+
   grid = element_blank(),
   NULL
 )
@@ -170,7 +178,8 @@
 
   axis.ticks = element_line(color = "#DDDDDD"),
 
-  separators = element_line(color = "gold", linewidth = 0.3, linetype = "solid"),
+  separators = element_line(
+    color = "gold", linewidth = 0.3, linetype = "solid"),
 
   dataline = list(
     "1" = element_line(colour = "#DDDDDD")),
@@ -179,7 +188,6 @@
     "1" = element_point(colour = "#E94560", shape = 17))
 
 )
-
 
 # sienna ------------------------------------------------------------------
 
@@ -220,7 +228,4 @@
   grid = element_line(colour = "lightgreen", linewidth = 0.2),
   panel.background = element_rect(fill = "grey95", size = 1)
 )
-
-
-
 

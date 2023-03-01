@@ -14,7 +14,6 @@
 #' @export
 set_theme_element <- function(object, ...) {
 
-
   object$theme <- .merge_theme(list(...), object$theme)
   object
 }

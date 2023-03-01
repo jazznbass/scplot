@@ -1,9 +1,12 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^docs$
-^doc$
 ^LICENSE.md$
 ^_pkgdown.yml$
 ^pkgdown$
 ^old$
 ^mess$
+^\.git$
+^\.gitignore$
+^doc$
+^vignettes$
