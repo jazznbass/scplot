@@ -7,14 +7,15 @@
 set_phasenames(object, labels = NULL, position = NULL, ...)
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{labels}{A Character vector with text labels.}
 
 \item{position}{Character string either 'left' or 'center'.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Set phasenames of an scplot

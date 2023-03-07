@@ -26,24 +26,28 @@ set_yaxis(
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{limits}{Lower and upper limits of the axis (e.g., \code{limits = c(0,
-20)} sets the axis to a scale from 0 to 20). With multiple single-cases
-you can use \code{limits = c(0, NA)} to scale the axis from 0 to the maximum
-of each case. \code{limits} is not set by default, which makes \code{scplot} set
-a proper scale based on the given data.}
+\item{limits}{Lower and upper limits of the axis (e.g., \code{limits = c(0, 20)}
+sets the axis to a scale from 0 to 20). With multiple single-cases you can
+use \code{limits = c(0, NA)} to scale the axis from 0 to the maximum of each
+case. \code{limits} is not set by default, which makes \code{scplot} set a proper
+scale based on the given data.}
 
-\item{increment}{An integer. Increment of the x-axis. 1 :each mt value will be printed, 2 : every other value, 3 : every third values etc.}
+\item{increment}{An integer. Increment of the x-axis. 1 :each mt value will
+be printed, 2 : every other value, 3 : every third values etc.}
 
-\item{increment_from}{Number from which increment starts to count. Usually set to 0 if you want marks like 1,5,10,15,...}
+\item{increment_from}{Number from which increment starts to count. Usually
+set to 0 if you want marks like 1,5,10,15,...}
 
-\item{line}{A list (class element_line) with datapoint attributes: colour, linetype, size.}
+\item{line}{A list with datapoint attributes: colour,
+linetype, size (see \code{\link[=element_line]{element_line()}}).}
 
 \item{expand}{Vector with two values.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Set axis parameters of an scplot

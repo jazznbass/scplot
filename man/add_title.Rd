@@ -10,12 +10,13 @@ add_title(object, label, ...)
 add_caption(object, label, ...)
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{label}{A Character vector with text labels.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Add title and caption to an scplot

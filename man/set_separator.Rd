@@ -7,10 +7,11 @@
 set_separator(object, ...)
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Set separator line in an scplot

@@ -7,27 +7,28 @@
 #' @param color A character string or a number defining the color of an element.
 #' @param size Text size relative to the base text size.
 #' @param width Line width.
-#' @param hjust Horizontal justification (in [0,1])
-#' @param vjust Vertical justification (in [0,1])
-#' @param angle Angle (in [0,360])
+#' @param hjust Horizontal justification (in \[0,1\])
+#' @param vjust Vertical justification (in \[0,1\])
+#' @param angle Angle (in \[0,360\])
 #' @param face Font face ("plain", "italic", "bold", "bold.italic")
 #' @param linewidth A number with the width of the line.
 #' @param linetype A character string with the line type: "solid", "dashed",
 #'   "dotted"
-#' @param shape Number. See pch graphical parameter on par help page.
+#' @param shape Number. See pch graphical parameter on par help page [par()].
 #' @param text A list with text styling arguments (color, size, face, family,
-#'   hjust, vjust, lineheight, angle).
+#'   hjust, vjust, lineheight, angle). See [element_text()].
 #' @param background A list with background styling arguments (fill, color,
 #'   size, linetype).
 #' @param case Numerical vector with the case number or character string "all"
 #'   for all cases.
 #' @param variable Name of the dataline variable to apply the style.
-#' @param point A list (class element_point) with datapoint attributes: colour,
-#'   shape, size.
-#' @param line A list (class element_line) with datapoint attributes: colour,
-#'   linetype, size.
+#' @param point A list with datapoint attributes: colour,
+#'   shape, size (see [element_point()]).
+#' @param line A list with datapoint attributes: colour,
+#'   linetype, size (see [element_line()]).
 #' @param ... Further styling arguments: color, size, face, family, hjust,
 #'   vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.
+#' @keywords internal
 .inherit_scplot <- function(object,label, labels, color, size,
                             linewidth, hjust, vjust,
                             angle, width, face,linetype, shape, text,

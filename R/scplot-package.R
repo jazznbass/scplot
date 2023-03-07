@@ -4,7 +4,7 @@
 #'
 #' @name scplot-package
 #' @docType package
-#' @author Juergen Wilbert [aut, cre]
+#' @author Juergen Wilbert \[aut, cre\]
 #' @keywords package
 #' @import scan
 #' @import ggplot2

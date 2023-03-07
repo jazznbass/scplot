@@ -1,11 +1,11 @@
 #' Set axis parameters of an scplot
 #'
 #' @inheritParams .inherit_scplot
-#' @param limits Lower and upper limits of the axis (e.g., \code{limits = c(0,
-#'   20)} sets the axis to a scale from 0 to 20). With multiple single-cases you
-#'   can use \code{limits = c(0, NA)} to scale the axis from 0 to the maximum of
-#'   each case. \code{limits} is not set by default, which makes \code{scplot}
-#'   set a proper scale based on the given data.
+#' @param limits Lower and upper limits of the axis (e.g., `limits = c(0, 20)`
+#'   sets the axis to a scale from 0 to 20). With multiple single-cases you can
+#'   use `limits = c(0, NA)` to scale the axis from 0 to the maximum of each
+#'   case. `limits` is not set by default, which makes `scplot` set a proper
+#'   scale based on the given data.
 #' @param expand Vector with two values.
 #' @param increment An integer. Increment of the x-axis. 1 :each mt value will
 #'   be printed, 2 : every other value, 3 : every third values etc.

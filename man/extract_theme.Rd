@@ -7,7 +7,7 @@
 extract_theme(object)
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 }
 \value{
@@ -15,4 +15,12 @@ An scplot-theme object
 }
 \description{
 Extract theme from an scplot object
+}
+\examples{
+my_theme <- scplot() \%>\%
+  set_panel(color = "red") \%>\%
+  set_base_text(size = 12, color = "blue") \%>\%
+  set_dataline(color = "darkred", linewidth = 2) \%>\%
+  extract_theme()
+p1 <- scplot(exampleABC) \%>\% add_theme(my_theme)
 }

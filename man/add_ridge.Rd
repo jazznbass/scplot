@@ -7,7 +7,7 @@
 add_ridge(object, color = "grey98", variable = ".dvar")
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{color}{A character string or a number defining the color of an element.}

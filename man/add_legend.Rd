@@ -19,20 +19,21 @@ add_legend(
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{labels}{A character vector. Replaces the automatically build labels.
 When a vector element is NA, the corresponding element will not be replaced
 (e.g. c(NA, "Variable 2", NA, "Variable 4")).}
 
-\item{section_labels}{A character vector of length two.
-The labels for the lines section and phase section.}
+\item{section_labels}{A character vector of length two. The labels for the
+lines section and phase section.}
 
 \item{case}{Numerical vector with the case number or character string "all"
 for all cases.}
 
-\item{position}{The position ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
+\item{position}{The position ("none", "left", "right", "bottom", "top", or
+two-element numeric vector)}
 
 \item{datalines}{If TRUE, a legend for the datalines is generated.}
 
@@ -43,10 +44,10 @@ for all cases.}
 \item{title}{A list with text style parameters for the title.}
 
 \item{text}{A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle).}
+hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}}.}
 
-\item{background}{A list with background styling arguments (fill, color, size,
-linetype).}
+\item{background}{A list with background styling arguments (fill, color,
+size, linetype).}
 }
 \description{
 Add a legend to an scplot

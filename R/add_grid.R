@@ -1,7 +1,9 @@
 #' Add grid to an scplot
 #'
 #' @inheritParams .inherit_scplot
-#' @example
+#' @param ... Line arguments (see [element_line()])
+#' @seealso [element_line()]
+#' @examples
 #' p1 <- scplot(exampleAB$Anja) %>%
 #'   add_theme("minimal") %>%
 #'   add_grid(color = "grey70")

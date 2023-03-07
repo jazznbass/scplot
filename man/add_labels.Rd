@@ -16,7 +16,7 @@ add_labels(
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{nudge_y}{Offset on the y-axis.}
@@ -26,10 +26,10 @@ function.}
 \item{round}{Number of digits of the labels.}
 
 \item{text}{A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle).}
+hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}}.}
 
-\item{background}{A list with background styling arguments (fill, color, size,
-linetype).}
+\item{background}{A list with background styling arguments (fill, color,
+size, linetype).}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 

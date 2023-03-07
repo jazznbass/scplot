@@ -2,7 +2,9 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @export
-add_ridge <- function(object, color = "grey98", variable = ".dvar") {
+add_ridge <- function(object,
+                      color = "grey98",
+                      variable = ".dvar") {
 
   new_ridge <- list(
     variable = variable,

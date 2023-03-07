@@ -3,7 +3,8 @@
 #' @inheritParams .inherit_scplot
 #' @param position Character string either 'left' or 'center'.
 #' @export
-set_phasenames <- function(object, labels = NULL,
+set_phasenames <- function(object,
+                           labels = NULL,
                            position = NULL,
                            ...) {
 

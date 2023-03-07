@@ -15,11 +15,12 @@ add_arrow(
   angle = 30,
   length = unit(5, "points"),
   type = "open",
-  ends = "last"
+  ends = "last",
+  linewidth = 0.7
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{case}{Numerical vector with the case number or character string "all"
@@ -39,10 +40,18 @@ for all cases.}
 
 \item{length}{Size of the arrow angels.}
 
-\item{type}{One of "open" or "closed" indicating whether the arrow head should be a closed triangle.}
+\item{type}{One of "open" or "closed" indicating whether the arrow head
+should be a closed triangle.}
 
-\item{ends}{One of "last", "first", or "both", indicating which ends of the line to draw arrow heads.}
+\item{ends}{One of "last", "first", or "both", indicating which ends of the
+line to draw arrow heads.}
+
+\item{linewidth}{A number with the width of the line.}
 }
 \description{
 Add arrrows to an scplot
+}
+\examples{
+p1 <- scplot(exampleAB$Anja) \%>\%
+  add_arrow(case = 1, 2, 70, 6, 55, color = "darkred")
 }

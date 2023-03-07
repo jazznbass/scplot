@@ -19,7 +19,7 @@ add_text(
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{label}{A Character vector with text labels.}

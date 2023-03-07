@@ -10,9 +10,9 @@
 #'   should be a closed triangle.
 #' @param ends One of "last", "first", or "both", indicating which ends of the
 #'   line to draw arrow heads.
-#' @example
+#' @examples
 #' p1 <- scplot(exampleAB$Anja) %>%
-#'   add_arrow(1, 2, 70, 6, 55, color = "darkred")
+#'   add_arrow(case = 1, 2, 70, 6, 55, color = "darkred")
 #' @export
 add_arrow <- function(object,
                       case = 1,
@@ -21,7 +21,10 @@ add_arrow <- function(object,
                       angle = 30,
                       length = unit(5, "points"),
                       type = "open",
-                      ends = "last") {
+                      ends = "last",
+                      linewidth = 0.7) {
+
+
   arrow <- list(
     case = case,
     x0 = x0,
@@ -32,7 +35,8 @@ add_arrow <- function(object,
     angle = angle,
     length = length,
     ends = ends,
-    type = type
+    type = type,
+    size = linewidth
   )
   object$arrows <- c(object$arrows, list(arrow))
   object

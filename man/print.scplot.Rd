@@ -17,3 +17,4 @@ Creates a single-case plot
 \description{
 print.scplot
 }
+\keyword{internal}

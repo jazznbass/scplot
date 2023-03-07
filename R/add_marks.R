@@ -2,7 +2,13 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @param positions Either a vector indicating the points to be highlighted or a
-#'   character string with a logical expression (e.g. values < mean(values))
+#'   character string with a logical expression (e.g. `values < mean(values)`)
+#' @details If `positions` is an object returned from an outlier analysis
+#'   ([outlier()]), the corresponding outliers are marked.
+#' @examples
+#' p1 <- scplot(exampleA1B1A2B2$Moritz) %>% add_marks(positions = c(1,5,10,14))
+#'
+#' p1 <- scplot(Huber2014) %>% add_marks(positions = outlier(Huber2014))
 #' @export
 add_marks <- function(object,
                       case = 1,
@@ -13,13 +19,15 @@ add_marks <- function(object,
                       variable = ".dvar") {
 
   # Marks on the outliers from outlier()
-  if (identical(class(positions), "sc_outlier")) {
-    for(i in seq_along(positions$dropped.mt))
+  if (identical(class(positions), "sc_outlier")) positions <- positions$dropped.mt
+
+  if (is.list(positions)) {
+    for(i in seq_along(positions))
       object$marks <- c(
         object$marks,
         list(
           list(
-            case = i, positions = positions$dropped.mt[[i]],
+            case = i, positions = positions[[i]],
             color = color, size = size, shape = shape, variable = variable
           )
         )

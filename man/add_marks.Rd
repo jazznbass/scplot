@@ -15,23 +15,32 @@ add_marks(
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{case}{Numerical vector with the case number or character string "all"
 for all cases.}
 
 \item{positions}{Either a vector indicating the points to be highlighted or a
-character string with a logical expression (e.g. values < mean(values))}
+character string with a logical expression (e.g. \code{values < mean(values)})}
 
 \item{color}{A character string or a number defining the color of an element.}
 
 \item{size}{Text size relative to the base text size.}
 
-\item{shape}{Number. See pch graphical parameter on par help page.}
+\item{shape}{Number. See pch graphical parameter on par help page \code{\link[=par]{par()}}.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 }
 \description{
 Add marks to an scplot
+}
+\details{
+If \code{positions} is an object returned from an outlier analysis
+(\code{\link[=outlier]{outlier()}}), the corresponding outliers are marked.
+}
+\examples{
+p1 <- scplot(exampleA1B1A2B2$Moritz) \%>\% add_marks(positions = c(1,5,10,14))
+
+p1 <- scplot(Huber2014) \%>\% add_marks(positions = outlier(Huber2014))
 }

@@ -3,14 +3,18 @@
 #' @inheritParams .inherit_scplot
 #' @param type Either "continuous" or "descrete"
 #' @param ... As a shortcut, arguments passed hear are bundled as `line`
-#'   arguments. E.g. colour = "res", linewidth = 2.
+#'   arguments (see [element_line()]).
+#' @seealso [element_line()], [element_point()]
+#' @examples
+#' p1 <- scplot(exampleAB_add) %>% add_dataline("depression", color =
+#' "darkblue")
 #' @export
 add_dataline <- function(object,
-                     variable,
-                     line,
-                     point,
-                     type = "continuous",
-                     ...) {
+                         variable,
+                         line,
+                         point,
+                         type = "continuous",
+                         ...) {
 
   line_args <- list(...)
   if (missing(line)) {

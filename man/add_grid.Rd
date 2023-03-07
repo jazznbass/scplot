@@ -7,11 +7,19 @@
 add_grid(object, ...)
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Line arguments (see \code{\link[=element_line]{element_line()}})}
 }
 \description{
 Add grid to an scplot
+}
+\examples{
+p1 <- scplot(exampleAB$Anja) \%>\%
+  add_theme("minimal") \%>\%
+  add_grid(color = "grey70")
+}
+\seealso{
+\code{\link[=element_line]{element_line()}}
 }

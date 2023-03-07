@@ -2,20 +2,20 @@
 % Please edit documentation in R/as_ggplot.R
 \name{as_ggplot}
 \alias{as_ggplot}
-\title{Creates a ggplot2 object from an scplot object}
+\title{Creates a ggplot2 object from an \code{\link[=scplot]{scplot()}} object}
 \usage{
 as_ggplot(scplot)
 }
 \arguments{
-\item{scplot}{An scplot object}
+\item{scplot}{An \code{scplot} object}
 }
 \value{
 A ggplot2 object
 }
 \description{
-Creates a ggplot2 object from an scplot object
+Creates a ggplot2 object from an \code{\link[=scplot]{scplot()}} object
 }
 \details{
-`as_ggplot()` is used when you like to return a ggplot2 object for
+\code{as_ggplot()} is used when you want to return a ggplot2 object for
 further use with external ggplot functions.
 }

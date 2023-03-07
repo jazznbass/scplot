@@ -1,4 +1,5 @@
 #' Point element
+#'
 #' In conjunction with ggplot an object to represent point attributes.
 #'
 #' @param color,colour Point colour..

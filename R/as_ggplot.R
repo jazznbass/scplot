@@ -1,8 +1,8 @@
-#' Creates a ggplot2 object from an scplot object
+#' Creates a ggplot2 object from an [scplot()] object
 #'
-#' @param scplot An scplot object
+#' @param scplot An `scplot` object
 #'
-#' @details `as_ggplot()` is used when you like to return a ggplot2 object for
+#' @details `as_ggplot()` is used when you want to return a ggplot2 object for
 #'   further use with external ggplot functions.
 #' @return A ggplot2 object
 #' @export
@@ -209,9 +209,9 @@ as_ggplot <- function(scplot) {
       if (scplot$ridges[[i]]$variable == ".dvar")
         scplot$ridges[[i]]$variable <- dvar
       p <- p + geom_ribbon(
-        aes(ymax = !!sym(scplot$ridges[[i]]$variable),
+        aes(ymax = !!as.name(scplot$ridges[[i]]$variable),
             ymin = ylim[1],
-            group = !!sym(pvar)),
+            group = !!as.name(pvar)),
         fill = scplot$ridges[[i]]$colour
       )
     }
@@ -223,8 +223,8 @@ as_ggplot <- function(scplot) {
     if(scplot$datalines[[i]]$type == "continuous") {
       p <- p + geom_line(
         aes(
-          y = !!sym(scplot$datalines[[i]]$variable),
-          group = !!sym(pvar),
+          y = !!as.name(scplot$datalines[[i]]$variable),
+          group = !!as.name(pvar),
           colour = !!theme$dataline[[i]]$colour
         ),
         linewidth = theme$dataline[[i]]$linewidth,
@@ -235,8 +235,8 @@ as_ggplot <- function(scplot) {
     if(scplot$datalines[[i]]$type == "discrete") {
       p <- p + geom_step(
         aes(
-          y = !!sym(scplot$datalines[[i]]$variable),
-          group = !!sym(pvar),
+          y = !!as.name(scplot$datalines[[i]]$variable),
+          group = !!as.name(pvar),
           colour = !!theme$dataline[[i]]$colour
         ),
         linewidth = theme$dataline[[i]]$linewidth,
@@ -249,7 +249,7 @@ as_ggplot <- function(scplot) {
       p <- p + geom_bar(
         aes(
           #x = factor(!!sym(mvar)),
-          y = !!sym(scplot$datalines[[i]]$variable),
+          y = !!as.name(scplot$datalines[[i]]$variable),
           colour = !!theme$dataline[[i]]$colour
         ),
         #fill = theme$dataline[[i]]$colour,
@@ -642,6 +642,7 @@ as_ggplot <- function(scplot) {
         data = dat,
         mapping = aes(x = x0, y = y0, xend = x1, yend = y1),
         colour = scplot$arrows[[i]]$colour,
+        size = scplot$arrows[[i]]$size,
         arrow = arrow_par
       )
     }
@@ -693,8 +694,12 @@ as_ggplot <- function(scplot) {
             legend.text = theme$legend.text,
             legend.title = theme$legend.title,
             legend.margin = theme$legend.margin)
-    p <- p + guides(fill = guide_legend(title = scplot$legend$section_label[2]))
-    p <- p + guides(colour = guide_legend(title = scplot$legend$section_label[1]))
+    p <- p + guides(
+      fill = guide_legend(title = scplot$legend$section_label[2])
+    )
+    p <- p + guides(
+      colour = guide_legend(title = scplot$legend$section_label[1])
+    )
   } else p <- p + theme(legend.position = "None")
 
   # out -----------

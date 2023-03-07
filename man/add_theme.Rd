@@ -7,14 +7,14 @@
 add_theme(object, theme, ...)
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{theme}{A character string with a predefined graphical theme.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
-Possible themes are: 'basic', 'grid', 'default', 'small', 'tiny', 'big',
-'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'.
+Possible themes are: \verb{'basic', 'grid', 'default', 'small', 'tiny', 'big', 'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'}.
 }

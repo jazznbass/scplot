@@ -13,8 +13,7 @@ scplot(scdf)
 An scplot object that creates a ggplot2 plot when printed.
 }
 \description{
-This function provides a plot of a single-case or multiple
-single-cases.
+This function provides a plot of a single-case or multiple single-cases.
 }
 \author{
 Juergen Wilbert

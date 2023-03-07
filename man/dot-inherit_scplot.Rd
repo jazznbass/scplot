@@ -28,7 +28,7 @@
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{label}{A Character vector with text labels.}
@@ -54,25 +54,29 @@ function.}
 \item{linetype}{A character string with the line type: "solid", "dashed",
 "dotted"}
 
-\item{shape}{Number. See pch graphical parameter on par help page.}
+\item{shape}{Number. See pch graphical parameter on par help page \code{\link[=par]{par()}}.}
 
 \item{text}{A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle).}
+hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}}.}
 
-\item{background}{A list with background styling arguments (fill, color, size,
-linetype).}
+\item{background}{A list with background styling arguments (fill, color,
+size, linetype).}
 
 \item{case}{Numerical vector with the case number or character string "all"
 for all cases.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 
-\item{point}{A list (class element_point) with datapoint attributes: colour, shape, size.}
+\item{point}{A list with datapoint attributes: colour,
+shape, size (see \code{\link[=element_point]{element_point()}}).}
 
-\item{line}{A list (class element_line) with datapoint attributes: colour, linetype, size.}
+\item{line}{A list with datapoint attributes: colour,
+linetype, size (see \code{\link[=element_line]{element_line()}}).}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Dummy function to inherit global descriptions of parameters
 }
+\keyword{internal}

@@ -18,14 +18,11 @@ add_statline(
 )
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{stat}{A character string for defining a statistical line or curve to
-be plotted. Possible values: "median", "mean", "min", "max", "quantile",
-"trend", "trendA",
-"trendA_bisplit", "trendA_trisplit",
-"movingMean", "movingMedian", "loreg".}
+\item{stat}{A character string for defining a statistical line or curve to be
+plotted. Possible values: \verb{"median", "mean", "min", "max", "quantile", "trend", "trendA", "trendA_bisplit", "trendA_trisplit", "movingMean", "movingMedian", "loreg"}.}
 
 \item{phase}{Either a numeric or a character vector specifying the reference
 phase (see details)}
@@ -47,20 +44,18 @@ phase (see details)}
 Add a statline to an scplot
 }
 \details{
-The 'phase' argument defines the reference phase for some
-  statistiscal functions ("median", "mean", "min", "max", "quantile").
-  The default is NULL which calculates and plots statistics for each phase
-  separately. The arguments takes a numeric vector (phase number(s)) or a
-  character vector (phase name(s)). When more than one phase is defines,
-  statistics are based on the combined values of these phases.
-  Some of the functions defined in 'stats' have additional arguments.
-  The 'mean' function has a trim argument (e.g. 'trim = 0.1').
-  'quantile has a proportion argument (e.g. prob = 0.75 for calculating
-  the 75% quantile).
-  'trendA' has the argument 'method' which takes 'ols' or 'theil-sen'.
-  'movingMean' and 'movingMedian' have a lag argument (e.g. lag = 2).
-  The local-regression curve function 'lowess' (or 'loreg') has a proportion
-  argument (e.g. f = 0.5) and the
-  local-regression curve function 'loess' has a span argument
-  (e.g. span = 0.75).
+The \code{phase} argument defines the reference phase for some
+statistical functions (\verb{"median", "mean", "min", "max", "quantile"}). The
+default is \code{NULL} which calculates and plots statistics for each phase
+separately. The arguments takes a numeric vector (phase number(s)) or a
+character vector (phase name(s)). When more than one phase is defines,
+statistics are based on the combined values of these phases. Some of the
+functions defined in \code{stats} have additional arguments. The \code{\link[=mean]{mean()}}
+function has a trim argument (e.g. \code{trim = 0.1}). \code{\link[=quantile]{quantile()}} has a
+proportion argument (e.g. \code{prob = 0.75} for calculating the 75\% quantile).
+\code{trendA} has the argument \code{method} which takes \code{ols} or \code{theil-sen}.
+\code{movingMean} and \code{movingMedian} have a lag argument (e.g. \code{lag = 2}). The
+local-regression curve function \code{lowess} (or \code{loreg}) has a proportion
+argument (e.g. \code{f = 0.5}) and the local-regression curve function \code{\link[=loess]{loess()}}
+has a span argument (e.g. \code{span = 0.75}).
 }

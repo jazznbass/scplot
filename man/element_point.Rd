@@ -2,8 +2,7 @@
 % Please edit documentation in R/element_point.R
 \name{element_point}
 \alias{element_point}
-\title{Point element
-In conjunction with ggplot an object to represent point attributes.}
+\title{Point element}
 \usage{
 element_point(colour = NULL, size = NULL, shape = NULL, color = NULL)
 }
@@ -15,6 +14,5 @@ element_point(colour = NULL, size = NULL, shape = NULL, color = NULL)
 \item{color, colour}{Point colour..}
 }
 \description{
-Point element
 In conjunction with ggplot an object to represent point attributes.
 }

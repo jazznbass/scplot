@@ -7,17 +7,19 @@
 set_casenames(object, labels = NULL, position = NULL, background = list(), ...)
 }
 \arguments{
-\item{object}{An scplot object (class `scplot`) returned from the `scplot()`
+\item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
 \item{labels}{A Character vector with text labels.}
 
-\item{position}{Either "topleft", "bottomleft", "topright", "bottomright", "strip-right", "strip-top", or a numerical vector of length 2 with the x and y position (e.g. c(19, 20)).}
+\item{position}{Either \verb{"topleft", "bottomleft", "topright", "bottomright", "strip-right", "strip-top"}, or a numerical vector of length 2 with the x
+and y position (e.g. \code{c(19, 20)}).}
 
-\item{background}{A list with background styling arguments (fill, color, size,
-linetype).}
+\item{background}{A list with background styling arguments (fill, color,
+size, linetype).}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \description{
 Set casenames of an scplot

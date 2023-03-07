@@ -1,7 +1,7 @@
 #' Plot single-case data
 #'
-#' This function provides a plot of a single-case or multiple
-#' single-cases.
+#' This function provides a plot of a single-case or multiple single-cases.
+#'
 #' @param scdf A single-case data-frame object (scdf).
 #' @return An scplot object that creates a ggplot2 plot when printed.
 #' @author Juergen Wilbert
@@ -19,9 +19,9 @@ scplot <- function(scdf) {
 
   out <- list(
     scdf = scdf,
-    dvar = scdf_attr(scdf, scan:::.opt$dv),
-    pvar = scdf_attr(scdf, scan:::.opt$phase),
-    mvar = scdf_attr(scdf, scan:::.opt$mt),
+    dvar = scan:::dv(scdf),
+    pvar = scan:::phase(scdf),
+    mvar = scan:::mt(scdf),
     datalines = list(list(type = "continuous")),
     statlines = NULL,
     ridges = NULL,
@@ -38,7 +38,7 @@ scplot <- function(scdf) {
     labels = list(),
     phasenames = list(labels = ".default"),
     legend = NULL,
-    casenames = list(labels = scan:::.case_names(names(scdf), length(scdf)))
+    casenames = list(labels = scan:::revise_names(scdf))
   )
 
   class(out) <- "scplot"
