@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.12</span>
       </span>
     </div>
 
@@ -25,16 +25,6 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/examples.html">examples</a>
-    </li>
-  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -74,16 +64,13 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
-<dd><p>An scplot object (class `scplot`) returned from the `scplot()`
+<dd><p>An scplot object (class <code>scplot</code>) returned from the <code><a href="scplot.html">scplot()</a></code>
 function.</p></dd>
 
 
 <dt>stat</dt>
-<dd><p>A character string for defining a statistical line or curve to
-be plotted. Possible values: "median", "mean", "min", "max", "quantile",
-"trend", "trendA",
-"trendA_bisplit", "trendA_trisplit",
-"movingMean", "movingMedian", "loreg".</p></dd>
+<dd><p>A character string for defining a statistical line or curve to be
+plotted. Possible values: <code>"median", "mean", "min", "max", "quantile", "trend", "trendA", "trendA_bisplit", "trendA_trisplit", "movingMean", "movingMedian", "loreg"</code>.</p></dd>
 
 
 <dt>phase</dt>
@@ -104,8 +91,7 @@ phase (see details)</p></dd>
 
 
 <dt>linetype</dt>
-<dd><p>A character string with the line type: "solid", "dashed",
-"dotted"</p></dd>
+<dd><p>A character string with the line type: <code>"solid", "dashed", "dotted"</code></p></dd>
 
 
 <dt>variable</dt>
@@ -118,22 +104,20 @@ phase (see details)</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>The 'phase' argument defines the reference phase for some
-  statistiscal functions ("median", "mean", "min", "max", "quantile").
-  The default is NULL which calculates and plots statistics for each phase
-  separately. The arguments takes a numeric vector (phase number(s)) or a
-  character vector (phase name(s)). When more than one phase is defines,
-  statistics are based on the combined values of these phases.
-  Some of the functions defined in 'stats' have additional arguments.
-  The 'mean' function has a trim argument (e.g. 'trim = 0.1').
-  'quantile has a proportion argument (e.g. prob = 0.75 for calculating
-  the 75<!-- % quantile). -->
-  'trendA' has the argument 'method' which takes 'ols' or 'theil-sen'.
-  'movingMean' and 'movingMedian' have a lag argument (e.g. lag = 2).
-  The local-regression curve function 'lowess' (or 'loreg') has a proportion
-  argument (e.g. f = 0.5) and the
-  local-regression curve function 'loess' has a span argument
-  (e.g. span = 0.75).</p>
+    <p>The <code>phase</code> argument defines the reference phase for some
+statistical functions (<code>"median", "mean", "min", "max", "quantile"</code>). The
+default is <code>NULL</code> which calculates and plots statistics for each phase
+separately. The arguments takes a numeric vector (phase number(s)) or a
+character vector (phase name(s)). When more than one phase is defines,
+statistics are based on the combined values of these phases. Some of the
+functions defined in <code>stats</code> have additional arguments. The <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code>
+function has a trim argument (e.g. <code>trim = 0.1</code>). <code><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile()</a></code> has a
+proportion argument (e.g. <code>prob = 0.75</code> for calculating the 75% quantile).
+<code>trendA</code> has the argument <code>method</code> which takes <code>ols</code> or <code>theil-sen</code>.
+<code>movingMean</code> and <code>movingMedian</code> have a lag argument (e.g. <code>lag = 2</code>). The
+local-regression curve function <code>lowess</code> (or <code>loreg</code>) has a proportion
+argument (e.g. <code>f = 0.5</code>) and the local-regression curve function <code><a href="https://rdrr.io/r/stats/loess.html" class="external-link">loess()</a></code>
+has a span argument (e.g. <code>span = 0.75</code>).</p>
     </div>
 
   </div>

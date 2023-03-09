@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.12</span>
       </span>
     </div>
 
@@ -25,16 +25,6 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/examples.html">examples</a>
-    </li>
-  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -68,19 +58,20 @@
 <span>  angle <span class="op">=</span> <span class="fl">30</span>,</span>
 <span>  length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">5</span>, <span class="st">"points"</span><span class="op">)</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"open"</span>,</span>
-<span>  ends <span class="op">=</span> <span class="st">"last"</span></span>
+<span>  ends <span class="op">=</span> <span class="st">"last"</span>,</span>
+<span>  linewidth <span class="op">=</span> <span class="fl">0.7</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
-<dd><p>An scplot object (class `scplot`) returned from the `scplot()`
+<dd><p>An scplot object (class <code>scplot</code>) returned from the <code><a href="scplot.html">scplot()</a></code>
 function.</p></dd>
 
 
 <dt>case</dt>
-<dd><p>Numerical vector with the case number or character string "all"
+<dd><p>Numerical vector with the case number or character string. <code>case = "all"</code>
 for all cases.</p></dd>
 
 
@@ -113,14 +104,26 @@ for all cases.</p></dd>
 
 
 <dt>type</dt>
-<dd><p>One of "open" or "closed" indicating whether the arrow head should be a closed triangle.</p></dd>
+<dd><p>One of "open" or "closed" indicating whether the arrow head
+should be a closed triangle.</p></dd>
 
 
 <dt>ends</dt>
-<dd><p>One of "last", "first", or "both", indicating which ends of the line to draw arrow heads.</p></dd>
+<dd><p>One of "last", "first", or "both", indicating which ends of the
+line to draw arrow heads.</p></dd>
+
+
+<dt>linewidth</dt>
+<dd><p>A number with the width of the line.</p></dd>
 
 </dl></div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB</span><span class="op">$</span><span class="va">Anja</span><span class="op">)</span>  <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">add_arrow</span><span class="op">(</span>case <span class="op">=</span> <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">70</span>, <span class="fl">6</span>, <span class="fl">55</span>, color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.12</span>
       </span>
     </div>
 
@@ -25,16 +25,6 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/examples.html">examples</a>
-    </li>
-  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -75,7 +65,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
-<dd><p>An scplot object (class `scplot`) returned from the `scplot()`
+<dd><p>An scplot object (class <code>scplot</code>) returned from the <code><a href="scplot.html">scplot()</a></code>
 function.</p></dd>
 
 
@@ -86,17 +76,18 @@ When a vector element is NA, the corresponding element will not be replaced
 
 
 <dt>section_labels</dt>
-<dd><p>A character vector of length two.
-The labels for the lines section and phase section.</p></dd>
+<dd><p>A character vector of length two. The labels for the
+lines section and phase section.</p></dd>
 
 
 <dt>case</dt>
-<dd><p>Numerical vector with the case number or character string "all"
+<dd><p>Numerical vector with the case number or character string. <code>case = "all"</code>
 for all cases.</p></dd>
 
 
 <dt>position</dt>
-<dd><p>The position ("none", "left", "right", "bottom", "top", or two-element numeric vector)</p></dd>
+<dd><p>The position ("none", "left", "right", "bottom", "top", or
+two-element numeric vector)</p></dd>
 
 
 <dt>datalines</dt>
@@ -117,12 +108,12 @@ for all cases.</p></dd>
 
 <dt>text</dt>
 <dd><p>A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle).</p></dd>
+hjust, vjust, lineheight, angle). See <code>element_text()</code>.</p></dd>
 
 
 <dt>background</dt>
-<dd><p>A list with background styling arguments (fill, color, size,
-linetype).</p></dd>
+<dd><p>A list with background styling arguments (fill, color,
+size, linetype).</p></dd>
 
 </dl></div>
 

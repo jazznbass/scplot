@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.12</span>
       </span>
     </div>
 
@@ -25,16 +25,6 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/examples.html">examples</a>
-    </li>
-  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -71,18 +61,18 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
-<dd><p>An scplot object (class `scplot`) returned from the `scplot()`
+<dd><p>An scplot object (class <code>scplot</code>) returned from the <code><a href="scplot.html">scplot()</a></code>
 function.</p></dd>
 
 
 <dt>case</dt>
-<dd><p>Numerical vector with the case number or character string "all"
+<dd><p>Numerical vector with the case number or character string. <code>case = "all"</code>
 for all cases.</p></dd>
 
 
 <dt>positions</dt>
 <dd><p>Either a vector indicating the points to be highlighted or a
-character string with a logical expression (e.g. values &lt; mean(values))</p></dd>
+character string with a logical expression (e.g. <code>values &lt; mean(values)</code>)</p></dd>
 
 
 <dt>color</dt>
@@ -94,14 +84,25 @@ character string with a logical expression (e.g. values &lt; mean(values))</p></
 
 
 <dt>shape</dt>
-<dd><p>Number. See pch graphical parameter on par help page.</p></dd>
+<dd><p>Number. See <code>pch</code> graphical parameter on <code>par</code> help page <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par()</a></code>.</p></dd>
 
 
 <dt>variable</dt>
 <dd><p>Name of the dataline variable to apply the style.</p></dd>
 
 </dl></div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>If <code>positions</code> is an object returned from an outlier analysis
+(<code>outlier()</code>), the corresponding outliers are marked.</p>
+    </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleA1B1A2B2</span><span class="op">$</span><span class="va">Moritz</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">add_marks</span><span class="op">(</span>positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">14</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="scplot.html">scplot</a></span><span class="op">(</span><span class="va">Huber2014</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">add_marks</span><span class="op">(</span>positions <span class="op">=</span> <span class="fu">outlier</span><span class="op">(</span><span class="va">Huber2014</span><span class="op">)</span><span class="op">)</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

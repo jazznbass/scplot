@@ -97,10 +97,16 @@
     <loc>/reference/set_casenames.html</loc>
   </url>
   <url>
+    <loc>/reference/set_dataline.html</loc>
+  </url>
+  <url>
     <loc>/reference/set_phasenames.html</loc>
   </url>
   <url>
     <loc>/reference/set_separator.html</loc>
+  </url>
+  <url>
+    <loc>/reference/set_theme.html</loc>
   </url>
   <url>
     <loc>/reference/set_theme_element.html</loc>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.12</span>
       </span>
     </div>
 
@@ -25,16 +25,6 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/examples.html">examples</a>
-    </li>
-  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -84,7 +74,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
-<dd><p>An scplot object (class `scplot`) returned from the `scplot()`
+<dd><p>An scplot object (class <code>scplot</code>) returned from the <code><a href="scplot.html">scplot()</a></code>
 function.</p></dd>
 
 
@@ -125,30 +115,29 @@ function.</p></dd>
 
 
 <dt>face</dt>
-<dd><p>Font face ("plain", "italic", "bold", "bold.italic")</p></dd>
+<dd><p>Font face (<code>"plain", "italic", "bold", "bold.italic"</code>)</p></dd>
 
 
 <dt>linetype</dt>
-<dd><p>A character string with the line type: "solid", "dashed",
-"dotted"</p></dd>
+<dd><p>A character string with the line type: <code>"solid", "dashed", "dotted"</code></p></dd>
 
 
 <dt>shape</dt>
-<dd><p>Number. See pch graphical parameter on par help page.</p></dd>
+<dd><p>Number. See <code>pch</code> graphical parameter on <code>par</code> help page <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par()</a></code>.</p></dd>
 
 
 <dt>text</dt>
 <dd><p>A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle).</p></dd>
+hjust, vjust, lineheight, angle). See <code>element_text()</code>.</p></dd>
 
 
 <dt>background</dt>
-<dd><p>A list with background styling arguments (fill, color, size,
-linetype).</p></dd>
+<dd><p>A list with background styling arguments (fill, color,
+size, linetype).</p></dd>
 
 
 <dt>case</dt>
-<dd><p>Numerical vector with the case number or character string "all"
+<dd><p>Numerical vector with the case number or character string. <code>case = "all"</code>
 for all cases.</p></dd>
 
 
@@ -157,15 +146,18 @@ for all cases.</p></dd>
 
 
 <dt>point</dt>
-<dd><p>A list (class element_point) with datapoint attributes: colour, shape, size.</p></dd>
+<dd><p>A list with datapoint attributes: colour,
+shape, size (see <code><a href="element_point.html">element_point()</a></code>).</p></dd>
 
 
 <dt>line</dt>
-<dd><p>A list (class element_line) with datapoint attributes: colour, linetype, size.</p></dd>
+<dd><p>A list with datapoint attributes: colour,
+linetype, size (see <code>element_line()</code>).</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Further styling arguments: color, size, face, family, hjust, vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.</p></dd>
+<dd><p>Further styling arguments: color, size, face, family, hjust,
+vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.</p></dd>
 
 </dl></div>
 

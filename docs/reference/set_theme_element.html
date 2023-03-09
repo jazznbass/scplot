@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.12</span>
       </span>
     </div>
 
@@ -25,16 +25,6 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/examples.html">examples</a>
-    </li>
-  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -63,7 +53,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
-<dd><p>An scplot object (class `scplot`) returned from the `scplot()`
+<dd><p>An scplot object (class <code>scplot</code>) returned from the <code><a href="scplot.html">scplot()</a></code>
 function.</p></dd>
 
 
@@ -73,17 +63,65 @@ function.</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>Usually, you don't need this function. Possible theme elements are.
+    <p>Usually, you don't need this function. Possible theme elements are:
 "text", "plot.background", "panel.background", "panel.spacing.y",
-"dataline", "datapoint", "statline", "axis.line.x", "axis.line.y",
-"axis.ticks.length", "axis.ticks", "axis.title.y", "axis.title.x",
-"axis.text.x", "axis.text.y", "plot.title", "plot.caption", "plot.margin",
-"casenames", "casenames.strip", "casenames.position", "phasenames",
+"dataline", "datapoint", "statline", "axis.expand.x", "axis.expand.y",
+"axis.line.x", "axis.line.y", "axis.ticks.length", "axis.ticks",
+"axis.title.y", "axis.title.x", "axis.text.x", "axis.text.y", "plot.title",
+"plot.caption", "plot.margin", "casenames", "casenames.strip",
+"casenames.background", "casenames.position", "phasenames",
 "phasenames.position.x", "separators", "separators.extent", "label.text",
 "label.background", "label.padding", "grid", "legend.position",
-"legend.background", "legend.text", "legend.title", "legend.margin"</p>
-    </div>
+"legend.background", "legend.text", "legend.title", "legend.margin".</p>
+<p>The elements are of the following classes:</p><ul><li><p>text = c("element_text", "element"),</p></li>
+<li><p>plot.background = c("element_rect", "element"),</p></li>
+<li><p>panel.spacing.y = c("simpleUnit", "unit", "unit_v2"),</p></li>
+<li><p>dataline = "list",</p></li>
+<li><p>datapoint = "list",</p></li>
+<li><p>statline = c("element_line", "element" ),</p></li>
+<li><p>axis.expand.x = "numeric",</p></li>
+<li><p>axis.expand.y = "numeric",</p></li>
+<li><p>axis.line.x = c("element_line", "element"),</p></li>
+<li><p>axis.line.y = c("element_line", "element"),</p></li>
+<li><p>axis.ticks.length = c("simpleUnit", "unit", "unit_v2"),</p></li>
+<li><p>axis.ticks = c("element_line", "element"),</p></li>
+<li><p>axis.title.y = c("element_text", "element"),</p></li>
+<li><p>axis.title.x = c("element_text", "element"),</p></li>
+<li><p>axis.text.x = c("element_text", "element"),</p></li>
+<li><p>axis.text.y = c("element_text", "element"),</p></li>
+<li><p>plot.title = c("element_text", "element"),</p></li>
+<li><p>plot.caption = c("element_text", "element"),</p></li>
+<li><p>plot.margin = c("margin", "simpleUnit", "unit","unit_v2"),</p></li>
+<li><p>casenames = c("element_text", "element"),</p></li>
+<li><p>casenames.strip = c("element_rect", "element"),</p></li>
+<li><p>casenames.background = c("element_rect", "element"),</p></li>
+<li><p>casenames.position = "character",</p></li>
+<li><p>phasenames = c("element_text", "element"),</p></li>
+<li><p>phasenames.position.x = "character",</p></li>
+<li><p>separators = c("element_line", "element"),</p></li>
+<li><p>separators.extent = "character",</p></li>
+<li><p>label.text = c("element_text", "element"),</p></li>
+<li><p>label.background = c("element_rect", "element" ),</p></li>
+<li><p>label.padding = "numeric", grid = c("element_line", "element" ),</p></li>
+<li><p>legend.position = "character",</p></li>
+<li><p>legend.background = c("element_rect",  "element"),</p></li>
+<li><p>legend.text = c("element_text", "element"),</p></li>
+<li><p>legend.title = c("element_text", "element"),</p></li>
+<li><p>legend.margin = c("margin", "simpleUnit", "unit", "unit_v2")</p></li>
+</ul></div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span><span class="fu">set_theme_element</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  axis.ticks.length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0</span>, <span class="st">"points"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  axis.line.y <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"darkred"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  panel.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"darkblue"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  panel.spacing.y <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0</span>, <span class="st">"points"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  phasenames <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#00000000"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="extract_theme.html">extract_theme</a></span><span class="op">(</span><span class="op">)</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
