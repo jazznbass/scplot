@@ -13,15 +13,15 @@
 #' @export
 extract_theme <- function(object) {
   out <- structure(object$theme,
-  class = "scplot-theme"
+    class = "scplot-theme"
   )
 
-  attributes(out) <- list(complete = object[c(
+  attr(out, "complete") <- object[c(
     "datalines", "statlines", "ridges",
     "marks", "texts", "arrows", "title", "caption", "xaxis",
     "yaxis", "xlabel", "ylabel", "labels", "phasenames", "legend",
     "casenames"
-  )])
+  )]
 
 out
 }

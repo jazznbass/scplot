@@ -40,6 +40,10 @@ as_ggplot <- function(scplot) {
   data_long$case <- factor(data_long$case, levels = scplot$casenames$labels)
   data_long[[pvar]] <- factor(data_long[[pvar]])
 
+  attr(data_long, "pvar") <- pvar
+  attr(data_long, "mvar") <- mvar
+
+
   # extract design --------
 
   .design <- function(data, pvar, mvar) {
@@ -484,11 +488,9 @@ as_ggplot <- function(scplot) {
 
       # by constant
       if (scplot$statlines[[j]]$stat %in% possible_fixed_stats) {
-        p <- p + .statline_constant(data_long,
+        p <- p + .statline_constant(
+          data_long,
           line = scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable,
-          scplot$mvar,
-          scplot$pvar,
           fun = scplot$statlines[[j]]$stat,
           reference_phase = scplot$statlines[[j]]$phase
         )
@@ -498,10 +500,7 @@ as_ggplot <- function(scplot) {
       if (scplot$statlines[[j]]$stat == "trend") {
         p <- p + .statline_trend_by_phase(
           data_long,
-          scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable,
-          scplot$mvar,
-          scplot$pvar
+          line = scplot$statlines[[j]]
         )
       }
 
@@ -514,29 +513,30 @@ as_ggplot <- function(scplot) {
           scplot$statlines[[j]]$stat <- "trendA theil-sen"
 
         p <- p + .statline_trend(
-          data_long, scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar
+          data_long, scplot$statlines[[j]]
         )
       }
 
       if (scplot$statlines[[j]]$stat %in% c("moving_mean", "movingMean")) {
         p <- p + .statline_moving_average(
-          data_long, scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar, "mean"
+          data_long,
+          line = scplot$statlines[[j]],
+          fun = "mean"
         )
       }
 
       if (scplot$statlines[[j]]$stat %in% c("moving_median", "movingMedian")) {
         p <- p + .statline_moving_average(
-          data_long, scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar, "median"
+          data_long,
+          line = scplot$statlines[[j]],
+          fun = "median"
         )
       }
 
       if (scplot$statlines[[j]]$stat %in% c("loreg", "lowess")) {
         p <- p + .statline_loreg(
-          data_long, scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar,
+          data_long,
+          line = scplot$statlines[[j]],
           fun = "lowess"
         )
       }
@@ -544,7 +544,6 @@ as_ggplot <- function(scplot) {
       if (scplot$statlines[[j]]$stat == "loess") {
         p <- p + .statline_loreg(
           data_long, scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar,
           fun = "loess"
         )
       }

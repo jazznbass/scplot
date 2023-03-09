@@ -19,8 +19,11 @@
   .statline_geom_phase(data, line$line, label = label)
 }
 
-.statline_constant <- function(data, line, dvar, mvar, pvar, fun, reference_phase = 1) {
+.statline_constant <- function(data, line, fun, reference_phase = 1) {
 
+  dvar <- line$variable
+  mvar <- attr(data, "mvar")
+  pvar <- attr(data, "pvar")
   label <- paste(fun, dvar)
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
@@ -46,8 +49,11 @@
   .statline_geom(data, line$line, label = label)
 }
 
-.statline_trend_by_phase <- function(data, line, dvar, mvar, pvar) {
+.statline_trend_by_phase <- function(data, line) {
 
+  dvar <- line$variable
+  mvar <- attr(data, "mvar")
+  pvar <- attr(data, "pvar")
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (is.null(line$args$method)) line$args$method <- "lm"
@@ -83,8 +89,11 @@
 
 .statline_trend <- function(data,
                             line,
-                            dvar, mvar, pvar,
                             reference_phase = 1) {
+
+  dvar <- line$variable
+  mvar <- attr(data, "mvar")
+  pvar <- attr(data, "pvar")
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
@@ -120,10 +129,14 @@
   .statline_geom(data, line$line, label = label)
 }
 
-.statline_moving_average <- function(data, line, dvar, mvar, pvar, fun) {
+.statline_moving_average <- function(data, line, fun) {
 
-  if (fun == "mean") label <- paste("moving mean", dvar)
-  if (fun == "median") label <- paste("moving median", dvar)
+  dvar <- line$variable
+  mvar <- attr(data, "mvar")
+  pvar <- attr(data, "pvar")
+
+  if (fun == "mean") label <- paste("movingMean", dvar)
+  if (fun == "median") label <- paste("movingMedian", dvar)
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
@@ -139,10 +152,15 @@
   .statline_geom(data, line$line, label = label)
 }
 
-.statline_loreg <- function(data, line, dvar, mvar, pvar, fun) {
 
+
+
+.statline_loreg <- function(data, line, fun) {
+
+  dvar <- line$variable
+  mvar <- attr(data, "mvar")
+  pvar <- attr(data, "pvar")
   label <- paste(fun, dvar)
-
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   data$y <- NA
