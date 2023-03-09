@@ -4,8 +4,8 @@
 #' @param ... Line arguments (see [element_line()])
 #' @seealso [element_line()]
 #' @examples
-#' p1 <- scplot(exampleAB$Anja) %>%
-#'   add_theme("minimal") %>%
+#' p1 <- scplot(exampleAB$Anja)  |>
+#'   set_theme("minimal")  |>
 #'   add_grid(color = "grey70")
 #' @export
 add_grid <- function(object, ...) {

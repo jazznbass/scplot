@@ -24,7 +24,7 @@ function.}
 
 \item{label}{A Character vector with text labels.}
 
-\item{case}{Numerical vector with the case number or character string "all"
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
 for all cases.}
 
 \item{x}{x position}
@@ -41,7 +41,7 @@ for all cases.}
 
 \item{vjust}{Vertical justification (in [0,1])}
 
-\item{face}{Font face ("plain", "italic", "bold", "bold.italic")}
+\item{face}{Font face (\verb{"plain", "italic", "bold", "bold.italic"})}
 }
 \description{
 Add test to an scplot

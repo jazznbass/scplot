@@ -61,7 +61,7 @@ scplot(exampleAB)
 
 ```{r basic3}
 scplot(exampleAB_add) %>%
-  add_dataline("depression")
+  set_dataline("depression")
 ```
 
 ## Add statlines
@@ -130,7 +130,7 @@ If you do not specify the `variable` argument the default first data-line is add
 
 ```{r dataline1}
 scplot(exampleAB_add) %>%
-  add_dataline("cigarrets") %>%
+  set_dataline("cigarrets") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_statline("trend", linetype = "dashed")
 ```
@@ -228,7 +228,7 @@ scplot(exampleABC) %>%
 
 Themes are complete styles that define various elements of a plot.
 
-Function `add_theme("theme_name")`
+Function `set_theme("theme_name")`
 
 Possible themes: 
 
@@ -247,28 +247,28 @@ scplot(exampleABC)
 
 ```{r theme3}
 scplot(exampleABC) %>%
-  add_theme("basic")
+  set_theme("basic")
 ```
 
 ### Theme 'minimal'
 
 ```{r theme4}
 scplot(exampleABC) %>%
-  add_theme("minimal")
+  set_theme("minimal")
 ```
 
 ### Theme 'dark'
 
 ```{r theme5}
 scplot(exampleABC) %>%
-  add_theme("dark")
+  set_theme("dark")
 ```
 
 ### Theme 'sienna'
 
 ```{r theme6}
 scplot(exampleABC) %>%
-  add_theme("sienna")
+  set_theme("sienna")
 ```
 
 ### Combine themes
@@ -277,7 +277,7 @@ When providing multiple themes the order is important as the latter overwrites s
 
 ```{r theme7}
 scplot(exampleABC) %>%
-  add_theme("sienna", "minimal", "small")
+  set_theme("sienna", "minimal", "small")
 ```
 
 ### Set base text
@@ -387,16 +387,16 @@ scplot(exampleAB_mpd) %>%
 ```{r extend1}
 
 p1 <- scplot(byHeart2011$`Lisa (Turkish)`) %>% 
-        add_theme("minimal") %>%
+        set_theme("minimal") %>%
         as_ggplot()
 p2 <- scplot(byHeart2011$`Patrick (Spanish)`) %>% 
-        add_theme("minimal") %>% 
+        set_theme("minimal") %>% 
         as_ggplot()
 p3 <- scplot(byHeart2011$`Anna (Twi)`) %>% 
-        add_theme("minimal") %>% 
+        set_theme("minimal") %>% 
         as_ggplot()
 p4 <- scplot(byHeart2011$`Melanie (Swedish)`) %>% 
-        add_theme("minimal") %>% 
+        set_theme("minimal") %>% 
         as_ggplot()
 
 library(patchwork)
@@ -411,7 +411,7 @@ Here are some more complex examples
 
 ```{r complex1}
 scplot(example_A24) %>% 
-  add_theme("default") %>%
+  set_theme("default") %>%
   add_statline("lowess", color = "darkred", linewidth = 1.5) %>%
   add_statline("loess", color = "red", linewidth = 1.5) %>%
   add_statline("movingMean", lag = 3, color = "lightpink", linewidth = 1.5) %>%
@@ -429,7 +429,7 @@ scplot(example_A24) %>%
 
 ```{r complex2}
 scplot(exampleAB_add) %>%
-  add_dataline("cigarrets", point = list(size = 1)) %>%
+  set_dataline("cigarrets", point = list(size = 1)) %>%
   add_statline("trend", linetype = "dashed") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_marks(positions = c(14,20), size = 3, variable = "cigarrets")%>%
@@ -495,7 +495,7 @@ Adding bars is a bit more complicated:
 ```{r complex4}
 scplot(exampleAB_add) %>%
   set_xaxis(expand = c(0, 0), limits = c(0, 41)) %>%
-  add_dataline("cigarrets", type = "bar", linewidth = 0.6, point = "none") %>%
+  set_dataline("cigarrets", type = "bar", linewidth = 0.6, point = "none") %>%
   add_statline("mean", variable = "cigarrets", color = "darkred") %>%
   add_statline("trend", linetype = "dashed") %>%
   set_casenames(position = "strip")

@@ -29,7 +29,7 @@ When a vector element is NA, the corresponding element will not be replaced
 \item{section_labels}{A character vector of length two. The labels for the
 lines section and phase section.}
 
-\item{case}{Numerical vector with the case number or character string "all"
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
 for all cases.}
 
 \item{position}{The position ("none", "left", "right", "bottom", "top", or

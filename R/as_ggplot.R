@@ -481,19 +481,27 @@ as_ggplot <- function(scplot) {
       possible_fixed_stats <- c(
         "mean", "median", "min", "max", "quantile", "sd", "mad"
       )
+
+      # by constant
       if (scplot$statlines[[j]]$stat %in% possible_fixed_stats) {
-        p <- p + .statline(data_long,
+        p <- p + .statline_constant(data_long,
           line = scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable,  scplot$mvar, scplot$pvar,
+          scplot$statlines[[j]]$variable,
+          scplot$mvar,
+          scplot$pvar,
           fun = scplot$statlines[[j]]$stat,
           reference_phase = scplot$statlines[[j]]$phase
         )
       }
 
+      # trend
       if (scplot$statlines[[j]]$stat == "trend") {
-        p <- p + .statline_trend(
-          data_long, scplot$statlines[[j]],
-          scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar
+        p <- p + .statline_trend_by_phase(
+          data_long,
+          scplot$statlines[[j]],
+          scplot$statlines[[j]]$variable,
+          scplot$mvar,
+          scplot$pvar
         )
       }
 
@@ -505,20 +513,20 @@ as_ggplot <- function(scplot) {
         if (scplot$statlines[[j]]$args$method %in% c("theil-sen"))
           scplot$statlines[[j]]$stat <- "trendA theil-sen"
 
-        p <- p + .statline_trend_one(
+        p <- p + .statline_trend(
           data_long, scplot$statlines[[j]],
           scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar
         )
       }
 
-      if (scplot$statlines[[j]]$stat == "movingMean") {
+      if (scplot$statlines[[j]]$stat %in% c("moving_mean", "movingMean")) {
         p <- p + .statline_moving_average(
           data_long, scplot$statlines[[j]],
           scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar, "mean"
         )
       }
 
-      if (scplot$statlines[[j]]$stat == "movingMedian") {
+      if (scplot$statlines[[j]]$stat %in% c("moving_median", "movingMedian")) {
         p <- p + .statline_moving_average(
           data_long, scplot$statlines[[j]],
           scplot$statlines[[j]]$variable, scplot$mvar, scplot$pvar, "median"

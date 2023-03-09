@@ -49,12 +49,11 @@ function.}
 
 \item{width}{Line width.}
 
-\item{face}{Font face ("plain", "italic", "bold", "bold.italic")}
+\item{face}{Font face (\verb{"plain", "italic", "bold", "bold.italic"})}
 
-\item{linetype}{A character string with the line type: "solid", "dashed",
-"dotted"}
+\item{linetype}{A character string with the line type: \verb{"solid", "dashed", "dotted"}}
 
-\item{shape}{Number. See pch graphical parameter on par help page \code{\link[=par]{par()}}.}
+\item{shape}{Number. See \code{pch} graphical parameter on \code{par} help page \code{\link[=par]{par()}}.}
 
 \item{text}{A list with text styling arguments (color, size, face, family,
 hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}}.}
@@ -62,7 +61,7 @@ hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}
 \item{background}{A list with background styling arguments (fill, color,
 size, linetype).}
 
-\item{case}{Numerical vector with the case number or character string "all"
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
 for all cases.}
 
 \item{variable}{Name of the dataline variable to apply the style.}

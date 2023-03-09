@@ -6,7 +6,8 @@ set_background <- function(object, ...) {
 
   args <- list(...)
   object$theme$plot.background <- .merge_element(
-    args, object$theme$plot.background)
+    args, object$theme$plot.background
+  )
 
   object
 }

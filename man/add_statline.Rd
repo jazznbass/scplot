@@ -33,8 +33,7 @@ phase (see details)}
 
 \item{size}{Text size relative to the base text size.}
 
-\item{linetype}{A character string with the line type: "solid", "dashed",
-"dotted"}
+\item{linetype}{A character string with the line type: \verb{"solid", "dashed", "dotted"}}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 

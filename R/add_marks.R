@@ -7,7 +7,6 @@
 #'   ([outlier()]), the corresponding outliers are marked.
 #' @examples
 #' p1 <- scplot(exampleA1B1A2B2$Moritz) %>% add_marks(positions = c(1,5,10,14))
-#'
 #' p1 <- scplot(Huber2014) %>% add_marks(positions = outlier(Huber2014))
 #' @export
 add_marks <- function(object,

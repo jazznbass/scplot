@@ -30,7 +30,7 @@
     "5" = element_point(colour = "#E69F00", shape = 16, size = 2)
   ),
 
-  statline = element_line(color = "grey", linewidth = 0.7, linetype = "solid"),
+  statline = element_line(color = "tomato3", linewidth = 0.7, linetype = "solid"),
 
   axis.expand.x = c(0, 0.6, 0, 0.6),
   axis.expand.y = c(0.05, 0, 0.05, 0),

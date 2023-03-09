@@ -10,16 +10,16 @@
 #' @param hjust Horizontal justification (in \[0,1\])
 #' @param vjust Vertical justification (in \[0,1\])
 #' @param angle Angle (in \[0,360\])
-#' @param face Font face ("plain", "italic", "bold", "bold.italic")
+#' @param face Font face (`"plain", "italic", "bold", "bold.italic"`)
 #' @param linewidth A number with the width of the line.
-#' @param linetype A character string with the line type: "solid", "dashed",
-#'   "dotted"
-#' @param shape Number. See pch graphical parameter on par help page [par()].
+#' @param linetype A character string with the line type: `"solid", "dashed",
+#'   "dotted"`
+#' @param shape Number. See `pch` graphical parameter on `par` help page [par()].
 #' @param text A list with text styling arguments (color, size, face, family,
 #'   hjust, vjust, lineheight, angle). See [element_text()].
 #' @param background A list with background styling arguments (fill, color,
 #'   size, linetype).
-#' @param case Numerical vector with the case number or character string "all"
+#' @param case Numerical vector with the case number or character string. `case = "all"`
 #'   for all cases.
 #' @param variable Name of the dataline variable to apply the style.
 #' @param point A list with datapoint attributes: colour,

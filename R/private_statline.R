@@ -1,19 +1,25 @@
 
-.statline_each <- function(data, line, fun, label) {
+.statline_constant_by_phase <- function(data, line, fun, label) {
 
-  dat_stat <- data %>%
-    split(~case + phase) %>%
+  dat_stat <- data  |>
+    split(~case + phase)  |>
     lapply(function(x)
       c(y = as.numeric(do.call(fun, c(list(x$values), line$args))))
-    ) %>%
+    )  |>
     .ungroup()
 
-  data <- merge(data, dat_stat, by=c("case", "phase"), all = TRUE, sort = FALSE)
+  data <- merge(
+    data,
+    dat_stat,
+    by = c("case", "phase"),
+    all = TRUE,
+    sort = FALSE
+  )
 
   .statline_geom_phase(data, line$line, label = label)
 }
 
-.statline <- function(data, line, dvar, mvar, pvar, fun, reference_phase = 1) {
+.statline_constant <- function(data, line, dvar, mvar, pvar, fun, reference_phase = 1) {
 
   label <- paste(fun, dvar)
 
@@ -21,7 +27,7 @@
   if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
 
   if (is.null(reference_phase)) {
-    return(.statline_each(data, line, fun, label))
+    return(.statline_constant_by_phase(data, line, fun, label))
   }
 
   if (is.numeric(reference_phase))
@@ -40,7 +46,7 @@
   .statline_geom(data, line$line, label = label)
 }
 
-.statline_trend <- function(data, line, dvar, mvar, pvar) {
+.statline_trend_by_phase <- function(data, line, dvar, mvar, pvar) {
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
@@ -48,8 +54,8 @@
 
   label <- paste(line$stat, dvar)
 
-  dat_stat <- data %>%
-    split(~case + phase) %>%
+  dat_stat <- data  |>
+    split(~case + phase) |>
     lapply(function(x) {
       if(line$args$method %in% c("theil-sen", "mblm")) {
         param <- coef(mblm::mblm(values ~ mt, data = x, repeated = FALSE))
@@ -57,16 +63,8 @@
         param <- coef(lm(values ~ mt, data = x))
       }
       c(int = as.numeric(param[1]), b = as.numeric(param[2]))
-    } ) %>%
+    })  |>
     .ungroup()
-
-  #dat_stat <- data %>%
-  #  split(~case + phase) %>%
-  #  lapply(function(x) {
-  #    c(int = as.numeric(coef(lm(x$values~x$mt))[1]),
-  #      b = as.numeric(coef(lm(x$values~x$mt))[2]))
-  #  }) %>%
-  #  .ungroup()
 
   data$y <- NA
 
@@ -83,8 +81,10 @@
   .statline_geom_phase(data, line$line, label = label)
 }
 
-.statline_trend_one <- function(data, line, dvar, mvar, pvar,
-                                reference_phase = 1) {
+.statline_trend <- function(data,
+                            line,
+                            dvar, mvar, pvar,
+                            reference_phase = 1) {
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
@@ -93,8 +93,8 @@
 
   label <- paste(line$stat, dvar)
 
-  dat_stat <- data %>%
-    split(~case) %>%
+  dat_stat <- data  |>
+    split(~case)  |>
     lapply(function(x) {
       tmp_dat <- subset(x, phase %in% reference_phase)
       if(line$args$method %in% c("theil-sen", "mblm")) {
@@ -103,7 +103,7 @@
         param <- coef(lm(values ~ mt, data = tmp_dat))
       }
       c(int = as.numeric(param[1]), b = as.numeric(param[2]))
-    } ) %>%
+    } )  |>
     .ungroup()
 
   data$y <- NA
@@ -122,8 +122,8 @@
 
 .statline_moving_average <- function(data, line, dvar, mvar, pvar, fun) {
 
-  if (fun == "mean") label <- paste("movingMean", dvar)
-  if (fun == "median") label <- paste("movingMedian", dvar)
+  if (fun == "mean") label <- paste("moving mean", dvar)
+  if (fun == "median") label <- paste("moving median", dvar)
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
@@ -174,6 +174,7 @@
 
 # geom_functions --------
 
+# across case
 .statline_geom <- function(data, line, label) {
 
   geom_line(
@@ -186,6 +187,7 @@
 
 }
 
+# by phase
 .statline_geom_phase <- function(data, line, label) {
 
   geom_line(

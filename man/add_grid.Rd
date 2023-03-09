@@ -16,8 +16,8 @@ function.}
 Add grid to an scplot
 }
 \examples{
-p1 <- scplot(exampleAB$Anja) \%>\%
-  add_theme("minimal") \%>\%
+p1 <- scplot(exampleAB$Anja)  |>
+  set_theme("minimal")  |>
   add_grid(color = "grey70")
 }
 \seealso{

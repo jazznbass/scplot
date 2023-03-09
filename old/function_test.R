@@ -39,16 +39,8 @@ scplot(exampleABC) %>%
 # set datalines
 
 scplot(exampleAB_add) %>%
-  set_dataline(color = "red", width = 0.5) %>%
-  add_dataline(variable = "depression", color = "blue", dots = "black", shape = 3)
-
-# set datalines / add datalines
-
-scplot(exampleAB_add) %>%
-  set_dataline(color = "red", width = 0.5) %>%
-  add_dataline(
-    variable = "depression", color = "blue", dots = "black", shape = 3
-  )
+  set_dataline(color = "red", linewidth = 0.5) %>%
+  set_dataline(variable = "depression", color = "blue", point = list("black", shape = 3))
 
 # set casenames -------
 

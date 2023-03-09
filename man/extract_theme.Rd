@@ -22,5 +22,5 @@ my_theme <- scplot() \%>\%
   set_base_text(size = 12, color = "blue") \%>\%
   set_dataline(color = "darkred", linewidth = 2) \%>\%
   extract_theme()
-p1 <- scplot(exampleABC) \%>\% add_theme(my_theme)
+p1 <- scplot(exampleABC) \%>\% set_theme(my_theme)
 }

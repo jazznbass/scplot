@@ -23,7 +23,7 @@ add_arrow(
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{case}{Numerical vector with the case number or character string "all"
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
 for all cases.}
 
 \item{x0}{Origin x position of the line.}
@@ -52,6 +52,6 @@ line to draw arrow heads.}
 Add arrrows to an scplot
 }
 \examples{
-p1 <- scplot(exampleAB$Anja) \%>\%
+p1 <- scplot(exampleAB$Anja)  |>
   add_arrow(case = 1, 2, 70, 6, 55, color = "darkred")
 }
