@@ -479,15 +479,16 @@ as_ggplot <- function(scplot) {
   if (!is.null(scplot$statlines)) {
 
     for(j in 1:length(scplot$statlines)) {
-      if (scplot$statlines[[j]]$variable == ".dvar")
-        scplot$statlines[[j]]$variable <- scplot$dvar[1]
 
-      possible_fixed_stats <- c(
-        "mean", "median", "min", "max", "quantile", "sd", "mad"
-      )
+      if (scplot$statlines[[j]]$variable == ".dvar") {
+        scplot$statlines[[j]]$variable <- scplot$dvar[1]
+      }
 
       # by constant
-      if (scplot$statlines[[j]]$stat %in% possible_fixed_stats) {
+      .constant_stats <- c(
+        "mean", "median", "min", "max", "quantile", "sd", "mad"
+      )
+      if (scplot$statlines[[j]]$stat %in% .constant_stats) {
         p <- p + .statline_constant(
           data_long,
           line = scplot$statlines[[j]],
@@ -504,47 +505,18 @@ as_ggplot <- function(scplot) {
         )
       }
 
-      if (scplot$statlines[[j]]$stat %in% "trendA") {
-
-        if (is.null(scplot$statlines[[j]]$args$method))
-          scplot$statlines[[j]]$args$method <- "ols"
-
-        if (scplot$statlines[[j]]$args$method %in% c("theil-sen"))
-          scplot$statlines[[j]]$stat <- "trendA theil-sen"
-
-        p <- p + .statline_trend(
-          data_long, scplot$statlines[[j]]
-        )
-      }
-
-      if (scplot$statlines[[j]]$stat %in% c("moving_mean", "movingMean")) {
-        p <- p + .statline_moving_average(
+      # by continuous
+      .continuous_stats <- c(
+        "moving mean", "movingMean", "moving median", "movingMedian",
+        "trendA", "trendA (Theil-Sen)", "trendA_bisplit", "trendA_trisplit",
+        "trendA bisplit", "trendA trisplit", "trendA theil-sen",
+        "loreg", "lowess", "loess"
+      )
+      if (scplot$statlines[[j]]$stat %in% .continuous_stats) {
+        p <- p + .statline_continuous(
           data_long,
           line = scplot$statlines[[j]],
-          fun = "mean"
-        )
-      }
-
-      if (scplot$statlines[[j]]$stat %in% c("moving_median", "movingMedian")) {
-        p <- p + .statline_moving_average(
-          data_long,
-          line = scplot$statlines[[j]],
-          fun = "median"
-        )
-      }
-
-      if (scplot$statlines[[j]]$stat %in% c("loreg", "lowess")) {
-        p <- p + .statline_loreg(
-          data_long,
-          line = scplot$statlines[[j]],
-          fun = "lowess"
-        )
-      }
-
-      if (scplot$statlines[[j]]$stat == "loess") {
-        p <- p + .statline_loreg(
-          data_long, scplot$statlines[[j]],
-          fun = "loess"
+          fun = scplot$statlines[[j]]$stat
         )
       }
 

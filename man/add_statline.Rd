@@ -7,7 +7,8 @@
 add_statline(
   object,
   stat = c("mean", "median", "min", "max", "quantile", "sd", "mad", "trend", "trendA",
-    "movingMean", "movingMedian", "loreg", "lowess", "loess"),
+    "trendA bisplit", "trendA trisplit", "trendA theil-sen", "movingMean", "moving mean",
+    "moving median", "movingMedian", "loreg", "lowess", "loess"),
   phase = NULL,
   color = NULL,
   linewidth = NULL,
@@ -22,7 +23,7 @@ add_statline(
 function.}
 
 \item{stat}{A character string for defining a statistical line or curve to be
-plotted. Possible values: \verb{"median", "mean", "min", "max", "quantile", "trend", "trendA", "trendA_bisplit", "trendA_trisplit", "movingMean", "movingMedian", "loreg"}.}
+plotted.}
 
 \item{phase}{Either a numeric or a character vector specifying the reference
 phase (see details)}
@@ -48,13 +49,14 @@ statistical functions (\verb{"median", "mean", "min", "max", "quantile"}). The
 default is \code{NULL} which calculates and plots statistics for each phase
 separately. The arguments takes a numeric vector (phase number(s)) or a
 character vector (phase name(s)). When more than one phase is defines,
-statistics are based on the combined values of these phases. Some of the
-functions defined in \code{stats} have additional arguments. The \code{\link[=mean]{mean()}}
-function has a trim argument (e.g. \code{trim = 0.1}). \code{\link[=quantile]{quantile()}} has a
-proportion argument (e.g. \code{prob = 0.75} for calculating the 75\% quantile).
-\code{trendA} has the argument \code{method} which takes \code{ols} or \code{theil-sen}.
-\code{movingMean} and \code{movingMedian} have a lag argument (e.g. \code{lag = 2}). The
-local-regression curve function \code{lowess} (or \code{loreg}) has a proportion
-argument (e.g. \code{f = 0.5}) and the local-regression curve function \code{\link[=loess]{loess()}}
-has a span argument (e.g. \code{span = 0.75}).
+statistics are based on the combined values of these phases. Various
+methods for an extrapolated \emph{trendA} line exist: \code{"trendA"} is based on an
+OLS regression, \code{"trendA theil-sen"} on a nonparametric regression, and
+\code{"trendA bisplit"} / \code{"trendA trisplit"} are two median based approaches.
+Some of the functions defined in \code{stats} have additional arguments. The
+\code{\link[=mean]{mean()}} function has a trim argument (e.g. \code{trim = 0.1}). \code{\link[=quantile]{quantile()}} has
+a proportion argument (e.g. \code{prob = 0.75} for calculating the 75\%
+quantile). \verb{moving mean} and \verb{moving median} have a lag argument (e.g. \code{lag = 2}). The local-regression curve function \code{"lowess"} (or \code{"loreg"}) has a
+proportion argument (e.g. \code{f = 0.5}) and the local-regression curve
+function \code{"loess"} has a span argument (e.g. \code{span = 0.75}).
 }
