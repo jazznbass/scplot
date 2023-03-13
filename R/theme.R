@@ -15,6 +15,10 @@ set_theme <- function(object, theme, ...) {
 
   for(i in seq_along(theme_list)) {
 
+    if (inherits(theme_list[[i]], "scplot-theme")) {
+      theme_list[[i]] <- theme_list[[i]]$theme
+    }
+
     if(inherits(theme_list[[i]], "character")) {
       theme_list[[i]] <- .scplot_themes[[theme_list[[i]]]]
       if(is.null(theme_list[[i]])) {

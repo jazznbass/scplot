@@ -15,7 +15,7 @@ function.}
 
 \item{label}{A Character vector with text labels.}
 
-\item{...}{Text element (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
+\item{...}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 }
 \description{
 Add title and caption to an scplot

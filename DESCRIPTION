@@ -10,14 +10,14 @@ Authors@R:
     comment = c(ORCID = "0000-0002-8392-2873"))
 Description: An add on package for the scan package that creates ggplot2 based 
     plots from single-case data frames (scdf).
-Depends: 
+Depends:
+  ggplot2,
   R (>= 3.5.0),
   scan (>= 0.57.0)
 Imports: 
   stats,
   utils,
-  mblm,
-  ggplot2,
+  mblm
 Suggests: 
   rmarkdown,
   knitr
