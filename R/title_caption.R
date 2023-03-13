@@ -1,8 +1,10 @@
 #' Add title and caption to an scplot
 #'
 #' @inheritParams .inherit_scplot
+#' @param ... Text element (`"family", "face", "colour", "size", "hjust",
+#'   "vjust", "angle", "lineheight", "margin"`). See [element_text()].
 #' @export
-add_title <- function(object, label, ...) {
+add_title <- function(object, label,...) {
 
   args <- list(...)
 

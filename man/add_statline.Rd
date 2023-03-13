@@ -12,7 +12,6 @@ add_statline(
   phase = NULL,
   color = NULL,
   linewidth = NULL,
-  size = NULL,
   linetype = NULL,
   variable = NULL,
   ...
@@ -31,8 +30,6 @@ phase (see details)}
 \item{color}{A character string or a number defining the color of an element.}
 
 \item{linewidth}{A number with the width of the line.}
-
-\item{size}{Text size relative to the base text size.}
 
 \item{linetype}{A character string with the line type: \verb{"solid", "dashed", "dotted"}}
 

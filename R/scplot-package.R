@@ -13,6 +13,6 @@
 #' @importFrom mblm mblm
 NULL
 
-utils::globalVariables(c("mt", "phase", "case","x0","y0","y1","y"))
+utils::globalVariables(c("mt", "phase", "case","x0","y0","y1","y","one_of"))
 
 
