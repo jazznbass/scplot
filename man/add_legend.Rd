@@ -29,8 +29,7 @@ When a vector element is NA, the corresponding element will not be replaced
 \item{section_labels}{A character vector of length two. The labels for the
 lines section and phase section.}
 
-\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
-for all cases.}
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
 
 \item{position}{The position ("none", "left", "right", "bottom", "top", or
 two-element numeric vector)}
@@ -43,8 +42,7 @@ two-element numeric vector)}
 
 \item{title}{A list with text style parameters for the title.}
 
-\item{text}{A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}}.}
+\item{text}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 
 \item{background}{A list with background styling arguments (fill, color,
 size, linetype).}

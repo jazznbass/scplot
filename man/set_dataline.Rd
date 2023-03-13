@@ -16,11 +16,10 @@ function.}
 \item{variable}{String. The name of a new variable for adding a new line. If
 left empty, the aesthetics of the default data line are changed.}
 
-\item{line}{A list with datapoint attributes: colour,
-linetype, size (see \code{\link[=element_line]{element_line()}}).}
+\item{line}{List with line parameters (\verb{"colour", "linewidth", "linetype", "lineend", "arrow"}). See \code{\link[=element_line]{element_line()}}.}
 
-\item{point}{A list with datapoint attributes: colour,
-shape, size (see \code{\link[=element_point]{element_point()}}).}
+\item{point}{A list with point parameters (\verb{"colour", "size", "shape"}). See
+\code{\link[=element_point]{element_point()}}.}
 
 \item{type}{Either "continuous" or "discrete"}
 

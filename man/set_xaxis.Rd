@@ -41,8 +41,7 @@ be printed, 2 : every other value, 3 : every third values etc.}
 \item{increment_from}{Number from which increment starts to count. Usually
 set to 0 if you want marks like 1,5,10,15,...}
 
-\item{line}{A list with datapoint attributes: colour,
-linetype, size (see \code{\link[=element_line]{element_line()}}).}
+\item{line}{List with line parameters (\verb{"colour", "linewidth", "linetype", "lineend", "arrow"}). See \code{\link[=element_line]{element_line()}}.}
 
 \item{expand}{Vector with two values.}
 

@@ -25,8 +25,7 @@ function.}
 
 \item{round}{Number of digits of the labels.}
 
-\item{text}{A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}}.}
+\item{text}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 
 \item{background}{A list with background styling arguments (fill, color,
 size, linetype).}

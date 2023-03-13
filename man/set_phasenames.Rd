@@ -14,8 +14,7 @@ function.}
 
 \item{position}{Character string either 'left' or 'center'.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust,
-vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 }
 \description{
 Set phasenames of an scplot

@@ -18,8 +18,7 @@ add_marks(
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
-for all cases.}
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
 
 \item{positions}{Either a vector indicating the points to be highlighted or a
 character string with a logical expression (e.g. \code{values < mean(values)})}
@@ -28,7 +27,8 @@ character string with a logical expression (e.g. \code{values < mean(values)})}
 
 \item{size}{Text size relative to the base text size.}
 
-\item{shape}{Number. See \code{pch} graphical parameter on \code{par} help page \code{\link[=par]{par()}}.}
+\item{shape}{Number. See \code{pch} graphical parameter on \code{par} help page
+\code{\link[=par]{par()}}.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 }

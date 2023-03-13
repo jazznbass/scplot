@@ -53,24 +53,22 @@ function.}
 
 \item{linetype}{A character string with the line type: \verb{"solid", "dashed", "dotted"}}
 
-\item{shape}{Number. See \code{pch} graphical parameter on \code{par} help page \code{\link[=par]{par()}}.}
+\item{shape}{Number. See \code{pch} graphical parameter on \code{par} help page
+\code{\link[=par]{par()}}.}
 
-\item{text}{A list with text styling arguments (color, size, face, family,
-hjust, vjust, lineheight, angle). See \code{\link[=element_text]{element_text()}}.}
+\item{text}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 
 \item{background}{A list with background styling arguments (fill, color,
 size, linetype).}
 
-\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
-for all cases.}
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 
-\item{point}{A list with datapoint attributes: colour,
-shape, size (see \code{\link[=element_point]{element_point()}}).}
+\item{point}{A list with point parameters (\verb{"colour", "size", "shape"}). See
+\code{\link[=element_point]{element_point()}}.}
 
-\item{line}{A list with datapoint attributes: colour,
-linetype, size (see \code{\link[=element_line]{element_line()}}).}
+\item{line}{List with line parameters (\verb{"colour", "linewidth", "linetype", "lineend", "arrow"}). See \code{\link[=element_line]{element_line()}}.}
 
 \item{...}{Further styling arguments: color, size, face, family, hjust,
 vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}

@@ -23,8 +23,7 @@ add_arrow(
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
-for all cases.}
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
 
 \item{x0}{Origin x position of the line.}
 

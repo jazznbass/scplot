@@ -13,8 +13,7 @@ set_panel(object, ...)
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust,
-vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{List with rectangle parameters (\verb{"fill", "colour", "linewidth", "linetype"}). See \code{\link[=element_rect]{element_rect()}}.}
 }
 \description{
 Set plot and panel background of an scplot

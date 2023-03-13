@@ -14,18 +14,19 @@
 #' @param linewidth A number with the width of the line.
 #' @param linetype A character string with the line type: `"solid", "dashed",
 #'   "dotted"`
-#' @param shape Number. See `pch` graphical parameter on `par` help page [par()].
+#' @param shape Number. See `pch` graphical parameter on `par` help page
+#'   [par()].
 #' @param text List with text parameters (`"family", "face", "colour", "size",
 #'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
 #' @param background A list with background styling arguments (fill, color,
 #'   size, linetype).
-#' @param case Numerical vector with the case number or character string. `case = "all"`
-#'   for all cases.
+#' @param case Numerical vector with the case number or character string. `case
+#'   = "all"` for all cases.
 #' @param variable Name of the dataline variable to apply the style.
-#' @param point A list with datapoint attributes: colour,
-#'   shape, size (see [element_point()]).
-#' @param line A list with datapoint attributes: colour,
-#'   linetype, size (see [element_line()]).
+#' @param point A list with point parameters (`"colour", "size", "shape"`). See
+#'   [element_point()].
+#' @param line List with line parameters (`"colour", "linewidth", "linetype",
+#'   "lineend", "arrow"`). See [element_line()].
 #' @param ... Further styling arguments: color, size, face, family, hjust,
 #'   vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.
 #' @keywords internal

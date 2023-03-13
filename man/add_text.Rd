@@ -24,8 +24,7 @@ function.}
 
 \item{label}{A Character vector with text labels.}
 
-\item{case}{Numerical vector with the case number or character string. \code{case = "all"}
-for all cases.}
+\item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
 
 \item{x}{x position}
 
