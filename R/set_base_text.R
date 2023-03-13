@@ -1,6 +1,8 @@
-#' Set base text characteristics of an scplot
+#' Set base text parameters of an scplot
 #'
 #' @inheritParams .inherit_scplot
+#' @param ... List with text parameters (`"family", "face", "colour", "size",
+#'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
 #' @export
 set_base_text <- function(object, ...) {
 

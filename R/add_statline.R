@@ -58,7 +58,7 @@ add_statline <- function(object,
     line,
     object$theme$statline[[n_lines + 1]]
   )
-  object$theme$statline[[n_lines + 1]] <- line
+  object$theme$statline[[length(object$statlines) + 1]] <- line
 
   args <- list(...)
 

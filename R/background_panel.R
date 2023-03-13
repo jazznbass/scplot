@@ -1,6 +1,8 @@
 #' Set plot and panel background of an scplot
 #'
 #' @inheritParams .inherit_scplot
+#' @param ... List with rectangle parameters (`"fill", "colour", "linewidth",
+#'   "linetype"`). See [element_rect()].
 #' @export
 set_background <- function(object, ...) {
 

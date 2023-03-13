@@ -4,8 +4,11 @@
 #' @param position Either `"topleft", "bottomleft", "topright", "bottomright",
 #'   "strip-right", "strip-top"`, or a numerical vector of length 2 with the x
 #'   and y position (e.g. `c(19, 20)`).
+#' @param ... List with text parameters (`"family", "face", "colour", "size",
+#'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
 #' @export
-set_casenames <- function(object, labels = NULL,
+set_casenames <- function(object,
+                          labels = NULL,
                           position = NULL,
                           background = list(),
                           ...) {

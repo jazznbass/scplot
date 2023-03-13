@@ -2,6 +2,8 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @param position Character string either 'left' or 'center'.
+#' @param ... List with text parameters (`"family", "face", "colour", "size",
+#'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
 #' @export
 set_phasenames <- function(object,
                            labels = NULL,

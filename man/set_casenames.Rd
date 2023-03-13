@@ -18,8 +18,7 @@ and y position (e.g. \code{c(19, 20)}).}
 \item{background}{A list with background styling arguments (fill, color,
 size, linetype).}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust,
-vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 }
 \description{
 Set casenames of an scplot

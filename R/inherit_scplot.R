@@ -15,8 +15,8 @@
 #' @param linetype A character string with the line type: `"solid", "dashed",
 #'   "dotted"`
 #' @param shape Number. See `pch` graphical parameter on `par` help page [par()].
-#' @param text A list with text styling arguments (color, size, face, family,
-#'   hjust, vjust, lineheight, angle). See [element_text()].
+#' @param text List with text parameters (`"family", "face", "colour", "size",
+#'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
 #' @param background A list with background styling arguments (fill, color,
 #'   size, linetype).
 #' @param case Numerical vector with the case number or character string. `case = "all"`

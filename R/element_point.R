@@ -9,9 +9,10 @@
 element_point <- function (colour = NULL, size = NULL, shape = NULL,
                            color = NULL)
 {
-  if (!is.null(color))
-    colour <- color
-  structure(list(colour = colour, size = size, shape = shape),
-            class = c("element_point", "element"))
+  if (!is.null(color)) colour <- color
+  structure(
+    list(colour = colour, size = size, shape = shape),
+    class = c("element_point", "element")
+  )
 }
 

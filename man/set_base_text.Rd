@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_base_text.R
 \name{set_base_text}
 \alias{set_base_text}
-\title{Set base text characteristics of an scplot}
+\title{Set base text parameters of an scplot}
 \usage{
 set_base_text(object, ...)
 }
@@ -10,9 +10,8 @@ set_base_text(object, ...)
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{...}{Further styling arguments: color, size, face, family, hjust,
-vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
+\item{...}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 }
 \description{
-Set base text characteristics of an scplot
+Set base text parameters of an scplot
 }
