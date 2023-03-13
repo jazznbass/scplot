@@ -12,15 +12,15 @@ Description: An add on package for the scan package that creates ggplot2 based
     plots from single-case data frames (scdf).
 Depends: 
   R (>= 3.5.0),
-  ggplot2,
   scan (>= 0.57.0)
 Imports: 
   stats,
   utils,
-  mblm
+  mblm,
+  ggplot2,
 Suggests: 
-    rmarkdown,
-    knitr
+  rmarkdown,
+  knitr
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true

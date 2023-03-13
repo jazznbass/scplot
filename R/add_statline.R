@@ -58,6 +58,7 @@ add_statline <- function(object,
     line,
     object$theme$statline[[n_lines + 1]]
   )
+  object$theme$statline[[n_lines + 1]] <- line
 
   args <- list(...)
 
@@ -72,7 +73,7 @@ add_statline <- function(object,
     stat = stat,
     phase = phase,
     args = args,
-    line = line,
+    #line = line,
     variable = variable
   )
 

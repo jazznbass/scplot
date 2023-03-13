@@ -479,7 +479,7 @@ as_ggplot <- function(scplot) {
   if (!is.null(scplot$statlines)) {
 
     for(j in 1:length(scplot$statlines)) {
-
+      scplot$statlines[[j]]$line <- theme$statline[[j]]
       if (scplot$statlines[[j]]$variable == ".dvar") {
         scplot$statlines[[j]]$variable <- scplot$dvar[1]
       }
@@ -649,7 +649,12 @@ as_ggplot <- function(scplot) {
     .color <- c(
       .color,
       setNames(
-        unlist(lapply(scplot$statlines, function(x) x$line$colour)),
+        unlist(
+          lapply(
+            theme$statline[1:length(scplot$statlines)],
+            function(x) x$colour
+          )
+        ),
         labels_statlines
       )
     )
