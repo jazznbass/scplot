@@ -2,6 +2,29 @@
 
 ## new functions:
 
+- `new_theme()`: creates a new scplot-theme.
+```{.r}
+new_theme <- new_theme() %>% 
+  set_xaxis(color = "brown") %>%
+  set_yaxis(color = "sienna3") %>%
+  set_ylabel(color = "sienna3", angle = 0) %>%
+  set_xlabel(size = 1, color = "brown") %>%
+  add_title(color = "sienna4", face = "italic") %>%
+  set_casenames(color = "steelblue4", size = 0.7) %>%
+  set_phasenames(size = 0) %>% 
+  set_panel(fill = c("grey80", "grey95"), color = "sienna4") %>%
+  add_grid(color = "grey85", size = 0.5) %>%
+  set_dataline(
+    size = 0.5, linetype = "solid", 
+    point = list(colour = "sienna4", size = 0.5, shape = "circle")
+  ) %>%
+  set_separator(size = 0.5, linetype = "solid", color = "sienna") %>%
+  set_background(fill = "grey99") 
+
+scplot(exampleABC) %>% set_theme(new_theme)
+
+```
+
 - `extract_theme()`: returns the theme of an scplot object (instead of creating a plot). This theme can be reused in other plots with the `add_theme()` function.
 
 ```{.r}
@@ -23,7 +46,7 @@ new_theme <- scplot() %>%
   set_background(fill = "grey99") %>%
   extract_theme()
 
-scplot(exampleABC) %>% add_theme(new_theme)
+scplot(exampleABC) %>% set_theme(new_theme)
 
 ```
 
