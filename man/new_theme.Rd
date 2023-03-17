@@ -15,6 +15,8 @@ function.}
 }
 \value{
 An scplot-theme object
+
+An object of class \code{scplot-theme}.
 }
 \description{
 Create a new scplot theme

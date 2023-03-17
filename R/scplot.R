@@ -9,13 +9,17 @@
 
 scplot <- function(scdf) {
 
+  scan:::check_args(
+    by_class(scdf, "scdf")
+  )
+
   theme <- .scplot_themes[["default"]]
 
   out <- list(
     scdf = scdf,
-    dvar = scan:::dv(scdf),
-    pvar = scan:::phase(scdf),
-    mvar = scan:::mt(scdf),
+    dvar = scdf_attr(scdf, scan:::.opt$dv),
+    pvar = scdf_attr(scdf, scan:::.opt$phase),
+    mvar = scdf_attr(scdf, scan:::.opt$mt),
     datalines = list(list(type = "continuous")),
     statlines = NULL,
     ridges = NULL,
@@ -32,7 +36,7 @@ scplot <- function(scdf) {
     labels = list(),
     phasenames = list(labels = ".default"),
     legend = NULL,
-    casenames = list(labels = scan:::revise_names(scdf))
+    casenames = list(labels = revise_names(scdf))
   )
 
   class(out) <- "scplot"
@@ -40,3 +44,19 @@ scplot <- function(scdf) {
   out
 }
 
+#
+revise_names <- function(x, n) {
+  names_default <- paste0("Case", 1:50)
+  if (missing(n)) {
+    n <- length(x)
+    if (!is.character(x)) x <- names(x)
+  }
+  if (is.null(x)) {
+    x <- paste0("Case", 1:n)
+  } else {
+    nonames <- which(is.na(x))
+    x[nonames] <- paste0("Case", nonames)
+  }
+
+  x
+}

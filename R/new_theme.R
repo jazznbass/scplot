@@ -8,6 +8,7 @@
 #'   set_base_text(size = 12, color = "blue") %>%
 #'   set_dataline(color = "darkred", linewidth = 2)
 #' p1 <- scplot(exampleABC) %>% set_theme(my_theme)
+#' @return An object of class `scplot-theme`.
 #' @export
 new_theme <- function() {
 

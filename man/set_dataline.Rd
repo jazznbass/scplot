@@ -30,8 +30,8 @@ arguments (see \code{\link[=element_line]{element_line()}}).}
 Either set aesthetics of the default data line or add another data line.
 }
 \examples{
-p1 <- scplot(exampleAB_add) \%>\% set_dataline("depression", color =
-"darkblue")
+p1 <- scplot(exampleAB_add) \%>\%
+  set_dataline("depression", color = "darkblue")
 }
 \seealso{
 \code{\link[=element_line]{element_line()}}, \code{\link[=element_point]{element_point()}}

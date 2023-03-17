@@ -5,8 +5,8 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @param theme A character string with a predefined graphical theme or a theme
-#'   object retrieved from `extract_theme()`.
-#' @param ... Further character strings or theme objects that are "added"
+#'   object created with [new_theme()].
+#' @param ... Further character strings or `scplot-theme` objects that are "added"
 #'   on top.
 #' @export
 set_theme <- function(object, theme, ...) {

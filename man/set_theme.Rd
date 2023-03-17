@@ -14,9 +14,9 @@ add_theme(...)
 function.}
 
 \item{theme}{A character string with a predefined graphical theme or a theme
-object retrieved from \code{extract_theme()}.}
+object created with \code{\link[=new_theme]{new_theme()}}.}
 
-\item{...}{Further character strings or theme objects that are "added"
+\item{...}{Further character strings or \code{scplot-theme} objects that are "added"
 on top.}
 }
 \description{

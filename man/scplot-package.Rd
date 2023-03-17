@@ -5,7 +5,8 @@
 \alias{scplot-package}
 \title{Single-Case Data Plots}
 \description{
-A collection of procedures for visualizing single-case data.
+A collection of procedures for visualizing single-case data. It is an
+add-on package for the \code{scan} package.
 }
 \author{
 Juergen Wilbert [aut, cre]
