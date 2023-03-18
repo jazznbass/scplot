@@ -48,6 +48,10 @@ set to 0 if you want marks like 1,5,10,15,...}
 \item{...}{Further styling arguments: color, size, face, family, hjust,
 vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed \code{xaxis} and
+\code{yaxis} elements.
+}
 \description{
 Set axis parameters of an scplot
 }

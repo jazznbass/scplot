@@ -12,6 +12,8 @@
 #' @param section_labels A character vector of length two. The labels for the
 #'   lines section and phase section.
 #' @param title A list with text style parameters for the title.
+#' @return An object of class `scplot` (see[scplot()]) with changed element
+#'   `legend`.
 #' @export
 add_legend <- function(object,
                        labels = NULL,

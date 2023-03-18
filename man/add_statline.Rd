@@ -37,6 +37,10 @@ phase (see details)}
 
 \item{...}{additional parameters passed to the statistical function.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed element
+\code{statlines}.
+}
 \description{
 Add a statline to an scplot
 }

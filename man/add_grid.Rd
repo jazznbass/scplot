@@ -12,6 +12,9 @@ function.}
 
 \item{...}{Line arguments (see \code{\link[=element_line]{element_line()}})}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
+}
 \description{
 Add grid to an scplot
 }

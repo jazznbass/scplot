@@ -3,7 +3,7 @@
 #' @param x An scplot object.
 #' @param ... Not implemented.
 #'
-#' @return Creates a single-case plot
+#' @return Calls [as_ggplot()] to create a ggplot2 argument and prints it.
 #' @keywords internal
 #' @export
 

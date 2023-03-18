@@ -11,7 +11,10 @@ element_point(colour = NULL, size = NULL, shape = NULL, color = NULL)
 
 \item{shape}{Point shape.}
 
-\item{color, colour}{Point colour..}
+\item{color, colour}{Point colour.}
+}
+\value{
+An object of class \code{c("element_point", "element")}.
 }
 \description{
 In conjunction with ggplot an object to represent point attributes.

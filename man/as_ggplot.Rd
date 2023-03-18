@@ -10,7 +10,7 @@ as_ggplot(scplot)
 \item{scplot}{An \code{scplot} object}
 }
 \value{
-A ggplot2 object
+A \code{ggplot2} plot object.
 }
 \description{
 Creates a ggplot2 object from an \code{\link[=scplot]{scplot()}} object

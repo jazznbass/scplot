@@ -22,7 +22,8 @@
 #'   2`). The local-regression curve function `"lowess"` (or `"loreg"`) has a
 #'   proportion argument (e.g. `f = 0.5`) and the local-regression curve
 #'   function `"loess"` has a span argument (e.g. `span = 0.75`).
-#'
+#' @return An object of class `scplot` (see[scplot()]) with changed element
+#'   `statlines`.
 #' @export
 add_statline <- function(object,
                          stat = c("mean", "median", "min", "max", "quantile",

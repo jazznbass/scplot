@@ -42,6 +42,10 @@ function.}
 
 \item{face}{Font face (\verb{"plain", "italic", "bold", "bold.italic"})}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a changed \code{texts}
+element.
+}
 \description{
 Add test to an scplot
 }

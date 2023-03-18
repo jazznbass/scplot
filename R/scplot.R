@@ -3,7 +3,8 @@
 #' This function provides a plot of a single-case or multiple single-cases.
 #'
 #' @param scdf A single-case data-frame object (scdf).
-#' @return An scplot object that creates a ggplot2 plot when printed.
+#' @return An object of class `scplot` containing the single-case data (element `scdf`),
+#'  and information about the plot style (element `theme`).
 #' @author Juergen Wilbert
 #' @export
 

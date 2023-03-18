@@ -12,7 +12,7 @@
 \item{...}{Not implemented.}
 }
 \value{
-Creates a single-case plot
+Calls \code{\link[=as_ggplot]{as_ggplot()}} to create a ggplot2 argument and prints it.
 }
 \description{
 print.scplot

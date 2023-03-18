@@ -17,6 +17,10 @@ function.}
 
 \item{...}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed \code{title}
+and \code{caption} elements.
+}
 \description{
 Add title and caption to an scplot
 }

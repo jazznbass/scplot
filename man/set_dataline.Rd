@@ -26,6 +26,10 @@ left empty, the aesthetics of the default data line are changed.}
 \item{...}{As a shortcut, arguments passed hear are bundled as \code{line}
 arguments (see \code{\link[=element_line]{element_line()}}).}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a changed \code{datalines}
+element.
+}
 \description{
 Either set aesthetics of the default data line or add another data line.
 }

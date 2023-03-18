@@ -4,7 +4,7 @@
 #'
 #' @details `as_ggplot()` is used when you want to return a ggplot2 object for
 #'   further use with external ggplot functions.
-#' @return A ggplot2 object
+#' @return A `ggplot2` plot object.
 #' @export
 as_ggplot <- function(scplot) {
 

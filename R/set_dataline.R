@@ -8,6 +8,8 @@
 #' @param type Either "continuous" or "discrete"
 #' @param ... As a shortcut, arguments passed hear are bundled as `line`
 #'   arguments (see [element_line()]).
+#' @return An object of class `scplot` (see[scplot()]) with a changed `datalines`
+#'   element.
 #' @seealso [element_line()], [element_point()]
 #' @examples
 #' p1 <- scplot(exampleAB_add) %>%

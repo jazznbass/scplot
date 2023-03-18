@@ -47,6 +47,10 @@ two-element numeric vector)}
 \item{background}{A list with background styling arguments (fill, color,
 size, linetype).}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed element
+\code{legend}.
+}
 \description{
 Add a legend to an scplot
 }

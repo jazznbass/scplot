@@ -2,6 +2,7 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @param ... List with line parameters (`"colour"", "linewidth", "linetype"`).
+#' @return An object of class `scplot` (see[scplot()]).
 #' @export
 set_separator <- function(object, ...) {
 

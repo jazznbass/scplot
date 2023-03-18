@@ -32,6 +32,10 @@ character string with a logical expression (e.g. \code{values < mean(values)})}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed element
+\code{marks}.
+}
 \description{
 Add marks to an scplot
 }

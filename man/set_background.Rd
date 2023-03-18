@@ -15,6 +15,9 @@ function.}
 
 \item{...}{List with rectangle parameters (\verb{"fill", "colour", "linewidth", "linetype"}). See \code{\link[=element_rect]{element_rect()}}.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
+}
 \description{
 Set plot and panel background of an scplot
 }

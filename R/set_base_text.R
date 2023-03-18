@@ -3,6 +3,7 @@
 #' @inheritParams .inherit_scplot
 #' @param ... List with text parameters (`"family", "face", "colour", "size",
 #'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
+#' @return An object of class `scplot` (see[scplot()]).
 #' @export
 set_base_text <- function(object, ...) {
 

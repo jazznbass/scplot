@@ -6,6 +6,8 @@
 #'   and y position (e.g. `c(19, 20)`).
 #' @param ... List with text parameters (`"family", "face", "colour", "size",
 #'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
+#' @return An object of class `scplot` (see[scplot()]) with a changed `casenames`
+#'   element.
 #' @export
 set_casenames <- function(object,
                           labels = NULL,

@@ -3,6 +3,8 @@
 #' @inheritParams .inherit_scplot
 #' @param ... List with text parameters (`"family", "face", "colour", "size",
 #'   "hjust", "vjust", "angle", "lineheight", "margin"`). See [element_text()].
+#' @return An object of class `scplot` (see[scplot()]) with changed `title`
+#'   and `caption` elements.
 #' @export
 add_title <- function(object, label,...) {
 

@@ -14,6 +14,10 @@ function.}
 
 \item{variable}{Name of the dataline variable to apply the style.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed element
+\code{ridges}.
+}
 \description{
 Add a ridge to an scplot
 }

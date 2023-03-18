@@ -34,6 +34,10 @@ size, linetype).}
 
 \item{padding}{Padding size around text.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with added/changed element
+\code{labels}.
+}
 \description{
 Add value labels to an scplot
 }

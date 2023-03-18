@@ -8,6 +8,8 @@
 #'   object created with [new_theme()].
 #' @param ... Further character strings or `scplot-theme` objects that are "added"
 #'   on top.
+#' @return An object of class `scplot` (see[scplot()]) with a changed `theme`
+#'   element.
 #' @export
 set_theme <- function(object, theme, ...) {
 

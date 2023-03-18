@@ -10,7 +10,8 @@ scplot(scdf)
 \item{scdf}{A single-case data-frame object (scdf).}
 }
 \value{
-An scplot object that creates a ggplot2 plot when printed.
+An object of class \code{scplot} containing the single-case data (element \code{scdf}),
+and information about the plot style (element \code{theme}).
 }
 \description{
 This function provides a plot of a single-case or multiple single-cases.

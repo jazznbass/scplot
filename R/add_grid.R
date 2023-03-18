@@ -2,6 +2,7 @@
 #'
 #' @inheritParams .inherit_scplot
 #' @param ... Line arguments (see [element_line()])
+#' @return An object of class `scplot` (see[scplot()]).
 #' @seealso [element_line()]
 #' @examples
 #' p1 <- scplot(exampleAB$Anja)  |>

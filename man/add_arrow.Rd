@@ -47,6 +47,10 @@ line to draw arrow heads.}
 
 \item{linewidth}{A number with the width of the line.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with added element
+\code{arrows}.
+}
 \description{
 Add arrrows to an scplot
 }

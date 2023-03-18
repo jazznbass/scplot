@@ -12,6 +12,9 @@ function.}
 
 \item{...}{List with line parameters (\verb{"colour"", "linewidth", "linetype"}).}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
+}
 \description{
 Set separator line in an scplot
 }

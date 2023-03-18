@@ -5,6 +5,8 @@
 #'   character string with a logical expression (e.g. `values < mean(values)`)
 #' @details If `positions` is an object returned from an outlier analysis
 #'   ([outlier()]), the corresponding outliers are marked.
+#' @return An object of class `scplot` (see[scplot()]) with changed element
+#'   `marks`.
 #' @examples
 #' p1 <- scplot(exampleA1B1A2B2$Moritz) %>% add_marks(positions = c(1,5,10,14))
 #' p1 <- scplot(Huber2014) %>% add_marks(positions = outlier(Huber2014))

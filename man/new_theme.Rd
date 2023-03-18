@@ -16,7 +16,8 @@ function.}
 \value{
 An scplot-theme object
 
-An object of class \code{scplot-theme}.
+An object of class \code{scplot-theme} which can be used with the
+\code{\link[=set_theme]{set_theme()}} function.
 }
 \description{
 Create a new scplot theme

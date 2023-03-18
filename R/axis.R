@@ -11,6 +11,8 @@
 #'   be printed, 2 : every other value, 3 : every third values etc.
 #' @param increment_from Number from which increment starts to count. Usually
 #'   set to 0 if you want marks like 1,5,10,15,...
+#' @return An object of class `scplot` (see[scplot()]) with changed `xaxis` and
+#'   `yaxis` elements.
 #' @export
 set_xaxis <- function(object,
                       limits = NULL,

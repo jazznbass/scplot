@@ -10,6 +10,8 @@
 #'   should be a closed triangle.
 #' @param ends One of "last", "first", or "both", indicating which ends of the
 #'   line to draw arrow heads.
+#' @return An object of class `scplot` (see[scplot()]) with added element
+#'   `arrows`.
 #' @examples
 #' p1 <- scplot(exampleAB$Anja)  |>
 #'   add_arrow(case = 1, 2, 70, 6, 55, color = "darkred")

@@ -5,6 +5,8 @@
 #' @param nudge_x Offset on the x-axis.
 #' @param round Number of digits of the labels.
 #' @param padding Padding size around text.
+#' @return An object of class `scplot` (see[scplot()]) with added/changed element
+#'   `labels`.
 #' @export
 add_labels <- function(object,
                        nudge_y = 5,

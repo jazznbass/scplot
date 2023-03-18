@@ -3,6 +3,8 @@
 #' @inheritParams .inherit_scplot
 #' @param x x position
 #' @param y y position
+#' @return An object of class `scplot` (see[scplot()]) with a changed `texts`
+#'   element.
 #' @export
 add_text <- function(object,
                      label,
