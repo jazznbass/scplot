@@ -13,7 +13,7 @@ Description: Add-on for the 'scan' package that creates plots
   single-case plots, adding phase-based lines to indicate various statistical 
   parameters, and predefined themes for presentations and publications. More 
   information and in depth examples can be found at 
-  <https://jazznbass.github.io/scan-Book/>
+  <https://jazznbass.github.io/scan-Book/>.
 Depends:
   ggplot2,
   R (>= 3.5.0),
