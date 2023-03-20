@@ -12,6 +12,10 @@ function.}
 
 \item{...}{various style parameter}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a changed \code{theme}
+element.
+}
 \description{
 Set a theme element
 }

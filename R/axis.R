@@ -66,7 +66,8 @@ set_yaxis <- function(object,
 #' Set label for axis
 #'
 #' @inheritParams .inherit_scplot
-#'
+#' @return An object of class `scplot` (see[scplot()]) with a changed `xlabel`
+#'   or `ylabel` element.
 #' @export
 set_xlabel <- function(object, label = NULL, ...) {
 

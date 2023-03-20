@@ -20,8 +20,8 @@
 #'   a proportion argument (e.g. `prob = 0.75` for calculating the 75%
 #'   quantile). `moving mean` and `moving median` have a lag argument (e.g. `lag =
 #'   2`). The local-regression curve function `"lowess"` (or `"loreg"`) has a
-#'   proportion argument (e.g. `f = 0.5`) and the local-regression curve
-#'   function `"loess"` has a span argument (e.g. `span = 0.75`).
+#'   proportion argument (e.g. `f = 0.5`; see [lowess()]) and the local-regression curve
+#'   function `"loess"` has a span argument (e.g. `span = 0.75`; see [loess()]).
 #' @return An object of class `scplot` (see[scplot()]) with changed element
 #'   `statlines`.
 #' @export

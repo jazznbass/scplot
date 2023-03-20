@@ -97,7 +97,8 @@ add_theme <- function(...) {
 #'   - legend.text = c("element_text", "element"),
 #'   - legend.title = c("element_text", "element"),
 #'   - legend.margin = c("margin", "simpleUnit", "unit", "unit_v2")
-#'
+#' @return An object of class `scplot` (see[scplot()]) with a changed `theme`
+#'   element.
 #' @examples
 #' theme <- scplot(exampleABC) %>%
 #' set_theme_element(

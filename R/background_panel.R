@@ -4,6 +4,10 @@
 #' @param ... List with rectangle parameters (`"fill", "colour", "linewidth",
 #'   "linetype"`). See [element_rect()].
 #' @return An object of class `scplot` (see[scplot()]).
+#' @examples
+#' p1 <- scplot(exampleAB) %>%
+#'  set_background(fill = "lightblue", colour = "darkblue", linewidth = 1.5) %>%
+#'  set_panel(fill = "deepskyblue", color = "darkblue", linewidth = 0.3)
 #' @export
 set_background <- function(object, ...) {
 

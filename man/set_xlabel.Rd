@@ -18,6 +18,10 @@ function.}
 \item{...}{Further styling arguments: color, size, face, family, hjust,
 vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
+\value{
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a changed \code{xlabel}
+or \code{ylabel} element.
+}
 \description{
 Set label for axis
 }
