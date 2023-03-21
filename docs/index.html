@@ -22,8 +22,9 @@
   from single-case data frames (scdf). It includes functions for styling 
   single-case plots, adding phase-based lines to indicate various statistical 
   parameters, and predefined themes for presentations and publications. More 
-  information and in depth examples can be found at 
-  &lt;https://jazznbass.github.io/scan-Book/&gt;">
+  information and in depth examples can be found in the online book 
+  &quot;Analyzing Single-Case Data with R and 'scan&quot; 
+  Jürgen Wilbert (2023) &lt;https://jazznbass.github.io/scan-Book/&gt;.">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -77,24 +78,9 @@
 <div class="section level2">
 <h2 id="how-to-install-scplot">How to install <em>scplot</em>?<a class="anchor" aria-label="anchor" href="#how-to-install-scplot"></a>
 </h2>
-<ol style="list-style-type: decimal">
-<li>Install R from CRAN (<a href="https://cloud.r-project.org/" class="external-link uri">https://cloud.r-project.org/</a>)</li>
-<li>Install R-Studio (<a href="https://posit.co/download/rstudio-desktop/" class="external-link uri">https://posit.co/download/rstudio-desktop/</a>)</li>
-<li>Windows users only: install Rtools (<a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link uri">https://cran.r-project.org/bin/windows/Rtools/</a>)</li>
-</ol>
-<p>From within R/R-Studio use the following commands:</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Install devtools: <code>install.packages("devtools")</code>
-</li>
-<li>Install the latest version of scan: <code>devtools::install_github("jazznbass/scan")</code>
-</li>
-<li>Install scplot: <code>devtools::install_github("jazznbass/scplot")</code>
-</li>
-</ol>
-<p>Or try all at once with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode .r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jazznbass/scan"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jazznbass/scplot"</span>)</span></code></pre></div>
+<p>From: <code>install.packages("scplot")</code></p>
+<p>For the developmental version:</p>
+<p>Install scplot: <code>devtools::install_github("jazznbass/scplot")</code></p>
 <p>If you get errors, look if a specific package is missing/ not found and try to install the missing package with <code>install.packages("[name-of-the-missing-package]")</code>.</p>
 </div>
 <div class="section level2">
