@@ -20,7 +20,9 @@ add_marks <- function(object,
                       variable = ".dvar") {
 
   # Marks on the outliers from outlier()
-  if (identical(class(positions), "sc_outlier")) positions <- positions$dropped.mt
+  if (inherits(positions, "sc_outlier")) {
+    positions <- positions$dropped.mt
+  }
 
   if (is.list(positions)) {
     for(i in seq_along(positions))

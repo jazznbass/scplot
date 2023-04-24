@@ -1,5 +1,10 @@
 # scplot <img src="man/figures/logo-135px.png" align="right"/>
 
+<!-- badges: start -->
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/scplot?color=blue)](https://CRAN.R-project.org/package=scplot)
+[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/scplot?color=orange)](https://CRAN.R-project.org/package=scplot)
+<!-- badges: end -->
+
 *scplot* is an add on package for *scan* which provides a convenient set of functions to create single-case graphics. *scplot* is based on ggplot2.
 
 ## How to install *scplot*?

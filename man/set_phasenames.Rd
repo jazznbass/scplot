@@ -12,13 +12,13 @@ function.}
 
 \item{labels}{A Character vector with text labels.}
 
-\item{position}{Character string either 'left' or 'center'.}
+\item{position}{Character string either \code{'left'}, \code{'center'}, or \code{'none'}.}
 
 \item{...}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 }
 \value{
-An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a changed \code{phasenames}
-element.
+An object of class \code{scplot} (see \code{\link[=scplot]{scplot()}}) with a changed
+\code{phasenames} element.
 }
 \description{
 Set phasenames of an scplot
