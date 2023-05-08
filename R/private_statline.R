@@ -177,17 +177,27 @@
 
   if (fun == "trendA") {
     func <- function(data, ...) {
-      do.call(lm,
-        c(list(formula = as.formula("values ~ mt")), list(data = data), list(...))
-      )$fitted.values
+      filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
+      mt <- data[["mt"]][filter_first_phase]
+      values <- data[["values"]][filter_first_phase]
+      model <- lm(values ~ mt, ...)
+      predict(lm(values ~ mt), data[, c("values", "mt")],)
+      #do.call(lm,
+      #  c(list(formula = as.formula("values ~ mt")), list(data = data), list(...))
+      #)$fitted.values
     }
   }
 
   if (fun == "trendA theil-sen") {
     func <- function(data, ...) {
-      do.call(mblm::mblm,
-        c(list(formula = as.formula("values ~ mt")), list(dataframe = data), list(...))
-      )$fitted.values
+      filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
+      mt <- data[["mt"]][filter_first_phase]
+      values <- data[["values"]][filter_first_phase]
+      predict(mblm(values ~ mt), data[, c("values", "mt")], ...)
+
+      #do.call(mblm::mblm,
+      #  c(list(formula = as.formula("values ~ mt")), list(dataframe = data), list(...))
+      #)$fitted.values
     }
   }
 

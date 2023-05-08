@@ -1,3 +1,8 @@
+
+# scplot 0.3.1
+
+- solved bug: "trendA" and "trendA theil-sen" now correctly represent the extrapolated trend line of phase A.
+
 # scplot 0.3
 
 ## new functions:
