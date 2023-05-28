@@ -71,12 +71,13 @@ The elements are of the following classes:
 }
 }
 \examples{
-theme <- scplot(exampleABC) \%>\%
-set_theme_element(
-  axis.ticks.length = unit(0, "points"),
-  axis.line.y = element_line(color = "darkred", linewidth = 2),
-  panel.background = element_rect(color = "darkblue", linewidth = 1),
-  panel.spacing.y = unit(0, "points"),
-  phasenames = element_text(color = "#00000000")
-) \%>\% extract_theme()
+data(exampleABC, package = "scan")
+p1 <- scplot(exampleABC)  |>
+  set_theme_element(
+    axis.ticks.length = unit(0, "points"),
+    axis.line.y = element_line(color = "darkred", linewidth = 2),
+    panel.background = element_rect(color = "darkblue", linewidth = 1),
+    panel.spacing.y = unit(0, "points"),
+    phasenames = element_text(color = "#00000000")
+  )
 }

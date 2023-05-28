@@ -5,6 +5,7 @@
 #' @return An object of class `scplot` (see[scplot()]).
 #' @seealso [element_line()]
 #' @examples
+#' data(exampleAB, package = "scan")
 #' p1 <- scplot(exampleAB$Anja)  |>
 #'   set_theme("minimal")  |>
 #'   add_grid(color = "grey70")

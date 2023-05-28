@@ -19,6 +19,7 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
 Add grid to an scplot
 }
 \examples{
+data(exampleAB, package = "scan")
 p1 <- scplot(exampleAB$Anja)  |>
   set_theme("minimal")  |>
   add_grid(color = "grey70")

@@ -34,7 +34,8 @@ element.
 Either set aesthetics of the default data line or add another data line.
 }
 \examples{
-p1 <- scplot(exampleAB_add) \%>\%
+data(exampleAB_add, package = "scan")
+p1 <- scplot(exampleAB_add)  |>
   set_dataline("depression", color = "darkblue")
 }
 \seealso{
