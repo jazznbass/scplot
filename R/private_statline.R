@@ -37,11 +37,11 @@
     reference_phase <- levels(data$phase)[reference_phase]
 
 
-  dat_stat <- data[data$phase %in% reference_phase,] %>%
+  dat_stat <- data[data$phase %in% reference_phase,]  |>
     split(~case) %>%
     lapply(function(x)
       c(y = as.numeric(do.call(fun, c(list(x$values), line$args))))
-    ) %>%
+    )  |>
     .ungroup()
 
   data <- merge(data, dat_stat, by = "case", all = TRUE, sort = FALSE)

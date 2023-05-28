@@ -3,11 +3,12 @@
 #' @inheritParams .inherit_scplot
 #' @return An scplot-theme object
 #' @examples
-#' my_theme <- new_theme() %>%
-#'   set_panel(color = "red") %>%
-#'   set_base_text(size = 12, color = "blue") %>%
+#' data(exampleABC, package = "scan")
+#' my_theme <- new_theme() |>
+#'   set_panel(color = "red")  |>
+#'   set_base_text(size = 12, color = "blue")  |>
 #'   set_dataline(color = "darkred", linewidth = 2)
-#' p1 <- scplot(exampleABC) %>% set_theme(my_theme)
+#' p1 <- scplot(exampleABC)  |> set_theme(my_theme)
 #' @return An object of class `scplot-theme` which can be used with the
 #'   [set_theme()] function.
 #' @export

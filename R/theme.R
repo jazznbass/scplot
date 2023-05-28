@@ -6,8 +6,8 @@
 #' @inheritParams .inherit_scplot
 #' @param theme A character string with a predefined graphical theme or a theme
 #'   object created with [new_theme()].
-#' @param ... Further character strings or `scplot-theme` objects that are "added"
-#'   on top.
+#' @param ... Further character strings or `scplot-theme` objects that are
+#'   "added" on top.
 #' @return An object of class `scplot` (see[scplot()]) with a changed `theme`
 #'   element.
 #' @export
@@ -100,14 +100,15 @@ add_theme <- function(...) {
 #' @return An object of class `scplot` (see[scplot()]) with a changed `theme`
 #'   element.
 #' @examples
-#' theme <- scplot(exampleABC) %>%
-#' set_theme_element(
-#'   axis.ticks.length = unit(0, "points"),
-#'   axis.line.y = element_line(color = "darkred", linewidth = 2),
-#'   panel.background = element_rect(color = "darkblue", linewidth = 1),
-#'   panel.spacing.y = unit(0, "points"),
-#'   phasenames = element_text(color = "#00000000")
-#' ) %>% extract_theme()
+#' data(exampleABC, package = "scan")
+#' p1 <- scplot(exampleABC)  |>
+#'   set_theme_element(
+#'     axis.ticks.length = unit(0, "points"),
+#'     axis.line.y = element_line(color = "darkred", linewidth = 2),
+#'     panel.background = element_rect(color = "darkblue", linewidth = 1),
+#'     panel.spacing.y = unit(0, "points"),
+#'     phasenames = element_text(color = "#00000000")
+#'   )
 #' @export
 set_theme_element <- function(object, ...) {
 

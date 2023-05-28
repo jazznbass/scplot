@@ -12,7 +12,8 @@
 #'   element.
 #' @seealso [element_line()], [element_point()]
 #' @examples
-#' p1 <- scplot(exampleAB_add) %>%
+#' data(exampleAB_add, package = "scan")
+#' p1 <- scplot(exampleAB_add)  |>
 #'   set_dataline("depression", color = "darkblue")
 #' @export
 set_dataline <- function(object,

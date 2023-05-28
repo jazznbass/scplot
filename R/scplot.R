@@ -18,9 +18,9 @@ scplot <- function(scdf) {
 
   out <- list(
     scdf = scdf,
-    dvar = scdf_attr(scdf, scan:::.opt$dv),
-    pvar = scdf_attr(scdf, scan:::.opt$phase),
-    mvar = scdf_attr(scdf, scan:::.opt$mt),
+    dvar = scan::scdf_attr(scdf, scan:::opt("dv")),
+    pvar = scan::scdf_attr(scdf, scan:::opt("phase")),
+    mvar = scan::scdf_attr(scdf, scan:::opt("mt")),
     datalines = list(list(type = "continuous")),
     statlines = NULL,
     ridges = NULL,

@@ -55,6 +55,7 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with added
 Add arrrows to an scplot
 }
 \examples{
+data(exampleAB, package = "scan")
 p1 <- scplot(exampleAB$Anja)  |>
   add_arrow(case = 1, 2, 70, 6, 55, color = "darkred")
 }

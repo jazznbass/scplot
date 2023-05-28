@@ -16,10 +16,10 @@ Description: Add-on for the 'scan' package that creates plots
   "Analyzing Single-Case Data with R and 'scan" 
   Jürgen Wilbert (2023) <https://jazznbass.github.io/scan-Book/>.
 Depends:
+  R (>= 3.5.0)
+Imports:
   ggplot2,
-  R (>= 3.5.0),
-  scan (>= 0.57.0)
-Imports: 
+  scan (>= 0.57.0),
   stats,
   utils,
   mblm
