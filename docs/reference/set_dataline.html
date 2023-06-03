@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
       </span>
     </div>
 
@@ -65,7 +65,7 @@ left empty, the aesthetics of the default data line are changed.</p></dd>
 
 
 <dt>line</dt>
-<dd><p>List with line parameters (<code>"colour", "linewidth", "linetype", "lineend", "arrow"</code>). See <code>element_line()</code>.</p></dd>
+<dd><p>List with line parameters (<code>"colour", "linewidth", "linetype", "lineend", "arrow"</code>). See <code><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_line()</a></code>.</p></dd>
 
 
 <dt>point</dt>
@@ -79,7 +79,7 @@ left empty, the aesthetics of the default data line are changed.</p></dd>
 
 <dt>...</dt>
 <dd><p>As a shortcut, arguments passed hear are bundled as <code>line</code>
-arguments (see <code>element_line()</code>).</p></dd>
+arguments (see <code><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_line()</a></code>).</p></dd>
 
 </dl></div>
     <div id="value">
@@ -93,12 +93,13 @@ arguments (see <code>element_line()</code>).</p></dd>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code>element_line()</code>, <code><a href="element_point.html">element_point()</a></code></p></div>
+    <div class="dont-index"><p><code><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_line()</a></code>, <code><a href="element_point.html">element_point()</a></code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_add</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">exampleAB_add</span>, package <span class="op">=</span> <span class="st">"scan"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleAB_add</span><span class="op">)</span>  <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">set_dataline</span><span class="op">(</span><span class="st">"depression"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
