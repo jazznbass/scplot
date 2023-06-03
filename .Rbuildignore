@@ -10,3 +10,5 @@
 ^\.gitignore$
 ^doc$
 ^vignettes$
+^CRAN-SUBMISSION$
+^cran-comments\.md$
