@@ -234,7 +234,8 @@
     data = data,
     aes(x = mt, y = y, color = {{label}}),
     linetype = line$linetype,
-    linewidth = line$linewidth
+    linewidth = line$linewidth,
+    na.rm = TRUE
   )
 
 }
@@ -246,7 +247,8 @@
     data = data,
     aes(x = mt, y = y, group = phase, color = {{label}}),
     linetype = line$linetype,
-    linewidth = line$linewidth
+    linewidth = line$linewidth,
+    na.rm = TRUE
   )
 
 }
