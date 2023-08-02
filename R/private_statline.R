@@ -193,7 +193,7 @@
       filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
       mt <- data[["mt"]][filter_first_phase]
       values <- data[["values"]][filter_first_phase]
-      predict(mblm(values ~ mt), data[, c("values", "mt")], ...)
+      predict(mblm::mblm(values ~ mt, repeated = FALSE), data[, c("values", "mt")], ...)
 
       #do.call(mblm::mblm,
       #  c(list(formula = as.formula("values ~ mt")), list(dataframe = data), list(...))

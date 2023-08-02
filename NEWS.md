@@ -1,5 +1,7 @@
 # scplot (development version)
 
+- "trendA theil-sen" now represents theil-sen regresssion line (not Siegel)
+
 # scplot 0.3.3
 
 - moved `scan`dependency to `scan` import.
