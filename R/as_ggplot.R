@@ -232,8 +232,8 @@ as_ggplot <- function(scplot) {
           colour = !!theme$dataline[[i]]$colour
         ),
         linewidth = theme$dataline[[i]]$linewidth,
-        linetype = theme$dataline[[i]]$linetype,
-        na.rm = TRUE
+        linetype = theme$dataline[[i]]$linetype
+        #na.rm = TRUE
       )
     }
 
@@ -272,8 +272,8 @@ as_ggplot <- function(scplot) {
         aes(y = !!sym(scplot$datalines[[i]]$variable)),
         colour = theme$datapoint[[i]]$colour,
         size = theme$datapoint[[i]]$size,
-        shape = theme$datapoint[[i]]$shape,
-        na.rm = TRUE
+        shape = theme$datapoint[[i]]$shape
+        #na.rm = TRUE
       )
     }
 
@@ -568,8 +568,8 @@ as_ggplot <- function(scplot) {
         mapping = aes(x = mvar, y = dvar),
         color = scplot$marks[[i]]$color,
         size = scplot$marks[[i]]$size,
-        shape = scplot$marks[[i]]$shape,
-        na.rm = TRUE
+        shape = scplot$marks[[i]]$shape
+        #na.rm = TRUE
       )
     }
 
