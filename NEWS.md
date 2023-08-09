@@ -1,6 +1,7 @@
 # scplot (development version)
 
 - "trendA theil-sen" now represents theil-sen regresssion line (not Siegel)
+- New theme "illustration"
 
 # scplot 0.3.3
 
