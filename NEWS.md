@@ -1,5 +1,6 @@
 # scplot (development version)
 
+- New function `add_line()`: Allows to add ab lines, horizontal or vertical lines.
 - "trendA theil-sen" now represents theil-sen regresssion line (not Siegel)
 - New theme "illustration"
 
