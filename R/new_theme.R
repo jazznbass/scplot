@@ -24,7 +24,7 @@ new_theme <- function() {
       ridges = NULL,
       marks = NULL,
       texts = NULL,
-      arrows = NULL,
+      lines = NULL,
       theme = .scplot_themes[["default"]],
       title = NULL,
       caption = NULL,

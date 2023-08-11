@@ -11,7 +11,7 @@
 #' @param ends One of "last", "first", or "both", indicating which ends of the
 #'   line to draw arrow heads.
 #' @return An object of class `scplot` (see[scplot()]) with added element
-#'   `arrows`.
+#'   `lines`.
 #' @examples
 #' data(exampleAB, package = "scan")
 #' p1 <- scplot(exampleAB$Anja)  |>
@@ -28,7 +28,8 @@ add_arrow <- function(object,
                       linewidth = 0.7) {
 
 
-  arrow <- list(
+  line <- list(
+    arrow = TRUE,
     case = case,
     x0 = x0,
     y0 = y0,
@@ -41,6 +42,7 @@ add_arrow <- function(object,
     type = type,
     size = linewidth
   )
-  object$arrows <- c(object$arrows, list(arrow))
+
+  object$lines <- c(object$lines, list(line))
   object
 }

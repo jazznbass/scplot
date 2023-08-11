@@ -26,7 +26,7 @@ scplot <- function(scdf) {
     ridges = NULL,
     marks = NULL,
     texts = NULL,
-    arrows = NULL,
+    lines = NULL,
     theme = theme,
     title = NULL,
     caption = NULL,
