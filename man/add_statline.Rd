@@ -7,8 +7,7 @@
 add_statline(
   object,
   stat = c("mean", "median", "min", "max", "quantile", "sd", "mad", "trend", "trendA",
-    "trendA bisplit", "trendA trisplit", "trendA theil-sen", "movingMean", "moving mean",
-    "moving median", "movingMedian", "loreg", "lowess", "loess"),
+    "moving mean", "moving median", "loreg", "lowess", "loess"),
   phase = NULL,
   color = NULL,
   linewidth = NULL,

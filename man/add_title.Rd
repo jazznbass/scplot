@@ -7,7 +7,7 @@
 \usage{
 add_title(object, label, ...)
 
-add_caption(object, label, ...)
+add_caption(object, label, header = "Note:\\n", ...)
 }
 \arguments{
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
@@ -16,6 +16,8 @@ function.}
 \item{label}{A Character vector with text labels.}
 
 \item{...}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
+
+\item{header}{String with header above footnote/ caption}
 }
 \value{
 An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed \code{title}
