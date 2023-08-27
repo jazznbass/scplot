@@ -49,7 +49,7 @@
     color = "black", linewidth = 0.4, linetype = "solid"),
 
   axis.title.y = element_text(angle = 90, margin = margin(r = 1.5)),
-  axis.title.x = element_text(margin = margin(t = 1.5)),
+  axis.title.x = element_text(margin = margin(t = 2)),
 
   axis.text.x = element_text(size = rel(0.8), hjust = 0.5,
                              margin = margin(t = 1.5)),
@@ -60,8 +60,10 @@
                             margin = margin(0,0,2,0, unit = "lines"),
                             hjust = 0.5),
 
-  plot.caption = element_text(margin = margin(0,0,0,2, unit = "lines"),
-                              hjust = 0),
+  plot.caption = element_text(margin = margin(t = 1, r = 0, b = 0, l = 2,
+                              unit = "lines"),
+                              hjust = 0,
+                              face = "italic"),
 
   plot.margin = margin(t = 1, 0.5, 0.5, 0.5, unit = "lines"),
 
