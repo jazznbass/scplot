@@ -28,7 +28,7 @@
 add_statline <- function(object,
                          stat = c("mean", "median", "min", "max", "quantile",
                                   "sd", "mad",
-                                  "trend", "trendA",
+                                  "trend", "trendA", "trendA theil-sen",
                                   #"movingMean", "movingMedian",
                                   "moving mean", "moving median",
                                   "loreg", "lowess", "loess"),
