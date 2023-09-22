@@ -28,11 +28,10 @@
 add_statline <- function(object,
                          stat = c("mean", "median", "min", "max", "quantile",
                                   "sd", "mad",
-                                  "trend", "trendA", "trendA bisplit",
-                                  "trendA trisplit", "trendA theil-sen",
-                                  "movingMean",
+                                  "trend", "trendA", "trendA theil-sen",
+                                  #"movingMean", "movingMedian",
                                   "moving mean", "moving median",
-                                  "movingMedian", "loreg", "lowess", "loess"),
+                                  "loreg", "lowess", "loess"),
                          phase = NULL,
                          color = NULL,
                          linewidth = NULL,
@@ -66,6 +65,14 @@ add_statline <- function(object,
   if (!is.null(args$method)) {
     if (args$method == "theil-sen" && stat == "trendA") {
       stat <- "trendA theil-sen"
+      args$method <- NULL
+    }
+    if (args$method == "bisplit" && stat == "trendA") {
+      stat <- "trendA bisplit"
+      args$method <- NULL
+    }
+    if (args$method == "trisplit" && stat == "trendA") {
+      stat <- "trendA trisplit"
       args$method <- NULL
     }
   }

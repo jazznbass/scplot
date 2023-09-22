@@ -38,7 +38,7 @@
 
 
   dat_stat <- data[data$phase %in% reference_phase,]  |>
-    split(~case) %>%
+    split(~case) |>
     lapply(function(x)
       c(y = as.numeric(do.call(fun, c(list(x$values), line$args))))
     )  |>

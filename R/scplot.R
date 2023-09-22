@@ -16,6 +16,11 @@ scplot <- function(scdf) {
 
   theme <- .scplot_themes[["default"]]
 
+  caption <- format_caption(
+    scan::scdf_attr(scdf, scan:::opt("info")),
+    scan::scdf_attr(scdf, scan:::opt("author"))
+  )
+
   out <- list(
     scdf = scdf,
     dvar = scan::scdf_attr(scdf, scan:::opt("dv")),
@@ -29,7 +34,7 @@ scplot <- function(scdf) {
     lines = NULL,
     theme = theme,
     title = NULL,
-    caption = NULL,
+    caption = caption,
     xaxis = list(lim = NULL, inc = 1),
     yaxis = list(lim = NULL),
     xlabel = NULL,
@@ -61,3 +66,34 @@ revise_names <- function(x, n) {
 
   x
 }
+
+format_caption <- function(info, author, width = 100) {
+  caption <- NULL
+
+  if (!is.null(info)) caption <- info
+
+  if (!is.null(author)) {
+    if (is.null(caption)) {
+      caption <- paste0("Source: ", author)
+      caption <- paste(strwrap(caption, width = width), collapse = "\n")
+    } else {
+      caption <- paste0(
+        caption,
+        "\nSource: ",
+        author
+      )
+    }
+
+  }
+
+  if (!is.null(caption))  {
+    caption <- paste0(
+      "Note.\n",
+      paste0(strwrap(caption, width = 100), collapse = "\n")
+    )
+  }
+
+  caption
+}
+
+
