@@ -1,3 +1,7 @@
+# scplot 0.3.8
+
+- Removed connecting lines that occured with identical phase names
+
 # scplot 0.3.7
 
 - New function `add_line()`: Allows to add ab lines, horizontal or vertical lines.
