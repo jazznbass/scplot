@@ -34,6 +34,14 @@ as_ggplot <- function(scplot) {
     }
   }
 
+  for(i in seq_along(scdf)) {
+    scdf[[i]][[pvar]] <- rename_phase_duplicates(
+      rle(as.character(scdf[[i]][[pvar]]))$values,
+      rle(as.character(scdf[[i]][[pvar]]))$lengths
+    )
+  }
+
+
   # convert to long format --------
 
   data_long <- as.data.frame(scdf)
@@ -728,3 +736,18 @@ as_ggplot <- function(scplot) {
 
   p
 }
+
+rename_phase_duplicates <- function(phase_labels, phase_lengths) {
+  while(TRUE) {
+    id <- duplicated(phase_labels)
+    if (all(!id)) break
+    phase_labels[id] <- paste0(phase_labels[id], " ")
+  }
+  mapply(
+    function(x,y) rep(x, y),
+    x = phase_labels,
+    y = phase_lengths,
+    SIMPLIFY = FALSE
+  ) |> unlist() |> unname() |> as.factor()
+}
+
