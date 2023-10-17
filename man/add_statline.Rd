@@ -57,6 +57,6 @@ Some of the functions defined in \code{stats} have additional arguments. The
 \code{\link[=mean]{mean()}} function has a trim argument (e.g. \code{trim = 0.1}). \code{\link[=quantile]{quantile()}} has
 a proportion argument (e.g. \code{prob = 0.75} for calculating the 75\%
 quantile). \verb{moving mean} and \verb{moving median} have a lag argument (e.g. \code{lag = 2}). The local-regression curve function \code{"lowess"} (or \code{"loreg"}) has a
-proportion argument (e.g. \code{f = 0.5}; see \code{\link[=lowess]{lowess()}}) and the local-regression curve
-function \code{"loess"} has a span argument (e.g. \code{span = 0.75}; see \code{\link[=loess]{loess()}}).
+proportion argument (e.g. \code{f = 0.5}; see \code{\link[=lowess]{lowess()}}) and the
+local-regression curve function \code{"loess"} has a span argument (e.g. \code{span = 0.75}; see \code{\link[=loess]{loess()}}).
 }

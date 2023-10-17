@@ -18,10 +18,11 @@
 #'   Some of the functions defined in `stats` have additional arguments. The
 #'   [mean()] function has a trim argument (e.g. `trim = 0.1`). [quantile()] has
 #'   a proportion argument (e.g. `prob = 0.75` for calculating the 75%
-#'   quantile). `moving mean` and `moving median` have a lag argument (e.g. `lag =
-#'   2`). The local-regression curve function `"lowess"` (or `"loreg"`) has a
-#'   proportion argument (e.g. `f = 0.5`; see [lowess()]) and the local-regression curve
-#'   function `"loess"` has a span argument (e.g. `span = 0.75`; see [loess()]).
+#'   quantile). `moving mean` and `moving median` have a lag argument (e.g. `lag
+#'   = 2`). The local-regression curve function `"lowess"` (or `"loreg"`) has a
+#'   proportion argument (e.g. `f = 0.5`; see [lowess()]) and the
+#'   local-regression curve function `"loess"` has a span argument (e.g. `span =
+#'   0.75`; see [loess()]).
 #' @return An object of class `scplot` (see[scplot()]) with changed element
 #'   `statlines`.
 #' @export
@@ -41,9 +42,6 @@ add_statline <- function(object,
 
   stat <- match.arg(stat)
 
-  if (is.null(color)) color <- object$theme$statline$colour
-  if (is.null(linewidth)) linewidth <- object$theme$statline$linewidth
-  if (is.null(linetype)) linetype <- object$theme$statline$linetype
   if (is.null(variable)) variable <- ".dvar"
 
   line <- list(
