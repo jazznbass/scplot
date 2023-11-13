@@ -1,3 +1,12 @@
+
+# scplot 0.3.9
+
+- New function `plot.sc_tauu()`: Create a forestplot for Tau-U analyzes.
+
+```{.r}
+plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
+```
+
 # scplot 0.3.8
 
 - Removed connecting lines that occured with identical phase names
