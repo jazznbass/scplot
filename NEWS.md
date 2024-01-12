@@ -7,6 +7,12 @@
 plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
 ```
 
+- New function `plot.sc_hplm()`: Create a forestplot for hplm analyzes.
+
+```{.r}
+plot(hplm(Leidig2018), effect = "intercept")
+```
+
 # scplot 0.3.8
 
 - Removed connecting lines that occured with identical phase names
