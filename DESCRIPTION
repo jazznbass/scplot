@@ -2,7 +2,7 @@ Package: scplot
 Type: Package
 Title: Plot Function for Single-Case Data Frames
 Version: 0.3.9
-Date: 2023-11-13
+Date: 2024-01-12
 Authors@R:
     person("Juergen", "Wilbert", 
     email = "juergen.wilbert@uni-potsdam.de", 
