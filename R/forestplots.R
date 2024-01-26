@@ -55,9 +55,15 @@ forestplot <- function(df,
 }
 
 #' @export
-plot.sc_hplm <- function(x, effect = "intercept", mark = "mean", ...) {
+plot.sc_hplm <- function(x,
+                         effect = "intercept",
+                         mark = "mean",
+                         ci = 0.95,
+                         ...) {
   res <- coef(x, casewise = TRUE)
   res_fixed <- coef(x)
+
+  z <- qnorm((1 - ci) /2, lower.tail = FALSE)
 
   if (is.character(effect)) {
     effect <- switch (
@@ -76,8 +82,8 @@ plot.sc_hplm <- function(x, effect = "intercept", mark = "mean", ...) {
   if (identical(mark, "mean")) mark <- mean(res[[column]], na.rm = TRUE)
 
   res <- res[c(1, column)]
-  res$lower <- res[[2]] - 1.96 * se
-  res$upper <- res[[2]] + 1.96 * se
+  res$lower <- res[[2]] - z * se
+  res$upper <- res[[2]] + z * se
   row.names(res) <- NULL
   names(res) <- c("case", xlabel, "lower", "upper")
   forestplot(res, xlabel = xlabel, mark = mark, ...)

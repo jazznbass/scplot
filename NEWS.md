@@ -13,6 +13,8 @@ plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
 plot(hplm(Leidig2018), effect = "intercept")
 ```
 
+- Solved: `set_phasenames` now works when phases are not coded as factors
+
 # scplot 0.3.8
 
 - Removed connecting lines that occured with identical phase names
