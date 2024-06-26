@@ -7,7 +7,7 @@
 plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
 ```
 
-- New function `plot.sc_hplm()`: Create a forestplot for hplm analyzes.
+- New function `plot.sc_hplm()`: Create a forestplot for hplm analyses.
 
 ```{.r}
 plot(hplm(Leidig2018), effect = "intercept")
