@@ -7,7 +7,6 @@
 #'  and information about the plot style (element `theme`).
 #' @author Juergen Wilbert
 #' @export
-
 scplot <- function(scdf) {
 
   scan:::check_args(

@@ -1,3 +1,20 @@
+
+# scplot 0.4.0
+
+- New function `plot.sc_tauu()`: Create a forestplot for Tau-U analyzes.
+
+```{.r}
+plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
+```
+
+- New function `plot.sc_hplm()`: Create a forestplot for hplm analyses.
+
+```{.r}
+plot(hplm(Leidig2018), effect = "intercept")
+```
+
+- Solved: `set_phasenames` now works when phases are not coded as factors
+
 # scplot 0.3.8
 
 - Removed connecting lines that occured with identical phase names

@@ -30,6 +30,7 @@ as_ggplot <- function(scplot) {
 
   if (!identical(scplot$phasenames$labels, ".default")) {
     for(i in seq_along(scdf)) {
+      scdf[[i]][[pvar]] <- factor(scdf[[i]][[pvar]])
       levels(scdf[[i]][[pvar]]) <- scplot$phasenames$labels
     }
   }
