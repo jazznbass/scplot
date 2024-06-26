@@ -4,12 +4,14 @@
 \alias{plot.sc_tauu}
 \title{Plot Tau-U Effects}
 \usage{
-\method{plot}{sc_tauu}(x, effect = "A vs. B - Trend A")
+\method{plot}{sc_tauu}(x, effect = "A vs. B - Trend A", ...)
 }
 \arguments{
 \item{x}{The return from the \code{tau_u()} function.}
 
 \item{effect}{The specific effect to be plotted (default is "A vs. B - Trend A").}
+
+\item{...}{Further arguments.}
 }
 \value{
 A forest plot displaying Tau-U effects.
@@ -18,6 +20,6 @@ A forest plot displaying Tau-U effects.
 This function generates a forest plot of Tau-U effects.
 }
 \examples{
-plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
+# plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
 
 }

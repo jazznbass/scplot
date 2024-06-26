@@ -1,5 +1,5 @@
 
-# scplot 0.3.9
+# scplot 0.4.0
 
 - New function `plot.sc_tauu()`: Create a forestplot for Tau-U analyzes.
 
