@@ -4,7 +4,6 @@
 #' add-on package for the `scan` package.
 #'
 #' @name scplot-package
-#' @docType package
 #' @author Juergen Wilbert \[aut, cre\]
 #' @keywords package
 #' @import scan
@@ -12,7 +11,7 @@
 #' @import stats
 #' @import utils
 #' @importFrom mblm mblm
-NULL
+"_PACKAGE"
 
 utils::globalVariables(c(
   "mt", "phase", "case", "x0", "y0", "y1", "y",
