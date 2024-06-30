@@ -1,34 +1,18 @@
 
 # scplot 0.4.0
 
-- New function `plot.sc_tauu()`: Create a forestplot for Tau-U analyzes.
-
-```{.r}
-plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
-```
-
-- New function `plot.sc_hplm()`: Create a forestplot for hplm analyses.
-
-```{.r}
-plot(hplm(Leidig2018), effect = "intercept")
-```
-
-- Solved: `set_phasenames` now works when phases are not coded as factors
-
-# scplot 0.3.8
-
-- Removed connecting lines that occured with identical phase names
-
-# scplot 0.3.7
-
+- New function `plot.sc_tauu()`: Create a forestplot for Tau-U analyzes. `plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")`
+- New function `plot.sc_hplm()`: Create a forestplot for hplm analyses. `plot(hplm(Leidig2018), effect = "intercept")`
 - New function `add_line()`: Allows to add ab lines, horizontal or vertical lines.
+- Solved: `set_phasenames` now works when phases are not coded as factors
+- Solved: Removed connecting lines that occurred with identical phase names
 - "trendA theil-sen" now represents theil-sen regresssion line (not Siegel)
 - New theme "illustration"
 - New default for `scplot()`: When an scdf includes an info and/or author attribute this is printed as a footnote/ caption (to remove it: `scplot(example_A24) |> add_caption(NULL)`)
 
 # scplot 0.3.3
 
-- moved `scan`dependency to `scan` import.
+- moved `scan` dependency to `scan` import.
 
 # scplot 0.3.1
 

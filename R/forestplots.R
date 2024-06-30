@@ -24,7 +24,7 @@ plot.sc_tauu <- function(x, effect = "A vs. B - Trend A", ...) {
 
 #' This function generates a forest plot for the random effects of a mixed hplm model
 #'
-#' @param x The return from the [hplm()] function.
+#' @param x The return from the `hplm()` function.
 #' @param effect The specific effect to be plotted (default is the intercept).
 #' @param mark Set a reference line.
 #' @param ci Value between 0 and 1 for calculating the confidence interval.

@@ -31,7 +31,7 @@
   if (length(id) > 0) names(new)[id] <- "colour"
 
   if (inherits(old, "element_text")) {
-    scan:::check_args(
+    check_args(
       one_of(names(new), c(
         "family", "face", "colour", "size", "hjust", "vjust", "angle",
         "lineheight", "margin")
@@ -40,7 +40,7 @@
   }
 
   if (inherits(old, "element_line")) {
-    scan:::check_args(
+    check_args(
       one_of(names(new), c(
         "colour", "linewidth", "linetype", "lineend", "arrow")
       )
@@ -48,14 +48,14 @@
   }
 
   if (inherits(old, "element_rect")) {
-    scan:::check_args(
+    check_args(
       one_of(names(new), c("fill", "colour", "linewidth", "linetype")
       )
     )
   }
 
   if (inherits(old, "element_point")) {
-    scan:::check_args(
+    check_args(
       one_of(names(new), c("colour", "size", "shape")
       )
     )

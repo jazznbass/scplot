@@ -33,7 +33,7 @@ character string with a logical expression (e.g. \code{values < mean(values)})}
 \item{variable}{Name of the dataline variable to apply the style.}
 }
 \value{
-An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed element
+An object of class \code{scplot} (see \code{\link[=scplot]{scplot()}}) with changed element
 \code{marks}.
 }
 \description{
@@ -41,7 +41,7 @@ Add marks to an scplot
 }
 \details{
 If \code{positions} is an object returned from an outlier analysis
-(\code{\link[=outlier]{outlier()}}), the corresponding outliers are marked.
+\code{outlier()}, the corresponding outliers are marked.
 }
 \examples{
 library(scan)
