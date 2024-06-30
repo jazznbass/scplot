@@ -9,22 +9,22 @@
 #' @export
 scplot <- function(scdf) {
 
-  scan:::check_args(
+  check_args(
     by_class(scdf, "scdf")
   )
 
   theme <- .scplot_themes[["default"]]
 
   caption <- format_caption(
-    scan::scdf_attr(scdf, scan:::opt("info")),
-    scan::scdf_attr(scdf, scan:::opt("author"))
+    scdf_attr(scdf)$info,
+    scdf_attr(scdf)$author
   )
 
   out <- list(
     scdf = scdf,
-    dvar = scan::scdf_attr(scdf, scan:::opt("dv")),
-    pvar = scan::scdf_attr(scdf, scan:::opt("phase")),
-    mvar = scan::scdf_attr(scdf, scan:::opt("mt")),
+    dvar = scdf_attr(scdf)$var.values,
+    pvar = scdf_attr(scdf)$var.phase,
+    mvar = scdf_attr(scdf)$var.mt,
     datalines = list(list(type = "continuous")),
     statlines = NULL,
     ridges = NULL,

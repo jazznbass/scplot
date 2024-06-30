@@ -7,7 +7,7 @@
 \method{plot}{sc_hplm}(x, effect = "intercept", mark = "mean", ci = 0.95, ...)
 }
 \arguments{
-\item{x}{The return from the \code{\link[=hplm]{hplm()}} function.}
+\item{x}{The return from the \code{hplm()} function.}
 
 \item{effect}{The specific effect to be plotted (default is the intercept).}
 

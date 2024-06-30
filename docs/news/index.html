@@ -43,30 +43,20 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.0" id="scplot-040">scplot 0.4.0<a class="anchor" aria-label="anchor" href="#scplot-040"></a></h2>
-<ul><li>New function <code><a href="../reference/plot.sc_tauu.html">plot.sc_tauu()</a></code>: Create a forestplot for Tau-U analyzes.</li>
-</ul><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/scan/man/tau_u.html" class="external-link">tau_u</a></span><span class="op">(</span><span class="va">Leidig2018</span><span class="op">)</span>, effect <span class="op">=</span> <span class="st">"A vs. B - Trend A"</span><span class="op">)</span></span></code></pre></div>
-<ul><li>New function <code><a href="../reference/plot.sc_hplm.html">plot.sc_hplm()</a></code>: Create a forestplot for hplm analyses.</li>
-</ul><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/scan/man/hplm.html" class="external-link">hplm</a></span><span class="op">(</span><span class="va">Leidig2018</span><span class="op">)</span>, effect <span class="op">=</span> <span class="st">"intercept"</span><span class="op">)</span></span></code></pre></div>
-<ul><li>Solved: <code>set_phasenames</code> now works when phases are not coded as factors</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.8" id="scplot-038">scplot 0.3.8<a class="anchor" aria-label="anchor" href="#scplot-038"></a></h2>
-<ul><li>Removed connecting lines that occured with identical phase names</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.7" id="scplot-037">scplot 0.3.7<a class="anchor" aria-label="anchor" href="#scplot-037"></a></h2>
-<ul><li>New function <code><a href="../reference/add_line.html">add_line()</a></code>: Allows to add ab lines, horizontal or vertical lines.</li>
+<ul><li>New function <code><a href="../reference/plot.sc_tauu.html">plot.sc_tauu()</a></code>: Create a forestplot for Tau-U analyzes. <code>plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")</code>
+</li>
+<li>New function <code><a href="../reference/plot.sc_hplm.html">plot.sc_hplm()</a></code>: Create a forestplot for hplm analyses. <code>plot(hplm(Leidig2018), effect = "intercept")</code>
+</li>
+<li>New function <code><a href="../reference/add_line.html">add_line()</a></code>: Allows to add ab lines, horizontal or vertical lines.</li>
+<li>Solved: <code>set_phasenames</code> now works when phases are not coded as factors</li>
+<li>Solved: Removed connecting lines that occurred with identical phase names</li>
 <li>“trendA theil-sen” now represents theil-sen regresssion line (not Siegel)</li>
 <li>New theme “illustration”</li>
 <li>New default for <code><a href="../reference/scplot.html">scplot()</a></code>: When an scdf includes an info and/or author attribute this is printed as a footnote/ caption (to remove it: <code>scplot(example_A24) |&gt; add_caption(NULL)</code>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.3" id="scplot-033">scplot 0.3.3<small>2023-06-03</small><a class="anchor" aria-label="anchor" href="#scplot-033"></a></h2>
-<ul><li>moved <code>scan</code>dependency to <code>scan</code> import.</li>
+<ul><li>moved <code>scan</code> dependency to <code>scan</code> import.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.1" id="scplot-031">scplot 0.3.1<small>2023-05-08</small><a class="anchor" aria-label="anchor" href="#scplot-031"></a></h2>
@@ -78,7 +68,7 @@
 <h3 id="new-functions-0-3">new functions:<a class="anchor" aria-label="anchor" href="#new-functions-0-3"></a></h3>
 <ul><li>
 <code><a href="../reference/new_theme.html">new_theme()</a></code>: creates a new scplot-theme.</li>
-</ul><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+</ul><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">new_theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/new_theme.html">new_theme</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/set_xaxis.html">set_xaxis</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -100,7 +90,7 @@
 <span><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/set_theme.html">set_theme</a></span><span class="op">(</span><span class="va">new_theme</span><span class="op">)</span></span></code></pre></div>
 <ul><li>
 <code><a href="../reference/new_theme.html">extract_theme()</a></code>: returns the theme of an scplot object (instead of creating a plot). This theme can be reused in other plots with the <code><a href="../reference/set_theme.html">add_theme()</a></code> function.</li>
-</ul><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+</ul><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">new_theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/set_xaxis.html">set_xaxis</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -145,7 +135,7 @@
 <h3 id="new-experimental-function-for-ploting-0-1-0">New experimental function for ploting<a class="anchor" aria-label="anchor" href="#new-experimental-function-for-ploting-0-1-0"></a></h3>
 <p>The new <code><a href="../reference/scplot.html">scplot()</a></code> function is here! It allows for a more tidy coding and the use of <code>|&gt;</code> (or <code>|&gt;</code>) operators. <code>scplot</code> is in an experimental state and code with current syntax might not work in a later version due to changes in function and argument names. Still, <code><a href="../reference/scplot.html">scplot()</a></code> works in many cases. We plan to add new graphical features primarily to <code>scplot</code> which is already capable of doing more than <code>plot.scdf()</code>.</p>
 <p>Here is an example that implicitly also introduces several of the new graphical functions:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABAB</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"trendA"</span>, colour <span class="op">=</span> <span class="st">"tomato2"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
