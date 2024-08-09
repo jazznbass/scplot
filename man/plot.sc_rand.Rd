@@ -12,15 +12,16 @@
   title = NULL,
   text_observed = "observed",
   color = "lightgrey",
+  add_density_curve = TRUE,
   ...
 )
 }
 \arguments{
+\item{type}{Either \code{"hist"} or \code{"xy"}.}
+
 \item{...}{Further arguments.}
 
 \item{x}{The return from the \code{tau_u()} function.}
-
-\item{effect}{The specific effect to be plotted (default is "A vs. B - Trend A").}
 }
 \value{
 A forest plot displaying Tau-U effects.
@@ -29,6 +30,7 @@ A forest plot displaying Tau-U effects.
 This function generates a forest plot of Tau-U effects.
 }
 \examples{
-# plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
+# plot(rand_test(exampleAB$Anja, limit = 1), type = "hist")
+# plot(rand_test(exampleAB$Anja, limit = 1), type = "xy")
 
 }

@@ -8,6 +8,7 @@
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
+#' # plot(rand_test(exampleAB$Anja, limit = 1), type = "hist")
 #' # plot(rand_test(exampleAB$Anja, limit = 1), type = "xy")
 #'
 #' @export
@@ -68,9 +69,9 @@ plot.sc_rand <- function(object,
 
     if (add_density_curve) p <- p + geom_density(alpha = .2, fill = color)
 
-    p + geom_vline(
+    p <- p + geom_vline(
         aes(xintercept = object$observed.statistic),
-        color = color, linetype = "dashed", linewidth = 1
+        color = "grey", linetype = "dashed", linewidth = 1
     ) +
     stat_bin(
       aes (
@@ -78,33 +79,24 @@ plot.sc_rand <- function(object,
         label= paste0(
           "n = ", after_stat(count), "\n", after_stat(round(count / sum(count) * 100)),"%")
       ),
-      geom="text", breaks = h$breaks, center=0.5, vjust=-.5
+      geom="text", breaks = h$breaks, center = 0.5, vjust = -.5
     ) +
     labs(x = object$statistic)
 
+    p <- p + annotate(
+      "text",
+      y = layer_scales(p)$y$range$range[2],
+      x = object$observed.statistic,
+      label = text_observed,
+      hjust = if (object$p.value < 0.5) 1.1 else 0.1
+    )
 
-#
-#
-#     if (is.null(ylab)) ylab <- "Frequency"
-#     if (is.null(title)) title <- "Random distribution"
-#     h <- hist(object$distribution, plot = FALSE)
-#     lab <- paste0(round(h$counts / length(object$distribution) * 100, 0), "%")
-#     xlim <- c(min(h$breaks, na.rm = TRUE), max(h$breaks, na.rm = TRUE))
-#     ylim <- round(max(h$counts * 1.2))
+    return(p)
+
 #     if (object$observed.statistic < xlim[1]) xlim[1] <- object$observed.statistic
 #     if (object$observed.statistic > xlim[2]) xlim[2] <- object$observed.statistic
 #
-#     if (is.null(xlab)) xlab <- object$statistic
-#     hist(
-#       object$distribution,
-#       xlab = xlab,
-#       labels = lab,
-#       xlim = xlim,
-#       ylim = c(0, ylim),
-#       ylab = ylab,
-#       main = title,
-#       col = color
-#     )
+
 #     abline(v = object$observed.statistic, lty = 2, lwd = 2, col = "grey")
 #     if (object$p.value < 0.5) pos <- 2 else pos <- 4
 #     text(object$observed.statistic, ylim, text_observed, pos = pos)
