@@ -11,10 +11,12 @@
 #' @import stats
 #' @import utils
 #' @importFrom mblm mblm
+#' @importFrom graphics hist
 "_PACKAGE"
 
 utils::globalVariables(c(
   "mt", "phase", "case", "x0", "y0", "y1", "y",
   "by_class", "by_call", "not","within","one_of","has_length","is_true"
+
 ))
 
