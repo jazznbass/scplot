@@ -8,7 +8,7 @@
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
-#' plot(hplm(Leidig2018, random_slope = TRUE), effect = "level")
+#' plot(hplm(Leidig2018, random.slopes = TRUE), effect = "level")
 #'
 #' @export
 plot.sc_hplm <- function(x,
@@ -49,6 +49,6 @@ plot.sc_hplm <- function(x,
     "Note. The dashed line indicates the fixed effect and \nthe errorbars indicate the ",
     ci * 100, "% confidence intervall."
   )
-  title <- "Forestplot of casewise effects calculated from the \nrandom slope effect of a multilevel model"
+  title <- "Casewise effects calculated from the \nrandom slope effect of a multilevel model"
   forestplot(out, xlabel = xlabel, mark = mark, footnote = footnote, title = title,...)
 }

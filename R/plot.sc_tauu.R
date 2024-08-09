@@ -41,7 +41,7 @@ plot.sc_tauu <- function(x, effect = 1, ...) {
 
   forestplot(
     out, mark = c("grey" = 0, "darkred" = meta_value), xlim = c(-1, 1),
-    xlabel = effect, footnote = footnote, title = "Forestplot of tau-u values per case",
+    xlabel = effect, footnote = footnote, title = "Tau-u values per case",
     ...
   )
 }

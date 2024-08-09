@@ -24,6 +24,6 @@ A forest plot displaying Tau-U effects.
 This function generates a forest plot for the random effects of a mixed hplm model
 }
 \examples{
-plot(hplm(Leidig2018, random_slope = TRUE), effect = "level")
+plot(hplm(Leidig2018, random.slopes = TRUE), effect = "level")
 
 }
