@@ -4,24 +4,16 @@
 \alias{plot.sc_rand}
 \title{Plot Randomization Effects}
 \usage{
-\method{plot}{sc_rand}(
-  object,
-  type = "hist",
-  xlab = NULL,
-  ylab = NULL,
-  title = NULL,
-  text_observed = "observed",
-  color = "lightgrey",
-  add_density_curve = TRUE,
-  ...
-)
+\method{plot}{sc_rand}(x, type = "hist", add_density_curve = TRUE, ...)
 }
 \arguments{
+\item{x}{The return from the \code{tau_u()} function.}
+
 \item{type}{Either \code{"hist"} or \code{"xy"}.}
 
-\item{...}{Further arguments.}
+\item{add_density_curve}{If TRUE, adds a density curve to the histogram.}
 
-\item{x}{The return from the \code{tau_u()} function.}
+\item{...}{Further arguments.}
 }
 \value{
 A forest plot displaying Tau-U effects.
@@ -30,7 +22,9 @@ A forest plot displaying Tau-U effects.
 This function generates a forest plot of Tau-U effects.
 }
 \examples{
-# plot(rand_test(exampleAB$Anja, limit = 1), type = "hist")
-# plot(rand_test(exampleAB$Anja, limit = 1), type = "xy")
+res <- rand_test(exampleAB$Anja, limit = 1)
+plot(res, type = "hist")
+
+plot(res, type = "xy")
 
 }

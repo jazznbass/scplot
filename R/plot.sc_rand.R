@@ -4,27 +4,30 @@
 #'
 #' @param x The return from the `tau_u()` function.
 #' @param type Either `"hist"` or `"xy"`.
+#' @param add_density_curve If TRUE, adds a density curve to the histogram.
 #' @param ... Further arguments.
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
-#' # plot(rand_test(exampleAB$Anja, limit = 1), type = "hist")
-#' # plot(rand_test(exampleAB$Anja, limit = 1), type = "xy")
+#' res <- rand_test(exampleAB$Anja, limit = 1)
+#' plot(res, type = "hist")
+#'
+#' plot(res, type = "xy")
 #'
 #' @export
-plot.sc_rand <- function(object,
+plot.sc_rand <- function(x,
                          type = "hist",
-                         xlab = NULL,
-                         ylab = NULL,
-                         title = NULL,
-                         text_observed = "observed",
-                         color = "lightgrey",
                          add_density_curve = TRUE,
                          ...) {
 
+  Distribution <- count <- NULL
+
+  object <- x
+
   if (type == "xy") {
-    if (is.null(ylab)) ylab <- object$statistic
-    if (is.null(xlab)) xlab <- "Start phase B"
+
+    ylab <- object$statistic
+    xlab <- "Start phase B"
     dat <- data.frame(
       "Start phase B" = object$distribution_startpoints[[1]],
       Distribution = object$distribution,
@@ -33,7 +36,7 @@ plot.sc_rand <- function(object,
 
     col <- sym(names(dat)[1])
 
-    out <- ggplot(dat, aes(x = !!col, y = Distribution)) +
+    p <- ggplot(dat, aes(x = !!col, y = Distribution)) +
       ylab(ylab) +
       xlab(xlab) +
       geom_point(aes(color = "darkgreen")) +
@@ -48,11 +51,15 @@ plot.sc_rand <- function(object,
       scale_x_continuous(
         breaks = min(dat[[1]]):max(dat[[1]]),
         limits = c(min(dat[[1]]), max(dat[[1]]))
-      ) + scale_color_identity(name = "",
-                               breaks = c("darkgreen", "red", "blue"),
-                               labels = c("Below", "Above", "Equal"),
-                               guide = "legend")
-    return(out)
+      ) +
+      scale_color_identity(
+        name = "",
+        breaks = c("darkgreen", "red", "blue"),
+        labels = c("Below", "Above", "Equal"),
+        guide = "legend"
+      )
+
+    return(p)
   }
 
 
@@ -67,7 +74,7 @@ plot.sc_rand <- function(object,
         breaks = h$breaks
       )
 
-    if (add_density_curve) p <- p + geom_density(alpha = .2, fill = color)
+    if (add_density_curve) p <- p + geom_density(alpha = .2, fill = "lightgrey")
 
     p <- p + geom_vline(
         aes(xintercept = object$observed.statistic),
@@ -87,21 +94,11 @@ plot.sc_rand <- function(object,
       "text",
       y = layer_scales(p)$y$range$range[2],
       x = object$observed.statistic,
-      label = text_observed,
+      label = "observed",
       hjust = if (object$p.value < 0.5) 1.1 else 0.1
     )
 
     return(p)
-
-#     if (object$observed.statistic < xlim[1]) xlim[1] <- object$observed.statistic
-#     if (object$observed.statistic > xlim[2]) xlim[2] <- object$observed.statistic
-#
-
-#     abline(v = object$observed.statistic, lty = 2, lwd = 2, col = "grey")
-#     if (object$p.value < 0.5) pos <- 2 else pos <- 4
-#     text(object$observed.statistic, ylim, text_observed, pos = pos)
-   }
-
-
+  }
 
 }
