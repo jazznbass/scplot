@@ -8,7 +8,7 @@
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
-#' # plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
+#' plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
 #'
 #' @export
 plot.sc_tauu <- function(x, effect = 1, ...) {
@@ -26,10 +26,22 @@ plot.sc_tauu <- function(x, effect = 1, ...) {
     effect <- rownames(x$table[[1]])[effect]
   }
 
-  res <- lapply(x$table, \(x) x[effect, 7:9])
-  res <- do.call("rbind", res)
-  res <- cbind(case = row.names(res), res)
-  row.names(res) <- NULL
-  names(res) <- c("case", "Tau-U", "lower", "upper")
-  forestplot(res, mark = 0, xlim = c(-1, 1), xlabel = effect, ...)
+  id <- which(x$Overall_tau_u$Model == effect)
+  meta_value <- x$Overall_tau_u[id, "Tau_U"]
+
+  out <- lapply(x$table, \(x) x[effect, 7:9])
+  out <- do.call("rbind", out)
+  out <- cbind(case = row.names(out), out)
+  row.names(out) <- NULL
+  names(out) <- c("case", "Tau-U", "lower", "upper")
+
+  footnote <- paste0("Note. The red line indicates the overall tau-u value of ",
+                     "the meta analysis and \nthe errorbars indicate the",
+                     x$ci * 100, "% confidence intervall.")
+
+  forestplot(
+    out, mark = c("grey" = 0, "darkred" = meta_value), xlim = c(-1, 1),
+    xlabel = effect, footnote = footnote, title = "Forestplot of tau-u values per case",
+    ...
+  )
 }

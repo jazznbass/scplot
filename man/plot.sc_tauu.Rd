@@ -20,6 +20,6 @@ A forest plot displaying Tau-U effects.
 This function generates a forest plot of Tau-U effects.
 }
 \examples{
-# plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
+plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
 
 }

@@ -8,21 +8,21 @@
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
-#' # plot(hplm(Leidig2018), effect = "intercept")
+#' plot(hplm(Leidig2018, random_slope = TRUE), effect = "level")
 #'
 #' @export
 plot.sc_hplm <- function(x,
                          effect = "intercept",
-                         mark = "mean",
+                         mark = "fixed",
                          ci = 0.95,
                          ...) {
-  res <- coef(x, casewise = TRUE)
-  res_fixed <- coef(x)
+  coef_random <- coef(x, casewise = TRUE)
+  coef_fixed <- coef(x)
 
   z <- qnorm((1 - ci) /2, lower.tail = FALSE)
   message(
-    "Possible effects are: ",
-    paste0(1:nrow(res_fixed), ": '", rownames(res_fixed), "'", collapse = ", ")
+    "Possible effects are: \n",
+    paste0(2:ncol(coef_random), ": '", names(coef_random)[-1], "'", collapse = "\n")
   )
   if (is.character(effect)) {
     effect <- switch (
@@ -35,16 +35,20 @@ plot.sc_hplm <- function(x,
   }
 
   column <- effect
-  se <- res_fixed[effect - 1, 2]
-  xlabel <- names(res)[effect]
+  se <- coef_fixed[effect - 1, 2]
+  xlabel <- names(coef_random)[effect]
 
-  if (identical(mark, "mean")) mark <- mean(res[[column]], na.rm = TRUE)
+  if (identical(mark, "fixed")) mark <- mean(coef_random[[column]], na.rm = TRUE)
 
-
-  res <- res[c(1, column)]
-  res$lower <- res[[2]] - z * se
-  res$upper <- res[[2]] + z * se
-  row.names(res) <- NULL
-  names(res) <- c("case", xlabel, "lower", "upper")
-  forestplot(res, xlabel = xlabel, mark = mark, ...)
+  out <- coef_random[c(1, column)]
+  out$lower <- out[[2]] - z * se
+  out$upper <- out[[2]] + z * se
+  row.names(out) <- NULL
+  names(out) <- c("case", xlabel, "lower", "upper")
+  footnote <- paste0(
+    "Note. The dashed line indicates the fixed effect and \nthe errorbars indicate the ",
+    ci * 100, "% confidence intervall."
+  )
+  title <- "Forestplot of casewise effects calculated from the \nrandom slope effect of a multilevel model"
+  forestplot(out, xlabel = xlabel, mark = mark, footnote = footnote, title = title,...)
 }

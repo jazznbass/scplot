@@ -4,7 +4,7 @@
 \alias{plot.sc_hplm}
 \title{This function generates a forest plot for the random effects of a mixed hplm model}
 \usage{
-\method{plot}{sc_hplm}(x, effect = "intercept", mark = "mean", ci = 0.95, ...)
+\method{plot}{sc_hplm}(x, effect = "intercept", mark = "fixed", ci = 0.95, ...)
 }
 \arguments{
 \item{x}{The return from the \code{hplm()} function.}
@@ -24,6 +24,6 @@ A forest plot displaying Tau-U effects.
 This function generates a forest plot for the random effects of a mixed hplm model
 }
 \examples{
-# plot(hplm(Leidig2018), effect = "intercept")
+plot(hplm(Leidig2018, random_slope = TRUE), effect = "level")
 
 }
