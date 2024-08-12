@@ -1,4 +1,5 @@
-#' This function generates a forest plot for the random effects of a mixed hplm model
+#' This function generates a forest plot for the random effects of a mixed hplm
+#' model
 #'
 #' @param x The return from the `hplm()` function.
 #' @param effect The specific effect to be plotted (default is the intercept).
@@ -20,9 +21,13 @@ plot.sc_hplm <- function(x,
   coef_fixed <- coef(x)
 
   z <- qnorm((1 - ci) /2, lower.tail = FALSE)
+
   message(
     "Possible effects are: \n",
-    paste0(2:ncol(coef_random), ": '", names(coef_random)[-1], "'", collapse = "\n")
+    paste0(
+      2:ncol(coef_random), ": '", names(coef_random)[-1], "'",
+      collapse = "\n"
+    )
   )
   if (is.character(effect)) {
     effect <- switch (
@@ -38,7 +43,8 @@ plot.sc_hplm <- function(x,
   se <- coef_fixed[effect - 1, 2]
   xlabel <- names(coef_random)[effect]
 
-  if (identical(mark, "fixed")) mark <- mean(coef_random[[column]], na.rm = TRUE)
+  if (identical(mark, "fixed"))
+    mark <- mean(coef_random[[column]], na.rm = TRUE)
 
   out <- coef_random[c(1, column)]
   out$lower <- out[[2]] - z * se
@@ -46,9 +52,14 @@ plot.sc_hplm <- function(x,
   row.names(out) <- NULL
   names(out) <- c("case", xlabel, "lower", "upper")
   footnote <- paste0(
-    "Note. The dashed line indicates the fixed effect and \nthe errorbars indicate the ",
+    "Note. The dashed line indicates the fixed effect and \n",
+    "the errorbars indicate the ",
     ci * 100, "% confidence intervall."
   )
-  title <- "Casewise effects calculated from the \nrandom slope effect of a multilevel model"
-  forestplot(out, xlabel = xlabel, mark = mark, footnote = footnote, title = title,...)
+  title <- paste0("Casewise effects calculated from the \n",
+                  "random slope effect of a multilevel model")
+  forestplot(
+    out, xlabel = xlabel, mark = mark, footnote = footnote, title = title,
+    ...
+  )
 }
