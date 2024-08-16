@@ -1,7 +1,7 @@
 #' This function generates a forest plot for the random effects of a mixed hplm
 #' model
 #'
-#' @param x The return from the `hplm()` function.
+#' @param object The return from the `hplm()` function.
 #' @param effect The specific effect to be plotted (default is the intercept).
 #' @param mark Set a reference line.
 #' @param ci Value between 0 and 1 for calculating the confidence interval.
@@ -9,14 +9,17 @@
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
-#' plot(hplm(Leidig2018, random.slopes = TRUE), effect = "level")
+#' model <- scan::hplm(scan::Leidig2018, random.slopes = TRUE)
+#' scplot(model, effect = "level")
 #'
 #' @export
-plot.sc_hplm <- function(x,
+scplot.sc_hplm <- function(object,
                          effect = "intercept",
                          mark = "fixed",
                          ci = 0.95,
                          ...) {
+
+  x <- object
   coef_random <- coef(x, casewise = TRUE)
   coef_fixed <- coef(x)
 
