@@ -43,20 +43,21 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.0.999" id="scplot-040999">scplot 0.4.0.999<a class="anchor" aria-label="anchor" href="#scplot-040999"></a></h2>
-<ul><li>New function <code><a href="../reference/plot.sc_rand.html">plot.sc_rand()</a></code>: Create histogram or xy plots for rand_tests.</li>
+<ul><li>New generic for <code><a href="../reference/scplot.scdf.html">scplot()</a></code>.</li>
+<li>New function <code><a href="../reference/scplot.sc_rand.html">scplot.sc_rand()</a></code>: Create histogram or xy plots for rand_tests.</li>
+<li>New function <code><a href="../reference/scplot.sc_tauu.html">scplot.sc_tauu()</a></code>: Create a forestplot for Tau-U analyses. <code>scplot(tau_u(Leidig2018), effect = "A vs. B - Trend A")</code>
+</li>
+<li>New function <code><a href="../reference/scplot.sc_hplm.html">scplot.sc_hplm()</a></code>: Create a forestplot for hplm analyses. <code>scplot(hplm(Leidig2018), effect = "intercept")</code>
+</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.0" id="scplot-040">scplot 0.4.0<small>2024-06-29</small><a class="anchor" aria-label="anchor" href="#scplot-040"></a></h2>
-<ul><li>New function <code><a href="../reference/plot.sc_tauu.html">plot.sc_tauu()</a></code>: Create a forestplot for Tau-U analyses. <code>plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")</code>
-</li>
-<li>New function <code><a href="../reference/plot.sc_hplm.html">plot.sc_hplm()</a></code>: Create a forestplot for hplm analyses. <code>plot(hplm(Leidig2018), effect = "intercept")</code>
-</li>
-<li>New function <code><a href="../reference/add_line.html">add_line()</a></code>: Allows to add ab lines, horizontal or vertical lines.</li>
+<ul><li>New function <code><a href="../reference/add_line.html">add_line()</a></code>: Allows to add ab lines, horizontal or vertical lines.</li>
 <li>Solved: <code>set_phasenames</code> now works when phases are not coded as factors</li>
 <li>Solved: Removed connecting lines that occurred with identical phase names</li>
 <li>“trendA theil-sen” now represents theil-sen regresssion line (not Siegel)</li>
 <li>New theme “illustration”</li>
-<li>New default for <code><a href="../reference/scplot.html">scplot()</a></code>: When an scdf includes an info and/or author attribute this is printed as a footnote/ caption (to remove it: <code>scplot(example_A24) |&gt; add_caption(NULL)</code>)</li>
+<li>New default for <code><a href="../reference/scplot.scdf.html">scplot()</a></code>: When an scdf includes an info and/or author attribute this is printed as a footnote/ caption (to remove it: <code>scplot(example_A24) |&gt; add_caption(NULL)</code>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.3" id="scplot-033">scplot 0.3.3<small>2023-06-03</small><a class="anchor" aria-label="anchor" href="#scplot-033"></a></h2>
@@ -91,12 +92,12 @@
 <span>  <span class="fu"><a href="../reference/set_separator.html">set_separator</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, linetype <span class="op">=</span> <span class="st">"solid"</span>, color <span class="op">=</span> <span class="st">"sienna"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/set_background.html">set_background</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey99"</span><span class="op">)</span> </span>
 <span></span>
-<span><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/set_theme.html">set_theme</a></span><span class="op">(</span><span class="va">new_theme</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/set_theme.html">set_theme</a></span><span class="op">(</span><span class="va">new_theme</span><span class="op">)</span></span></code></pre></div>
 <ul><li>
 <code><a href="../reference/new_theme.html">extract_theme()</a></code>: returns the theme of an scplot object (instead of creating a plot). This theme can be reused in other plots with the <code><a href="../reference/set_theme.html">add_theme()</a></code> function.</li>
 </ul><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">new_theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span><span class="va">new_theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/set_xaxis.html">set_xaxis</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/set_xaxis.html">set_yaxis</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"sienna3"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/set_xlabel.html">set_ylabel</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"sienna3"</span>, angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -114,7 +115,7 @@
 <span>  <span class="fu"><a href="../reference/set_background.html">set_background</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey99"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/new_theme.html">extract_theme</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/set_theme.html">set_theme</a></span><span class="op">(</span><span class="va">new_theme</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/set_theme.html">set_theme</a></span><span class="op">(</span><span class="va">new_theme</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="fixed-bugs-0-3">fixed bugs<a class="anchor" aria-label="anchor" href="#fixed-bugs-0-3"></a></h3>
@@ -137,11 +138,11 @@
 <h2 class="page-header" data-toc-text="0.1.0" id="scplot-010">scplot 0.1.0<a class="anchor" aria-label="anchor" href="#scplot-010"></a></h2>
 <div class="section level3">
 <h3 id="new-experimental-function-for-ploting-0-1-0">New experimental function for ploting<a class="anchor" aria-label="anchor" href="#new-experimental-function-for-ploting-0-1-0"></a></h3>
-<p>The new <code><a href="../reference/scplot.html">scplot()</a></code> function is here! It allows for a more tidy coding and the use of <code>|&gt;</code> (or <code>|&gt;</code>) operators. <code>scplot</code> is in an experimental state and code with current syntax might not work in a later version due to changes in function and argument names. Still, <code><a href="../reference/scplot.html">scplot()</a></code> works in many cases. We plan to add new graphical features primarily to <code>scplot</code> which is already capable of doing more than <code>plot.scdf()</code>.</p>
+<p>The new <code><a href="../reference/scplot.scdf.html">scplot()</a></code> function is here! It allows for a more tidy coding and the use of <code>|&gt;</code> (or <code>|&gt;</code>) operators. <code>scplot</code> is in an experimental state and code with current syntax might not work in a later version due to changes in function and argument names. Still, <code><a href="../reference/scplot.scdf.html">scplot()</a></code> works in many cases. We plan to add new graphical features primarily to <code>scplot</code> which is already capable of doing more than <code>plot.scdf()</code>.</p>
 <p>Here is an example that implicitly also introduces several of the new graphical functions:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="../reference/scplot.html">scplot</a></span><span class="op">(</span><span class="va">exampleABAB</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="../reference/scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="va">exampleABAB</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"trendA"</span>, colour <span class="op">=</span> <span class="st">"tomato2"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_statline.html">add_statline</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"maxA"</span>, colour <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_marks.html">add_marks</a></span><span class="op">(</span>case <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, positions <span class="op">=</span> <span class="fl">14</span>, colour <span class="op">=</span> <span class="st">"red3"</span>, size <span class="op">=</span> <span class="fl">3</span>, shape <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span>
