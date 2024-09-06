@@ -75,7 +75,14 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">scan</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scan/man/tau_u.html" class="external-link">tau_u</a></span><span class="op">(</span><span class="fu">scan</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/scan/man/example_data.html" class="external-link">Leidig2018</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="va">res</span>, effect <span class="op">=</span> <span class="st">"A vs. B - Trend A"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="va">res</span>, effect <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Possible effects are:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 1: 'A vs. B'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2: 'Trend A'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 3: 'Trend B'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 4: 'A vs. B - Trend A'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 5: 'A vs. B + Trend B'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 6: 'A vs. B + Trend B - Trend A'</span>
 <span class="r-plt img"><img src="scplot.sc_tauu-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
