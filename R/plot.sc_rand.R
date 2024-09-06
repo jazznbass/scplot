@@ -2,29 +2,32 @@
 #'
 #' This function generates a forest plot of Tau-U effects.
 #'
-#' @param x The return from the `tau_u()` function.
+#' @param object The return from the `tau_u()` function.
 #' @param type Either `"hist"` or `"xy"`.
 #' @param add_density_curve If TRUE, adds a density curve to the histogram.
 #' @param ... Further arguments.
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
-#' res <- rand_test(exampleAB$Anja, limit = 1)
-#' plot(res, type = "hist")
+#' res <- scan::rand_test(scan::exampleAB$Anja, limit = 1)
+#' scplot(res, type = "hist")
 #'
-#' plot(res, type = "xy")
+#' scplot(res, type = "xy")
 #'
 #' @export
-plot.sc_rand <- function(x,
-                         type = "hist",
-                         add_density_curve = TRUE,
-                         ...) {
+scplot.sc_rand <- function(object,
+                           type = "hist",
+                           add_density_curve = TRUE,
+                           ...) {
 
+  x <- NULL
   Distribution <- count <- NULL
 
-  object <- x
-
   if (type == "xy") {
+    if (dim(object$distribution_startpoints)[2] != 1) {
+      stop("This plot is only available for analyses with one case.")
+    }
+
 
     ylab <- object$statistic
     xlab <- "Start phase B"
@@ -59,11 +62,18 @@ plot.sc_rand <- function(x,
         guide = "legend"
       )
 
+    p <- p + geom_vline(
+      aes(xintercept = object$n1 + 0.5),
+      color = "grey", linetype = "dashed", linewidth = 1
+    )
+    p <- p + theme_bw()
+
     return(p)
   }
 
 
   if (type == "hist") {
+
     dat <- data.frame(x = object$distribution)
     h <- hist(object$distribution, plot = FALSE)
 

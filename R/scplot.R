@@ -2,36 +2,34 @@
 #'
 #' This function provides a plot of a single-case or multiple single-cases.
 #'
-#' @param scdf A single-case data-frame object (scdf).
+#' @aliases scplot scplot.scdf
+#' @param object A single-case data-frame object (scdf).
+#' @param ... further arguments.
 #' @return An object of class `scplot` containing the single-case data (element `scdf`),
 #'  and information about the plot style (element `theme`).
 #' @author Juergen Wilbert
 #' @export
-scplot <- function(scdf) {
+scplot.scdf <- function(object, ...) {
 
-  check_args(
-    by_class(scdf, "scdf")
-  )
-
-  theme <- .scplot_themes[["default"]]
-
-  caption <- format_caption(
-    scdf_attr(scdf)$info,
-    scdf_attr(scdf)$author
-  )
+  caption <- getOption("scplot.plot.caption")
+  if (caption == "auto")
+    caption <- format_caption(
+      scdf_attr(object)$info,
+      scdf_attr(object)$author
+    )
 
   out <- list(
-    scdf = scdf,
-    dvar = scdf_attr(scdf)$var.values,
-    pvar = scdf_attr(scdf)$var.phase,
-    mvar = scdf_attr(scdf)$var.mt,
+    scdf = object,
+    dvar = scdf_attr(object)$var.values,
+    pvar = scdf_attr(object)$var.phase,
+    mvar = scdf_attr(object)$var.mt,
     datalines = list(list(type = "continuous")),
     statlines = NULL,
     ridges = NULL,
     marks = NULL,
     texts = NULL,
     lines = NULL,
-    theme = theme,
+    theme = .scplot_themes[[getOption("scplot.plot.theme")]],
     title = NULL,
     caption = caption,
     xaxis = list(lim = NULL, inc = 1),
@@ -41,7 +39,7 @@ scplot <- function(scdf) {
     labels = list(),
     phasenames = list(labels = ".default"),
     legend = NULL,
-    casenames = list(labels = revise_names(scdf))
+    casenames = list(labels = revise_names(object))
   )
 
   class(out) <- "scplot"

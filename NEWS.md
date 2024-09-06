@@ -1,11 +1,12 @@
 # scplot 0.4.0.999
 
-- New function `plot.sc_rand()`: Create histogram or xy plots for rand_tests.
+- New generic for `scplot()`.
+- New function `scplot.sc_rand()`: Create histogram or xy plots for rand_tests.
+- New function `scplot.sc_tauu()`: Create a forestplot for Tau-U analyses. `scplot(tau_u(Leidig2018), effect = "A vs. B - Trend A")`
+- New function `scplot.sc_hplm()`: Create a forestplot for hplm analyses. `scplot(hplm(Leidig2018), effect = "intercept")`
 
 # scplot 0.4.0
 
-- New function `plot.sc_tauu()`: Create a forestplot for Tau-U analyses. `plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")`
-- New function `plot.sc_hplm()`: Create a forestplot for hplm analyses. `plot(hplm(Leidig2018), effect = "intercept")`
 - New function `add_line()`: Allows to add ab lines, horizontal or vertical lines.
 - Solved: `set_phasenames` now works when phases are not coded as factors
 - Solved: Removed connecting lines that occurred with identical phase names

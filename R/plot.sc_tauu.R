@@ -2,17 +2,19 @@
 #'
 #' This function generates a forest plot of Tau-U effects.
 #'
-#' @param x The return from the `tau_u()` function.
+#' @param object The return from the `tau_u()` function.
 #' @param effect The specific effect to be plotted (default is "A vs. B - Trend A").
 #' @param ... Further arguments.
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
-#' plot(tau_u(Leidig2018), effect = "A vs. B - Trend A")
+#' res <- scan::tau_u(scan::Leidig2018)
+#' scplot(res, effect = "A vs. B - Trend A")
 #'
 #' @export
-plot.sc_tauu <- function(x, effect = 1, ...) {
+scplot.sc_tauu <- function(object, effect = 1, ...) {
 
+  x <- object
   if (is.character(effect)) {
     if (!effect %in% rownames(x$table[[1]])) {
       message(
