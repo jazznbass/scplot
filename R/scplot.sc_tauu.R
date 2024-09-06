@@ -9,20 +9,17 @@
 #'
 #' @examples
 #' res <- scan::tau_u(scan::Leidig2018)
-#' scplot(res, effect = "A vs. B - Trend A")
+#' scplot(res, effect = 3)
 #'
 #' @export
 scplot.sc_tauu <- function(object, effect = 1, ...) {
 
   x <- object
-  if (is.character(effect)) {
-    if (!effect %in% rownames(x$table[[1]])) {
-      message(
-        "Possible effects are:\n",
-        paste0(1:nrow(x$table[[1]]), ": '", rownames(x$table[[1]]), "'", collapse = "\n")
-      )
-    }
-  }
+
+  message(
+    "Possible effects are:\n",
+    paste0(1:nrow(x$table[[1]]), ": '", rownames(x$table[[1]]), "'", collapse = "\n")
+  )
 
   if (is.numeric(effect)) {
     effect <- rownames(x$table[[1]])[effect]
