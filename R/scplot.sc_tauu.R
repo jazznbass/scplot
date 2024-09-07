@@ -35,7 +35,7 @@ scplot.sc_tauu <- function(object, effect = 1, ...) {
   names(out) <- c("case", "Tau-U", "lower", "upper")
 
   footnote <- paste0("Note. The red line indicates the overall tau-u value of ",
-                     "the meta analysis and \nthe errorbars indicate the",
+                     "the meta analysis and \nthe errorbars indicate the ",
                      x$ci * 100, "% confidence intervall.")
 
   forestplot(
