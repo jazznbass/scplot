@@ -22,9 +22,7 @@ add_legend(
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{labels}{A character vector. Replaces the automatically build labels.
-When a vector element is NA, the corresponding element will not be replaced
-(e.g. c(NA, "Variable 2", NA, "Variable 4")).}
+\item{labels}{A Character vector with text labels.}
 
 \item{section_labels}{A character vector of length two. The labels for the
 lines section and phase section.}
@@ -38,7 +36,9 @@ two-element numeric vector)}
 
 \item{statlines}{If TRUE, a legend for the statlines is generated.}
 
-\item{phases}{If TRUE, a legend for the phases is generated.}
+\item{phases}{If TRUE, a legend for the phases is generated.
+Note that you also have to set the \code{set_panel} argument
+(e.g., \code{set_panel(fill = c("lightblue", "grey80"))}).}
 
 \item{title}{A list with text style parameters for the title.}
 
@@ -53,4 +53,26 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with chang
 }
 \description{
 Add a legend to an scplot
+}
+\examples{
+data(exampleAB_add, package = "scan")
+scplot(exampleAB_add) |>
+  set_dataline("depression") |>
+  add_statline("mean") |>
+  add_legend()
+
+scplot(exampleAB_add) |>
+  set_dataline(label = "Pychological Wellbeing") |>
+  set_dataline("depression", color = "darkblue", label = "Depression") |>
+  add_statline("mean", label = "Wellbeing mean") |>
+  add_statline("mean", variable = "depression", label = "Depression mean") |>
+  set_phasenames(color = NA) |>
+  set_panel(fill = c("lightblue", "grey80")) |>
+  add_legend(
+    position = "left",
+    section_labels = c("Variables", "Section"),
+    title = list(color = "brown", size = 10, face = 2),
+    text = list(color = "darkgreen", size = 10, face = 2),
+    background = list(color = "lightgrey")
+  )
 }

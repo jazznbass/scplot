@@ -1,150 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/example_plots.html</loc>
-  </url>
-  <url>
-    <loc>/articles/examples.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_arrow.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_dataline.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_grid.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_labels.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_legend.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_line.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_marks.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_ridge.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_statline.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_text.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_theme.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_title.html</loc>
-  </url>
-  <url>
-    <loc>/reference/as_ggplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-inheritParams.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-inherit_scplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/element_point.html</loc>
-  </url>
-  <url>
-    <loc>/reference/extract_theme.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/new_theme.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot.sc_hplm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot.sc_rand.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot.sc_tauu.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.scplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>/reference/scplot-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/scplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/scplot.sc_hplm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/scplot.sc_rand.html</loc>
-  </url>
-  <url>
-    <loc>/reference/scplot.sc_tauu.html</loc>
-  </url>
-  <url>
-    <loc>/reference/scplot.scdf.html</loc>
-  </url>
-  <url>
-    <loc>/reference/scplot_theme.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_background.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_base_text.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_casenames.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_dataline.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_phasenames.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_separator.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_theme.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_theme_element.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_xaxis.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_xlabel.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/example_plots.html</loc></url>
+<url><loc>/articles/examples.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/add_arrow.html</loc></url>
+<url><loc>/reference/add_grid.html</loc></url>
+<url><loc>/reference/add_labels.html</loc></url>
+<url><loc>/reference/add_legend.html</loc></url>
+<url><loc>/reference/add_line.html</loc></url>
+<url><loc>/reference/add_marks.html</loc></url>
+<url><loc>/reference/add_ridge.html</loc></url>
+<url><loc>/reference/add_statline.html</loc></url>
+<url><loc>/reference/add_text.html</loc></url>
+<url><loc>/reference/add_title.html</loc></url>
+<url><loc>/reference/as_ggplot.html</loc></url>
+<url><loc>/reference/dot-inheritParams.html</loc></url>
+<url><loc>/reference/dot-inherit_scplot.html</loc></url>
+<url><loc>/reference/element_point.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/new_theme.html</loc></url>
+<url><loc>/reference/plot.sc_hplm.html</loc></url>
+<url><loc>/reference/plot.sc_rand.html</loc></url>
+<url><loc>/reference/plot.sc_tauu.html</loc></url>
+<url><loc>/reference/print.scplot.html</loc></url>
+<url><loc>/reference/reexports.html</loc></url>
+<url><loc>/reference/scplot-package.html</loc></url>
+<url><loc>/reference/scplot.sc_hplm.html</loc></url>
+<url><loc>/reference/scplot.sc_rand.html</loc></url>
+<url><loc>/reference/scplot.sc_tauu.html</loc></url>
+<url><loc>/reference/scplot.scdf.html</loc></url>
+<url><loc>/reference/scplot_theme.html</loc></url>
+<url><loc>/reference/set_background.html</loc></url>
+<url><loc>/reference/set_base_text.html</loc></url>
+<url><loc>/reference/set_casenames.html</loc></url>
+<url><loc>/reference/set_dataline.html</loc></url>
+<url><loc>/reference/set_phasenames.html</loc></url>
+<url><loc>/reference/set_separator.html</loc></url>
+<url><loc>/reference/set_theme.html</loc></url>
+<url><loc>/reference/set_theme_element.html</loc></url>
+<url><loc>/reference/set_xaxis.html</loc></url>
+<url><loc>/reference/set_xlabel.html</loc></url>
 </urlset>
+

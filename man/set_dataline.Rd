@@ -5,7 +5,15 @@
 \alias{add_dataline}
 \title{Set data lines of an scplot}
 \usage{
-set_dataline(object, variable = NULL, line, point, type = "continuous", ...)
+set_dataline(
+  object,
+  variable = NULL,
+  line,
+  point,
+  type = "continuous",
+  label = NULL,
+  ...
+)
 
 add_dataline(...)
 }
@@ -23,6 +31,8 @@ left empty, the aesthetics of the default data line are changed.}
 
 \item{type}{Either "continuous" or "discrete"}
 
+\item{label}{A character string which is used to set the label in a legend.}
+
 \item{...}{As a shortcut, arguments passed hear are bundled as \code{line}
 arguments (see \code{\link[=element_line]{element_line()}}).}
 }
@@ -35,7 +45,7 @@ Either set aesthetics of the default data line or add another data line.
 }
 \examples{
 data(exampleAB_add, package = "scan")
-p1 <- scplot(exampleAB_add)  |>
+scplot(exampleAB_add)  |>
   set_dataline("depression", color = "darkblue")
 }
 \seealso{

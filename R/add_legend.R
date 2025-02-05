@@ -6,14 +6,34 @@
 #' @param datalines If TRUE, a legend for the datalines is generated.
 #' @param statlines If TRUE, a legend for the statlines is generated.
 #' @param phases If TRUE, a legend for the phases is generated.
-#' @param labels A character vector. Replaces the automatically build labels.
-#'   When a vector element is NA, the corresponding element will not be replaced
-#'   (e.g. c(NA, "Variable 2", NA, "Variable 4")).
+#'  Note that you also have to set the `set_panel` argument
+#'  (e.g., `set_panel(fill = c("lightblue", "grey80"))`).
 #' @param section_labels A character vector of length two. The labels for the
 #'   lines section and phase section.
 #' @param title A list with text style parameters for the title.
 #' @return An object of class `scplot` (see[scplot()]) with changed element
 #'   `legend`.
+#' @examples
+#' data(exampleAB_add, package = "scan")
+#' scplot(exampleAB_add) |>
+#'   set_dataline("depression") |>
+#'   add_statline("mean") |>
+#'   add_legend()
+#'
+#' scplot(exampleAB_add) |>
+#'   set_dataline(label = "Pychological Wellbeing") |>
+#'   set_dataline("depression", color = "darkblue", label = "Depression") |>
+#'   add_statline("mean", label = "Wellbeing mean") |>
+#'   add_statline("mean", variable = "depression", label = "Depression mean") |>
+#'   set_phasenames(color = NA) |>
+#'   set_panel(fill = c("lightblue", "grey80")) |>
+#'   add_legend(
+#'     position = "left",
+#'     section_labels = c("Variables", "Section"),
+#'     title = list(color = "brown", size = 10, face = 2),
+#'     text = list(color = "darkgreen", size = 10, face = 2),
+#'     background = list(color = "lightgrey")
+#'   )
 #' @export
 add_legend <- function(object,
                        labels = NULL,
@@ -28,6 +48,9 @@ add_legend <- function(object,
                        background = NULL
 ) {
 
+  if (!is.null(labels)) warning("label argument is deprecated. Please set ",
+                                "label argument in the add_statline and ",
+                                "set_dataline functions.")
   object$legend$labels <- labels
   object$legend$section_labels <- section_labels
   object$legend$statlines <- statlines

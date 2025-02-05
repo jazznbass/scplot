@@ -1,5 +1,6 @@
 # scplot 0.4.0.999
 
+- New `label` argument for the `set_dataline()` and `add_statline()` arguments. This sets the characte string that is used in a legend.
 - New generic for `scplot()`.
 - New function `scplot.sc_rand()`: Create histogram or xy plots for rand_tests.
 - New function `scplot.sc_tauu()`: Create a forestplot for Tau-U analyses. `scplot(tau_u(Leidig2018), effect = "A vs. B - Trend A")`

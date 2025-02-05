@@ -4,7 +4,8 @@
 #' @param stat A character string for defining a statistical line or curve to be
 #'   plotted.
 #' @param phase Either a numeric or a character vector specifying the reference
-#'   phase (see details)
+#'   phase (see details).
+#' @param label A character string which is used to set the label in a legend.
 #' @param ... additional parameters passed to the statistical function.
 #' @details The `phase` argument defines the reference phase for some
 #'   statistical functions (`"median", "mean", "min", "max", "quantile"`). The
@@ -38,6 +39,7 @@ add_statline <- function(object,
                          linewidth = NULL,
                          linetype = NULL,
                          variable = NULL,
+                         label = NULL,
                          ...) {
 
   stat <- match.arg(stat)
@@ -80,7 +82,8 @@ add_statline <- function(object,
     phase = phase,
     args = args,
     #line = line,
-    variable = variable
+    variable = variable,
+    label = label
   )
 
   object$statlines <- c(object$statlines, list(new))
