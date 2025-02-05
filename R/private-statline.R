@@ -24,18 +24,16 @@
   dvar <- line$variable
   mvar <- attr(data, "mvar")
   pvar <- attr(data, "pvar")
-  label <- paste(fun, dvar)
 
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
   if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
 
   if (is.null(reference_phase)) {
-    return(.statline_constant_by_phase(data, line, fun, label))
+    return(.statline_constant_by_phase(data, line, fun, line$label))
   }
 
   if (is.numeric(reference_phase))
     reference_phase <- levels(data$phase)[reference_phase]
-
 
   dat_stat <- data[data$phase %in% reference_phase,]  |>
     split(~case) |>
@@ -46,7 +44,7 @@
 
   data <- merge(data, dat_stat, by = "case", all = TRUE, sort = FALSE)
 
-  .statline_geom(data, line$line, label = label)
+  .statline_geom(data, line$line, label = line$label)
 }
 
 .statline_trend_by_phase <- function(data, line) {
@@ -57,8 +55,6 @@
   data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (is.null(line$args$method)) line$args$method <- "lm"
-
-  label <- paste(line$stat, dvar)
 
   dat_stat <- data  |>
     split(~case + phase) |>
@@ -84,7 +80,7 @@
     data[filter, "y"] <- data$mt[filter] * b + int
   }
 
-  .statline_geom_phase(data, line$line, label = label)
+  .statline_geom_phase(data, line$line, label = line$label)
 }
 
 .statline_continuous <- function(data, line, fun) {
@@ -208,9 +204,7 @@
     data$y[filter] <- do.call(func, c(list(data[filter, ]), line$args))
   }
 
-  label <- paste(fun, dvar)
-
-  .statline_geom(data, line$line, label = label)
+  .statline_geom(data, line$line, label = line$label)
 
 }
 

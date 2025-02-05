@@ -71,6 +71,32 @@ as_ggplot <- function(scplot) {
 
   scplot$datalines[[1]]$variable <- scplot$dvar[1]
 
+  # set data and statline labels for legend -----
+
+  for (i in seq_along(scplot$datalines)) {
+    if (is.null(scplot$datalines[[i]]$label)) {
+      scplot$datalines[[i]]$label <- scplot$datalines[[i]]$variable
+    }
+  }
+
+  for (i in seq_along(scplot$statlines)) {
+
+    if (is.null(scplot$statlines[[i]]$label)) {
+      if (identical(scplot$statlines[[i]]$variable, ".dvar")) {
+        scplot$statlines[[i]]$variable <- dvar[1]
+      }
+      scplot$statlines[[i]]$label <-paste(
+        scplot$statlines[[i]]$stat,
+        scplot$statlines[[i]]$variable
+      )
+    }
+
+  }
+
+
+
+
+
   # set x/y label --------
 
   if (is.null(scplot$xlabel)) {
@@ -232,17 +258,16 @@ as_ggplot <- function(scplot) {
 
   # add dataline and points ---------------------------
 
-  for (i in 1:length(scplot$datalines)) {
+  for (i in seq_along(scplot$datalines)) {
     if(scplot$datalines[[i]]$type == "continuous") {
       p <- p + geom_line(
         aes(
           y = !!as.name(scplot$datalines[[i]]$variable),
           group = !!as.name(pvar),
-          colour = !!theme$dataline[[i]]$colour
+          colour = !!scplot$datalines[[i]]$label
         ),
         linewidth = theme$dataline[[i]]$linewidth,
         linetype = theme$dataline[[i]]$linetype
-        #na.rm = TRUE
       )
     }
 
@@ -251,7 +276,7 @@ as_ggplot <- function(scplot) {
         aes(
           y = !!as.name(scplot$datalines[[i]]$variable),
           group = !!as.name(pvar),
-          colour = !!theme$dataline[[i]]$colour
+          colour = !!scplot$datalines[[i]]$label#!!theme$dataline[[i]]$colour
         ),
         linewidth = theme$dataline[[i]]$linewidth,
         linetype = theme$dataline[[i]]$linetype
@@ -264,7 +289,7 @@ as_ggplot <- function(scplot) {
         aes(
           #x = factor(!!sym(mvar)),
           y = !!as.name(scplot$datalines[[i]]$variable),
-          colour = !!theme$dataline[[i]]$colour
+          colour = !!scplot$datalines[[i]]$label#!!theme$dataline[[i]]$colour
         ),
         #fill = theme$dataline[[i]]$colour,
         stat = "identity",
@@ -679,44 +704,25 @@ as_ggplot <- function(scplot) {
   # add legend ------
 
   .color <- unlist(
-    lapply(theme$dataline[1:length(scplot$datalines)], function(x) x$colour)
+    lapply(theme$dataline[seq_along(scplot$datalines)], function(x) x$colour)
   )
-  .color <- setNames(.color, .color)
-  labels <- unlist(lapply(scplot$datalines, function(x) x$variable))
+
+  labels <- unlist(lapply(scplot$datalines, function(x) x$label))
 
   if (!is.null(scplot$statlines)) {
-    labels_statlines <-
-      paste(
-        unlist(lapply(scplot$statlines, function(x) x$stat)),
-        unlist(lapply(scplot$statlines, function(x) x$variable))
-      )
 
+    labels_statlines <- unlist(lapply(scplot$statlines, function(x) x$label))
     labels <- c(labels, labels_statlines)
-
     .color <- c(
       .color,
-      setNames(
-        unlist(
-          lapply(
-            theme$statline[1:length(scplot$statlines)],
-            function(x) x$colour
-          )
-        ),
-        labels_statlines
+      unlist(
+        lapply(theme$statline[seq_along(scplot$statlines)], function(x) x$colour)
       )
     )
+
   }
 
-  if (!is.null(scplot$legend$labels)) {
-    .ids <- which(!is.na(scplot$legend$labels))
-    labels[.ids] <- scplot$legend$labels[.ids]
-  }
-
-  p <- p +
-    scale_colour_manual(
-      values = .color,
-      labels = labels
-    )
+  p <- p + scale_colour_manual(values = setNames(.color, labels))
 
   if (!is.null(scplot$legend)) {
     p <- p +
