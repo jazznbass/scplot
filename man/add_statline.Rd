@@ -13,6 +13,7 @@ add_statline(
   linewidth = NULL,
   linetype = NULL,
   variable = NULL,
+  label = NULL,
   ...
 )
 }
@@ -24,7 +25,7 @@ function.}
 plotted.}
 
 \item{phase}{Either a numeric or a character vector specifying the reference
-phase (see details)}
+phase (see details).}
 
 \item{color}{A character string or a number defining the color of an element.}
 
@@ -33,6 +34,8 @@ phase (see details)}
 \item{linetype}{A character string with the line type: \verb{"solid", "dashed", "dotted"}}
 
 \item{variable}{Name of the dataline variable to apply the style.}
+
+\item{label}{A character string which is used to set the label in a legend.}
 
 \item{...}{additional parameters passed to the statistical function.}
 }
