@@ -6,6 +6,7 @@
 #' @param variable String. The name of a new variable for adding a new line. If
 #'   left empty, the aesthetics of the default data line are changed.
 #' @param type Either "continuous" or "discrete"
+#' @param label A character string which is used to set the label in a legend.
 #' @param ... As a shortcut, arguments passed hear are bundled as `line`
 #'   arguments (see [element_line()]).
 #' @return An object of class `scplot` (see[scplot()]) with a changed `datalines`
@@ -13,7 +14,7 @@
 #' @seealso [element_line()], [element_point()]
 #' @examples
 #' data(exampleAB_add, package = "scan")
-#' p1 <- scplot(exampleAB_add)  |>
+#' scplot(exampleAB_add)  |>
 #'   set_dataline("depression", color = "darkblue")
 #' @export
 set_dataline <- function(object,
@@ -21,6 +22,7 @@ set_dataline <- function(object,
                          line,
                          point,
                          type = "continuous",
+                         label = NULL,
                          ...) {
 
   line_args <- list(...)
@@ -31,7 +33,7 @@ set_dataline <- function(object,
   if (missing(point)) point <- list()
 
   if (identical(variable, ".dvar") || is.null(variable)) {
-    return(.set_dataline(object, variable, line, point, type))
+    return(.set_dataline(object, variable, line, point, type, label))
   }
 
   n_lines <- length(object$datalines)
@@ -44,7 +46,7 @@ set_dataline <- function(object,
     if (is.null(point$colour)) point$colour <- line$colour
   }
 
-  new_line <- list(variable = variable, type = type)
+  new_line <- list(variable = variable, type = type, label = label)
 
   object$dvar <- c(object$dvar, variable)
   object$datalines <- c(object$datalines, list(new_line))
@@ -60,20 +62,22 @@ set_dataline <- function(object,
                           variable,
                           line,
                           point,
-                          type) {
+                          type,
+                          label) {
 
-  id <- 1
-  object$datalines[[id]]$type <- type
+  object$datalines[[1]]$type <- type
+  if (!is.null(label))
+    object$datalines[[1]]$label <- label
 
-  object$theme$dataline[[id]] <- .merge_element(
-    line, object$theme$dataline[[id]]
+  object$theme$dataline[[1]] <- .merge_element(
+    line, object$theme$dataline[[1]]
   )
 
   if (!identical(point, "none")) {
-    point <- .merge_element(point, object$theme$datapoint[[id]])
+    point <- .merge_element(point, object$theme$datapoint[[1]])
   }
 
-  object$theme$datapoint[[id]] <- point
+  object$theme$datapoint[[1]] <- point
 
   object
 }
