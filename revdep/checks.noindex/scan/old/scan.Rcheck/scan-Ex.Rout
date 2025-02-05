@@ -1,0 +1,3205 @@
+
+R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "scan"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('scan')
+[34mscan 0.61.0 (2024-06-30)
+[31mPost issues at https://github.com/jazznbass/scan/issues
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("add_l2")
+> ### * add_l2
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_l2
+> ### Title: Add level-2 data
+> ### Aliases: add_l2
+> ### Keywords: transform
+> 
+> ### ** Examples
+> 
+> Leidig2018 %>% add_l2(Leidig2018_l2)
+#A single-case data frame with 35 cases
+
+ 1a1: mt academic_engagement classID weekday disruptive_behavior phase class
+       1                   4      1a       3                   1     A    1a
+       2                   1      1a       4                   1     A    1a
+       3                   2      1a       5                   1     A    1a
+       4                <NA>      1a       1                <NA>     A    1a
+       5                   2      1a       2                   1     A    1a
+       6                   3      1a       3                   1     A    1a
+       7                   1      1a       4                   1     A    1a
+       8                   1      1a       5                   2     A    1a
+       9                   3      1a       1                   0     B    1a
+      10                   4      1a       2                   0     B    1a
+      11                   3      1a       3                   0     B    1a
+      12                   4      1a       4                   1     B    1a
+      13                   4      1a       5                   0     B    1a
+      14                   4      1a       1                   0     B    1a
+      15                   4      1a       2                   0     B    1a
+ gender migration first_language_german SDQ_TOTAL SDQ_EXTERNALIZING
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+      0         0                     1        10                 9
+ SDQ_INTERNALIZING ITRF_TOTAL ITRF_ACADEMIC ITRF_BEHAVIOR
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+                 1         11             7             4
+# ... up to 93 more rows
+#  34 more cases
+> 
+> 
+> 
+> cleanEx()
+> nameEx("as.data.frame.scdf")
+> ### * as.data.frame.scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: as.data.frame.scdf
+> ### Title: Creating a long format data frame from several single-case data
+> ###   frames (scdf).
+> ### Aliases: as.data.frame.scdf
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> 
+> ## Convert the list of three single-case data frames from Grosche (2011)
+> ### into one long data frame
+> Grosche2011
+#A single-case data frame with three cases
+
+ Eva: values mt phase | Georg: values mt phase | Olaf: values mt phase |
+        3.39  0     A |            13  0     A |         7.69  0     A |
+        2.09  1     A |          17.4  1     A |         7.27  1     A |
+        1.46  7     A |            13  6     A |         7.02  7     A |
+        3.23  8     A |          7.74 10     A |         5.37  8     A |
+        3.06 13     A |          8.82 13     A |         4.57 14     A |
+        2.83 15     A |           7.5 15     A |         3.02 15     A |
+        2.44 38     B |          5.82 36     A |         4.68 38     A |
+        1.86 42     B |          6.26 38     B |         4.97 42     A |
+        2.17 45     B |           5.6 41     B |         5.73 43     A |
+        2.59 49     B |         12.79 43     B |         7.63 49     A |
+        3.92 50     B |          9.17 48     B |         6.98 50     A |
+        4.14 56     B |         10.59 50     B |          7.5 56     A |
+        3.31 63     B |          9.23 55     B |         6.91 59     B |
+        2.69 64     B |         10.71 59     B |         4.86 63     B |
+        4.27 70     B |          7.61 62     B |         6.71 64     B |
+# ... up to nine more rows
+> Grosche2011_long <- as.data.frame(Grosche2011)
+> Grosche2011_long
+    case values  mt phase
+1    Eva   3.39   0     A
+2    Eva   2.09   1     A
+3    Eva   1.46   7     A
+4    Eva   3.23   8     A
+5    Eva   3.06  13     A
+6    Eva   2.83  15     A
+7    Eva   2.44  38     B
+8    Eva   1.86  42     B
+9    Eva   2.17  45     B
+10   Eva   2.59  49     B
+11   Eva   3.92  50     B
+12   Eva   4.14  56     B
+13   Eva   3.31  63     B
+14   Eva   2.69  64     B
+15   Eva   4.27  70     B
+16   Eva   4.66  77     B
+17   Eva   3.20  78     B
+18   Eva   4.98  91     B
+19   Eva   4.42  92     B
+20 Georg  13.00   0     A
+21 Georg  17.40   1     A
+22 Georg  13.00   6     A
+23 Georg   7.74  10     A
+24 Georg   8.82  13     A
+25 Georg   7.50  15     A
+26 Georg   5.82  36     A
+27 Georg   6.26  38     B
+28 Georg   5.60  41     B
+29 Georg  12.79  43     B
+30 Georg   9.17  48     B
+31 Georg  10.59  50     B
+32 Georg   9.23  55     B
+33 Georg  10.71  59     B
+34 Georg   7.61  62     B
+35 Georg   9.78  64     B
+36 Georg   8.33  69     B
+37 Georg  12.00  71     B
+38 Georg  12.19  77     B
+39 Georg  10.70  78     B
+40 Georg  11.36  85     B
+41 Georg   7.89  91     B
+42 Georg  10.82  94     B
+43 Georg  11.56 101     B
+44  Olaf   7.69   0     A
+45  Olaf   7.27   1     A
+46  Olaf   7.02   7     A
+47  Olaf   5.37   8     A
+48  Olaf   4.57  14     A
+49  Olaf   3.02  15     A
+50  Olaf   4.68  38     A
+51  Olaf   4.97  42     A
+52  Olaf   5.73  43     A
+53  Olaf   7.63  49     A
+54  Olaf   6.98  50     A
+55  Olaf   7.50  56     A
+56  Olaf   6.91  59     B
+57  Olaf   4.86  63     B
+58  Olaf   6.71  64     B
+59  Olaf   5.67  70     B
+60  Olaf   5.00  71     B
+61  Olaf   6.14  80     B
+62  Olaf   8.14  91     B
+63  Olaf   4.53  97     B
+> 
+> ## Combine an scdf with data for l2
+> Leidig2018_long <- as.data.frame(Leidig2018, l2 = Leidig2018_l2)
+> names(Leidig2018_long)
+ [1] "case"                  "mt"                    "academic_engagement"  
+ [4] "classID"               "weekday"               "disruptive_behavior"  
+ [7] "phase"                 "class"                 "gender"               
+[10] "migration"             "first_language_german" "SDQ_TOTAL"            
+[13] "SDQ_EXTERNALIZING"     "SDQ_INTERNALIZING"     "ITRF_TOTAL"           
+[16] "ITRF_ACADEMIC"         "ITRF_BEHAVIOR"        
+> summary(Leidig2018_long)
+      case            mt         academic_engagement   classID         
+ 1a1    : 108   Min.   :  1.00   Min.   :0.0         Length:3780       
+ 1a2    : 108   1st Qu.: 27.75   1st Qu.:3.0         Class :character  
+ 1a3    : 108   Median : 54.50   Median :4.0         Mode  :character  
+ 1a4    : 108   Mean   : 54.50   Mean   :3.7                           
+ 1a5    : 108   3rd Qu.: 81.25   3rd Qu.:5.0                           
+ 2a1    : 108   Max.   :108.00   Max.   :5.0                           
+ (Other):3132                    NA's   :1366                          
+    weekday      disruptive_behavior phase       class          
+ Min.   :1.000   Min.   :0.0000      A: 730   Length:3780       
+ 1st Qu.:2.000   1st Qu.:0.0000      B:3050   Class :character  
+ Median :3.000   Median :0.0000               Mode  :character  
+ Mean   :3.028   Mean   :0.6192                                 
+ 3rd Qu.:4.000   3rd Qu.:1.0000                                 
+ Max.   :5.000   Max.   :4.0000                                 
+                 NA's   :1393                                   
+     gender         migration      first_language_german   SDQ_TOTAL    
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000        Min.   : 4.00  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000        1st Qu.: 8.00  
+ Median :0.0000   Median :1.0000   Median :1.0000        Median :11.00  
+ Mean   :0.1429   Mean   :0.5429   Mean   :0.7429        Mean   :11.46  
+ 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:1.0000        3rd Qu.:14.00  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000        Max.   :22.00  
+                                                                        
+ SDQ_EXTERNALIZING SDQ_INTERNALIZING   ITRF_TOTAL   ITRF_ACADEMIC   
+ Min.   : 3.000    Min.   : 0.0      Min.   : 3.0   Min.   : 0.000  
+ 1st Qu.: 6.000    1st Qu.: 1.0      1st Qu.:12.0   1st Qu.: 2.000  
+ Median : 9.000    Median : 2.0      Median :16.0   Median : 9.000  
+ Mean   : 8.857    Mean   : 2.6      Mean   :17.4   Mean   : 9.286  
+ 3rd Qu.:11.000    3rd Qu.: 3.0      3rd Qu.:23.0   3rd Qu.:16.000  
+ Max.   :18.000    Max.   :10.0      Max.   :35.0   Max.   :24.000  
+                                                                    
+ ITRF_BEHAVIOR   
+ Min.   : 0.000  
+ 1st Qu.: 4.000  
+ Median : 7.000  
+ Mean   : 8.114  
+ 3rd Qu.:11.000  
+ Max.   :20.000  
+                 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("autocorr")
+> ### * autocorr
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: autocorr
+> ### Title: Autocorrelation for single-case data
+> ### Aliases: autocorr
+> ### Keywords: regression
+> 
+> ### ** Examples
+> 
+> ## Compute autocorrelations for a list of four single-cases up to lag 2.
+> autocorr(Huber2014, lag_max = 2)
+Autocorrelations
+
+Adam 
+ Phase Lag 1 Lag 2
+     A  0.18 -0.40
+     B  0.00 -0.16
+   all  0.26 -0.02
+
+Berta 
+ Phase Lag 1 Lag 2
+     A  0.08 -0.52
+     B  0.07 -0.36
+   all  0.30 -0.01
+
+Christian 
+ Phase Lag 1 Lag 2
+     A -0.07 -0.24
+     B  0.53  0.40
+   all  0.64  0.55
+
+David 
+ Phase Lag 1 Lag 2
+     A -0.40 -0.25
+     B  0.27  0.35
+   all  0.45  0.47
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("batch_apply")
+> ### * batch_apply
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: batch_apply
+> ### Title: Apply a function to each element in an scdf.
+> ### Aliases: batch_apply
+> 
+> ### ** Examples
+> 
+> batch_apply(exampleAB, coef(plm(.)))
+$Johanna
+             Estimate Std. Error     t value     Pr(>|t|)
+(Intercept) 54.400000   3.889690 13.98569074 2.173001e-10
+mt           0.100000   1.587959  0.06297391 9.505673e-01
+phaseB       7.858333   5.816499  1.35104178 1.954791e-01
+interB       1.525000   1.616067  0.94364905 3.593813e-01
+
+$Karolina
+              Estimate Std. Error    t value     Pr(>|t|)
+(Intercept) 49.0000000   4.098328 11.9560945 2.169640e-09
+mt           1.4000000   1.673136  0.8367523 4.150550e-01
+phaseB       3.8916667   6.128489  0.6350124 5.343967e-01
+interB       0.5392857   1.702751  0.3167144 7.555551e-01
+
+$Anja
+            Estimate Std. Error    t value     Pr(>|t|)
+(Intercept) 56.40000   4.250294 13.2696700 4.729808e-10
+mt          -1.40000   1.735175 -0.8068349 4.315923e-01
+phaseB      16.96667   6.355733  2.6695057 1.678721e-02
+interB       2.50000   1.765889  1.4157177 1.760295e-01
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cdc")
+> ### * cdc
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cdc
+> ### Title: Conservative Dual-Criterion Method
+> ### Aliases: cdc
+> ### Keywords: overlap
+> 
+> ### ** Examples
+> 
+> 
+> ## Apply the CDC method (standard OLS line)
+> design <- design(n = 1, slope = 0.2)
+> dat <- random_scdf(design, seed = 42)
+> cdc(dat)
+Conservative Dual Criterion
+
+N cases =  1 
+
+  Case nB improve nB binom p    CDC Evaluation
+ Case1         14 15   <.001 systematic change
+
+Assuming an expected increase in phase B.
+Alternative hypothesis (Binomial test): true probability > 50%
+> 
+> ## Apply the CDC with Koenig's bi-split and an expected decrease in phase B.
+> cdc(exampleAB_decreasing, decreasing = TRUE, trend_method = "bisplit")
+Conservative Dual Criterion
+
+N cases =  3 
+
+  Case nB improve nB binom p    CDC Evaluation
+ Peter          7 13     .50         no change
+  Tony         11 12    <.01 systematic change
+ Bruce         14 14   <.001 systematic change
+
+Assuming an expected decrease in phase B.
+Alternative hypothesis (Binomial test): true probability < 50%
+Overall evaluation of all MBD instances:   no change 
+> 
+> ## Apply the CDC with Tukey's tri-split, comparing the first and fourth phase
+> cdc(exampleABAB, trend_method = "trisplit", phases = c(1,4))
+Conservative Dual Criterion
+
+N cases =  3 
+
+    Case nB improve nB binom p    CDC Evaluation
+  Howard         10 10   <.001 systematic change
+ Sheldon          4 10     .82         no change
+ Leonard          7  7    <.01 systematic change
+
+Assuming an expected increase in phase B.
+Alternative hypothesis (Binomial test): true probability > 50%
+Overall evaluation of all MBD instances:   no change 
+> 
+> ## Apply the Dual-Criterion (DC) method (i.e., mean and trend without
+> ##shifting).
+> cdc(
++  exampleAB_decreasing,
++  decreasing = TRUE,
++  trend_method = "bisplit",
++  conservative = 0
++ )
+Conservative Dual Criterion
+
+N cases =  3 
+
+  Case nB improve nB binom p    CDC Evaluation
+ Peter          7 13     .50         no change
+  Tony         12 12   <.001 systematic change
+ Bruce         14 14   <.001 systematic change
+
+Assuming an expected decrease in phase B.
+Alternative hypothesis (Binomial test): true probability < 50%
+Overall evaluation of all MBD instances:   no change 
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("coef.sc_plm")
+> ### * coef.sc_plm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: coef.sc_plm
+> ### Title: Extract coefficients from plm/hplm objects
+> ### Aliases: coef.sc_plm
+> 
+> ### ** Examples
+> 
+> coefficients(plm(exampleAB$Johanna))
+             Estimate Std. Error     t value     Pr(>|t|)
+(Intercept) 54.400000   3.889690 13.98569074 2.173001e-10
+mt           0.100000   1.587959  0.06297391 9.505673e-01
+phaseB       7.858333   5.816499  1.35104178 1.954791e-01
+interB       1.525000   1.616067  0.94364905 3.593813e-01
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("convert")
+> ### * convert
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: convert
+> ### Title: Convert
+> ### Aliases: convert
+> ### Keywords: io
+> 
+> ### ** Examples
+> 
+> filename <- tempfile()
+> convert(exampleABC, file = filename)
+case1 <- scdf(
+  values = c(
+    58, 56, 60, 63, 51, 45, 44, 59, 45, 39, 83, 65, 70, 83, 70, 85, 47, 66,
+    77, 75, 51, 87, 80, 68, 70, 56, 52, 70, 83, 63
+  ),
+  phase_design = c(A = 10, B = 10, C = 10),
+  name = "Marie"
+)
+
+case2 <- scdf(
+  values = c(
+    47, 41, 47, 52, 54, 65, 55, 37, 51, 60, 60, 65, 55, 46, 49, 54, 77, 73,
+    97, 64, 84, 71, 66, 74, 78, 68, 52, 76, 63, 54
+  ),
+  phase_design = c(A = 15, B = 8, C = 7),
+  name = "Rosalind"
+)
+
+case3 <- scdf(
+  values = c(
+    50, 45, 63, 53, 66, 57, 35, 45, 74, 63, 47, 45, 47, 36, 51, 55, 35, 66,
+    59, 55, 73, 60, 85, 62, 79, 69, 87, 76, 90, 48
+  ),
+  phase_design = c(A = 20, B = 7, C = 3),
+  name = "Lise"
+)
+
+study <- c(
+  case1, case2, case3
+) 
+> source(filename)
+> all.equal(study, exampleABC)
+[1] TRUE
+> unlink(filename)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("corrected_tau")
+> ### * corrected_tau
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: corrected_tau
+> ### Title: Baseline corrected tau
+> ### Aliases: corrected_tau
+> 
+> ### ** Examples
+> 
+> dat <- scdf(c(A = 33,25,17,25,14,13,15, B = 15,16,16,5,7,9,6,5,3,3,8,11,7))
+> corrected_tau(dat)
+Baseline corrected tau
+
+Method: Theil-Sen regression
+Kendall's tau b applied.
+Continuity correction not applied.
+
+Case1 :
+                           tau     z     p
+Baseline autocorrelation -0.68 -2.13  <.05
+Uncorrected tau          -0.57 -2.94  <.01
+Baseline corrected tau    0.70  3.61 <.001
+
+Baseline correction should be applied.
+
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("describe")
+> ### * describe
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: describe
+> ### Title: Descriptive statistics for single-case data
+> ### Aliases: describe
+> 
+> ### ** Examples
+> 
+> 
+> ## Descriptive statistics for a study of three single-cases
+> describe(Grosche2011)
+Describe Single-Case Data
+
+       Eva Georg Olaf
+Design A-B   A-B  A-B
+n.A      6     7   12
+n.B     13    17    8
+mis.A    0     0    0
+mis.B    0     0    0
+
+           Eva  Georg   Olaf
+m.A      2.677 10.469  6.036
+m.B      3.435  9.799  5.995
+md.A     2.945  8.820  6.355
+md.B     3.310 10.590  5.905
+sd.A     0.750  4.112  1.524
+sd.B     1.029  2.089  1.225
+mad.A    0.541  4.448  1.794
+mad.B    1.290  2.090  1.416
+min.A     1.46   5.82   3.02
+min.B     1.86   5.60   4.53
+max.A     3.39  17.40   7.69
+max.B     4.98  12.79   8.14
+trend.A  0.014 -0.268  0.007
+trend.B  0.044  0.043  0.000
+> 
+> ## Descriptives of a three phase design
+> describe(exampleABC)
+Describe Single-Case Data
+
+       Marie Rosalind  Lise
+Design A-B-C    A-B-C A-B-C
+n.A       10       15    20
+n.B       10        8     7
+n.C       10        7     3
+mis.A      0        0     0
+mis.B      0        0     0
+mis.C      0        0     0
+
+          Marie Rosalind    Lise
+m.A      52.000   52.267  52.350
+m.B      72.100   73.250  73.571
+m.C      68.000   66.429  71.333
+md.A       53.5     52.0    52.0
+md.B       72.5     72.0    73.0
+md.C         69       68      76
+sd.A      8.287    8.146  10.869
+sd.B     11.367   13.134  10.644
+sd.C     12.702   10.486  21.385
+mad.A    11.119    7.413  10.378
+mad.B    10.378   10.378  16.309
+mad.C    17.791   11.861  20.756
+min.A        39       37      35
+min.B        47       54      60
+min.C        51       52      48
+max.A        63       65      74
+max.B        85       97      87
+max.C        87       78      90
+trend.A  -1.915    0.500  -0.088
+trend.B  -0.612    0.643   1.929
+trend.C  -0.194   -2.929 -14.000
+> 
+> ## Write descriptive statistics to .csv-file
+> study <- describe(Waddell2011)
+> write.csv(study$descriptives, file = tempfile())
+> 
+> 
+> 
+> cleanEx()
+> nameEx("design")
+> ### * design
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: design
+> ### Title: Generate a single-case design matrix
+> ### Aliases: design
+> ### Keywords: datagen
+> 
+> ### ** Examples
+> 
+>  ## Create random single-case data and inspect it
+>  design <- design(
++    n = 3, rtt = 0.75, slope = 0.1, extreme_prop = 0.1,
++    missing_prop = 0.1
++  )
+>  dat <- random_scdf(design, round = 1, random.names = TRUE, seed = 123)
+>  describe(dat)
+Describe Single-Case Data
+
+       Case1 Case2 Case3
+Design   A-B   A-B   A-B
+n.A        5     5     5
+n.B       15    15    15
+mis.A      0     1     0
+mis.B      2     1     2
+
+         Case1  Case2  Case3
+m.A      51.12  50.00  54.36
+m.B     57.115 52.793 56.892
+md.A      50.4   49.2   52.6
+md.B     59.60  55.75  59.20
+sd.A     4.672  3.631  4.538
+sd.B    10.403 12.893  8.003
+mad.A    2.520  2.076  3.410
+mad.B    7.858 10.601  6.672
+min.A     46.8   46.5   50.3
+min.B     29.7   19.7   38.7
+max.A     59.0   55.1   61.8
+max.B     71.3   65.2   67.7
+trend.A   0.95   1.36   2.27
+trend.B  0.935  1.693  1.358
+> 
+>  ## And now have a look at poisson-distributed data
+>  design <- design(
++    n = 3, B_start = c(6, 10, 14), mt = c(12, 20, 22), start_value = 10,
++    distribution = "poisson", level = -5, missing_prop = 0.1
++  )
+>  dat <- random_scdf(design, seed = 1234)
+>  pand(dat, decreasing = TRUE)
+Percentage of all non-overlapping data
+
+Method: sort 
+
+PAND = 91.8%
+Φ =  0.836  ; Φ² =  0.699 
+
+49 measurements (23 Phase A, 26 Phase B) in 3 cases
+Overlapping data: n = 4 ; percentage = 8.2 
+
+2 x 2 Matrix of percentages
+         A    B total
+A     42.9  4.1  46.9
+B      4.1 49.0  53.1
+total 46.9 53.1 100.0
+
+2 x 2 Matrix of counts
+       A  B total
+A     21  2    23
+B      2 24    26
+total 23 26    49
+
+
+Chi-Squared test:
+X² = 34.256, df = 1, p = 0.000 
+
+Fisher exact test:
+Odds ratio = 99.881, p = 0.000 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("estimate_design")
+> ### * estimate_design
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: estimate_design
+> ### Title: Estimate single-case design
+> ### Aliases: estimate_design
+> 
+> ### ** Examples
+> 
+> # create a random scdf with predefined parameters
+> set.seed(1234)
+> design <- design(
++   n = 10, trend = -0.02,
++   level = list(0, 1), rtt = 0.8,
++   s = 1
++ )
+> scdf<- random_scdf(design)
+> 
+> # Estimate the parameters based on the scdf and create a new random scdf
+> # based on these estimations
+> design_est <- estimate_design(scdf, rtt = 0.8)
+> scdf_est <- random_scdf(design_est)
+> 
+> # Analyze both datasets with an hplm model. See how similar the estimations
+> # are:
+> hplm(scdf, slope = FALSE)
+Hierarchical Piecewise Linear Regression
+
+Estimation method ML 
+Contrast model: W / level: first, slope: first
+10 Cases
+
+ICC = 0.004; L = 0.0; p = 0.870
+
+Fixed effects (values ~ 1 + mt + phaseB)
+
+                   B    SE  df       t     p
+Intercept     50.004 0.079 188 633.489 0.000
+Trend mt      -0.024 0.009 188  -2.579 0.011
+Level phase B  1.010 0.125 188   8.088 0.000
+
+Random effects (~1 | case)
+
+          EstimateSD
+Intercept      0.088
+Residual       0.501
+> hplm(scdf_est, slope = FALSE)
+Hierarchical Piecewise Linear Regression
+
+Estimation method ML 
+Contrast model: W / level: first, slope: first
+10 Cases
+
+ICC = 0.071; L = 5.4; p = 0.020
+
+Fixed effects (values ~ 1 + mt + phaseB)
+
+                   B    SE  df       t     p
+Intercept     50.068 0.120 188 416.805 0.000
+Trend mt      -0.028 0.012 188  -2.254 0.025
+Level phase B  1.011 0.165 188   6.125 0.000
+
+Random effects (~1 | case)
+
+          EstimateSD
+Intercept      0.220
+Residual       0.662
+> 
+> # Also similar results for pand and randomization tests:
+> pand(scdf)
+Percentage of all non-overlapping data
+
+Method: sort 
+
+PAND = 84%
+Φ =  0.573  ; Φ² =  0.329 
+
+200 measurements (50 Phase A, 150 Phase B) in 10 cases
+Overlapping data: n = 32 ; percentage = 16 
+
+2 x 2 Matrix of percentages
+       A  B total
+A     17  8    25
+B      8 67    75
+total 25 75   100
+
+2 x 2 Matrix of counts
+       A   B total
+A     34  16    50
+B     16 134   150
+total 50 150   200
+
+
+Chi-Squared test:
+X² = 65.742, df = 1, p = 0.000 
+
+Fisher exact test:
+Odds ratio = 17.393, p = 0.000 
+> pand(scdf_est)
+Percentage of all non-overlapping data
+
+Method: sort 
+
+PAND = 79%
+Φ =  0.44  ; Φ² =  0.194 
+
+200 measurements (50 Phase A, 150 Phase B) in 10 cases
+Overlapping data: n = 42 ; percentage = 21 
+
+2 x 2 Matrix of percentages
+         A    B total
+A     14.5 10.5    25
+B     10.5 64.5    75
+total 25.0 75.0   100
+
+2 x 2 Matrix of counts
+       A   B total
+A     29  21    50
+B     21 129   150
+total 50 150   200
+
+
+Chi-Squared test:
+X² = 38.720, df = 1, p = 0.000 
+
+Fisher exact test:
+Odds ratio = 8.360, p = 0.000 
+> rand_test(scdf)
+Randomization Test
+
+Combined test for 10 cases.
+
+Comparing phase 1 against phase 2 
+Statistic:  Mean B-A 
+
+Minimal length of each phase: A = 5 , B = 5 
+Observed statistic =  0.7679039 
+
+Distribution based on a random sample of all 25937424601 possible combinations.
+n   =  500 
+M   =  0.3085513 
+SD  =  0.06906004 
+Min =  0.1427584 
+Max =  0.5118563 
+
+Probability of an equal or higher value than the observed statistic:
+p   <  0.002 
+
+Shapiro-Wilk Normality Test: W = 0.994; p = 0.037  (Hypothesis of normality rejected)
+
+Probabilty of observed statistic based on the assumption of normality:
+z = 6.6515, p = 0.0000 (single sided)
+> rand_test(scdf_est)
+Randomization Test
+
+Combined test for 10 cases.
+
+Comparing phase 1 against phase 2 
+Statistic:  Mean B-A 
+
+Minimal length of each phase: A = 5 , B = 5 
+Observed statistic =  0.7314301 
+
+Distribution based on a random sample of all 25937424601 possible combinations.
+n   =  500 
+M   =  0.269875 
+SD  =  0.07922479 
+Min =  0.08001321 
+Max =  0.5456197 
+
+Probability of an equal or higher value than the observed statistic:
+p   <  0.002 
+
+Shapiro-Wilk Normality Test: W = 0.992; p = 0.013  (Hypothesis of normality rejected)
+
+Probabilty of observed statistic based on the assumption of normality:
+z = 5.8259, p = 0.0000 (single sided)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("fill_missing")
+> ### * fill_missing
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: fill_missing
+> ### Title: Replacing missing measurement times in single-case data
+> ### Aliases: fill_missing
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> 
+> ## In his study, Grosche (2011) could not realize measurements each
+> ## single week for all participants. During the course of 100 weeks,
+> ## about 20 measurements per person at different times were administered.
+> 
+> ## Fill missing values in a single-case dataset with discontinuous
+> ## measurement times
+> Grosche2011filled <- fill_missing(Grosche2011)
+> study <- c(Grosche2011[2], Grosche2011filled[2])
+> names(study) <- c("Original", "Filled")
+> plot(study)
+> 
+> ## Fill missing values in a single-case dataset that are NA
+> Maggie <- random_scdf(design(level = list(0,1)), seed = 123)
+> Maggie_n <- Maggie
+> replace.positions <- c(10,16,18)
+> Maggie_n[[1]][replace.positions,"values"] <- NA
+> Maggie_f <- fill_missing(Maggie_n)
+> study <- c(Maggie, Maggie_n, Maggie_f)
+> names(study) <- c("original", "missing", "interpolated")
+> plot(study, marks = list(positions = replace.positions), style = "grid2")
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("hplm")
+> ### * hplm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: hplm
+> ### Title: Hierarchical piecewise linear model / piecewise regression
+> ### Aliases: hplm print.sc_hplm export.sc_hplm coef.sc_hplm
+> 
+> ### ** Examples
+> 
+> 
+> ## Compute hplm model on a MBD over fifty cases (restricted log-likelihood)
+> hplm(exampleAB_50, method = "REML", random.slopes = FALSE)
+Hierarchical Piecewise Linear Regression
+
+Estimation method REML 
+Contrast model: W / level: first, slope: first
+50 Cases
+
+ICC = 0.292; L = 341.2; p = 0.000
+
+Fixed effects (values ~ 1 + mt + phaseB + interB)
+
+                   B    SE   df      t p
+Intercept     48.398 1.496 1328 32.351 0
+Trend mt       0.579 0.116 1328  5.007 0
+Level phase B 14.038 0.655 1328 21.442 0
+Slope phase B  0.902 0.119 1328  7.589 0
+
+Random effects (~1 | case)
+
+          EstimateSD
+Intercept     10.073
+Residual       5.290
+> 
+> ## Analyzing with additional L2 variables
+> Leidig2018 %>%
++   add_l2(Leidig2018_l2) %>%
++   hplm(update.fixed = .~. + gender + migration + ITRF_TOTAL*phaseB,
++        slope = FALSE, random.slopes = FALSE, lr.test = FALSE
++   )
+Hierarchical Piecewise Linear Regression
+
+Estimation method ML 
+Contrast model: W / level: first, slope: first
+35 Cases
+
+ICC = 0.344; L = 875.4; p = 0.000
+
+Fixed effects (academic_engagement ~ mt + phaseB + gender + migration + ITRF_TOTAL +     phaseB:ITRF_TOTAL)
+
+                              B    SE   df      t     p
+Intercept                 3.751 0.262 2376 14.302 0.000
+Trend mt                  0.004 0.001 2376  6.019 0.000
+Level phase B             0.667 0.098 2376  6.808 0.000
+gender                   -0.020 0.301   31 -0.067 0.947
+migration                -0.300 0.193   31 -1.556 0.130
+ITRF_TOTAL               -0.035 0.013   31 -2.674 0.012
+Level phase B:ITRF_TOTAL -0.001 0.005 2376 -0.279 0.780
+
+Random effects (~1 | case)
+
+          EstimateSD
+Intercept      0.557
+Residual       0.785
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("mplm")
+> ### * mplm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: mplm
+> ### Title: Multivariate Piecewise linear model / piecewise regression
+> ### Aliases: mplm print.sc_mplm
+> 
+> ### ** Examples
+> 
+> res <- mplm(Leidig2018$`1a1`,
++   dvar = c("academic_engagement", "disruptive_behavior")
++ )
+> print(res)
+Multivariate piecewise linear model
+
+Dummy model: W level = first, slope = first
+
+Coefficients: 
+              academic_engagement disruptive_behavior
+(Intercept)                 2.771              0.8493
+Trend                      -0.216              0.0822
+Level Phase B               2.340             -1.3898
+Slope Phase B               0.219             -0.0803
+
+Formula: y ~ 1 + mt + phaseB + interB
+
+Type III MANOVA Tests: Pillai test statistic
+              Df test stat approx F num Df den Df  Pr(>F)    
+(Intercept)    1    0.2841    15.48      2     78 2.2e-06 ***
+Trend          1    0.0317     1.28      2     78 0.28519    
+Level Phase B  1    0.1905     9.18      2     78 0.00026 ***
+Slope Phase B  1    0.0315     1.27      2     78 0.28737    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+The following variables were used in this analysis:
+'academic_engagement/ disruptive_behavior' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
+> ## also report standardized coefficients:
+> print(res, std = TRUE)
+Multivariate piecewise linear model
+
+Dummy model: W level = first, slope = first
+
+Coefficients: 
+              academic_engagement disruptive_behavior
+(Intercept)                 2.771              0.8493
+Trend                      -0.216              0.0822
+Level Phase B               2.340             -1.3898
+Slope Phase B               0.219             -0.0803
+
+Standardized coefficients: 
+              academic_engagement disruptive_behavior
+(Intercept)                 0.000               0.000
+Trend                      -5.979               5.107
+Level Phase B               0.576              -0.767
+Slope Phase B               5.950              -4.897
+
+Formula: y ~ 1 + mt + phaseB + interB
+
+Type III MANOVA Tests: Pillai test statistic
+              Df test stat approx F num Df den Df  Pr(>F)    
+(Intercept)    1    0.2841    15.48      2     78 2.2e-06 ***
+Trend          1    0.0317     1.28      2     78 0.28519    
+Level Phase B  1    0.1905     9.18      2     78 0.00026 ***
+Slope Phase B  1    0.0315     1.27      2     78 0.28737    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+The following variables were used in this analysis:
+'academic_engagement/ disruptive_behavior' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("nap")
+> ### * nap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: nap
+> ### Title: Nonoverlap of all Pairs
+> ### Aliases: nap
+> 
+> ### ** Examples
+> 
+> 
+> ## Calculate NAP for a study with  lower expected phase B scores
+> ## (e.g. aggressive behavior)
+> gretchen <- scdf(c(A = 12, 14, 9, 10, B = 10, 6, 4, 5, 3, 4))
+> nap(gretchen, decreasing = TRUE)
+Nonoverlap of All Pairs
+
+  Case NAP NAP Rescaled  w    p   d   R²
+ Case1  94           88 22 <.05 2.2 0.56
+> 
+> ## Request NAP for all cases from the Grosche2011 scdf
+> nap(Grosche2011)
+Nonoverlap of All Pairs
+
+  Case NAP NAP Rescaled  w   p      d     R²
+   Eva  69         38.5 24 .10  0.747 0.1223
+ Georg  48         -4.2 62 .57 -0.072 0.0013
+  Olaf  45        -10.4 53 .66 -0.176 0.0077
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("outlier")
+> ### * outlier
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: outlier
+> ### Title: Handling outliers in single-case data
+> ### Aliases: outlier
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> 
+> ## Identify outliers using 1.5 standard deviations as criterion
+> susanne <- random_scdf(level = 1.0)
+> res_outlier <- outlier(susanne, method = "SD", criteria = 1.5)
+> plot(susanne, marks = res_outlier)
+> 
+> ## Identify outliers in the original data from Grosche (2011)
+> ## using Cook's Distance greater than 4/n as criterion
+> res_outlier <- outlier(Grosche2011, method = "Cook", criteria = "4/n")
+> plot(Grosche2011, marks = res_outlier)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("overlap")
+> ### * overlap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: overlap
+> ### Title: Overlap indices for single-case data
+> ### Aliases: overlap
+> 
+> ### ** Examples
+> 
+> 
+> ## Display overlap indices for one single-case
+> overlap(Huitema2000, decreasing = TRUE)
+Overlap Indices
+
+Comparing phase 1 against phase 2 
+
+              Case1
+Design          A-B
+PND              40
+PEM              70
+PET             100
+NAP              70
+NAP rescaled     40
+PAND             60
+IRD             0.4
+Tau_U(A)      -0.51
+Tau_U(BA)     -0.69
+Base_Tau      -0.73
+Diff_mean     -20.4
+Diff_trend   -17.87
+SMD            -0.9
+Hedges_g      -0.71
+
+The following variables were used in this analysis:
+'score' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
+> 
+> ## Display overlap indices for six single-cases
+> overlap(GruenkeWilbert2014)
+Overlap Indices
+
+Comparing phase 1 against phase 2 
+
+             Anton   Bob  Paul Robert   Sam   Tim
+Design         A-B   A-B   A-B    A-B   A-B   A-B
+PND            100   100   100    100   100   100
+PEM            100   100   100    100   100   100
+PET            100   100   100    100   100   100
+NAP            100   100   100    100   100   100
+NAP rescaled   100   100   100    100   100   100
+PAND           100   100   100    100   100   100
+IRD              1     1     1      1     1     1
+Tau_U(A)      0.67  0.66  0.75   0.68  0.65  0.68
+Tau_U(BA)     0.48  0.57  0.60   0.49  0.51  0.35
+Base_Tau      0.67  0.77  0.75   0.77  0.72  0.66
+Diff_mean     4.14  5.82  5.00   4.78  4.48  6.00
+Diff_trend    0.43  0.00  0.28  -0.08 -0.07  0.60
+SMD           5.07  7.13  6.64   5.72  8.17  7.35
+Hedges_g      5.06  6.50  6.53   4.90  5.36  6.11
+
+The following variables were used in this analysis:
+'score' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
+> 
+> ## Combining phases for analyszing designs with more than two phases
+> overlap(exampleA1B1A2B2, phases = list(c("A1","A2"), c("B1","B2")))
+Overlap Indices
+
+Comparing phases A1 + A2 against phases B1 + B2 
+
+                   Pawel      Moritz      Jannis
+Design       A1-B1-A2-B2 A1-B1-A2-B2 A1-B1-A2-B2
+PND                   55          78          71
+PEM                  100         100         100
+PET                  100         100         100
+NAP                   94          97          98
+NAP rescaled          89          94          97
+PAND                  85          85          90
+IRD                 0.75        0.80        0.89
+Tau_U(A)            0.54        0.44        0.43
+Tau_U(BA)           0.45        0.46        0.38
+Base_Tau            0.65        0.68        0.68
+Diff_mean          12.25       13.58       15.27
+Diff_trend         -0.05        0.00       -0.54
+SMD                 2.68        3.27        3.62
+Hedges_g            2.07        2.72        2.98
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pand")
+> ### * pand
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pand
+> ### Title: Percentage of all non-overlapping data
+> ### Aliases: pand print.sc_pand export.sc_pand
+> 
+> ### ** Examples
+> 
+> ## REplication of the Parker et al. 2007 example
+> pand(Parker2007)
+Percentage of all non-overlapping data
+
+Method: sort 
+
+PAND = 85.7%
+Φ =  0.713  ; Φ² =  0.508 
+
+28 measurements (13 Phase A, 15 Phase B) in 3 cases
+Overlapping data: n = 4 ; percentage = 14.3 
+
+2 x 2 Matrix of percentages
+         A    B total
+A     39.3  7.1  46.4
+B      7.1 46.4  53.6
+total 46.4 53.6 100.0
+
+2 x 2 Matrix of counts
+       A  B total
+A     11  2    13
+B      2 13    15
+total 13 15    28
+
+
+Chi-Squared test:
+X² = 14.227, df = 1, p = 0.000 
+
+Fisher exact test:
+Odds ratio = 29.007, p = 0.000 
+> 
+> ## Calculate the PAND with an expected decrease of phase B scores
+> cubs <- scdf(c(20,22,24,17,21,13,10,9,20,9,18), B_start = 5)
+> pand(cubs, decreasing = TRUE)
+Percentage of all non-overlapping data
+
+Method: sort 
+
+PAND = 63.6%
+Φ =  0.214  ; Φ² =  0.046 
+
+11 measurements (4 Phase A, 7 Phase B) in 1 cases
+Overlapping data: n = 4 ; percentage = 36.4 
+
+2 x 2 Matrix of percentages
+         A    B total
+A     18.2 18.2  36.4
+B     18.2 45.5  63.6
+total 36.4 63.6 100.0
+
+2 x 2 Matrix of counts
+      A B total
+A     2 2     4
+B     2 5     7
+total 4 7    11
+
+
+Chi-Squared test:
+X² = 0.505, df = 1, p = 0.477 
+
+Fisher exact test:
+Odds ratio = 2.288, p = 0.576 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pem")
+> ### * pem
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pem
+> ### Title: Percent exceeding the median
+> ### Aliases: pem
+> 
+> ### ** Examples
+> 
+> 
+> ## Calculate the PEM including the Binomial and Chi-square tests for a single-case
+> dat <- random_scdf(5, level = 0.5)
+Warning in random_scdf(5, level = 0.5) :
+  The first argument is expected to be a design matrix created by design(). If you want to set n, please name the first argument with n = ...
+> pem(dat, chi.test = TRUE)
+Percent Exceeding the Median
+
+  Case  PEM positives total binom.p  Chi DF       p
+ Case1 86.7        13    15 0.00369 8.07  1 0.00451
+
+Alternative hypothesis: true probability > 50%
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pet")
+> ### * pet
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pet
+> ### Title: Percent exceeding the trend
+> ### Aliases: pet
+> 
+> ### ** Examples
+> 
+> 
+> ## Calculate the PET and use a 99%-CI for the additional calculation
+> # create random example data
+> design <- design(n = 5, slope = 0.2)
+> dat <- random_scdf(design, seed = 23)
+> pet(dat, ci = .99)
+Percent Exceeding the Trend
+
+
+  Case   PET PET CI  binom.p
+ Case1  13.3    0.0 1.00e+00
+ Case2 100.0   53.3 3.05e-05
+ Case3 100.0   93.3 3.05e-05
+ Case4   0.0    0.0 1.00e+00
+ Case5  80.0    0.0 1.76e-02
+
+Binom.test: alternative hypothesis: true probability > 50%
+PET CI: Percent of values greater than upper 99% confidence threshold (greater 2.326*se above predicted value)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plm")
+> ### * plm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plm
+> ### Title: Piecewise linear model / piecewise regression
+> ### Aliases: plm
+> 
+> ### ** Examples
+> 
+> 
+> ## Compute a piecewise regression model for a random single-case
+> set.seed(123)
+> AB <- design(
++   phase_design = list(A = 10, B = 20),
++   level = list(A = 0, B = 1), slope = list(A = 0, B = 0.05),
++   trend = 0.05
++ )
+> dat <- random_scdf(design = AB)
+> plm(dat, AR = 3)
+Piecewise Regression Analysis
+
+Contrast model: W / level = first, slope = first
+
+Fitted a gaussian distribution.
+Correlated residuals up to autoregressions of lag 3 are modelled
+
+F(3, 26) = 47.38; p = 0.000; R² = 0.845; Adjusted R² = 0.828
+
+                   B   2.5%  97.5%    SE      t     p delta R²
+Intercept     53.068 48.188 57.948 2.490 21.315 0.000         
+Trend mt      -0.166 -1.032  0.701 0.442 -0.374 0.711   -0.001
+Level phase B 16.266 10.061 22.470 3.166  5.138 0.000    0.069
+Slope phase B  0.913 -0.045  1.871 0.489  1.869 0.073    0.016
+
+Autocorrelations of the residuals
+ lag    cr
+   1 -0.12
+   2 -0.23
+   3  0.38
+Formula: values ~ 1 + mt + phaseB + interB
+
+> 
+> ## Another example with a more complex design
+> A1B1A2B2 <- design(
++   phase_design = list(A1 = 15, B1 = 20, A2 = 15, B2 = 20),
++   level = list(A1 = 0, B1 = 1, A2 = -1, B2 = 1),
++   slope = list(A1 = 0, B1 = 0.0, A2 = 0, B2 = 0.0),
++   trend = 0.0)
+> dat <- random_scdf(design = A1B1A2B2, seed = 123)
+> plm(dat, contrast = "preceding")
+Piecewise Regression Analysis
+
+Contrast model: W / level = preceding, slope = preceding
+
+Fitted a gaussian distribution.
+F(7, 62) = 11.05; p = 0.000; R² = 0.555; Adjusted R² = 0.505
+
+                    B    2.5%  97.5%    SE      t     p delta R²
+Intercept      51.354  46.820 55.889 2.314 22.196 0.000         
+Trend mt       -0.085  -0.636  0.467 0.281 -0.301 0.764    0.001
+Level phase A2  1.259 -14.627 17.144 8.105  0.155 0.877    0.000
+Level phase B1  6.557  -9.032 22.146 7.954  0.824 0.413    0.005
+Level phase B2 -0.980 -11.106  9.147 5.167 -0.190 0.850    0.000
+Slope phase A2  0.040  -0.740  0.820 0.398  0.100 0.920    0.000
+Slope phase B1  0.240  -0.417  0.897 0.335  0.716 0.477    0.004
+Slope phase B2 -0.121  -0.627  0.385 0.258 -0.470 0.640    0.002
+
+Autocorrelations of the residuals
+ lag    cr
+   1 -0.05
+   2 -0.12
+   3  0.12
+Ljung-Box test: X²(3) = 2.27; p = 0.519 
+
+Formula: values ~ 1 + mt + phaseA2 + phaseB1 + phaseB2 + interA2 + interB1 + 
+    interB2
+
+> 
+> ## no slope effects were found. Therefore, you might want to the drop slope
+> ## estimation:
+> plm(dat, slope = FALSE, contrast = "preceding")
+Piecewise Regression Analysis
+
+Contrast model: W / level = preceding, slope = preceding
+
+Fitted a gaussian distribution.
+F(4, 65) = 19.73; p = 0.000; R² = 0.548; Adjusted R² = 0.521
+
+                    B    2.5%  97.5%    SE      t     p delta R²
+Intercept      50.232  47.470 52.994 1.409 35.645 0.000         
+Trend mt        0.076  -0.133  0.284 0.107  0.710 0.480    0.004
+Level phase A2 -3.274 -11.299  4.750 4.094 -0.800 0.427    0.004
+Level phase B1 10.945   6.153 15.737 2.445  4.477 0.000    0.139
+Level phase B2 -1.543  -9.394  6.308 4.006 -0.385 0.701    0.001
+
+Autocorrelations of the residuals
+ lag    cr
+   1 -0.03
+   2 -0.09
+   3  0.13
+Ljung-Box test: X²(3) = 2.02; p = 0.568 
+
+Formula: values ~ 1 + mt + phaseA2 + phaseB1 + phaseB2
+
+> 
+> ## and now drop the trend estimation as well
+> plm(dat, slope = FALSE, trend = FALSE, contrast = "preceding")
+Piecewise Regression Analysis
+
+Contrast model: W / level = preceding, slope = preceding
+
+Fitted a gaussian distribution.
+F(3, 66) = 26.34; p = 0.000; R² = 0.545; Adjusted R² = 0.524
+
+                    B   2.5%  97.5%    SE      t     p delta R²
+Intercept      50.762 48.427 53.097 1.191 42.611 0.000         
+Level phase A2 -0.626 -3.928  2.676 1.685 -0.372 0.711    0.001
+Level phase B1  9.621  6.532 12.710 1.576  6.105 0.000    0.257
+Level phase B2  1.105 -1.755  3.965 1.459  0.757 0.451    0.004
+
+Autocorrelations of the residuals
+ lag    cr
+   1 -0.01
+   2 -0.08
+   3  0.13
+Ljung-Box test: X²(3) = 1.82; p = 0.611 
+
+Formula: values ~ 1 + phaseA2 + phaseB1 + phaseB2
+
+> 
+> ## A poisson regression
+> example_A24 %>%
++   plm(family = "poisson")
+Piecewise Regression Analysis
+
+Contrast model: W / level = first, slope = first
+
+Fitted a poisson distribution.
+X²(3) = 547.67; p = 0.000; AIC = 261
+
+                   B   2.5%  97.5%    SE       t     p Odds Ratio   2.5% 
+Intercept      5.556  5.472  5.638 0.042 131.693 0.000    258.786 237.936
+Trend year     0.007 -0.016  0.030 0.012   0.604 0.546      1.007   0.984
+Level phase B -0.806 -0.938 -0.674 0.067 -11.964 0.000      0.447   0.391
+Slope phase B -0.006 -0.031  0.019 0.013  -0.472 0.637      0.994   0.969
+               97.5%  Yule's Q   2.5%     97.5%  
+Intercept     280.900     0.99     0.99      0.99
+Trend year      1.030     0.00    -0.01      0.01
+Level phase B   0.510    -0.38    -0.44     -0.32
+Slope phase B   1.019     0.00    -0.02      0.01
+
+Formula: injuries ~ 1 + year + phaseB + interB
+
+> 
+> ## A binomial regression (frequencies as dependent variable)
+> plm(exampleAB_score$Christiano, family = "binomial", var_trials = "trials")
+Piecewise Regression Analysis
+
+Contrast model: W / level = first, slope = first
+
+Fitted a binomial distribution.
+X²(3) = 240.66; p = 0.000; AIC = 120
+
+                   B   2.5%  97.5%    SE      t     p Odds Ratio  2.5%   97.5% 
+Intercept     -1.964 -2.793 -1.239 0.394 -4.991 0.000      0.140  0.061   0.290
+Trend mt       0.023 -0.118  0.166 0.072  0.324 0.746      1.023  0.889   1.181
+Level phase B  2.376  1.454  3.378 0.488  4.866 0.000     10.762  4.280  29.312
+Slope phase B  0.038 -0.111  0.186 0.075  0.504 0.614      1.039  0.895   1.204
+              Yule's Q   2.5%     97.5%  
+Intercept        -0.75    -0.88     -0.55
+Trend mt          0.01    -0.06      0.08
+Level phase B     0.83     0.62      0.93
+Slope phase B     0.02    -0.06      0.09
+
+Formula: values/trials ~ 1 + mt + phaseB + interB
+weights =  trials
+> 
+> ## A binomial regression (percentage as dependent variable)
+> exampleAB_score$Christiano %>%
++   transform(percentage = values/trials) %>%
++   set_dvar("percentage") %>%
++   plm(family = "binomial", var_trials = "trials", dvar_percentage = TRUE)
+Piecewise Regression Analysis
+
+Contrast model: W / level = first, slope = first
+
+Fitted a binomial distribution.
+X²(3) = 240.66; p = 0.000; AIC = 120
+
+                   B   2.5%  97.5%    SE      t     p Odds Ratio  2.5%   97.5% 
+Intercept     -1.964 -2.793 -1.239 0.394 -4.991 0.000      0.140  0.061   0.290
+Trend mt       0.023 -0.118  0.166 0.072  0.324 0.746      1.023  0.889   1.181
+Level phase B  2.376  1.454  3.378 0.488  4.866 0.000     10.762  4.280  29.312
+Slope phase B  0.038 -0.111  0.186 0.075  0.504 0.614      1.039  0.895   1.204
+              Yule's Q   2.5%     97.5%  
+Intercept        -0.75    -0.88     -0.55
+Trend mt          0.01    -0.06      0.08
+Level phase B     0.83     0.62      0.93
+Slope phase B     0.02    -0.06      0.09
+
+Formula: percentage ~ 1 + mt + phaseB + interB
+weights =  trials
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.scdf")
+> ### * plot.scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.scdf
+> ### Title: Plot single-case data
+> ### Aliases: plot.scdf plotSC
+> 
+> ### ** Examples
+> 
+> 
+> ## Request the default plot of the data from Borckhardt (2014)
+> plot(Borckardt2014)
+> 
+> ## Plot the three cases from Grosche (2011) and visualize the phase A trend
+> plot(Grosche2011, style = "grid", lines = "trendA")
+> 
+> ## Request the local regression line for Georg from that data set and customize the plot
+> plot(Grosche2011$Georg, style = "sienna", ylim = c(0,NA),
++        xlab = "Training session", ylab = "Words per minute",
++        phase.names = c("Baseline", "Intervention"), xinc = 5,
++        lines = list(type = "loreg", f = 0.2, lty = "solid", col = "black", lwd = 3))
+> 
+> ## Plot a random MBD over three cases and mark interesting MTs
+> dat <- random_scdf(design = design(3))
+> plot(dat, marks = list(positions = list(c(2,4,5),c(1,2,3),c(7,8,9)), col = "blue",
++        cex = 1.4), style = c("grid", "annotate", "tiny"))
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pnd")
+> ### * pnd
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pnd
+> ### Title: Percentage of non-overlapping data
+> ### Aliases: pnd
+> 
+> ### ** Examples
+> 
+> 
+> ## Calculate the PND for multiple single-case data
+> pnd(GruenkeWilbert2014)
+Percent Non-Overlapping Data
+
+   Case  PND Total Exceeds
+  Anton 100%    14      14
+    Bob 100%    11      11
+   Paul 100%    12      12
+ Robert 100%    10      10
+    Sam 100%    13      13
+    Tim 100%    14      14
+
+Mean  : 100 %
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("power_test")
+> ### * power_test
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: power_test
+> ### Title: Empirical power analysis for single-case data
+> ### Aliases: power_test
+> 
+> ### ** Examples
+> 
+> 
+> ## Assume you want to conduct a single-case study with 15 measurements
+> ## (phases: A = 6 and B = 9) using a highly reliable test and
+> ## an expected level effect of d = 1.4.
+> ## A (strong) trend effect is trend = 0.05. What is the power?
+> ## (Note: n_sims is set to 10. Set n_sims to 1000 for a serious calculation.)
+> design <- design(
++   n = 1, phase_design = list(A = 6, B = 9),
++   rtt = 0.8, level = 1.4, trend = 0.05
++ )
+> power_test(design, n_sim = 10)
+Test-Power in percent:
+
+    Method Power Alpha Error Alpha:Beta Correct
+ plm_level    70           0      1:Inf      85
+      rand    90           0      1:Inf      95
+      tauU   100          10      1:0.0      95
+> 
+> ## Would you achieve higher power by setting up a MBD with three cases?
+> design <- design(
++   n = 3, phase_design = list(A = 6, B = 9),
++   rtt = 0.8, level = 1.4, trend = 0.05
++ )
+> power_test(design, n_sim=10, method=list("hplm_level", "rand", "tauU_meta"))
+Test-Power in percent:
+
+     Method Power Alpha Error Alpha:Beta Correct
+ hplm_level    90           0      1:Inf      95
+       rand    90           0      1:Inf      95
+  tauU_meta   100          40      1:0.0      80
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rand_test")
+> ### * rand_test
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rand_test
+> ### Title: Randomization Tests for single-case data
+> ### Aliases: rand_test
+> 
+> ### ** Examples
+> 
+> 
+> ## Compute a randomization test on the first case of the byHeart2011 data and include a graph
+> rand_test(byHeart2011[1], statistic = "Median B-A", graph = TRUE, seed = 123)
+Randomization Test
+
+Comparing phase 1 against phase 2 
+Statistic:  Median B-A 
+
+Minimal length of each phase: A = 5 , B = 5 
+Observed statistic =  15 
+
+Warning! The assigned number of random permutations exceeds the number of possible permutations. 
+Analysis is restricted to all possible permutations.
+
+Distribution based on all 11 possible combinations.
+n   =  11 
+M   =  14.40909 
+SD  =  1.338249 
+Min =  12 
+Max =  16 
+
+Probability of an equal or higher value than the observed statistic:
+p   =  0.6363636 
+
+Shapiro-Wilk Normality Test: W = 0.868; p = 0.073  (Hypothesis of normality maintained)
+
+Probabilty of observed statistic based on the assumption of normality:
+z = 0.4416, p = 0.3294 (single sided)
+> 
+> ## Compute a randomization test on the Grosche2011 data using complete permutation
+> rand_test(Grosche2011, statistic = "Median B-A", complete = TRUE, limit = 4, seed = 123)
+Randomization Test
+
+Combined test for three cases.
+
+Comparing phase 1 against phase 2 
+Statistic:  Median B-A 
+
+Minimal length of each phase: A = 4 , B = 4 
+Observed statistic =  0.365 
+
+Distribution based on all 2652 possible combinations.
+n   =  2652 
+M   =  1.004859 
+SD  =  0.7805234 
+Min =  -1.445 
+Max =  1.71 
+
+Probability of an equal or higher value than the observed statistic:
+p   =  0.8435143 
+
+Shapiro-Wilk Normality Test: W = 0.804; p = 0.000  (Hypothesis of normality rejected)
+
+Probabilty of observed statistic based on the assumption of normality:
+z = -0.8198, p = 0.7938 (single sided)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("random_scdf")
+> ### * random_scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: random_scdf
+> ### Title: Single-case data generator
+> ### Aliases: random_scdf
+> ### Keywords: datagen
+> 
+> ### ** Examples
+> 
+> 
+> ## Create random single-case data and inspect it
+> design <- design(
++   n = 3, rtt = 0.75, slope = 0.1, extreme_prop = 0.1,
++   missing_prop = 0.1
++ )
+> dat <- random_scdf(design, round = 1, random_names = TRUE, seed = 123)
+> describe(dat)
+Describe Single-Case Data
+
+       Vanessa Bryn Tia
+Design     A-B  A-B A-B
+n.A          5    5   5
+n.B         15   15  15
+mis.A        0    1   0
+mis.B        2    1   2
+
+        Vanessa   Bryn    Tia
+m.A       51.12  50.00  54.36
+m.B      57.115 52.793 56.892
+md.A       50.4   49.2   52.6
+md.B      59.60  55.75  59.20
+sd.A      4.672  3.631  4.538
+sd.B     10.403 12.893  8.003
+mad.A     2.520  2.076  3.410
+mad.B     7.858 10.601  6.672
+min.A      46.8   46.5   50.3
+min.B      29.7   19.7   38.7
+max.A      59.0   55.1   61.8
+max.B      71.3   65.2   67.7
+trend.A    0.95   1.36   2.27
+trend.B   0.935  1.693  1.358
+> 
+> ## And now have a look at poisson-distributed data
+> design <- design(
++   n = 3, B_start = c(6, 10, 14), mt = c(12, 20, 22), start_value = 10,
++   distribution = "poisson", level = -5, missing_prop = 0.1
++ )
+> dat <- random_scdf(design, seed = 1234)
+> pand(dat, decreasing = TRUE)
+Percentage of all non-overlapping data
+
+Method: sort 
+
+PAND = 91.8%
+Φ =  0.836  ; Φ² =  0.699 
+
+49 measurements (23 Phase A, 26 Phase B) in 3 cases
+Overlapping data: n = 4 ; percentage = 8.2 
+
+2 x 2 Matrix of percentages
+         A    B total
+A     42.9  4.1  46.9
+B      4.1 49.0  53.1
+total 46.9 53.1 100.0
+
+2 x 2 Matrix of counts
+       A  B total
+A     21  2    23
+B      2 24    26
+total 23 26    49
+
+
+Chi-Squared test:
+X² = 34.256, df = 1, p = 0.000 
+
+Fisher exact test:
+Odds ratio = 99.881, p = 0.000 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ranks")
+> ### * ranks
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ranks
+> ### Title: Rank-transformation of single-case data files
+> ### Aliases: ranks
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> ranks(Huber2014, var = "compliance")
+#A single-case data frame with four cases
+
+ Adam: mt compliance phase | Berta: mt compliance phase |
+        1         32     A |         1         32     A |
+        2       22.5     A |         2       22.5     A |
+        3         60     A |         3         60     A |
+        4        118     A |         4        118     A |
+        5       68.5     A |         5       68.5     A |
+        6         60     A |         6         16     A |
+        7         83     A |         7       71.5     A |
+        8       77.5     A |         8         52     A |
+        9         39     A |         9         47     A |
+       10       62.5     A |        10         49     A |
+       11         81     B |        11        2.5     B |
+       12         47     B |        12       71.5     B |
+       13         18     B |        13         47     B |
+       14       42.5     B |        14          8     B |
+       15       66.5     B |        15          5     B |
+# ... up to 61 more rows
+#  two more cases
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rci")
+> ### * rci
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rci
+> ### Title: Reliable change index
+> ### Aliases: rci
+> 
+> ### ** Examples
+> 
+> 
+> ## Report the RCIs of the first case from the byHeart data and include a graph
+> rci(byHeart2011[1], graph = TRUE, rel = 0.8)
+Reliable Change Index
+
+Mean Difference =  12.4 
+Standardized Difference =  1.691 
+Standard error of differences =  0.346 
+Reliability of measurements =  0.8 
+
+Descriptives:
+        n mean    SD    SE
+A-Phase 5  0.4 0.548 0.245
+B-Phase 5 12.8 5.634 2.520
+
+95 % Confidence Intervals:
+         Lower  Upper
+A-Phase -0.080  0.880
+B-Phase  7.862 17.738
+
+Reliable Change Indices:
+                           RCI
+Jacobson et al.         50.623
+Christensen and Mendoza 35.796
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("read_scdf")
+> ### * read_scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: read_scdf
+> ### Title: Load single-case data from files
+> ### Aliases: read_scdf
+> ### Keywords: io
+> 
+> ### ** Examples
+> 
+> 
+> ## Read SC-data from a file named "study1.csv" in your working directory
+> # study1 <- read_scdf("study1.csv")
+> 
+> ## Read SC-data from a .csv-file with semicolon as field and comma as decimal separator
+> # study2 <- read_scdf("study2.csv", sep = ";", dec = ",")
+> 
+> ## write_scdf and read_scdf
+> filename <- file.path(tempdir(), "test.csv")
+> write_scdf(exampleA1B1A2B2_zvt, filename)
+> dat <- read_scdf(filename, cvar = "case", pvar = "part", dvar = "zvt", mvar = "day")
+Imported 3 cases
+> res1 <- describe(exampleA1B1A2B2_zvt)$descriptives
+> res2 <- describe(dat)$descriptives
+> all.equal(res1,res2)
+[1] TRUE
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("sample_names")
+> ### * sample_names
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: sample_names
+> ### Title: Samples random names
+> ### Aliases: sample_names
+> 
+> ### ** Examples
+> 
+> sample_names(3)
+[1] "Halley" "Rylan"  "Mel"   
+> 
+> 
+> 
+> cleanEx()
+> nameEx("scdf")
+> ### * scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: scdf
+> ### Title: Single case data frame
+> ### Aliases: scdf scdf-class as.scdf
+> 
+> ### ** Examples
+> 
+> 
+> ## Scores on a letter naming task were collected on eleven days in a row.
+> ## The intervention started after the fifth measurement,
+> ## so the first B phase measurement was 6 (B_start = 6).
+> klaas <- scdf(
++   c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
++   B_start = 6, name = "Klaas"
++ )
+> describe(klaas)
+Describe Single-Case Data
+
+       Klaas
+Design   A-B
+n.A        5
+n.B        6
+mis.A      0
+mis.B      0
+
+         Klaas
+m.A        6.4
+m.B     15.667
+md.A         7
+md.B      15.5
+sd.A     1.342
+sd.B     2.582
+mad.A    1.483
+mad.B    2.965
+min.A        5
+min.B       12
+max.A        8
+max.B       19
+trend.A    0.2
+trend.B  0.743
+> 
+> # Alternative coding 1:
+> klaas <- scdf(
++   c(A = 5, 7, 8, 5, 7, B = 12, 16, 18, 15, 14, 19),
++   name = "Klaas"
++ )
+> 
+> # Alternative coding 2:
+> klaas <- scdf(
++   c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
++   phase_design = c(A = 5, B = 6), name = "Klaas"
++ )
+> 
+> ## Unfortunately in a similar study there were no data collected on
+> ## days 3 and 9. Use NA to pass them to the function:
+> emmi <- scdf(c(5, 7, NA, 5, 7, 12, 16, 18, NA, 14, 19),
++   phase_design = c(A = 5, B = 6), name = "Emmi"
++ )
+> describe(emmi)
+Describe Single-Case Data
+
+       Emmi
+Design  A-B
+n.A       5
+n.B       6
+mis.A     1
+mis.B     1
+
+         Emmi
+m.A         6
+m.B      15.8
+md.A        6
+md.B       16
+sd.A    1.155
+sd.B    2.864
+mad.A   1.483
+mad.B   2.965
+min.A       5
+min.B      12
+max.A       7
+max.B      19
+trend.A   0.2
+trend.B 0.779
+> 
+> ## In a MBD over three cases, data were collected eleven days in a row.
+> ## Intervention starting points differ between subjects as they were
+> ## randomly assigned. The three SCDFs are then combined in a list for
+> ## further conjoined analyses.
+> charlotte <- scdf(c(A = 5, 7, 10, 5, 12, B = 7, 10, 18, 15, 14, 19))
+> theresa <- scdf(c(A = 3, 4, 3, 5, B = 7, 4, 7, 9, 8, 10, 12))
+> antonia <- scdf(c(A = 9, 8, 8, 7, 5, 7, B = 6, 14, 15, 12, 16))
+> mbd <- c(charlotte, theresa, antonia)
+> names(mbd) <- c("Charlotte", "Theresa", "Antonia")
+> overlap(mbd)
+Overlap Indices
+
+Comparing phase 1 against phase 2 
+
+             Charlotte Theresa Antonia
+Design             A-B     A-B     A-B
+PND                 67      86      80
+PEM                 83     100      80
+PET                 33      86     100
+NAP                 87      95      83
+NAP rescaled        73      89      67
+PAND                82      82      82
+IRD               0.63    0.80    0.82
+Tau_U(A)          0.37    0.52    0.63
+Tau_U(BA)         0.49    0.71    0.69
+Base_Tau          0.56    0.66    0.66
+Diff_mean         6.03    4.39    5.27
+Diff_trend        0.77    0.50    2.37
+SMD               1.94    4.59    3.85
+Hedges_g          1.37    1.87    1.70
+> 
+> ## In a classroom-based intervention it was not possible to measure outcomes
+> ## every day, but only on schooldays. The sequence of measurements is passed
+> ## to the package by using a vector of measurement times.
+> frida <- scdf(
++   c(A = 3, 2, 4, 2, 2, 3, 5, 6, B = 8, 10, 8, 12, 14, 13, 12),
++   mt = c(1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18)
++ )
+> summary(frida)
+#A single-case data frame with one case
+
+       Measurements Design
+ Case1           15    A-B
+
+Variable names:
+values <dependent variable>
+phase <phase variable>
+mt <measurement-time variable>
+
+> describe(frida)
+Describe Single-Case Data
+
+       Case1
+Design   A-B
+n.A        8
+n.B        7
+mis.A      0
+mis.B      0
+
+        Case1
+m.A     3.375
+m.B        11
+md.A        3
+md.B       12
+sd.A    1.506
+sd.B     2.38
+mad.A   1.483
+mad.B   2.965
+min.A       2
+min.B       8
+max.A       6
+max.B      14
+trend.A 0.305
+trend.B  0.71
+> 
+> ## example with two independent variables and four phases
+> jim <- scdf(
++   zvt = c(47, 58, 76, 63, 71, 59, 64, 69, 72, 77, 76, 73),
++   d2 = c(131, 134, 141, 141, 140, 140, 138, 140, 141, 140, 138, 140),
++   phase_design = c(A1 = 3, B1 = 3, A2 = 3, B2 = 3), dvar = "zvt"
++ )
+> overlap(jim, phases = list(c("A1", "A2"), c("B1", "B2")))
+Overlap Indices
+
+Comparing phases A1 + A2 against phases B1 + B2 
+
+                   Case1
+Design       A1-B1-A2-B2
+PND                   17
+PEM                   67
+PET                   67
+NAP                   68
+NAP rescaled          36
+PAND                  67
+IRD                 0.33
+Tau_U(A)            0.07
+Tau_U(BA)           0.14
+Base_Tau            0.27
+Diff_mean            5.5
+Diff_trend         -0.31
+SMD                 0.52
+Hedges_g            0.56
+
+The following variables were used in this analysis:
+'zvt' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("select_cases")
+> ### * select_cases
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: select_cases
+> ### Title: Select a subset of cases
+> ### Aliases: select_cases
+> 
+> ### ** Examples
+> 
+> select_cases(exampleAB, Johanna, Karolina)
+#A single-case data frame with two cases
+
+ Johanna: values mt phase | Karolina: values mt phase |
+              54  1     A |               41  1     A |
+              53  2     A |               59  2     A |
+              56  3     A |               56  3     A |
+              58  4     A |               51  4     A |
+              52  5     A |               52  5     A |
+              61  6     B |               57  6     B |
+              62  7     B |               56  7     B |
+              71  8     B |               67  8     B |
+              66  9     B |               75  9     B |
+              64 10     B |               66 10     B |
+              78 11     B |               69 11     B |
+              70 12     B |               68 12     B |
+              74 13     B |               73 13     B |
+              82 14     B |               77 14     B |
+              77 15     B |               79 15     B |
+# ... up to five more rows
+> select_cases(exampleAB, c(Johanna, Karolina))
+#A single-case data frame with two cases
+
+ Johanna: values mt phase | Karolina: values mt phase |
+              54  1     A |               41  1     A |
+              53  2     A |               59  2     A |
+              56  3     A |               56  3     A |
+              58  4     A |               51  4     A |
+              52  5     A |               52  5     A |
+              61  6     B |               57  6     B |
+              62  7     B |               56  7     B |
+              71  8     B |               67  8     B |
+              66  9     B |               75  9     B |
+              64 10     B |               66 10     B |
+              78 11     B |               69 11     B |
+              70 12     B |               68 12     B |
+              74 13     B |               73 13     B |
+              82 14     B |               77 14     B |
+              77 15     B |               79 15     B |
+# ... up to five more rows
+> select_cases(exampleAB, 1,2)
+#A single-case data frame with two cases
+
+ Johanna: values mt phase | Karolina: values mt phase |
+              54  1     A |               41  1     A |
+              53  2     A |               59  2     A |
+              56  3     A |               56  3     A |
+              58  4     A |               51  4     A |
+              52  5     A |               52  5     A |
+              61  6     B |               57  6     B |
+              62  7     B |               56  7     B |
+              71  8     B |               67  8     B |
+              66  9     B |               75  9     B |
+              64 10     B |               66 10     B |
+              78 11     B |               69 11     B |
+              70 12     B |               68 12     B |
+              74 13     B |               73 13     B |
+              82 14     B |               77 14     B |
+              77 15     B |               79 15     B |
+# ... up to five more rows
+> select_cases(exampleAB, 1:2)
+#A single-case data frame with two cases
+
+ Johanna: values mt phase | Karolina: values mt phase |
+              54  1     A |               41  1     A |
+              53  2     A |               59  2     A |
+              56  3     A |               56  3     A |
+              58  4     A |               51  4     A |
+              52  5     A |               52  5     A |
+              61  6     B |               57  6     B |
+              62  7     B |               56  7     B |
+              71  8     B |               67  8     B |
+              66  9     B |               75  9     B |
+              64 10     B |               66 10     B |
+              78 11     B |               69 11     B |
+              70 12     B |               68 12     B |
+              74 13     B |               73 13     B |
+              82 14     B |               77 14     B |
+              77 15     B |               79 15     B |
+# ... up to five more rows
+> select_cases(exampleAB, -Johanna)
+#A single-case data frame with two cases
+
+ Karolina: values mt phase | Anja: values mt phase |
+               41  1     A |           55  1     A |
+               59  2     A |           58  2     A |
+               56  3     A |           53  3     A |
+               51  4     A |           50  4     A |
+               52  5     A |           52  5     A |
+               57  6     B |           55  6     B |
+               56  7     B |           68  7     B |
+               67  8     B |           68  8     B |
+               75  9     B |           81  9     B |
+               66 10     B |           67 10     B |
+               69 11     B |           78 11     B |
+               68 12     B |           73 12     B |
+               73 13     B |           72 13     B |
+               77 14     B |           78 14     B |
+               79 15     B |           81 15     B |
+# ... up to five more rows
+> select_cases(exampleAB, -c(Johanna, Karolina))
+#A single-case data frame with one case
+
+ Anja: values mt phase
+           55  1     A
+           58  2     A
+           53  3     A
+           50  4     A
+           52  5     A
+           55  6     B
+           68  7     B
+           68  8     B
+           81  9     B
+           67 10     B
+           78 11     B
+           73 12     B
+           72 13     B
+           78 14     B
+           81 15     B
+# ... up to five more rows
+> v <- c("Moritz", "Jannis")
+> select_cases(exampleA1B1A2B2, v)
+#A single-case data frame with two cases
+
+ Moritz: values mt phase | Jannis: values mt phase |
+             15  1    A1 |             12  1    A1 |
+             11  2    A1 |             11  2    A1 |
+             12  3    A1 |             18  3    A1 |
+             10  4    A1 |             20  4    A1 |
+             12  5    A1 |             15  5    A1 |
+             18  6    A1 |             13  6    A1 |
+             16  7    A1 |              8  7    A1 |
+             18  8    A1 |             19  8    A1 |
+             12  9    A1 |             16  9    A1 |
+             12 10    A1 |             14 10    A1 |
+             11 11    A1 |             13 11    A1 |
+             10 12    A1 |             12 12    A1 |
+             13 13    A1 |             18 13    A1 |
+              9 14    A1 |             13 14    A1 |
+             14 15    A1 |             17 15    A1 |
+# ... up to 25 more rows
+> 
+> 
+> 
+> cleanEx()
+> nameEx("select_phases")
+> ### * select_phases
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: select_phases
+> ### Title: Select and combine phases for overlap analyses
+> ### Aliases: select_phases
+> 
+> ### ** Examples
+> 
+> exampleA1B1A2B2_zvt %>%
++   select_phases(A = c(1, 3), B = c(2, 4)) %>%
++   overlap()
+Overlap Indices
+
+Comparing phase 1 against phase 2 
+
+                  Tick     Trick     Track
+Design       A1A2-B1B2 A1A2-B1B2 A1A2-B1B2
+PND                 17         0        17
+PEM                 67        50        50
+PET                 67        33        33
+NAP                 68        51        58
+NAP rescaled        36         3        17
+PAND                67        50        67
+IRD               0.33      0.33      0.17
+Tau_U(A)          0.07     -0.16     -0.04
+Tau_U(BA)         0.14      0.03     -0.03
+Base_Tau          0.27     -0.25      0.13
+Diff_mean         5.50      3.17      0.83
+Diff_trend       -0.31     -1.10     -0.74
+SMD               0.52      0.40      0.26
+Hedges_g          0.56      0.50      0.26
+
+The following variables were used in this analysis:
+'zvt' as dependent variable, 'part' as phase variable, and 'day' as measurement-time variable.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("set_vars")
+> ### * set_vars
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: set_vars
+> ### Title: Set analysis variables in an scdf
+> ### Aliases: set_vars set_dvar set_mvar set_pvar
+> 
+> ### ** Examples
+> 
+> exampleAB_add %>% 
++   set_dvar("depression") %>%
++   describe()
+Describe Single-Case Data
+
+                          Rolf
+Design         Base-Medication
+n.Base                      15
+n.Medication                25
+mis.Base                     0
+mis.Medication               0
+
+                   Rolf
+m.Base                5
+m.Medication       4.36
+md.Base               6
+md.Medication         3
+sd.Base           2.673
+sd.Medication     3.252
+mad.Base          2.965
+mad.Medication    2.965
+min.Base              0
+min.Medication        0
+max.Base              9
+max.Medication       10
+trend.Base        0.114
+trend.Medication -0.051
+
+The following variables were used in this analysis:
+'depression' as dependent variable, 'phase' as phase variable, and 'day' as measurement-time variable.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("shift")
+> ### * shift
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: shift
+> ### Title: Shift values in a single-case data file
+> ### Aliases: shift
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> ### Shift the measurement time for a better estimation of the intercept
+> ex <- shift(example_A24, value = -1996)
+Warning in .deprecated_warning("transform", "shift") :
+  This function is deprecated. It might be dropped without any further notice in a future update of scan. Please name function 'transform' instead of 'shift'.
+> plm(ex)
+Piecewise Regression Analysis
+
+Contrast model: W / level = first, slope = first
+
+Fitted a gaussian distribution.
+F(3, 19) = 46.74; p = 0.000; R² = 0.881; Adjusted R² = 0.862
+
+                     B     2.5%    97.5%     SE      t     p delta R²
+Intercept      258.714  223.364  294.065 18.036 14.344 0.000         
+Trend year       1.857   -7.947   11.662  5.002  0.371 0.715    0.001
+Level phase B -150.383 -200.743 -100.024 25.694 -5.853 0.000    0.215
+Slope phase B   -1.726  -11.926    8.474  5.204 -0.332 0.744    0.001
+
+Autocorrelations of the residuals
+ lag    cr
+   1  0.10
+   2 -0.13
+   3 -0.10
+Ljung-Box test: X²(3) = 0.99; p = 0.804 
+
+Formula: injuries ~ 1 + year + phaseB + interB
+
+> 
+> # Please use transform instead:
+> example_A24 %>%
++   transform(year = year - 1996) %>%
++   plm()
+Piecewise Regression Analysis
+
+Contrast model: W / level = first, slope = first
+
+Fitted a gaussian distribution.
+F(3, 19) = 46.74; p = 0.000; R² = 0.881; Adjusted R² = 0.862
+
+                     B     2.5%    97.5%     SE      t     p delta R²
+Intercept      258.714  223.364  294.065 18.036 14.344 0.000         
+Trend year       1.857   -7.947   11.662  5.002  0.371 0.715    0.001
+Level phase B -150.383 -200.743 -100.024 25.694 -5.853 0.000    0.215
+Slope phase B   -1.726  -11.926    8.474  5.204 -0.332 0.744    0.001
+
+Autocorrelations of the residuals
+ lag    cr
+   1  0.10
+   2 -0.13
+   3 -0.10
+Ljung-Box test: X²(3) = 0.99; p = 0.804 
+
+Formula: injuries ~ 1 + year + phaseB + interB
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("smd")
+> ### * smd
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: smd
+> ### Title: Standardized mean differences
+> ### Aliases: smd
+> 
+> ### ** Examples
+> 
+> smd(exampleAB)
+Standardized mean differences
+
+                            Johanna Karolina  Anja
+mA                            54.60    51.80 53.60
+mB                            74.13    73.47 74.07
+sdA                            2.41     6.83  3.05
+sdB                            8.94     9.76  7.57
+sd cohen                       6.55     8.43  5.77
+sd hedges                      7.97     9.19  6.83
+Glass' delta                   8.11     3.17  6.71
+Hedges' g                      2.45     2.36  3.00
+Hedges' g correction           2.35     2.26  2.87
+Hedges' g durlak correction    2.23     2.14  2.72
+Cohen's d                      2.98     2.57  3.54
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("smooth_cases")
+> ### * smooth_cases
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: smooth_cases
+> ### Title: Smoothing single-case data
+> ### Aliases: smooth_cases
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> 
+> ## Use the three different smoothing functions and compare the results
+> study <- c(
++   "Original" = Huber2014$Berta,
++   "Moving median" = smooth_cases(Huber2014$Berta, method = "median"),
++   "Moving mean" = smooth_cases(Huber2014$Berta, method = "mean"),
++   "Local regression" = smooth_cases(Huber2014$Berta, method = "regression")
++ )
+> plot(study)
+> 
+> Huber2014$Berta %>% 
++ transform(
++   "compliance (moving median)" = moving_median(compliance),
++   "compliance (moving mean)" = moving_mean(compliance),
++   "compliance (local regression)" = local_regression(compliance, mt)
++ )
+#A single-case data frame with one case
+
+ Berta: mt compliance phase compliance (moving median) compliance (moving mean)
+         1         25     A                         25                       25
+         2       20.8     A                         25                    28.47
+         3       39.6     A                       39.6                    47.69
+         4         75     A                         45                     55.9
+         5         45     A                         45                     38.5
+         6       14.6     A                         45                    32.97
+         7       45.8     A                         45                    37.36
+         8       33.3     A                       33.3                    33.99
+         9       31.3     A                       32.5                     32.6
+        10       32.5     A                       32.5                     23.1
+        11        4.2     B                       32.5                    24.37
+        12       45.8     B                       32.5                    33.82
+        13       31.3     B                       31.3                    24.84
+        14        9.4     B                        9.4                    13.51
+        15        6.3     B                        6.3                        8
+ compliance (local regression)
+                         22.02
+                         28.81
+                          39.6
+                          42.3
+                            45
+                          45.4
+                          45.8
+                         36.07
+                          32.2
+                          32.5
+                         39.15
+                          45.8
+                         29.41
+                         15.05
+                          6.58
+# ... up to 14 more rows
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("standardize")
+> ### * standardize
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: standardize
+> ### Title: Standardize values of an scdf file
+> ### Aliases: standardize
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> 
+> ## Standardize a multiple case scdf and compute an hplm
+> exampleAB_50 %>%
++   standardize("values", center = TRUE, scale = TRUE) %>%
++   hplm()
+Hierarchical Piecewise Linear Regression
+
+Estimation method ML 
+Contrast model: W / level: first, slope: first
+50 Cases
+
+ICC = 0.287; L = 339.0; p = 0.000
+
+Fixed effects (values ~ 1 + mt + phaseB + interB)
+
+                   B    SE   df       t p
+Intercept     -1.251 0.075 1328 -16.716 0
+Trend mt       0.029 0.006 1328   5.006 0
+Level phase B  0.708 0.033 1328  21.436 0
+Slope phase B  0.046 0.006 1328   7.588 0
+
+Random effects (~1 | case)
+
+          EstimateSD
+Intercept      0.503
+Residual       0.266
+> 
+> ## The more versatile transform function supersedes standardize:
+> exampleAB_50 %>%
++   transform(values = (values - mean(all(values))) / sd(all(values))) %>%
++   hplm()
+Hierarchical Piecewise Linear Regression
+
+Estimation method ML 
+Contrast model: W / level: first, slope: first
+50 Cases
+
+ICC = 0.287; L = 339.0; p = 0.000
+
+Fixed effects (values ~ 1 + mt + phaseB + interB)
+
+                   B    SE   df       t p
+Intercept     -1.251 0.075 1328 -16.716 0
+Trend mt       0.029 0.006 1328   5.006 0
+Level phase B  0.708 0.033 1328  21.436 0
+Slope phase B  0.046 0.006 1328   7.588 0
+
+Random effects (~1 | case)
+
+          EstimateSD
+Intercept      0.503
+Residual       0.266
+> 
+> 
+> 
+> cleanEx()
+> nameEx("style_plot")
+> ### * style_plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: style_plot
+> ### Title: Create styles for single-case data plots
+> ### Aliases: style_plot
+> 
+> ### ** Examples
+> 
+> newstyle <- style_plot(style = "default")
+> newstyle$text.ABlag <- c("START", "END")
+> newstyle$col.dots <- ""
+> newstyle$annotations <- list(cex = 0.6, col = "grey10", offset = 0.4)
+> newstyle$names <- list(cex = 0.8, col = "blue", side = 1, adj = 1, line = -1, at = 31)
+> newstyle$fill.bg <- c("grey99", "grey95", "grey90")
+> plot(exampleABC, style = newstyle, main = "Example Plot")
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("subset.scdf")
+> ### * subset.scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: subset.scdf
+> ### Title: Subset cases, rows, and variables
+> ### Aliases: subset.scdf
+> 
+> ### ** Examples
+> 
+> exampleAB %>%
++   subset((values < 60 & phase == "A") | (values >= 60 & phase == "B"))
+#A single-case data frame with three cases
+
+ Johanna: values mt phase | Karolina: values mt phase | Anja: values mt phase |
+              54  1     A |               41  1     A |           55  1     A |
+              53  2     A |               59  2     A |           58  2     A |
+              56  3     A |               56  3     A |           53  3     A |
+              58  4     A |               51  4     A |           50  4     A |
+              52  5     A |               52  5     A |           52  5     A |
+              61  6     B |               67  8     B |           68  7     B |
+              62  7     B |               75  9     B |           68  8     B |
+              71  8     B |               66 10     B |           81  9     B |
+              66  9     B |               69 11     B |           67 10     B |
+              64 10     B |               68 12     B |           78 11     B |
+              78 11     B |               73 13     B |           73 12     B |
+              70 12     B |               77 14     B |           72 13     B |
+              74 13     B |               79 15     B |           78 14     B |
+              82 14     B |               86 16     B |           81 15     B |
+              77 15     B |               82 17     B |           78 16     B |
+# ... up to five more rows
+> subset(exampleAB_add, select = c(-cigarrets, -depression))
+#A single-case data frame with one case
+
+ Rolf: day wellbeing phase
+         1        46  Base
+         2        49  Base
+         3        49  Base
+         4        49  Base
+         5        50  Base
+         6        47  Base
+         7        45  Base
+         8        59  Base
+         9        58  Base
+        10        59  Base
+        11        59  Base
+        12        43  Base
+        13        46  Base
+        14        52  Base
+        15        55  Base
+# ... up to 25 more rows
+> subset(exampleAB, cases = c(Karolina, Johanna))
+#A single-case data frame with two cases
+
+ Karolina: values mt phase | Johanna: values mt phase |
+               41  1     A |              54  1     A |
+               59  2     A |              53  2     A |
+               56  3     A |              56  3     A |
+               51  4     A |              58  4     A |
+               52  5     A |              52  5     A |
+               57  6     B |              61  6     B |
+               56  7     B |              62  7     B |
+               67  8     B |              71  8     B |
+               75  9     B |              66  9     B |
+               66 10     B |              64 10     B |
+               69 11     B |              78 11     B |
+               68 12     B |              70 12     B |
+               73 13     B |              74 13     B |
+               77 14     B |              82 14     B |
+               79 15     B |              77 15     B |
+# ... up to five more rows
+> subset(exampleA1B1A2B2, phase %in% c("A1", "B2"), cases = Pawel:Moritz)
+#A single-case data frame with two cases
+
+ Pawel: values mt phase | Moritz: values mt phase |
+            10  1    A1 |             15  1    A1 |
+            19  2    A1 |             11  2    A1 |
+            11  3    A1 |             12  3    A1 |
+             6  4    A1 |             10  4    A1 |
+            16  5    A1 |             12  5    A1 |
+            16  6    A1 |             18  6    A1 |
+            17  7    A1 |             16  7    A1 |
+            18  8    A1 |             18  8    A1 |
+            12  9    A1 |             12  9    A1 |
+            12 10    A1 |             12 10    A1 |
+            34 31    B2 |             11 11    A1 |
+            35 32    B2 |             10 12    A1 |
+            28 33    B2 |             13 13    A1 |
+            30 34    B2 |              9 14    A1 |
+            22 35    B2 |             14 15    A1 |
+# ... up to 10 more rows
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tau_u")
+> ### * tau_u
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tau_u
+> ### Title: Tau-U for single-case data
+> ### Aliases: tau_u print.sc_tauu export.sc_tauu
+> 
+> ### ** Examples
+> 
+> 
+> tau_u(Grosche2011$Eva)
+Tau-U
+Method: complete 
+Applied Kendall's Tau-b
+95% CIs for tau are reported.
+CI method: z
+
+Case: Eva 
+                             Tau CI lower CI upper  SD_S    Z     p
+A vs. B                     0.38    -0.08     0.71 22.80 1.32   .19
+A vs. B - Trend A           0.26    -0.22     0.64 23.42 1.41   .16
+A vs. B + Trend B           0.49     0.05     0.77 28.08 2.85 <.001
+A vs. B + Trend B - Trend A 0.49     0.04     0.77 28.58 2.90 <.001
+
+> 
+> ## Replicate  tau-U calculation from Parker et al. (2011)
+> bob <- scdf(c(A = 2, 3, 5, 3, B = 4, 5, 5, 7, 6), name = "Bob")
+> res <- tau_u(bob, method = "parker", tau_method = "a")
+> print(res, complete = TRUE)
+Tau-U
+Method: parker 
+Applied Kendall's Tau-a
+95% CIs for tau are reported.
+CI method: z
+
+Case: Bob 
+                            pairs pos neg ties  S  D  Tau CI lower CI upper
+A vs. B                        20  17   1    2 16 20 0.80     0.29     0.96
+Trend A                         6   4   1    1  3  6 0.50    -0.89     0.99
+Trend B                        10   8   1    1  7 10 0.70    -0.48     0.98
+A vs. B - Trend A              20  18   5    3 13 20 0.65    -0.02     0.92
+A vs. B + Trend B              30  25   2    3 23 30 0.77     0.21     0.95
+A vs. B + Trend B - Trend A    36  26   6    4 20 36 0.56    -0.17     0.89
+                            SD_S VAR_S SE_Tau    Z    p n
+A vs. B                     8.16 66.67   0.41 1.96  .05 9
+Trend A                     2.94  8.67   0.49 1.02  .31 4
+Trend B                     4.08 16.67   0.41 1.71  .09 5
+A vs. B - Trend A           9.59 92.00   0.48 1.36  .18 9
+A vs. B + Trend B           9.59 92.00   0.32 2.40 <.05 9
+A vs. B + Trend B - Trend A 9.59 92.00   0.27 2.09 <.05 9
+
+> 
+> ## Request tau-U for all single-cases from the Grosche2011 data set
+> tau_u(Grosche2011)
+Tau-U
+Method: complete 
+Applied Kendall's Tau-b
+95% CIs for tau are reported.
+CI method: z
+
+Tau-U meta analyses:
+Weight method: z
+95% CIs are reported.
+
+                       Model Tau_U   se CI lower CI upper    z    p
+                     A vs. B 0.071 0.14   -0.193     0.33 0.52 0.60
+           A vs. B - Trend A 0.083 0.14   -0.181     0.34 0.61 0.54
+           A vs. B + Trend B 0.183 0.14   -0.082     0.42 1.36 0.17
+ A vs. B + Trend B - Trend A 0.207 0.14   -0.057     0.44 1.54 0.12
+
+Case: Eva 
+                             Tau CI lower CI upper  SD_S    Z     p
+A vs. B                     0.38    -0.08     0.71 22.80 1.32   .19
+A vs. B - Trend A           0.26    -0.22     0.64 23.42 1.41   .16
+A vs. B + Trend B           0.49     0.05     0.77 28.08 2.85 <.001
+A vs. B + Trend B - Trend A 0.49     0.04     0.77 28.58 2.90 <.001
+
+Case: Georg 
+                              Tau CI lower CI upper  SD_S     Z   p
+A vs. B                     -0.04    -0.44     0.37 31.49 -0.16 .87
+A vs. B - Trend A            0.06    -0.36     0.45 32.18  0.34 .73
+A vs. B + Trend B            0.14    -0.28     0.51 39.75  0.93 .35
+A vs. B + Trend B - Trend A  0.19    -0.23     0.55 40.30  1.32 .19
+
+Case: Olaf 
+                              Tau CI lower CI upper  SD_S     Z   p
+A vs. B                     -0.10    -0.52     0.35 25.92 -0.39 .70
+A vs. B - Trend A           -0.06    -0.49     0.40 29.74 -0.34 .74
+A vs. B + Trend B           -0.09    -0.51     0.37 27.15 -0.52 .61
+A vs. B + Trend B - Trend A -0.07    -0.50     0.38 30.82 -0.45 .65
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("transform.scdf")
+> ### * transform.scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: moving_median
+> ### Title: Transform every single case of a single case data frame
+> ### Aliases: moving_median moving_mean local_regression first_of
+> ###   across_cases all_cases transform.scdf
+> 
+> ### ** Examples
+> 
+> ## Creates a single-case with frequency distributions. The proportion and
+> ## percentage of the frequencies are calculated with transform:
+> design <- design(
++  n = 3,
++  level = 5,
++  distribution = "binomial",
++  n_trials = 20,
++  start_value = 0.5
++ )
+> study <- random_scdf(design)
+> transform(study, proportion = values/trials, percentage = proportion * 100)
+#A single-case data frame with three cases
+
+ Case1: phase values mt trials proportion percentage
+            A      9  1     20       0.45         45
+            A      9  2     20       0.45         45
+            A     10  3     20        0.5         50
+            A     13  4     20       0.65         65
+            A      8  5     20        0.4         40
+            B     20  6     20          1        100
+            B     20  7     20          1        100
+            B     20  8     20          1        100
+            B     20  9     20          1        100
+            B     20 10     20          1        100
+            B     20 11     20          1        100
+            B     20 12     20          1        100
+            B     20 13     20          1        100
+            B     20 14     20          1        100
+            B     20 15     20          1        100
+# ... up to five more rows
+#  two more cases
+> 
+> ## Z standardize the dependent variable and add two new variables:
+> exampleAB %>%
++   transform(
++     values = scale(values),
++     mean_values = mean(values),
++     sd_values = sd(values)
++   )
+#A single-case data frame with three cases
+
+ Johanna: values mt phase mean_values sd_values
+           -1.31  1     A           0         1
+            -1.4  2     A           0         1
+           -1.14  3     A           0         1
+           -0.97  4     A           0         1
+           -1.48  5     A           0         1
+           -0.71  6     B           0         1
+           -0.62  7     B           0         1
+            0.15  8     B           0         1
+           -0.28  9     B           0         1
+           -0.45 10     B           0         1
+            0.75 11     B           0         1
+            0.06 12     B           0         1
+            0.41 13     B           0         1
+             1.1 14     B           0         1
+            0.67 15     B           0         1
+# ... up to five more rows
+#  two more cases
+> 
+> ## Use `all` to calculate global variables.
+> exampleAB %>%
++   transform(
++     values_center_case = values - mean(values[phase == "A"]),
++     values_center_global = values - mean(all(values[phase == "A"])),
++     value_dif = values_center_case - values_center_global
++   )
+#A single-case data frame with three cases
+
+ Johanna: values mt phase values_center_case values_center_global value_dif
+              54  1     A               -0.6                 0.67     -1.27
+              53  2     A               -1.6                -0.33     -1.27
+              56  3     A                1.4                 2.67     -1.27
+              58  4     A                3.4                 4.67     -1.27
+              52  5     A               -2.6                -1.33     -1.27
+              61  6     B                6.4                 7.67     -1.27
+              62  7     B                7.4                 8.67     -1.27
+              71  8     B               16.4                17.67     -1.27
+              66  9     B               11.4                12.67     -1.27
+              64 10     B                9.4                10.67     -1.27
+              78 11     B               23.4                24.67     -1.27
+              70 12     B               15.4                16.67     -1.27
+              74 13     B               19.4                20.67     -1.27
+              82 14     B               27.4                28.67     -1.27
+              77 15     B               22.4                23.67     -1.27
+# ... up to five more rows
+#  two more cases
+> 
+> ## Use `across_cases` to calculate or replace a variable with values from
+> ## all cases. E.g., standardize the dependent variable:
+> exampleABC %>%
++   transform(
++     across_cases(values = scale(values))
++   )
+#A single-case data frame with three cases
+
+ Marie: values mt phase | Rosalind: values mt phase | Lise: values mt phase |
+         -0.24  1     A |            -1.02  1     A |        -0.81  1     A |
+         -0.39  2     A |            -1.45  2     A |        -1.16  2     A |
+          -0.1  3     A |            -1.02  3     A |         0.11  3     A |
+          0.11  4     A |            -0.67  4     A |         -0.6  4     A |
+         -0.74  5     A |            -0.53  5     A |         0.32  5     A |
+         -1.16  6     A |             0.25  6     A |        -0.32  6     A |
+         -1.23  7     A |            -0.46  7     A |        -1.87  7     A |
+         -0.17  8     A |            -1.73  8     A |        -1.16  8     A |
+         -1.16  9     A |            -0.74  9     A |         0.88  9     A |
+         -1.59 10     A |             -0.1 10     A |         0.11 10     A |
+          1.52 11     B |             -0.1 11     A |        -1.02 11     A |
+          0.25 12     B |             0.25 12     A |        -1.16 12     A |
+           0.6 13     B |            -0.46 13     A |        -1.02 13     A |
+          1.52 14     B |            -1.09 14     A |         -1.8 14     A |
+           0.6 15     B |            -0.88 15     A |        -0.74 15     A |
+# ... up to 15 more rows
+> 
+> ## Rank transform the values based on all cases vs. within each case:
+> exampleABC %>%
++   transform(
++     across_cases(values_across = rank(values, na.last="keep")),
++     value_within = rank(values, na.last="keep")
++   )
+#A single-case data frame with three cases
+
+ Marie: values mt phase values_across value_within
+            58  1     A            40           11
+            56  2     A          37.5          9.5
+            60  3     A          44.5           13
+            63  4     A            50         14.5
+            51  5     A          23.5          6.5
+            45  6     A            10          3.5
+            44  7     A             7            2
+            59  8     A          41.5           12
+            45  9     A            10          3.5
+            39 10     A             5            1
+            83 11     B            82           27
+            65 12     B            55           16
+            70 13     B          65.5         20.5
+            83 14     B            82           27
+            70 15     B          65.5         20.5
+# ... up to 15 more rows
+#  two more cases
+> 
+> ## Three helper functions to smooth the data
+> Huber2014$Berta %>%
++ transform(
++   "compliance (moving median)" = moving_median(compliance),
++   "compliance (moving mean)" = moving_mean(compliance),
++   "compliance (local regression)" = local_regression(compliance, mt)
++ )
+#A single-case data frame with one case
+
+ Berta: mt compliance phase compliance (moving median) compliance (moving mean)
+         1         25     A                         25                       25
+         2       20.8     A                         25                    28.47
+         3       39.6     A                       39.6                    47.69
+         4         75     A                         45                     55.9
+         5         45     A                         45                     38.5
+         6       14.6     A                         45                    32.97
+         7       45.8     A                         45                    37.36
+         8       33.3     A                       33.3                    33.99
+         9       31.3     A                       32.5                     32.6
+        10       32.5     A                       32.5                     23.1
+        11        4.2     B                       32.5                    24.37
+        12       45.8     B                       32.5                    33.82
+        13       31.3     B                       31.3                    24.84
+        14        9.4     B                        9.4                    13.51
+        15        6.3     B                        6.3                        8
+ compliance (local regression)
+                         22.02
+                         28.81
+                          39.6
+                          42.3
+                            45
+                          45.4
+                          45.8
+                         36.07
+                          32.2
+                          32.5
+                         39.15
+                          45.8
+                         29.41
+                         15.05
+                          6.58
+# ... up to 14 more rows
+> 
+> ## Function first_of() helps to set NAs for specific phases.
+> ## E.g., you want to replace the first two values of phase A and the first
+> ## value of phase B and its preceding value.
+> 
+> byHeart2011 %>%
++   transform(
++     values = replace(values, first_of(phase == "A", 0:1), NA),
++     values = replace(values, first_of(phase == "B", -1:0), NA)
++   )
+#A single-case data frame with 11 cases
+
+ Lisa (Turkish): values mt phase | Patrick (Spanish): values mt phase |
+                   <NA>  1     A |                      <NA>  1     A |
+                   <NA>  2     A |                      <NA>  2     A |
+                      0  3     A |                         3  3     A |
+                      0  4     A |                         0  4     A |
+                   <NA>  5     A |                      <NA>  5     A |
+                   <NA>  6     B |                      <NA>  6     B |
+                      5  7     B |                         8  7     B |
+                      6  8     B |                         8  8     B |
+                      7  9     B |                         8  9     B |
+                     10 10     B |                        12 10     B |
+                     10 11     B |                        13 11     B |
+                     15 12     B |                        13 12     B |
+                     16 13     B |                        15 13     B |
+                     14 14     B |                        14 14     B |
+                     17 15     B |                        15 15     B |
+# ... up to 11 more rows
+#  nine more cases
+> 
+> 
+> 
+> cleanEx()
+> nameEx("trend")
+> ### * trend
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: trend
+> ### Title: Trend analysis for single-cases data
+> ### Aliases: trend
+> 
+> ### ** Examples
+> 
+> 
+> ## Compute the linear and squared regression for a random single-case
+> design <- design(slope = 0.5)
+> matthea <- random_scdf(design)
+> trend(matthea)
+Trend for each phase
+
+              Intercept     B  Beta
+Linear.ALL       38.499 4.469 0.977
+Linear.A         47.323 1.662 0.547
+Linear.B         55.059 5.142 0.980
+Quadratic.ALL    52.896 0.227 0.977
+Quadratic.A      48.475 0.362 0.497
+Quadratic.B      67.746 0.344 0.953
+
+Note. Measurement-times start at 0  for each phase
+> 
+> ## Besides the linear and squared regression models compute two custom models:
+> ## a) a cubic model, and b) the values predicted by the natural logarithm of the
+> ## measurement time.
+> design <- design(slope = 0.3)
+> ben <- random_scdf(design)
+> trend(ben, offset = 0, model = c("Cubic" = values ~ I(mt^3), "Log Time" = values ~ log(mt)))
+Trend for each phase
+
+              Intercept      B   Beta
+Linear.ALL       40.100  2.654  0.939
+Linear.A         55.461 -1.685 -0.444
+Linear.B         48.001  3.228  0.967
+Quadratic.ALL    49.935  0.126  0.961
+Quadratic.A      52.771 -0.215 -0.346
+Quadratic.B      57.910  0.192  0.949
+Cubic.ALL        54.144  0.006  0.939
+Cubic.A          51.682 -0.028 -0.241
+Cubic.B          61.826  0.012  0.913
+Log Time.ALL     33.775 16.153  0.785
+Log Time.A       54.926 -4.720 -0.500
+Log Time.B       41.803 17.215  0.902
+
+Note. Measurement-times start at 1  for each phase
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("truncate_phase")
+> ### * truncate_phase
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: truncate_phase
+> ### Title: Truncate single-case data
+> ### Aliases: truncate_phase
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> 
+> ## Truncate the first two data points of both phases and compare the two 
+> ## data sets
+> study <- c(
++   "Original" = byHeart2011[1],
++   "Selected" = truncate_phase(
++     byHeart2011[1], truncate = list(A = c(2, 0), B = c(2, 0))
++   )
++ )
+Deletet measurements per case:
+
+Lisa (Turkish): 1 2 6 7
+> plot(study)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("write_scdf")
+> ### * write_scdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: write_scdf
+> ### Title: Data output
+> ### Aliases: write_scdf
+> ### Keywords: io
+> 
+> ### ** Examples
+> 
+> ## write single-case data to a .csv-file
+> filename <- tempfile(fileext = ".csv")
+> jessica <- random_scdf(design(level = .5))
+> write_scdf(jessica, tempfile())
+> 
+> ## write multiple cases to a .csv-file with semicolon as field and comma as
+> ## decimal separator
+> write_scdf(Grosche2011, filename, sep = ";", dec = ",")
+> 
+> ## read_scdf and write_scdf
+> write_scdf(exampleA1B1A2B2_zvt, filename)
+> dat <- read_scdf(filename, cvar = "case", pvar = "part",
++                  dvar = "zvt", mvar = "day")
+Imported 3 cases
+> res1 <- describe(exampleA1B1A2B2_zvt)$descriptives
+> res2 <- describe(dat)$descriptives
+> all.equal(res1,res2)
+[1] TRUE
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  1.972 0.064 2.04 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

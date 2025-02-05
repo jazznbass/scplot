@@ -22,9 +22,10 @@ A forest plot displaying Tau-U effects.
 This function generates a forest plot of Tau-U effects.
 }
 \examples{
+\dontrun{
 res <- scan::rand_test(scan::exampleAB$Anja, limit = 1)
 scplot(res, type = "hist")
 
 scplot(res, type = "xy")
-
+}
 }

@@ -1,29 +1,24 @@
 # Platform
 
-|field    |value                                                                                               |
-|:--------|:---------------------------------------------------------------------------------------------------|
-|version  |R version 4.4.1 (2024-06-14)                                                                        |
-|os       |macOS Sonoma 14.5                                                                                   |
-|system   |aarch64, darwin20                                                                                   |
-|ui       |RStudio                                                                                             |
-|language |(EN)                                                                                                |
-|collate  |en_US.UTF-8                                                                                         |
-|ctype    |en_US.UTF-8                                                                                         |
-|tz       |Europe/Berlin                                                                                       |
-|date     |2024-06-29                                                                                          |
-|rstudio  |2024.04.2+764 Chocolate Cosmos (desktop)                                                            |
-|pandoc   |3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown) |
+|field    |value                                                                                            |
+|:--------|:------------------------------------------------------------------------------------------------|
+|version  |R version 4.4.2 (2024-10-31)                                                                     |
+|os       |macOS Sequoia 15.3                                                                               |
+|system   |aarch64, darwin20                                                                                |
+|ui       |RStudio                                                                                          |
+|language |(EN)                                                                                             |
+|collate  |en_US.UTF-8                                                                                      |
+|ctype    |en_US.UTF-8                                                                                      |
+|tz       |Europe/Amsterdam                                                                                 |
+|date     |2025-02-05                                                                                       |
+|rstudio  |2024.12.0+467 Kousa Dogwood (desktop)                                                            |
+|pandoc   |3.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown) |
 
 # Dependencies
 
-|package        |old   |new    |Δ  |
-|:--------------|:-----|:------|:--|
-|scplot         |0.3.3 |0.4.0  |*  |
-|cowplot        |NA    |1.1.3  |*  |
-|Deriv          |NA    |4.1.3  |*  |
-|doBy           |NA    |4.6.22 |*  |
-|microbenchmark |NA    |1.4.10 |*  |
-|pbkrtest       |NA    |0.5.3  |*  |
+|package |old   |new   |Δ  |
+|:-------|:-----|:-----|:--|
+|scplot  |0.4.0 |0.5.0 |*  |
 
 # Revdeps
 

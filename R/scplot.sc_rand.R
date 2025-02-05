@@ -9,11 +9,12 @@
 #' @return A forest plot displaying Tau-U effects.
 #'
 #' @examples
+#' \dontrun{
 #' res <- scan::rand_test(scan::exampleAB$Anja, limit = 1)
 #' scplot(res, type = "hist")
 #'
 #' scplot(res, type = "xy")
-#'
+#' }
 #' @export
 scplot.sc_rand <- function(object,
                            type = "hist",
@@ -24,7 +25,8 @@ scplot.sc_rand <- function(object,
   Distribution <- count <- NULL
 
   if (type == "xy") {
-    if (dim(object$distribution_startpoints)[2] != 1) {
+
+    if (!identical(ncol(object$distribution_startpoints), 1)) {
       stop("This plot is only available for analyses with one case.")
     }
 

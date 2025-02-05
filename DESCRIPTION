@@ -1,8 +1,8 @@
 Package: scplot
 Type: Package
 Title: Plot Function for Single-Case Data Frames
-Version: 0.4.0.999
-Date: 2025-02-04
+Version: 0.5.0
+Date: 2025-02-05
 Authors@R:
     person("Juergen", "Wilbert", 
     email = "juergen.wilbert@uni-muenster.de", 
@@ -14,12 +14,12 @@ Description: Add-on for the 'scan' package that creates plots
   parameters, and predefined themes for presentations and publications. More 
   information and in depth examples can be found in the online book 
   "Analyzing Single-Case Data with R and 'scan" 
-  Jürgen Wilbert (2023) <https://jazznbass.github.io/scan-Book/>.
+  Jürgen Wilbert (2025) <https://jazznbass.github.io/scan-Book/>.
 Depends:
-  R (>= 3.5.0)
+  R (>= 4.1.0)
 Imports:
   ggplot2,
-  scan (>= 0.57.0),
+  scan (>= 0.61.0),
   stats,
   utils,
   mblm
