@@ -26,7 +26,7 @@ scplot.sc_rand <- function(object,
 
   if (type == "xy") {
 
-    if (!identical(ncol(object$distribution_startpoints), 1)) {
+    if (!identical(ncol(object$distribution_startpoints), 1L)) {
       stop("This plot is only available for analyses with one case.")
     }
 

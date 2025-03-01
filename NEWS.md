@@ -1,3 +1,7 @@
+# scplot 0.5.1
+
+- Fixed big that did not allow to draw plots for randomization test graphs.
+
 # scplot 0.5.0
 
 - Deprecated: `add_legend()` argument `label`.
