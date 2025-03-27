@@ -1,0 +1,16 @@
+bibentry(
+  header = "To cite scplot in publications use:",
+  bibtype = "Misc",
+  title        = "scplot - Single-Case Data Plots",
+  shorttitle   = "scplot",
+  publisher    = "github",
+  author       =  as.person("Jürgen Wilbert"),
+  year         = "2023",
+  url          = "https://github.com/jazznbass/scplot",
+
+  textVersion  =  paste0(
+    "Wilbert, J. (2023). ",
+    "scplot - Single-Case Data Plots. ",
+    "(0.3) [English]. CRAN. https://CRAN.R-project.org/package=scplot"
+  )
+)

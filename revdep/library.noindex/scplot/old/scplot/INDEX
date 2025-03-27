@@ -1,0 +1,29 @@
+add_arrow               Add arrrows to an scplot
+add_grid                Add grid to an scplot
+add_labels              Add value labels to an scplot
+add_legend              Add a legend to an scplot
+add_line                Add line to an scplot
+add_marks               Add marks to an scplot
+add_ridge               Add a ridge to an scplot
+add_statline            Add a statline to an scplot
+add_text                Add test to an scplot
+add_title               Add title and caption to an scplot
+as_ggplot               Creates a ggplot2 object from an 'scplot()'
+                        object
+element_point           Point element
+new_theme               Create a new scplot theme
+plot.sc_hplm            This function generates a forest plot for the
+                        random effects of a mixed hplm model
+plot.sc_tauu            Plot Tau-U Effects
+scplot                  Plot single-case data
+scplot-package          Single-Case Data Plots
+set_background          Set plot and panel background of an scplot
+set_base_text           Set base text parameters of an scplot
+set_casenames           Set casenames of an scplot
+set_dataline            Set data lines of an scplot
+set_phasenames          Set phasenames of an scplot
+set_separator           Set separator line in an scplot
+set_theme               Add a theme of to an scplot
+set_theme_element       Set a theme element
+set_xaxis               Set axis parameters of an scplot
+set_xlabel              Set label for axis
