@@ -1,22 +1,26 @@
 
 .statline_constant_by_phase <- function(data, line, fun, label) {
 
+  dvar <- line$variable
+  mvar <- attr(data, "mvar")
+  pvar <- attr(data, "pvar")
+
   dat_stat <- data  |>
-    split(~case + phase)  |>
+    split(list(data$case, data[[pvar]]))  |>
     lapply(function(x)
-      c(y = as.numeric(do.call(fun, c(list(x$values), line$args))))
+      c(y = as.numeric(do.call(fun, c(list(x[[dvar]]), line$args))))
     )  |>
-    .ungroup()
+    .ungroup(groups = c("case", pvar))
 
   data <- merge(
     data,
     dat_stat,
-    by = c("case", "phase"),
+    by = c("case", pvar),
     all = TRUE,
     sort = FALSE
   )
 
-  .statline_geom_phase(data, line$line, label = label)
+  .statline_geom_phase(data, line$line, label = label, mt = mvar)
 }
 
 .statline_constant <- function(data, line, fun, reference_phase = 1) {
@@ -25,7 +29,7 @@
   mvar <- attr(data, "mvar")
   pvar <- attr(data, "pvar")
 
-  data <- .rename_scdf_var(data, dvar, mvar, pvar)
+  #data <- .rename_scdf_var(data, dvar, mvar, pvar)
   if (is.null(line$args$na.rm)) line$args$na.rm <- TRUE
 
   if (is.null(reference_phase)) {
@@ -33,14 +37,14 @@
   }
 
   if (is.numeric(reference_phase))
-    reference_phase <- levels(data$phase)[reference_phase]
+    reference_phase <- levels(data[[pvar]])[reference_phase]
 
-  dat_stat <- data[data$phase %in% reference_phase,]  |>
-    split(~case) |>
+  dat_stat <- data[data[[pvar]] %in% reference_phase,]  |>
+    split(data[[pvar]]) |>
     lapply(function(x)
-      c(y = as.numeric(do.call(fun, c(list(x$values), line$args))))
+      c(y = as.numeric(do.call(fun, c(list(x[[dvar]]), line$args))))
     )  |>
-    .ungroup()
+    .ungroup(groups = c("case", pvar))
 
   data <- merge(data, dat_stat, by = "case", all = TRUE, sort = FALSE)
 
@@ -52,35 +56,39 @@
   dvar <- line$variable
   mvar <- attr(data, "mvar")
   pvar <- attr(data, "pvar")
-  data <- .rename_scdf_var(data, dvar, mvar, pvar)
+  #data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (is.null(line$args$method)) line$args$method <- "lm"
 
   dat_stat <- data  |>
-    split(~case + phase) |>
+    split(list(data$case, data[[pvar]])) |>
     lapply(function(x) {
+
+      values <- data[[dvar]]
+      mt <- data[[mvar]]
+
       if(line$args$method %in% c("theil-sen", "mblm")) {
-        param <- coef(mblm::mblm(values ~ mt, data = x, repeated = FALSE))
+        param <- coef(mblm::mblm(values ~ mt, repeated = FALSE))
       } else if (line$args$method %in% c("lm", "ols")) {
-        param <- coef(lm(values ~ mt, data = x))
+        param <- coef(lm(values ~ mt))
       }
       c(int = as.numeric(param[1]), b = as.numeric(param[2]))
     })  |>
-    .ungroup()
+    .ungroup(groups = c("case", pvar))
 
   data$y <- NA
 
   for(i in 1: nrow(dat_stat)) {
     case <- dat_stat[["case"]][i]
-    phase <- dat_stat[["phase"]][i]
+    phase <- dat_stat[[pvar]][i]
     int <- dat_stat[["int"]][i]
     b <- dat_stat[["b"]][i]
 
-    filter <- which(data$case == case & data$phase == phase)
+    filter <- which(data$case == case & data[[pvar]] == phase)
     data[filter, "y"] <- data$mt[filter] * b + int
   }
 
-  .statline_geom_phase(data, line$line, label = line$label)
+  .statline_geom_phase(data, line$line, label = line$label, mt = mvar)
 }
 
 .statline_continuous <- function(data, line, fun) {
@@ -88,12 +96,12 @@
   dvar <- line$variable
   mvar <- attr(data, "mvar")
   pvar <- attr(data, "pvar")
-  data <- .rename_scdf_var(data, dvar, mvar, pvar)
+  #data <- .rename_scdf_var(data, dvar, mvar, pvar)
 
   if (fun %in% c("lowess", "loreg")) {
     func <- function(data, ...) {
       do.call(lowess,
-        c(list(x = data[["mt"]], y = data[["values"]]), list(...))
+        c(list(x = data[[mvar]], y = data[[dvar]]), list(...))
       )$y
     }
   }
@@ -101,9 +109,9 @@
 
   if (fun == "trendA bisplit") {
     func <- function(data, ...) {
-      filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
-      mt <- data[["mt"]][filter_first_phase] #x
-      values <- data[["values"]][filter_first_phase] #y
+      filter_first_phase <- 1:rle(as.character(data[[pvar]]))$lengths[1]
+      mt <- data[[mvar]][filter_first_phase] #x
+      values <- data[[dvar]][filter_first_phase] #y
 
       # na.rm = FALSE for now to prevent misuse;
       # will draw no line if NA present
@@ -126,8 +134,8 @@
   if (fun == "trendA trisplit") {
     func <- function(data, ...) {
       filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
-      mt <- data[["mt"]][filter_first_phase] #x
-      values <- data[["values"]][filter_first_phase] #y
+      mt <- data[[mvar]][filter_first_phase] #x
+      values <- data[[dvar]][filter_first_phase] #y
 
       # na.rm = FALSE for now to prevent misuse;
       # will draw no line if NA present
@@ -149,8 +157,9 @@
 
   if (fun == "loess") {
     func <- function(data, ...) {
+      formula <- as.formula(paste0(dvar, " ~ ", mvar))
       do.call(loess,
-        c(list(formula = as.formula("values ~ mt")), list(data = data), list(...))
+        c(list(formula = formula), list(data = data), list(...))
       )$fitted
     }
   }
@@ -158,7 +167,7 @@
   if (fun %in% c("moving mean", "movingMean")) {
     func <- function(data, ...) {
       do.call(.moving_average,
-        c(list(x = data[["values"]]), list(fun = "mean"), list(...))
+        c(list(x = data[[dvar]]), list(fun = "mean"), list(...))
       )
     }
   }
@@ -166,16 +175,16 @@
   if (fun %in% c("moving median", "movingMedian")) {
     func <- function(data, ...) {
       do.call(.moving_average,
-        c(list(x = data[["values"]]), list(fun = "median"), list(...))
+        c(list(x = data[[dvar]]), list(fun = "median"), list(...))
       )
     }
   }
 
   if (fun == "trendA") {
     func <- function(data, ...) {
-      filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
-      mt <- data[["mt"]][filter_first_phase]
-      values <- data[["values"]][filter_first_phase]
+      filter_first_phase <- 1:rle(as.character(data[[pvar]]))$lengths[1]
+      mt <- data[[mvar]][filter_first_phase]
+      values <- data[[dvar]][filter_first_phase]
       model <- lm(values ~ mt, ...)
       predict(lm(values ~ mt), data[, c("values", "mt")],)
       #do.call(lm,
@@ -187,9 +196,9 @@
   if (fun == "trendA theil-sen") {
     func <- function(data, ...) {
       filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
-      mt <- data[["mt"]][filter_first_phase]
-      values <- data[["values"]][filter_first_phase]
-      predict(mblm::mblm(values ~ mt, repeated = FALSE), data[, c("values", "mt")], ...)
+      mt <- data[[mvar]][filter_first_phase]
+      values <- data[[dvar]][filter_first_phase]
+      predict(mblm::mblm(values ~ mt, repeated = FALSE), data[, c(dvar, mvar)], ...)
 
       #do.call(mblm::mblm,
       #  c(list(formula = as.formula("values ~ mt")), list(dataframe = data), list(...))
@@ -222,11 +231,11 @@
 # geom_functions --------
 
 # across case
-.statline_geom <- function(data, line, label) {
+.statline_geom <- function(data, line, label, mt) {
 
   geom_line(
     data = data,
-    aes(x = mt, y = y, color = {{label}}),
+    aes(x = {{mt}}, y = y, color = {{label}}),
     linetype = line$linetype,
     linewidth = line$linewidth,
     na.rm = TRUE
@@ -235,11 +244,11 @@
 }
 
 # by phase
-.statline_geom_phase <- function(data, line, label) {
-
+.statline_geom_phase <- function(data, line, label, mt) {
+  mt <- data[[mt]]
   geom_line(
     data = data,
-    aes(x = mt, y = y, group = phase, color = {{label}}),
+    aes(x = {{mt}}, y = y, group = phase, color = {{label}}),
     linetype = line$linetype,
     linewidth = line$linewidth,
     na.rm = TRUE
@@ -256,7 +265,8 @@
 
 }
 
-.ungroup <- function(data, groups = c("case", "phase")) {
+.ungroup <- function(data, groups) {
+
   if (identical(names(data), "")) names(data) <- ".A"
   data <- do.call("rbind", data)
   df <- do.call("rbind", strsplit(row.names(data), ".", fixed = "TRUE"))
