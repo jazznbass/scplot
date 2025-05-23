@@ -3,9 +3,12 @@
 #' @param scdf A single-case data frame object.
 #' @param statistic A string with a the name of a statistic.
 #'   Defaults to `Mean B-A`. See rand_test() function for all options.
+#' @param x_label Character string with the x label.
+#' @param color_label Character string with the color label.
+#' @param colors Named vector with color codes.
 #' @param ... further arguments passted to the scan `rand_test()` function.
 #' @examples
-#' scplot_stats(scan::byHeart2011[1:5])
+#' scplot_rand(scan::byHeart2011[1:5])
 #'
 #' @export
 scplot_rand <- function(scdf,

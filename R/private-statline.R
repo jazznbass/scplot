@@ -39,8 +39,10 @@
   if (is.numeric(reference_phase))
     reference_phase <- levels(data[[pvar]])[reference_phase]
 
-  dat_stat <- data[data[[pvar]] %in% reference_phase,]  |>
-    split(data[[pvar]]) |>
+
+  dat_stat <- data[data[[pvar]] %in% reference_phase,]
+  dat_stat <- dat_stat |>
+    split(dat_stat[["case"]]) |>
     lapply(function(x)
       c(y = as.numeric(do.call(fun, c(list(x[[dvar]]), line$args))))
     )  |>
@@ -48,7 +50,7 @@
 
   data <- merge(data, dat_stat, by = "case", all = TRUE, sort = FALSE)
 
-  .statline_geom(data, line$line, label = line$label)
+  .statline_geom(data, line$line, label = line$label, mt = mvar)
 }
 
 .statline_trend_by_phase <- function(data, line) {
@@ -85,7 +87,7 @@
     b <- dat_stat[["b"]][i]
 
     filter <- which(data$case == case & data[[pvar]] == phase)
-    data[filter, "y"] <- data$mt[filter] * b + int
+    data[filter, "y"] <- data[[mvar]][filter] * b + int
   }
 
   .statline_geom_phase(data, line$line, label = line$label, mt = mvar)
@@ -213,7 +215,7 @@
     data$y[filter] <- do.call(func, c(list(data[filter, ]), line$args))
   }
 
-  .statline_geom(data, line$line, label = line$label)
+  .statline_geom(data, line$line, label = line$label, mt = mvar)
 
 }
 
@@ -235,7 +237,7 @@
 
   geom_line(
     data = data,
-    aes(x = {{mt}}, y = y, color = {{label}}),
+    aes(x = !!sym(mt), y = y, color = {{label}}),
     linetype = line$linetype,
     linewidth = line$linewidth,
     na.rm = TRUE
@@ -245,10 +247,10 @@
 
 # by phase
 .statline_geom_phase <- function(data, line, label, mt) {
-  mt <- data[[mt]]
+
   geom_line(
     data = data,
-    aes(x = {{mt}}, y = y, group = phase, color = {{label}}),
+    aes(x = !!sym(mt), y = y, group = phase, color = {{label}}),
     linetype = line$linetype,
     linewidth = line$linewidth,
     na.rm = TRUE
