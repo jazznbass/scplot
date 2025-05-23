@@ -8,7 +8,10 @@ Plot of statistics for random phase B start positions}
 scplot_rand(
   scdf,
   statistic = "Mean B-A",
-  colors = c("coral3", "aquamarine4", "#56B4E9", "black"),
+  x_label = "Start phase B",
+  color_label = "Compared to\\nobserved",
+  colors = c(Above = "coral3", Below = "aquamarine4", Observed = "#56B4E9", Equal =
+    "black"),
   ...
 )
 }
@@ -18,6 +21,12 @@ scplot_rand(
 \item{statistic}{A string with a the name of a statistic.
 Defaults to \verb{Mean B-A}. See rand_test() function for all options.}
 
+\item{x_label}{Character string with the x label.}
+
+\item{color_label}{Character string with the color label.}
+
+\item{colors}{Named vector with color codes.}
+
 \item{...}{further arguments passted to the scan \code{rand_test()} function.}
 }
 \description{
@@ -25,6 +34,6 @@ Random start position plot
 Plot of statistics for random phase B start positions
 }
 \examples{
-scplot_stats(scan::byHeart2011[1:5])
+scplot_rand(scan::byHeart2011[1:5])
 
 }

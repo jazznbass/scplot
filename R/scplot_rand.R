@@ -3,18 +3,26 @@
 #' @param scdf A single-case data frame object.
 #' @param statistic A string with a the name of a statistic.
 #'   Defaults to `Mean B-A`. See rand_test() function for all options.
+#' @param x_label Character string with the x label.
+#' @param color_label Character string with the color label.
+#' @param colors Named vector with color codes.
 #' @param ... further arguments passted to the scan `rand_test()` function.
 #' @examples
-#' scplot_stats(scan::byHeart2011[1:5])
+#' scplot_rand(scan::byHeart2011[1:5])
 #'
 #' @export
 scplot_rand <- function(scdf,
                         statistic = "Mean B-A",
-                        colors = c("coral3", "aquamarine4", "#56B4E9", "black"),
+                        x_label = "Start phase B",
+                        color_label = "Compared to\nobserved",
+                        colors = c(
+                          Above = "coral3", Below = "aquamarine4",
+                          Observed = "#56B4E9", Equal = "black"
+                        ),
                         ...) {
 
+  Distribution <- NULL
   object <- vector("list", length(scdf))
-
 
   for(i in 1:length(object)) {
     object[[i]] <- scan::rand_test(
@@ -27,7 +35,6 @@ scplot_rand <- function(scdf,
   }
 
   ylab <- object[[1]]$statistic
-  xlab <- "Start phase B"
 
   dat <- lapply(object, function(x) {
     out <- data.frame(
@@ -36,17 +43,22 @@ scplot_rand <- function(scdf,
       Distribution = x$distribution,
       check.names = FALSE
     )
-    out$'Compared to observed' <- ifelse(out[[3]] < x$observed.statistic, "Below",
-                        ifelse(out[[3]] > x$observed.statistic, "Above", "Equal"))
-    out$'Compared to observed'[x$n1] <- "Observed"
+    out[[color_label]] <- ifelse(
+      out[[3]] < x$observed.statistic, names(colors)[2],
+      ifelse(
+        out[[3]] > x$observed.statistic, names(colors)[1], names(colors)[4]
+      )
+    )
+    out[[color_label]][x$n1] <- names(colors)[3]
     out
   })
 
   dat <- do.call(rbind, dat)
 
-  col <- sym(names(dat)[2])
+  xlab <- sym(names(dat)[2])
+  col <- sym(names(dat)[4])
 
-  p <- ggplot(dat, aes(x = !!col, y = Distribution, colour = `Compared to observed`)) +
+  p <- ggplot(dat, aes(x = !!xlab, y = Distribution, colour = !!col)) +
     ylab(ylab) +
     xlab(xlab) +
     geom_point() +

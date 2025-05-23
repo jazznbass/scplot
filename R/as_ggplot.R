@@ -525,6 +525,7 @@ as_ggplot <- function(scplot) {
         "mean", "median", "min", "max", "quantile", "sd", "mad"
       )
       if (scplot$statlines[[j]]$stat %in% .constant_stats) {
+
         p <- p + .statline_constant(
           data_long,
           line = scplot$statlines[[j]],
