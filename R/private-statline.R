@@ -66,8 +66,8 @@
     split(list(data$case, data[[pvar]])) |>
     lapply(function(x) {
 
-      values <- data[[dvar]]
-      mt <- data[[mvar]]
+      values <- x[[dvar]]
+      mt <- x[[mvar]]
 
       if(line$args$method %in% c("theil-sen", "mblm")) {
         param <- coef(mblm::mblm(values ~ mt, repeated = FALSE))
@@ -188,10 +188,7 @@
       mt <- data[[mvar]][filter_first_phase]
       values <- data[[dvar]][filter_first_phase]
       model <- lm(values ~ mt, ...)
-      predict(lm(values ~ mt), data[, c("values", "mt")],)
-      #do.call(lm,
-      #  c(list(formula = as.formula("values ~ mt")), list(data = data), list(...))
-      #)$fitted.values
+      predict(lm(values ~ mt), data[, c(dvar, mvar)],)
     }
   }
 
@@ -200,11 +197,10 @@
       filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
       mt <- data[[mvar]][filter_first_phase]
       values <- data[[dvar]][filter_first_phase]
+      filter <- which(!is.na(values))
+      values <- values[filter]
+      mt <- mt[filter]
       predict(mblm::mblm(values ~ mt, repeated = FALSE), data[, c(dvar, mvar)], ...)
-
-      #do.call(mblm::mblm,
-      #  c(list(formula = as.formula("values ~ mt")), list(dataframe = data), list(...))
-      #)$fitted.values
     }
   }
 

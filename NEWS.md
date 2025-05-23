@@ -1,5 +1,5 @@
 
-# scplot 0.5.x
+# scplot 0.5.2
 
 -   New function `scplot_rand()`: Takes an scdf and a statistic from the rand-test() function and returns a plot with the stat results for varying phase B start positions.
 
@@ -8,9 +8,6 @@ scplot_rand(byHeart2011[1:5], "Slope B-A")
 ```
 
 -   Fixed bug that did did not allow to set the dvar and add a statline.
-
-
-![](images/clipboard-3433705845.png)
 
 # scplot 0.5.1
 
