@@ -21,6 +21,7 @@ scplot_rand <- function(scdf,
                         ),
                         ...) {
 
+  Distribution <- NULL
   object <- vector("list", length(scdf))
 
   for(i in 1:length(object)) {
