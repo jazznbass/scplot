@@ -31,7 +31,7 @@ add_statline <- function(object,
                          stat = c("mean", "median", "min", "max", "quantile",
                                   "sd", "mad",
                                   "trend", "trendA", "trendA theil-sen",
-                                  #"movingMean", "movingMedian",
+                                  "trendA bisplit", "trendA trisplit",
                                   "moving mean", "moving median",
                                   "loreg", "lowess", "loess"),
                          phase = NULL,
@@ -61,6 +61,11 @@ add_statline <- function(object,
   object$theme$statline[[length(object$statlines) + 1]] <- line
 
   args <- list(...)
+
+  if (identical(stat, "trend") && identical(phase, "A")) {
+    phase <- NULL
+    stat <- "trendA"
+  }
 
   if (!is.null(args$method)) {
     if (args$method == "theil-sen" && stat == "trendA") {
