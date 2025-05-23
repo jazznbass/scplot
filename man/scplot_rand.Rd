@@ -8,7 +8,10 @@ Plot of statistics for random phase B start positions}
 scplot_rand(
   scdf,
   statistic = "Mean B-A",
-  colors = c("coral3", "aquamarine4", "#56B4E9", "black"),
+  x_label = "Start phase B",
+  color_label = "Compared to\\nobserved",
+  colors = c(Above = "coral3", Below = "aquamarine4", Observed = "#56B4E9", Equal =
+    "black"),
   ...
 )
 }
