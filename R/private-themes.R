@@ -72,9 +72,9 @@
 
   casenames.strip = element_rect(color = "grey60",
                                  fill = "grey98",
-                                 size = 0.5,
+                                 linewidth = 0.5,
                                  linetype = "solid"),
-  casenames.background = element_rect(size = 0.1,
+  casenames.background = element_rect(linewidth = 0.1,
                                       linetype = "solid"),
 
   casenames.position = "topleft",
@@ -113,7 +113,7 @@
 
 .scplot_themes$grid <- list(
   grid = element_line(colour = "lightblue", linewidth = 0.2),
-  panel.background = element_rect(fill = "grey95", size = 0)
+  panel.background = element_rect(fill = "grey95", linewidth = 0)
 )
 
 
@@ -145,22 +145,22 @@
 .scplot_themes$minimal = list(
 
   panel.spacing.y = unit(1, "lines"),
-  panel.background = element_blank(),
+  panel.background = element_rect(fill = alpha("white", 1), color = alpha("white", 1)),
   datapoint = list(
     "1" = element_point(size = 1.5)),
 
   axis.ticks.length = unit(0, "points"),
-  axis.ticks =  element_blank(),
+  axis.ticks =  element_line(linewidth = 0),
 
-  axis.line.x = element_blank(),
+  axis.line.x = element_line(linewidth = 0),
 
-  axis.text.x = element_blank(),
-  axis.text.y = element_blank(),
+  axis.text.x = element_text(size = 0),
+  axis.text.y = element_text(size = 0),
 
   separators = element_line(
     color = "black", linewidth = 0.3, linetype = "solid"),
 
-  grid = element_blank(),
+  grid = element_line(linewidth = 0),
   NULL
 )
 
@@ -233,7 +233,7 @@
 
 .scplot_themes$grid2 <- list(
   grid = element_line(colour = "lightgreen", linewidth = 0.2),
-  panel.background = element_rect(fill = "grey95", size = 1)
+  panel.background = element_rect(fill = "grey95", linewidth = 1)
 )
 
 # illustration -----------------------------------------------------------------
@@ -304,9 +304,9 @@
 
   casenames.strip = element_rect(color = "grey60",
                                  fill = "grey98",
-                                 size = 0.5,
+                                 linewidth = 0.5,
                                  linetype = "solid"),
-  casenames.background = element_rect(size = 0.1,
+  casenames.background = element_rect(linewidth = 0.1,
                                       linetype = "solid"),
 
   casenames.position = "topleft",

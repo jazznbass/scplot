@@ -75,7 +75,32 @@ function.</p></dd>
 <span class="r-in"><span>  <span class="fu"><a href="set_background.html">set_panel</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span>  <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="set_base_text.html">set_base_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span>  <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="set_dataline.html">set_dataline</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"darkred"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Called from: .merge_element(args, object$theme$panel.background)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: id &lt;- which(names(new) == "color")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: if (length(id) &gt; 0) names(new)[id] &lt;- "colour"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: names(new)[id] &lt;- "colour"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: if (inherits(old, "element_text")) {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     check_args(one_of(names(new), c("family", "face", "colour", </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         "size", "hjust", "vjust", "angle", "lineheight", "margin")))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: if (inherits(old, "element_line")) {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     check_args(one_of(names(new), c("colour", "linewidth", "linetype", </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         "lineend", "arrow")))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: if (inherits(old, "element_rect")) {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     check_args(one_of(names(new), c("fill", "colour", "linewidth", </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         "linetype")))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: check_args(one_of(names(new), c("fill", "colour", "linewidth", </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     "linetype")))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: if (inherits(old, "element_point")) {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     check_args(one_of(names(new), c("colour", "size", "shape")))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: if ("list" %in% class(new)) new &lt;- do.call(class(old)[1], new)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> debug: new &lt;- do.call(class(old)[1], new)</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in `ggplot2::element_rect`(colour = "red"):</span> could not find function "ggplot2::element_rect"</span>
 <span class="r-in"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span>  <span class="op">|&gt;</span> <span class="fu"><a href="set_theme.html">set_theme</a></span><span class="op">(</span><span class="va">my_theme</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'my_theme' not found</span>
 </code></pre></div>
     </div>
   </div>
