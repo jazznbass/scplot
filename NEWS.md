@@ -1,5 +1,8 @@
 
-# scplot 0.5.2
+# scplot 0.6.0
+
+-   Compatible with the new ggplot2 version which changed to S7 classes.
+-   Themes that have been created with *scplot* prior version 0.6.0 must be recreated by executing the respective functions due to the adaption to S7 classes.   
 
 -   New function `scplot_rand()`: Takes an scdf and a statistic from the rand-test() function and returns a plot with the stat results for varying phase B start positions.
 

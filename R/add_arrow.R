@@ -40,7 +40,7 @@ add_arrow <- function(object,
     length = length,
     ends = ends,
     type = type,
-    size = linewidth
+    linewidth = linewidth
   )
 
   object$lines <- c(object$lines, list(line))

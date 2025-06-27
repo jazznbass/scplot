@@ -40,7 +40,7 @@ add_line <- function(object,
     x1 = x1,
     y1 = y1,
     colour = color,
-    size = linewidth,
+    linewidth = linewidth,
     linetype = linetype,
     hline = hline,
     vline = vline
