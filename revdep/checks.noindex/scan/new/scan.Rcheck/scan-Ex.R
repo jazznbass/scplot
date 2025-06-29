@@ -6,6 +6,27 @@ library('scan')
 base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 cleanEx()
+nameEx("add_dummy_variables")
+### * add_dummy_variables
+
+flush(stderr()); flush(stdout())
+
+### Name: add_dummy_variables
+### Title: Add Dummy Variables for Piecewise Linear Models
+### Aliases: add_dummy_variables
+
+### ** Examples
+
+add_dummy_variables(
+ scdf = exampleABC, 
+ model = "W", 
+ contrast_level = "first", 
+ contrast_slope = "first"
+)
+
+
+
+cleanEx()
 nameEx("add_l2")
 ### * add_l2
 
@@ -18,7 +39,65 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-Leidig2018 %>% add_l2(Leidig2018_l2)
+Leidig2018 |> add_l2(Leidig2018_l2)
+
+
+
+cleanEx()
+nameEx("anova.sc_plm")
+### * anova.sc_plm
+
+flush(stderr()); flush(stdout())
+
+### Name: anova.sc_plm
+### Title: ANOVA Table for Piecewise Linear Models
+### Aliases: anova.sc_plm anova.sc_hplm anova.sc_mplm
+
+### ** Examples
+
+## For glm models with family = "gaussian"
+mod1 <- plm(exampleAB$Johanna, level = FALSE, slope = FALSE)
+mod2 <- plm(exampleAB$Johanna)
+anova(mod1, mod2)
+## For glm models with family = "poisson"
+mod0 <- plm(example_A24, formula = injuries ~ 1, family = "poisson")
+mod1 <- plm(example_A24, trend = FALSE, family = "poisson")
+anova(mod0, mod1, mod2)
+## For glm with family = "binomial"
+mod0 <- plm(
+  exampleAB_score$Christiano, 
+  formula = values ~ 1, 
+  family = "binomial", 
+  var_trials = "trials"
+)
+mod1 <- plm(
+  exampleAB_score$Christiano, 
+  trend = FALSE, 
+  family = "binomial", 
+  var_trials = "trials"
+)
+anova(mod0, mod1)
+## For multilevel models:
+mod0 <- hplm(Leidig2018, trend = FALSE, slope = FALSE, level = FALSE)
+mod1 <- hplm(Leidig2018, trend = FALSE)
+mod2 <- hplm(Leidig2018)
+anova(mod0, mod1, mod2)
+## For mplm
+mod0 <- mplm(
+  Leidig2018$`1a1`, 
+  update = . ~  1, dvar = c("academic_engagement", "disruptive_behavior")
+)
+mod1 <- mplm(
+  Leidig2018$`1a1`, 
+  trend = FALSE, 
+  dvar = c("academic_engagement", "disruptive_behavior")
+)
+mod2 <- mplm(
+  Leidig2018$`1a1`, 
+  dvar = c("academic_engagement", "disruptive_behavior")
+)
+
+anova(mod0, mod1, mod2)
 
 
 
@@ -83,6 +162,64 @@ flush(stderr()); flush(stdout())
 
 batch_apply(exampleAB, coef(plm(.)))
 
+
+
+
+cleanEx()
+nameEx("between_smd")
+### * between_smd
+
+flush(stderr()); flush(stdout())
+
+### Name: between_smd
+### Title: Between-Case Standardized Mean Difference
+### Aliases: between_smd print.sc_bcsmd
+
+### ** Examples
+
+## Create a example scdf:
+des <- design(
+  n = 150,
+  phase_design = list(A1 = 10, B1 = 10, A2 = 10, B2 = 10, C = 10),
+  level = list(B1 = 1, A2 = 0, B2 = 1, C = 1),
+  rtt = 0.7,
+  random_start_value = TRUE
+)
+study <- random_scdf(des)
+
+## Standard BC-SMD return:
+between_smd(study)
+
+## Specify the model and provide an hplm object:
+model <- hplm(study, contrast_level = "preceding", slope = FALSE,  trend = FALSE)
+between_smd(model)
+
+## excluding the residuals gives a more accruate estimation:
+between_smd(model, include_residuals = FALSE)
+
+
+
+
+cleanEx()
+nameEx("bplm")
+### * bplm
+
+flush(stderr()); flush(stdout())
+
+### Name: bplm
+### Title: Bayesian Piecewise Linear Model
+### Aliases: bplm print.sc_bplm export.sc_bplm
+
+### ** Examples
+
+# plm regression
+bplm(example_A24)
+
+# Multilevel plm regression with random intercept
+bplm(exampleAB_50, nitt = 5000)
+
+# Adding a random slope
+bplm(exampleAB_50, random_level = TRUE, nitt = 5000)
 
 
 
@@ -329,8 +466,8 @@ flush(stderr()); flush(stdout())
 hplm(exampleAB_50, method = "REML", random.slopes = FALSE)
 
 ## Analyzing with additional L2 variables
-Leidig2018 %>%
-  add_l2(Leidig2018_l2) %>%
+Leidig2018 |>
+  add_l2(Leidig2018_l2) |>
   hplm(update.fixed = .~. + gender + migration + ITRF_TOTAL*phaseB,
        slope = FALSE, random.slopes = FALSE, lr.test = FALSE
   )
@@ -400,12 +537,12 @@ flush(stderr()); flush(stdout())
 ## Identify outliers using 1.5 standard deviations as criterion
 susanne <- random_scdf(level = 1.0)
 res_outlier <- outlier(susanne, method = "SD", criteria = 1.5)
-plot(susanne, marks = res_outlier)
+res_outlier
 
 ## Identify outliers in the original data from Grosche (2011)
 ## using Cook's Distance greater than 4/n as criterion
 res_outlier <- outlier(Grosche2011, method = "Cook", criteria = "4/n")
-plot(Grosche2011, marks = res_outlier)
+res_outlier
 
 
 
@@ -539,16 +676,16 @@ plm(dat, slope = FALSE, contrast = "preceding")
 plm(dat, slope = FALSE, trend = FALSE, contrast = "preceding")
 
 ## A poisson regression
-example_A24 %>%
+example_A24 |>
   plm(family = "poisson")
 
 ## A binomial regression (frequencies as dependent variable)
 plm(exampleAB_score$Christiano, family = "binomial", var_trials = "trials")
 
 ## A binomial regression (percentage as dependent variable)
-exampleAB_score$Christiano %>%
-  transform(percentage = values/trials) %>%
-  set_dvar("percentage") %>%
+exampleAB_score$Christiano |>
+  transform(percentage = values/trials) |>
+  set_dvar("percentage") |>
   plm(family = "binomial", var_trials = "trials", dvar_percentage = TRUE)
 
 
@@ -560,7 +697,7 @@ nameEx("plot.scdf")
 flush(stderr()); flush(stdout())
 
 ### Name: plot.scdf
-### Title: Plot single-case data
+### Title: (Deprecated) Plot single-case data
 ### Aliases: plot.scdf plotSC
 
 ### ** Examples
@@ -699,13 +836,20 @@ nameEx("ranks")
 flush(stderr()); flush(stdout())
 
 ### Name: ranks
-### Title: Rank-transformation of single-case data files
+### Title: (Deprecated) Rank-transformation of single-case data files
 ### Aliases: ranks
 ### Keywords: internal
 
 ### ** Examples
 
-ranks(Huber2014, var = "compliance")
+# The ranks function is deprecated. Please use transform:
+res1 <- ranks(Huber2014, var = "compliance")
+res2 <- transform(Huber2014, across_cases(compliance = rank(compliance, na.last="keep")))
+identical(res1, res2)
+
+res1 <- ranks(Huber2014, var = "compliance", grand = FALSE)
+res2 <- transform(Huber2014, compliance = rank(compliance, na.last="keep"))
+identical(res1, res2)
 
 
 
@@ -760,6 +904,27 @@ all.equal(res1,res2)
 
 
 cleanEx()
+nameEx("rescale")
+### * rescale
+
+flush(stderr()); flush(stdout())
+
+### Name: rescale
+### Title: Rescales values of an scdf file
+### Aliases: rescale
+### Keywords: internal
+
+### ** Examples
+
+
+## Standardize a multiple case scdf and compute an hplm
+exampleAB_50 |>
+  rescale(values, mt) |>
+  hplm()
+
+
+
+cleanEx()
 nameEx("sample_names")
 ### * sample_names
 
@@ -807,6 +972,12 @@ klaas <- scdf(
 klaas <- scdf(
   c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
   phase_design = c(A = 5, B = 6), name = "Klaas"
+)
+
+# Alternative coding 3:
+klaas <- scdf(
+  c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
+  phase_starts = c(A = 1, B = 7), name = "Klaas"
 )
 
 ## Unfortunately in a similar study there were no data collected on
@@ -882,8 +1053,8 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-exampleA1B1A2B2_zvt %>%
-  select_phases(A = c(1, 3), B = c(2, 4)) %>%
+exampleA1B1A2B2_zvt |>
+  select_phases(A = c(1, 3), B = c(2, 4)) |>
   overlap()
 
 
@@ -900,8 +1071,8 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-exampleAB_add %>% 
-  set_dvar("depression") %>%
+exampleAB_add |>
+  set_dvar("depression") |>
   describe()
 
 
@@ -924,8 +1095,8 @@ ex <- shift(example_A24, value = -1996)
 plm(ex)
 
 # Please use transform instead:
-example_A24 %>%
-  transform(year = year - 1996) %>%
+example_A24 |>
+  transform(year = year - 1996) |>
   plm()
 
 
@@ -969,7 +1140,7 @@ study <- c(
 )
 plot(study)
 
-Huber2014$Berta %>% 
+Huber2014$Berta |>
 transform(
   "compliance (moving median)" = moving_median(compliance),
   "compliance (moving mean)" = moving_mean(compliance),
@@ -994,13 +1165,13 @@ flush(stderr()); flush(stdout())
 
 
 ## Standardize a multiple case scdf and compute an hplm
-exampleAB_50 %>%
-  standardize("values", center = TRUE, scale = TRUE) %>%
+exampleAB_50 |>
+  standardize("values", center = TRUE, scale = TRUE) |>
   hplm()
 
 ## The more versatile transform function supersedes standardize:
-exampleAB_50 %>%
-  transform(values = (values - mean(all(values))) / sd(all(values))) %>%
+exampleAB_50 |>
+  transform(values = (values - mean(all(values))) / sd(all(values))) |>
   hplm()
 
 
@@ -1012,7 +1183,7 @@ nameEx("style_plot")
 flush(stderr()); flush(stdout())
 
 ### Name: style_plot
-### Title: Create styles for single-case data plots
+### Title: (Deprecated) Create styles for single-case data plots
 ### Aliases: style_plot
 
 ### ** Examples
@@ -1040,7 +1211,7 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-exampleAB %>%
+exampleAB |>
   subset((values < 60 & phase == "A") | (values >= 60 & phase == "B"))
 subset(exampleAB_add, select = c(-cigarrets, -depression))
 subset(exampleAB, cases = c(Karolina, Johanna))
@@ -1065,7 +1236,7 @@ tau_u(Grosche2011$Eva)
 
 ## Replicate  tau-U calculation from Parker et al. (2011)
 bob <- scdf(c(A = 2, 3, 5, 3, B = 4, 5, 5, 7, 6), name = "Bob")
-res <- tau_u(bob, method = "parker", tau_method = "a")
+res <- tau_u(bob, method = "parker")
 print(res, complete = TRUE)
 
 ## Request tau-U for all single-cases from the Grosche2011 data set
@@ -1099,7 +1270,7 @@ study <- random_scdf(design)
 transform(study, proportion = values/trials, percentage = proportion * 100)
 
 ## Z standardize the dependent variable and add two new variables:
-exampleAB %>%
+exampleAB |>
   transform(
     values = scale(values),
     mean_values = mean(values),
@@ -1107,7 +1278,7 @@ exampleAB %>%
   )
 
 ## Use `all` to calculate global variables.
-exampleAB %>%
+exampleAB |>
   transform(
     values_center_case = values - mean(values[phase == "A"]),
     values_center_global = values - mean(all(values[phase == "A"])),
@@ -1116,20 +1287,20 @@ exampleAB %>%
 
 ## Use `across_cases` to calculate or replace a variable with values from
 ## all cases. E.g., standardize the dependent variable:
-exampleABC %>%
+exampleABC |>
   transform(
     across_cases(values = scale(values))
   )
 
 ## Rank transform the values based on all cases vs. within each case:
-exampleABC %>%
+exampleABC |>
   transform(
     across_cases(values_across = rank(values, na.last="keep")),
     value_within = rank(values, na.last="keep")
   )
 
 ## Three helper functions to smooth the data
-Huber2014$Berta %>%
+Huber2014$Berta |>
 transform(
   "compliance (moving median)" = moving_median(compliance),
   "compliance (moving mean)" = moving_mean(compliance),
@@ -1140,7 +1311,7 @@ transform(
 ## E.g., you want to replace the first two values of phase A and the first
 ## value of phase B and its preceding value.
 
-byHeart2011 %>%
+byHeart2011 |>
   transform(
     values = replace(values, first_of(phase == "A", 0:1), NA),
     values = replace(values, first_of(phase == "B", -1:0), NA)
@@ -1167,11 +1338,16 @@ matthea <- random_scdf(design)
 trend(matthea)
 
 ## Besides the linear and squared regression models compute two custom models:
-## a) a cubic model, and b) the values predicted by the natural logarithm of the
+## a) a cubic model, and 
+## b) the values predicted by the natural logarithm of the
 ## measurement time.
 design <- design(slope = 0.3)
 ben <- random_scdf(design)
-trend(ben, offset = 0, model = c("Cubic" = values ~ I(mt^3), "Log Time" = values ~ log(mt)))
+trend(
+  ben, 
+  model = list("Cubic" = values ~ mt^3, "Log Time" = values ~ log(mt)), 
+  first_mt = 1 # must be set to 1 because log(0) would be -Inf
+)
 
 
 
