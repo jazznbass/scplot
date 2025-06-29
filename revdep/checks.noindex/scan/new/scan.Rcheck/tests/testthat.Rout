@@ -1,6 +1,6 @@
 
-R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.0 (2025-04-11) -- "How About a Twenty-Six"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: aarch64-apple-darwin20
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -25,7 +25,7 @@ Type 'q()' to quit R.
 > 
 > library(testthat)
 > library(scan)
-[34mscan 0.61.0 (2024-06-30)
+[34mscan 0.64.0 (2025-03-18)
 [31mStart the graphical user interface of scan with shinyscan().
 
 Attaching package: 'scan'
@@ -36,8 +36,8 @@ The following object is masked from 'package:testthat':
 
 > 
 > test_check("scan")
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 66 ]
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 85 ]
 > 
 > proc.time()
    user  system elapsed 
-  0.716   0.078   1.038 
+  1.233   0.086   1.565 

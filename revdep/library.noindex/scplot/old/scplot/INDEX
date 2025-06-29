@@ -12,11 +12,12 @@ as_ggplot               Creates a ggplot2 object from an 'scplot()'
                         object
 element_point           Point element
 new_theme               Create a new scplot theme
-plot.sc_hplm            This function generates a forest plot for the
-                        random effects of a mixed hplm model
-plot.sc_tauu            Plot Tau-U Effects
-scplot                  Plot single-case data
 scplot-package          Single-Case Data Plots
+scplot.sc_hplm          This function generates a forest plot for the
+                        random effects of a mixed hplm model
+scplot.sc_rand          Plot Randomization Effects
+scplot.sc_tauu          Plot Tau-U Effects
+scplot.scdf             Plot single-case data
 set_background          Set plot and panel background of an scplot
 set_base_text           Set base text parameters of an scplot
 set_casenames           Set casenames of an scplot
