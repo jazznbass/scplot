@@ -3,7 +3,7 @@
 \name{new_theme}
 \alias{new_theme}
 \alias{extract_theme}
-\title{Create a new scplot theme}
+\title{Create a new scplot theme object}
 \usage{
 new_theme()
 
@@ -14,13 +14,20 @@ extract_theme(object)
 function.}
 }
 \value{
-An scplot-theme object
-
 An object of class \code{scplot-theme} which can be used with the
 \code{\link[=set_theme]{set_theme()}} function.
 }
 \description{
-Create a new scplot theme
+\code{new_theme()} creates a new theme object for use with scplot.
+
+\code{extract_theme()} extracts the theme from an existing scplot object, allowing
+users to reuse or modify the theme for other scplot visualizations.
+}
+\details{
+Themes control the overall appearance of scplot visualizations, including
+colors, fonts, line styles, and layout options. By creating a custom theme,
+users can ensure consistent styling across multiple plots and tailor the
+visualizations to their specific needs or branding requirements.
 }
 \examples{
 data(exampleABC, package = "scan")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_text.R
 \name{add_text}
 \alias{add_text}
-\title{Add test to an scplot}
+\title{Add test to an scplot object}
 \usage{
 add_text(
   object,
@@ -26,9 +26,9 @@ function.}
 
 \item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
 
-\item{x}{x position}
+\item{x}{x position.}
 
-\item{y}{y position}
+\item{y}{y position.}
 
 \item{color}{A character string or a number defining the color of an element.}
 
@@ -47,5 +47,5 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a cha
 element.
 }
 \description{
-Add test to an scplot
+Adds a text element to an \code{scplot} object at specified coordinates.
 }

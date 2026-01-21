@@ -3,7 +3,7 @@
 \name{scplot.scdf}
 \alias{scplot.scdf}
 \alias{scplot}
-\title{Plot single-case data}
+\title{Plot single-case data from a single-case data-frame}
 \usage{
 \method{scplot}{scdf}(object, ...)
 }
@@ -14,11 +14,34 @@
 }
 \value{
 An object of class \code{scplot} containing the single-case data (element \code{scdf}),
-and information about the plot style (element \code{theme}).
+and information about the plot style (element \code{theme}). This object can be
+further customized using various functions provided in the package.
 }
 \description{
-This function provides a plot of a single-case or multiple single-cases.
+This function provides a plot of a single-case or multiple single-cases. It
+takes a single-case data-frame (scdf) as input and returns an object
+of class \code{scplot}, which can be further customized using various functions
+provided in the package.
+}
+\details{
+The function automatically extracts relevant information from the
+single-case data-frame, such as dependent variable, phase variable, and
+measurement time variable. It also sets default values for various plot
+elements, including data lines, statistical lines, ridges, marks, texts,
+and lines.
+}
+\examples{
+data(exampleAB, package = "scan")
+p1 <- scplot(exampleAB)
+p2 <- scplot(exampleAB$Anja)
+p3 <- scplot(exampleAB[c("Anja", "Berta")])
+print(p1)
+}
+\seealso{
+\code{\link[=set_dataline]{set_dataline()}}, \link{add_statline}, \code{\link[=set_theme]{set_theme()}}
 }
 \author{
 Juergen Wilbert
 }
+\keyword{plot}
+\keyword{scdf}

@@ -23,7 +23,7 @@ function.}
 
 \item{nudge_x}{Offset on the x-axis.}
 
-\item{round}{Number of digits of the labels.}
+\item{round}{Number of digits of the labels. If NULL, no rounding is applied.}
 
 \item{text}{List with text parameters (\verb{"family", "face", "colour", "size", "hjust", "vjust", "angle", "lineheight", "margin"}). See \code{\link[=element_text]{element_text()}}.}
 
@@ -39,5 +39,8 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with added
 \code{labels}.
 }
 \description{
-Add value labels to an scplot
+This function adds value labels to an existing \code{scplot} object. The labels
+display the values of a specified variable (default is \code{.dvar}, which
+typically represents the main variable being plotted). You can customize the
+position, rounding, text style, and background style of the labels.
 }

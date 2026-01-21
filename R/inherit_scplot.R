@@ -1,5 +1,10 @@
-#' Dummy function to inherit global descriptions of parameters
+#' Inherit parameter descriptions for scplot objects
 #'
+#' This is a dummy function that is not meant to be called directly. It is used
+#' to inherit parameter descriptions in other functions related to `scplot`
+#' objects.
+#'
+#' @return No return value.
 #' @param object An scplot object (class `scplot`) returned from the `scplot()`
 #'   function.
 #' @param label A Character vector with text labels.

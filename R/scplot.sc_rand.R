@@ -1,12 +1,12 @@
 #' Plot Randomization Effects
 #'
-#' This function generates a forest plot of Tau-U effects.
+#' This function generates plots of randomization test results.
 #'
 #' @param object The return from the `tau_u()` function.
 #' @param type Either `"hist"` or `"xy"`.
 #' @param add_density_curve If TRUE, adds a density curve to the histogram.
 #' @param ... Further arguments.
-#' @return A forest plot displaying Tau-U effects.
+#' @return A plot displaying the results of the randomization test.
 #'
 #' @examples
 #' \dontrun{

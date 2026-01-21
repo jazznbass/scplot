@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_casenames.R
 \name{set_casenames}
 \alias{set_casenames}
-\title{Set casenames of an scplot}
+\title{Set casenames of an scplot object}
 \usage{
 set_casenames(object, labels = NULL, position = NULL, background = list(), ...)
 }
@@ -25,5 +25,9 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a cha
 element.
 }
 \description{
-Set casenames of an scplot
+Sets the case names (labels) and their position in an \code{scplot} object.
+}
+\details{
+If \code{labels} is \code{NULL}, the current labels are kept. If \code{position} is \code{NULL}, the
+current position is kept.
 }

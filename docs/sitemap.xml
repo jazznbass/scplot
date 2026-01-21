@@ -18,8 +18,13 @@
 <url><loc>/reference/add_text.html</loc></url>
 <url><loc>/reference/add_title.html</loc></url>
 <url><loc>/reference/as_ggplot.html</loc></url>
+<url><loc>/reference/dot-check_theme.html</loc></url>
 <url><loc>/reference/dot-inheritParams.html</loc></url>
 <url><loc>/reference/dot-inherit_scplot.html</loc></url>
+<url><loc>/reference/dot-merge_element.html</loc></url>
+<url><loc>/reference/dot-merge_theme.html</loc></url>
+<url><loc>/reference/dot-size.html</loc></url>
+<url><loc>/reference/dot-upperfirst.html</loc></url>
 <url><loc>/reference/element_point.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/new_theme.html</loc></url>

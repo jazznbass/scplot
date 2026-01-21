@@ -2,7 +2,7 @@
 % Please edit documentation in R/inherit_scplot.R
 \name{.inherit_scplot}
 \alias{.inherit_scplot}
-\title{Dummy function to inherit global descriptions of parameters}
+\title{Inherit parameter descriptions for scplot objects}
 \usage{
 .inherit_scplot(
   object,
@@ -73,7 +73,12 @@ size, linetype).}
 \item{...}{Further styling arguments: color, size, face, family, hjust,
 vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
+\value{
+No return value.
+}
 \description{
-Dummy function to inherit global descriptions of parameters
+This is a dummy function that is not meant to be called directly. It is used
+to inherit parameter descriptions in other functions related to \code{scplot}
+objects.
 }
 \keyword{internal}

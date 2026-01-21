@@ -1,5 +1,7 @@
+#' Forest Plot for Random Effects of Mixed HPLM Models
+#'
 #' This function generates a forest plot for the random effects of a mixed hplm
-#' model
+#' model.
 #'
 #' @param object The return from the `hplm()` function.
 #' @param effect The specific effect to be plotted (default is the intercept).

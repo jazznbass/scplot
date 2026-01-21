@@ -1,4 +1,9 @@
-#' Add a ridge to an scplot
+#' Add a ridge to an scplot object
+#'
+#' Adds a ridge element to an `scplot` object. Ridges are density plots
+#' displayed vertically along the y-axis, often used to show distributions of
+#' data points across different categories or groups.
+#'
 #'
 #' @inheritParams .inherit_scplot
 #' @return An object of class `scplot` (see[scplot()]) with changed element

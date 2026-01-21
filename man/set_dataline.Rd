@@ -3,7 +3,7 @@
 \name{set_dataline}
 \alias{set_dataline}
 \alias{add_dataline}
-\title{Set data lines of an scplot}
+\title{Set data lines of an scplot object}
 \usage{
 set_dataline(
   object,
@@ -29,7 +29,8 @@ left empty, the aesthetics of the default data line are changed.}
 \item{point}{A list with point parameters (\verb{"colour", "size", "shape"}). See
 \code{\link[=element_point]{element_point()}}.}
 
-\item{type}{Either "continuous" or "discrete"}
+\item{type}{Either "continuous" or "discrete". Specifies how the data line
+should be treated.}
 
 \item{label}{A character string which is used to set the label in a legend.}
 
@@ -42,6 +43,14 @@ element.
 }
 \description{
 Either set aesthetics of the default data line or add another data line.
+The function allows customization of data lines by passing arguments
+similar to those used in \code{element_line()} and \code{element_point()}, such as
+\code{color}, \code{size}, and \code{linetype}.
+}
+\details{
+If \code{variable} is left empty or set to \code{".dvar"}, the aesthetics of the
+default data line are changed. Otherwise, a new data line is added for the
+specified variable.
 }
 \examples{
 data(exampleAB_add, package = "scan")

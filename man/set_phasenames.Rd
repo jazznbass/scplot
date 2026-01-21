@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_phasenames.R
 \name{set_phasenames}
 \alias{set_phasenames}
-\title{Set phasenames of an scplot}
+\title{Set phasenames of an scplot object}
 \usage{
 set_phasenames(object, labels = NULL, position = NULL, ...)
 }
@@ -21,5 +21,12 @@ An object of class \code{scplot} (see \code{\link[=scplot]{scplot()}}) with a ch
 \code{phasenames} element.
 }
 \description{
-Set phasenames of an scplot
+Set phasenames of an scplot object
+}
+\details{
+This function allows to set or modify the phase names displayed
+above the phases in an \code{scplot} object. You can customize the labels
+and their position (left, center, or none). Additionally, you can adjust
+various text parameters such as font family, face, color, size, and more
+using the \code{...} argument.
 }

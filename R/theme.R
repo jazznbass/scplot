@@ -1,7 +1,8 @@
-#' Add a theme of to an scplot
+#' Add a theme of to an scplot object
 #'
 #' Possible themes are: `'basic', 'grid', 'default', 'small', 'tiny', 'big',
-#' 'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'`.
+#' 'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'`. See
+#' [new_theme()] for details on the themes.
 #'
 #' @inheritParams .inherit_scplot
 #' @param theme A character string with a predefined graphical theme or a theme

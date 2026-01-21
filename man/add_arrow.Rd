@@ -39,10 +39,10 @@ function.}
 
 \item{length}{Size of the arrow angels.}
 
-\item{type}{One of "open" or "closed" indicating whether the arrow head
+\item{type}{One of \code{"open"} or \code{"closed"} indicating whether the arrow head
 should be a closed triangle.}
 
-\item{ends}{One of "last", "first", or "both", indicating which ends of the
+\item{ends}{One of \code{"last"}, \code{"first"}, or \code{"both"}, indicating which ends of the
 line to draw arrow heads.}
 
 \item{linewidth}{A number with the width of the line.}
@@ -52,7 +52,12 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with added
 \code{lines}.
 }
 \description{
-Add arrrows to an scplot
+Draws an arrow between two points in the scplot.
+}
+\details{
+The arrow is drawn from point \verb{(x0, y0)} to point \verb{(x1, y1)}.
+The arrow head can be customized with the arguments
+\code{angle}, \code{length}, \code{type}, and \code{ends}.
 }
 \examples{
 data(exampleAB, package = "scan")

@@ -1,8 +1,8 @@
 Package: scplot
 Type: Package
 Title: Plot Function for Single-Case Data Frames
-Version: 0.6.0
-Date: 2025-06-29
+Version: 0.6.1
+Date: 2026-01-21
 Authors@R:
     person("Juergen", "Wilbert", 
     email = "juergen.wilbert@uni-muenster.de", 
@@ -29,5 +29,5 @@ Suggests:
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)

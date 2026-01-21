@@ -1,8 +1,24 @@
 #' Add a legend to an scplot
 #'
+#' This function adds a legend to an `scplot` object. The legend can include
+#' entries for datalines, statlines, and phases. You can customize the position
+#' of the legend, as well as the text style for the title and text within the
+#' legend.
+#'
+#' Deprecated argument: The `labels` argument is deprecated. Please set the
+#' `label` argument in the `add_statline` and `set_dataline` functions instead.
+#' The legend can be customized to include different sections for
+#' datalines, statlines, and phases. You can control which sections are
+#' included in the legend using the `datalines`, `statlines`, and `phases`
+#' arguments. The `position` argument allows you to specify where
+#' the legend should be placed on the plot. You can also customize the text
+#' style for the title and text within the legend using the `title` and `text`
+#' arguments, respectively. The `background` argument allows you to set
+#' the background style of the legend.
+#'
 #' @inheritParams .inherit_scplot
 #' @param position The position ("none", "left", "right", "bottom", "top", or
-#'   two-element numeric vector)
+#'   two-element numeric vector) of the legend.
 #' @param datalines If TRUE, a legend for the datalines is generated.
 #' @param statlines If TRUE, a legend for the statlines is generated.
 #' @param phases If TRUE, a legend for the phases is generated.
@@ -56,7 +72,6 @@ add_legend <- function(object,
   object$legend$statlines <- statlines
   object$legend$datalines <- datalines
   object$legend$phases <- phases
-
 
   object$theme$legend.title <-
     .merge_element(title, object$theme$legend.title)

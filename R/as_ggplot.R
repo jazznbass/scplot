@@ -1,8 +1,12 @@
 #' Creates a ggplot2 object from an [scplot()] object
 #'
+#' @description
+#' `as_ggplot()` takes an `scplot` object as input and returns a `ggplot2`
+#'  object.
+#'
 #' @param scplot An `scplot` object
 #'
-#' @details `as_ggplot()` is used when you want to return a ggplot2 object for
+#' @details `as_ggplot()` is used directly when you want to return a ggplot2 object for
 #'   further use with external ggplot functions.
 #' @return A `ggplot2` plot object.
 #' @export

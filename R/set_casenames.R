@@ -1,4 +1,9 @@
-#' Set casenames of an scplot
+#' Set casenames of an scplot object
+#'
+#' Sets the case names (labels) and their position in an `scplot` object.
+#'
+#' If `labels` is `NULL`, the current labels are kept. If `position` is `NULL`, the
+#' current position is kept.
 #'
 #' @inheritParams .inherit_scplot
 #' @param position Either `"topleft", "bottomleft", "topright", "bottomright",

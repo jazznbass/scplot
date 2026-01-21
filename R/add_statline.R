@@ -1,8 +1,16 @@
-#' Add a statline to an scplot
+#' Add a statline to an scplot object
+#'
+#' This function adds a statistical line or curve to an existing `scplot`
+#' object. Various statistical functions are available such as mean, median,
+#' min, max, quantile, standard deviation, moving average, and trend lines.
 #'
 #' @inheritParams .inherit_scplot
 #' @param stat A character string for defining a statistical line or curve to be
-#'   plotted.
+#'   plotted. Possible values are `"mean"`, `"median"`, `"min"`, `"max"`,
+#'   `"quantile"`, `"sd"`, `"mad"`, `"trend"`, `"trendA"`, `"trendA theil-sen"`,
+#'   `"trendA bisplit"`, `"trendA trisplit"`, `"moving mean"`,
+#'   `"moving median"`, `"loreg"` (local regression using `loess`), and
+#'   `"lowess"` (local regression using `lowess`).
 #' @param phase Either a numeric or a character vector specifying the reference
 #'   phase (see details).
 #' @param label A character string which is used to set the label in a legend.

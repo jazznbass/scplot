@@ -1,14 +1,21 @@
 #' Add arrrows to an scplot
 #'
+#' Draws an arrow between two points in the scplot.
+#'
+#' @details
+#' The arrow is drawn from point `(x0, y0)` to point `(x1, y1)`.
+#' The arrow head can be customized with the arguments
+#' `angle`, `length`, `type`, and `ends`.
+#'
 #' @inheritParams .inherit_scplot
 #' @param x0 Origin x position of the line.
 #' @param y0 Origin y position of the line.
 #' @param x1 End x position of the line.
 #' @param y1 End y position of the line.
 #' @param length Size of the arrow angels.
-#' @param type One of "open" or "closed" indicating whether the arrow head
+#' @param type One of `"open"` or `"closed"` indicating whether the arrow head
 #'   should be a closed triangle.
-#' @param ends One of "last", "first", or "both", indicating which ends of the
+#' @param ends One of `"last"`, `"first"`, or `"both"`, indicating which ends of the
 #'   line to draw arrow heads.
 #' @return An object of class `scplot` (see[scplot()]) with added element
 #'   `lines`.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.scplot.R
 \name{print.scplot}
 \alias{print.scplot}
-\title{print.scplot}
+\title{print.scplot - Print an scplot object}
 \usage{
 \method{print}{scplot}(x, ...)
 }
@@ -15,6 +15,7 @@
 Calls \code{\link[=as_ggplot]{as_ggplot()}} to create a ggplot2 argument and prints it.
 }
 \description{
-print.scplot
+Prints an \code{scplot} object by converting it to a ggplot2 object using
+\code{\link[=as_ggplot]{as_ggplot()}}.
 }
 \keyword{internal}

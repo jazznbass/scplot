@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
       </span>
     </div>
 
@@ -73,9 +73,11 @@
 <div class="section level2">
 <h2 id="how-to-install-scplot">How to install <em>scplot</em>?<a class="anchor" aria-label="anchor" href="#how-to-install-scplot"></a>
 </h2>
-<p>From: <code>install.packages("scplot")</code></p>
-<p>For the developmental version:</p>
-<p>Install scplot: <code>devtools::install_github("jazznbass/scplot")</code></p>
+<p>From CRAN: <code>install.packages("scplot")</code></p>
+<p>For the developmental version from GitHub you need the <em>devtools</em> package:<br><code>install.packages("devtools")</code></p>
+<p>Then install <em>scplot</em> from GitHub with:<br><code>devtools::install_github("jazznbass/scplot")</code></p>
+<p>After installation, load the package with:<br><code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(scplot)</a></code></p>
+<p>You also need to have the <em>scan</em> package installed and loaded:<br><code>install.packages("scan")</code><br><code><a href="https://github.com/jazznbass/scan/" class="external-link">library(scan)</a></code></p>
 <p>If you get errors, look if a specific package is missing/ not found and try to install the missing package with <code>install.packages("[name-of-the-missing-package]")</code>.</p>
 </div>
 <div class="section level2">
@@ -87,6 +89,15 @@
 <li>You find in depth information an <em>scan</em> in the book <a href="https://jazznbass.github.io/scan-Book/" class="external-link">Analyzing single-case data with R and scan</a>
 </li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jazznbass/scan/" class="external-link">scan</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">scplot</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"exampleABC"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/scplot.scdf.html">scplot</a></span><span class="op">(</span><span class="va">exampleABC</span><span class="op">)</span> </span></code></pre></div>
 </div>
 </div>
   </div>
@@ -141,7 +152,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

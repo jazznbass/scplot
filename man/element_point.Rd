@@ -2,7 +2,7 @@
 % Please edit documentation in R/element_point.R
 \name{element_point}
 \alias{element_point}
-\title{Point element}
+\title{Point element for ggplot themes}
 \usage{
 element_point(colour = NULL, size = NULL, shape = NULL, color = NULL)
 }
@@ -17,5 +17,7 @@ element_point(colour = NULL, size = NULL, shape = NULL, color = NULL)
 An object of class \code{c("element_point", "element")}.
 }
 \description{
-In conjunction with ggplot an object to represent point attributes.
+In conjunction with ggplot an object to represent point attributes. Can be
+used in themes to set default point attributes for geoms that use points.
+See \code{\link[ggplot2:element]{ggplot2::element_point()}}.
 }

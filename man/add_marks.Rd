@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_marks.R
 \name{add_marks}
 \alias{add_marks}
-\title{Add marks to an scplot}
+\title{Add marks to an scplot object}
 \usage{
 add_marks(
   object,
@@ -21,7 +21,11 @@ function.}
 \item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
 
 \item{positions}{Either a vector indicating the points to be highlighted or a
-character string with a logical expression (e.g. \code{values < mean(values)})}
+character string with a logical expression (e.g. \code{values < mean(values)})
+indicating the points to be highlighted. Alternatively, an object of class
+\code{sc_outlier} returned from the \code{\link[scan:outlier]{scan::outlier()}} function can be used
+to mark the detected outliers. A list of such vectors or expressions can
+also be provided to add marks for multiple cases at once.}
 
 \item{color}{A character string or a number defining the color of an element.}
 
@@ -37,14 +41,25 @@ An object of class \code{scplot} (see \code{\link[=scplot]{scplot()}}) with chan
 \code{marks}.
 }
 \description{
-Add marks to an scplot
+Marks specific points in an scplot object.
 }
 \details{
-If \code{positions} is an object returned from an outlier analysis
-\code{outlier()}, the corresponding outliers are marked.
+Marks are visualized as points on top of the existing plot. Multiple marks
+can be added by calling \code{add_marks()} multiple times.
+
+If \code{positions} is an object returned from an outlier analysis via
+\code{outlier()}, the corresponding outliers are marked. If \code{positions} is a
+list, marks are added for each case in the list.
+The \code{variable} argument specifies the variable on which the marks are
+applied. By default, the variable \code{.dvar} is used. If multiple cases are
+plotted, the \code{case} argument specifies for which case(s) the marks are
+added.
 }
 \examples{
 library(scan)
 p1 <- scplot(exampleA1B1A2B2$Moritz) |> add_marks(positions = c(1,5,10,14))
 p1 <- scplot(Huber2014) |> add_marks(positions = outlier(Huber2014))
+}
+\author{
+Juergen Wilbert
 }

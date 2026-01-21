@@ -1,19 +1,37 @@
-#' Plot single-case data
+#' Plot single-case data from a single-case data-frame
 #'
-#' This function provides a plot of a single-case or multiple single-cases.
+#' This function provides a plot of a single-case or multiple single-cases. It
+#' takes a single-case data-frame (scdf) as input and returns an object
+#' of class `scplot`, which can be further customized using various functions
+#' provided in the package.
+#'
+#' The function automatically extracts relevant information from the
+#' single-case data-frame, such as dependent variable, phase variable, and
+#' measurement time variable. It also sets default values for various plot
+#' elements, including data lines, statistical lines, ridges, marks, texts,
+#' and lines.
 #'
 #' @aliases scplot scplot.scdf
 #' @param object A single-case data-frame object (scdf).
 #' @param ... further arguments.
 #' @return An object of class `scplot` containing the single-case data (element `scdf`),
-#'  and information about the plot style (element `theme`).
+#'  and information about the plot style (element `theme`). This object can be
+#'  further customized using various functions provided in the package.
+#' @examples
+#' data(exampleAB, package = "scan")
+#' p1 <- scplot(exampleAB)
+#' p2 <- scplot(exampleAB$Anja)
+#' p3 <- scplot(exampleAB[c("Anja", "Berta")])
+#' print(p1)
+#' @seealso [set_dataline()], [add_statline], [set_theme()]
+#' @keywords plot scdf
 #' @author Juergen Wilbert
 #' @export
 scplot.scdf <- function(object, ...) {
 
   caption <- getOption("scplot.plot.caption")
   if (caption == "auto")
-    caption <- format_caption(
+    caption <- .format_caption(
       scdf_attr(object)$info,
       scdf_attr(object)$author
     )
@@ -39,7 +57,7 @@ scplot.scdf <- function(object, ...) {
     labels = list(),
     phasenames = list(labels = ".default"),
     legend = NULL,
-    casenames = list(labels = revise_names(object))
+    casenames = list(labels = .revise_case_names(object))
   )
 
   class(out) <- "scplot"
@@ -47,8 +65,7 @@ scplot.scdf <- function(object, ...) {
   out
 }
 
-#
-revise_names <- function(x, n) {
+.revise_case_names <- function(x, n) {
   names_default <- paste0("Case", 1:50)
   if (missing(n)) {
     n <- length(x)
@@ -64,7 +81,7 @@ revise_names <- function(x, n) {
   x
 }
 
-format_caption <- function(info, author, width = 100) {
+.format_caption <- function(info, author, width = 100) {
   caption <- NULL
 
   if (!is.null(info)) caption <- info
