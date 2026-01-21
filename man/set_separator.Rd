@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_separator.R
 \name{set_separator}
 \alias{set_separator}
-\title{Set separator line in an scplot}
+\title{Set separator line in an scplot object}
 \usage{
 set_separator(object, ...)
 }
@@ -10,11 +10,16 @@ set_separator(object, ...)
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{...}{List with line parameters (\verb{"colour"", "linewidth", "linetype"}).}
+\item{...}{List with line parameters (\verb{"colour"", "linewidth", "linetype"}).
+See \code{\link[=element_line]{element_line()}}.}
 }
 \value{
-An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with modified \code{theme} element.
 }
 \description{
-Set separator line in an scplot
+This function allows you to customize the appearance of separator lines in an
+\code{scplot} object by specifying parameters such as color, line width, and line
+type. You can pass these parameters as arguments, similar to those used in
+\code{element_line()}, to modify the visual style of the separator lines in your plot
+theme.
 }

@@ -1,7 +1,13 @@
-#' Create a new scplot theme
+#' Create a new scplot theme object
+#'
+#' `new_theme()` creates a new theme object for use with scplot.
+#'
+#' Themes control the overall appearance of scplot visualizations, including
+#' colors, fonts, line styles, and layout options. By creating a custom theme,
+#' users can ensure consistent styling across multiple plots and tailor the
+#' visualizations to their specific needs or branding requirements.
 #'
 #' @inheritParams .inherit_scplot
-#' @return An scplot-theme object
 #' @examples
 #' data(exampleABC, package = "scan")
 #' my_theme <- new_theme() |>
@@ -44,7 +50,11 @@ new_theme <- function() {
 
 
 
-
+#' `extract_theme()` extracts theme from an scplot object
+#'
+#' `extract_theme()` extracts the theme from an existing scplot object, allowing
+#' users to reuse or modify the theme for other scplot visualizations.
+#'
 #' @export
 #' @rdname new_theme
 extract_theme <- function(object) {

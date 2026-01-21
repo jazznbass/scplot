@@ -9,12 +9,21 @@
 
 ## How to install *scplot*?
 
-From:
+From CRAN:
 `install.packages("scplot")`
 
-For the developmental version:
+For the developmental version from GitHub you need the *devtools* package:  
+`install.packages("devtools")`  
 
-Install scplot: `devtools::install_github("jazznbass/scplot")`
+Then install *scplot* from GitHub with:  
+`devtools::install_github("jazznbass/scplot")`
+
+After installation, load the package with:  
+`library(scplot)`
+
+You also need to have the *scan* package installed and loaded:   
+`install.packages("scan")`  
+`library(scan)`
 
 If you get errors, look if a specific package is missing/ not found and try to install the missing package with `install.packages("[name-of-the-missing-package]")`.
 
@@ -24,4 +33,12 @@ If you get errors, look if a specific package is missing/ not found and try to i
 - For *scplot* look at (https://jazznbass.github.io/scplot/)
 - You find in depth information an *scan* in the book [Analyzing single-case data with R and scan](https://jazznbass.github.io/scan-Book/)
 
+## Basic example
+
+```r
+library(scan)
+library(scplot)
+data("exampleABC")
+scplot(exampleABC) 
+```
 

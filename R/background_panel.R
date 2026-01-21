@@ -1,4 +1,11 @@
-#' Set plot and panel background of an scplot
+#' Set plot and panel background of an scplot object
+#'
+#' The `set_background()` function allows you to customize the plot background
+#' of an `scplot` object by specifying parameters such as fill color, border color,
+#' line width, and line type. Similarly, the `set_panel()` function enables you
+#' to set the panel background with the same customizable parameters. These
+#' functions enhance the visual appearance of your plots by allowing you to
+#' tailor the background styles to your preferences.
 #'
 #' @inheritParams .inherit_scplot
 #' @param ... List with rectangle parameters (`"fill", "colour", "linewidth",

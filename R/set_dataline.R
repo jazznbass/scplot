@@ -1,11 +1,19 @@
-#' Set data lines of an scplot
+#' Set data lines of an scplot object
 #'
 #' Either set aesthetics of the default data line or add another data line.
+#' The function allows customization of data lines by passing arguments
+#' similar to those used in `element_line()` and `element_point()`, such as
+#' `color`, `size`, and `linetype`.
+#'
+#' If `variable` is left empty or set to `".dvar"`, the aesthetics of the
+#' default data line are changed. Otherwise, a new data line is added for the
+#' specified variable.
 #'
 #' @inheritParams .inherit_scplot
 #' @param variable String. The name of a new variable for adding a new line. If
 #'   left empty, the aesthetics of the default data line are changed.
-#' @param type Either "continuous" or "discrete"
+#' @param type Either "continuous" or "discrete". Specifies how the data line
+#'  should be treated.
 #' @param label A character string which is used to set the label in a legend.
 #' @param ... As a shortcut, arguments passed hear are bundled as `line`
 #'   arguments (see [element_line()]).

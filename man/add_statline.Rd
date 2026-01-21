@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_statline.R
 \name{add_statline}
 \alias{add_statline}
-\title{Add a statline to an scplot}
+\title{Add a statline to an scplot object}
 \usage{
 add_statline(
   object,
@@ -23,7 +23,11 @@ add_statline(
 function.}
 
 \item{stat}{A character string for defining a statistical line or curve to be
-plotted.}
+plotted. Possible values are \code{"mean"}, \code{"median"}, \code{"min"}, \code{"max"},
+\code{"quantile"}, \code{"sd"}, \code{"mad"}, \code{"trend"}, \code{"trendA"}, \code{"trendA theil-sen"},
+\code{"trendA bisplit"}, \code{"trendA trisplit"}, \code{"moving mean"},
+\code{"moving median"}, \code{"loreg"} (local regression using \code{loess}), and
+\code{"lowess"} (local regression using \code{lowess}).}
 
 \item{phase}{Either a numeric or a character vector specifying the reference
 phase (see details).}
@@ -45,7 +49,9 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with chang
 \code{statlines}.
 }
 \description{
-Add a statline to an scplot
+This function adds a statistical line or curve to an existing \code{scplot}
+object. Various statistical functions are available such as mean, median,
+min, max, quantile, standard deviation, moving average, and trend lines.
 }
 \details{
 The \code{phase} argument defines the reference phase for some

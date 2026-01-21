@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_grid.R
 \name{add_grid}
 \alias{add_grid}
-\title{Add grid to an scplot}
+\title{Add grid to an scplot theme}
 \usage{
 add_grid(object, ...)
 }
@@ -10,13 +10,19 @@ add_grid(object, ...)
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{...}{Line arguments (see \code{\link[=element_line]{element_line()}})}
+\item{...}{Line arguments (see \code{\link[=element_line]{element_line()}}).}
 }
 \value{
-An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
+An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with modified \code{theme} element
+to include the specified grid line properties.
 }
 \description{
-Add grid to an scplot
+Adds grid line specifications to the theme of an \code{scplot} object.
+}
+\details{
+The function allows customization of grid lines by passing arguments
+similar to those used in \code{element_line()}, such as \code{color}, \code{size},
+and \code{linetype}.
 }
 \examples{
 data(exampleAB, package = "scan")

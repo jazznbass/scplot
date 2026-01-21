@@ -1,12 +1,27 @@
-#' Add marks to an scplot
+#' Add marks to an scplot object
+#'
+#' Marks specific points in an scplot object.
+#'
+#' Marks are visualized as points on top of the existing plot. Multiple marks
+#' can be added by calling `add_marks()` multiple times.
 #'
 #' @inheritParams .inherit_scplot
 #' @param positions Either a vector indicating the points to be highlighted or a
 #'   character string with a logical expression (e.g. `values < mean(values)`)
-#' @details If `positions` is an object returned from an outlier analysis
-#'   `outlier()`, the corresponding outliers are marked.
+#'   indicating the points to be highlighted. Alternatively, an object of class
+#'   `sc_outlier` returned from the [outlier()] function can be used
+#'   to mark the detected outliers. A list of such vectors or expressions can
+#'   also be provided to add marks for multiple cases at once.
+#' @details If `positions` is an object returned from an outlier analysis via
+#'   `outlier()`, the corresponding outliers are marked. If `positions` is a
+#'   list, marks are added for each case in the list.
+#'   The `variable` argument specifies the variable on which the marks are
+#'   applied. By default, the variable `.dvar` is used. If multiple cases are
+#'   plotted, the `case` argument specifies for which case(s) the marks are
+#'   added.
 #' @return An object of class `scplot` (see [scplot()]) with changed element
 #'   `marks`.
+#' @author Juergen Wilbert
 #' @examples
 #' library(scan)
 #' p1 <- scplot(exampleA1B1A2B2$Moritz) |> add_marks(positions = c(1,5,10,14))

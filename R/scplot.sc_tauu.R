@@ -1,4 +1,4 @@
-#' Plot Tau-U Effects
+#' Plot Tau-U Effects Forest Plot
 #'
 #' This function generates a forest plot of Tau-U effects.
 #'

@@ -16,10 +16,10 @@
 \item{...}{Further arguments.}
 }
 \value{
-A forest plot displaying Tau-U effects.
+A plot displaying the results of the randomization test.
 }
 \description{
-This function generates a forest plot of Tau-U effects.
+This function generates plots of randomization test results.
 }
 \examples{
 \dontrun{

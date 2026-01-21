@@ -1,4 +1,8 @@
-#' Add line to an scplot
+#' Add line to an scplot object
+#'
+#' Draws a line on the scplot. Either a horizontal line (hline),
+#' vertical line (vline), or a line defined by its start (x0, y0)
+#' and end (x1, y1) points can be drawn.
 #'
 #' @inheritParams .inherit_scplot
 #' @param x0 Origin x position of the line.

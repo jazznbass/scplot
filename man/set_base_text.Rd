@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_base_text.R
 \name{set_base_text}
 \alias{set_base_text}
-\title{Set base text parameters of an scplot}
+\title{Set base text parameters of an scplot object}
 \usage{
 set_base_text(object, ...)
 }
@@ -16,5 +16,11 @@ function.}
 An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
 }
 \description{
-Set base text parameters of an scplot
+Sets the base text parameters for all text elements in an \code{scplot} object.
+}
+\details{
+This function modifies the \code{text} element in the \code{theme} list of the
+\code{scplot} object, allowing you to define default text properties such as font
+family, face, color, size, alignment, angle, line height, and margin
+using parameters similar to those in \code{element_text()}.
 }

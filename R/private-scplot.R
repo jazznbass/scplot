@@ -1,3 +1,6 @@
+#' Check theme object
+#' @param theme A theme object.
+#' @return The checked theme object.
 .check_theme <- function(theme) {
 
   if (!theme$yaxis.title.angle %in% 0:1) stop("wrong values for ylabel angle")
@@ -5,7 +8,10 @@
   theme
 }
 
-
+#' Capitalize first letter of a string
+#'
+#' @param x A character vector.
+#' @return A character vector with first letter capitalized.
 .upperfirst <- function(x) {
 
   unlist(
@@ -16,6 +22,11 @@
 
 }
 
+#' Convert relative size to absolute size
+#'
+#' @param x A size value. If relative size, use `rel()` function.
+#' @param base Base size to convert relative size to absolute size.
+#' @return Absolute size value.
 .size <- function(x, base) {
 
   #if (!"rel" %in% class(x))
@@ -25,6 +36,11 @@
 
 }
 
+#' Merge two theme elements
+#'
+#' @param new A list or theme element with new values.
+#' @param old A theme element to be updated.
+#' @return A merged theme element.
 .merge_element <- function(new, old) {
 
 
@@ -71,6 +87,10 @@
   merge_element(new, old)
 }
 
+#' Merge two theme lists
+#' @param new A theme list with new values.
+#' @param old A theme list to be updated.
+#' @return A merged theme list.
 .merge_theme <- function(new, old) {
 
   names_old <- names(old)

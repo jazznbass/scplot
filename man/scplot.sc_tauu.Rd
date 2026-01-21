@@ -2,7 +2,7 @@
 % Please edit documentation in R/scplot.sc_tauu.R
 \name{scplot.sc_tauu}
 \alias{scplot.sc_tauu}
-\title{Plot Tau-U Effects}
+\title{Plot Tau-U Effects Forest Plot}
 \usage{
 \method{scplot}{sc_tauu}(object, effect = 1, ...)
 }

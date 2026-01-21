@@ -1,4 +1,11 @@
-#' Add title and caption to an scplot
+#' Add title and caption to an scplot object
+#'
+#' Adds title and caption elements to an `scplot` object.
+#'
+#' The functions allow customization of title and caption text properties
+#' by passing arguments similar to those used in `element_text()`, such as
+#' `family`, `face`, `colour`, `size`, `hjust`, `vjust`, `angle`, `lineheight`,
+#' and `margin`.
 #'
 #' @inheritParams .inherit_scplot
 #' @param ... List with text parameters (`"family", "face", "colour", "size",

@@ -1,4 +1,7 @@
-#' print.scplot
+#' print.scplot - Print an scplot object
+#'
+#' Prints an `scplot` object by converting it to a ggplot2 object using
+#' [as_ggplot()].
 #'
 #' @param x An scplot object.
 #' @param ... Not implemented.

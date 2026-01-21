@@ -13,9 +13,10 @@ as_ggplot(scplot)
 A \code{ggplot2} plot object.
 }
 \description{
-Creates a ggplot2 object from an \code{\link[=scplot]{scplot()}} object
+\code{as_ggplot()} takes an \code{scplot} object as input and returns a \code{ggplot2}
+object.
 }
 \details{
-\code{as_ggplot()} is used when you want to return a ggplot2 object for
+\code{as_ggplot()} is used directly when you want to return a ggplot2 object for
 further use with external ggplot functions.
 }

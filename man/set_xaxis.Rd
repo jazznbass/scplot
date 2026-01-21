@@ -36,22 +36,30 @@ case. \code{limits} is not set by default, which makes \code{scplot} set a prope
 scale based on the given data.}
 
 \item{increment}{An integer. Increment of the x-axis. 1 :each mt value will
-be printed, 2 : every other value, 3 : every third values etc.}
+be printed, 2 : every other value, 3 : every third values etc. If NULL,
+\code{scplot} chooses an appropriate increment based on the data.}
 
 \item{increment_from}{Number from which increment starts to count. Usually
-set to 0 if you want marks like 1,5,10,15,...}
+set to 0 if you want marks like 1,5,10,15,... on the axis. If NULL, \code{scplot}
+chooses an appropriate value based on the data.}
 
 \item{line}{List with line parameters (\verb{"colour", "linewidth", "linetype", "lineend", "arrow"}). See \code{\link[=element_line]{element_line()}}.}
 
-\item{expand}{Vector with two values.}
+\item{expand}{Vector with two values. Expansion of the axis. First value expands
+the lower end of the axis, second value the upper end. Default is \code{c(0,0)},
+meaning no expansion. You can also use relative values, e.g. \code{c(0.05, 0.05)}
+to expand both ends by 5 percent of the total axis length.
+See \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} for details.}
 
 \item{...}{Further styling arguments: color, size, face, family, hjust,
 vjust, lineheight, angle, linetype, lineend, arrow, fill, margin.}
 }
 \value{
 An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with changed \code{xaxis} and
-\code{yaxis} elements.
+\code{yaxis} elements. Also, the \code{theme} element is changed to reflect line and text
+parameters.
 }
 \description{
-Set axis parameters of an scplot
+Sets limits, increments, line and text parameters of x- or y-axis of an
+\code{scplot} object.
 }

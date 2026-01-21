@@ -2,9 +2,6 @@
 ggplot2::unit
 
 #' @export
-scan::`%>%`
-
-#' @export
 ggplot2::element_line
 
 #' @export

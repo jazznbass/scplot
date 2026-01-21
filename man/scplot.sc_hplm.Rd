@@ -2,8 +2,7 @@
 % Please edit documentation in R/scplot.sc_hplm.R
 \name{scplot.sc_hplm}
 \alias{scplot.sc_hplm}
-\title{This function generates a forest plot for the random effects of a mixed hplm
-model}
+\title{Forest Plot for Random Effects of Mixed HPLM Models}
 \usage{
 \method{scplot}{sc_hplm}(object, effect = "intercept", mark = "fixed", ci = 0.95, ...)
 }
@@ -23,7 +22,7 @@ A forest plot displaying Tau-U effects.
 }
 \description{
 This function generates a forest plot for the random effects of a mixed hplm
-model
+model.
 }
 \examples{
 model <- scan::hplm(scan::Leidig2018, random.slopes = TRUE)

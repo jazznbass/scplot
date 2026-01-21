@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_line.R
 \name{add_line}
 \alias{add_line}
-\title{Add line to an scplot}
+\title{Add line to an scplot object}
 \usage{
 add_line(
   object,
@@ -47,7 +47,9 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with added
 \code{lines}.
 }
 \description{
-Add line to an scplot
+Draws a line on the scplot. Either a horizontal line (hline),
+vertical line (vline), or a line defined by its start (x0, y0)
+and end (x1, y1) points can be drawn.
 }
 \examples{
 data(exampleAB, package = "scan")

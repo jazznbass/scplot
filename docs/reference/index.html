@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
       </span>
     </div>
 
@@ -51,7 +51,7 @@
       </tr><tr><td>
           <p><code><a href="add_grid.html">add_grid()</a></code> </p>
         </td>
-        <td><p>Add grid to an scplot</p></td>
+        <td><p>Add grid to an scplot theme</p></td>
       </tr><tr><td>
           <p><code><a href="add_labels.html">add_labels()</a></code> </p>
         </td>
@@ -63,39 +63,59 @@
       </tr><tr><td>
           <p><code><a href="add_line.html">add_line()</a></code> </p>
         </td>
-        <td><p>Add line to an scplot</p></td>
+        <td><p>Add line to an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="add_marks.html">add_marks()</a></code> </p>
         </td>
-        <td><p>Add marks to an scplot</p></td>
+        <td><p>Add marks to an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="add_ridge.html">add_ridge()</a></code> </p>
         </td>
-        <td><p>Add a ridge to an scplot</p></td>
+        <td><p>Add a ridge to an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="add_statline.html">add_statline()</a></code> </p>
         </td>
-        <td><p>Add a statline to an scplot</p></td>
+        <td><p>Add a statline to an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="add_text.html">add_text()</a></code> </p>
         </td>
-        <td><p>Add test to an scplot</p></td>
+        <td><p>Add test to an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="add_title.html">add_title()</a></code> <code><a href="add_title.html">add_caption()</a></code> </p>
         </td>
-        <td><p>Add title and caption to an scplot</p></td>
+        <td><p>Add title and caption to an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="as_ggplot.html">as_ggplot()</a></code> </p>
         </td>
         <td><p>Creates a ggplot2 object from an <code><a href="../reference/scplot.scdf.html">scplot()</a></code> object</p></td>
       </tr><tr><td>
+          <p><code><a href="dot-check_theme.html">.check_theme()</a></code> </p>
+        </td>
+        <td><p>Check theme object</p></td>
+      </tr><tr><td>
+          <p><code><a href="dot-merge_element.html">.merge_element()</a></code> </p>
+        </td>
+        <td><p>Merge two theme elements</p></td>
+      </tr><tr><td>
+          <p><code><a href="dot-merge_theme.html">.merge_theme()</a></code> </p>
+        </td>
+        <td><p>Merge two theme lists</p></td>
+      </tr><tr><td>
+          <p><code><a href="dot-size.html">.size()</a></code> </p>
+        </td>
+        <td><p>Convert relative size to absolute size</p></td>
+      </tr><tr><td>
+          <p><code><a href="dot-upperfirst.html">.upperfirst()</a></code> </p>
+        </td>
+        <td><p>Capitalize first letter of a string</p></td>
+      </tr><tr><td>
           <p><code><a href="element_point.html">element_point()</a></code> </p>
         </td>
-        <td><p>Point element</p></td>
+        <td><p>Point element for ggplot themes</p></td>
       </tr><tr><td>
           <p><code><a href="new_theme.html">new_theme()</a></code> <code><a href="new_theme.html">extract_theme()</a></code> </p>
         </td>
-        <td><p>Create a new scplot theme</p></td>
+        <td><p>Create a new scplot theme object</p></td>
       </tr><tr><td>
           <p><code><a href="scplot-package.html">scplot-package</a></code> </p>
         </td>
@@ -103,7 +123,7 @@
       </tr><tr><td>
           <p><code><a href="scplot.sc_hplm.html">scplot(<i>&lt;sc_hplm&gt;</i>)</a></code> </p>
         </td>
-        <td><p>This function generates a forest plot for the random effects of a mixed hplm model</p></td>
+        <td><p>Forest Plot for Random Effects of Mixed HPLM Models</p></td>
       </tr><tr><td>
           <p><code><a href="scplot.sc_rand.html">scplot(<i>&lt;sc_rand&gt;</i>)</a></code> </p>
         </td>
@@ -111,11 +131,11 @@
       </tr><tr><td>
           <p><code><a href="scplot.sc_tauu.html">scplot(<i>&lt;sc_tauu&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Plot Tau-U Effects</p></td>
+        <td><p>Plot Tau-U Effects Forest Plot</p></td>
       </tr><tr><td>
           <p><code><a href="scplot.scdf.html">scplot(<i>&lt;scdf&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Plot single-case data</p></td>
+        <td><p>Plot single-case data from a single-case data-frame</p></td>
       </tr><tr><td>
           <p><code><a href="scplot_rand.html">scplot_rand()</a></code> </p>
         </td>
@@ -123,31 +143,31 @@
       </tr><tr><td>
           <p><code><a href="set_background.html">set_background()</a></code> <code><a href="set_background.html">set_panel()</a></code> </p>
         </td>
-        <td><p>Set plot and panel background of an scplot</p></td>
+        <td><p>Set plot and panel background of an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="set_base_text.html">set_base_text()</a></code> </p>
         </td>
-        <td><p>Set base text parameters of an scplot</p></td>
+        <td><p>Set base text parameters of an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="set_casenames.html">set_casenames()</a></code> </p>
         </td>
-        <td><p>Set casenames of an scplot</p></td>
+        <td><p>Set casenames of an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="set_dataline.html">set_dataline()</a></code> <code><a href="set_dataline.html">add_dataline()</a></code> </p>
         </td>
-        <td><p>Set data lines of an scplot</p></td>
+        <td><p>Set data lines of an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="set_phasenames.html">set_phasenames()</a></code> </p>
         </td>
-        <td><p>Set phasenames of an scplot</p></td>
+        <td><p>Set phasenames of an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="set_separator.html">set_separator()</a></code> </p>
         </td>
-        <td><p>Set separator line in an scplot</p></td>
+        <td><p>Set separator line in an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="set_theme.html">set_theme()</a></code> <code><a href="set_theme.html">add_theme()</a></code> </p>
         </td>
-        <td><p>Add a theme of to an scplot</p></td>
+        <td><p>Add a theme of to an scplot object</p></td>
       </tr><tr><td>
           <p><code><a href="set_theme_element.html">set_theme_element()</a></code> </p>
         </td>
@@ -173,7 +193,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

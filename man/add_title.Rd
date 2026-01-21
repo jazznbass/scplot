@@ -3,7 +3,7 @@
 \name{add_title}
 \alias{add_title}
 \alias{add_caption}
-\title{Add title and caption to an scplot}
+\title{Add title and caption to an scplot object}
 \usage{
 add_title(object, label, ...)
 
@@ -24,5 +24,11 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with chang
 and \code{caption} elements.
 }
 \description{
-Add title and caption to an scplot
+Adds title and caption elements to an \code{scplot} object.
+}
+\details{
+The functions allow customization of title and caption text properties
+by passing arguments similar to those used in \code{element_text()}, such as
+\code{family}, \code{face}, \code{colour}, \code{size}, \code{hjust}, \code{vjust}, \code{angle}, \code{lineheight},
+and \code{margin}.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_ridge.R
 \name{add_ridge}
 \alias{add_ridge}
-\title{Add a ridge to an scplot}
+\title{Add a ridge to an scplot object}
 \usage{
 add_ridge(object, color = "grey98", variable = ".dvar")
 }
@@ -19,5 +19,7 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with chang
 \code{ridges}.
 }
 \description{
-Add a ridge to an scplot
+Adds a ridge element to an \code{scplot} object. Ridges are density plots
+displayed vertically along the y-axis, often used to show distributions of
+data points across different categories or groups.
 }

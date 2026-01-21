@@ -1,4 +1,12 @@
-#' Set phasenames of an scplot
+#' Set phasenames of an scplot object
+#'
+#' Set phasenames of an scplot object
+#'
+#' @details This function allows to set or modify the phase names displayed
+#'  above the phases in an `scplot` object. You can customize the labels
+#'  and their position (left, center, or none). Additionally, you can adjust
+#'  various text parameters such as font family, face, color, size, and more
+#'  using the `...` argument.
 #'
 #' @inheritParams .inherit_scplot
 #' @param position Character string either `'left'`, `'center'`, or `'none'`.

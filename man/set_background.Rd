@@ -3,7 +3,7 @@
 \name{set_background}
 \alias{set_background}
 \alias{set_panel}
-\title{Set plot and panel background of an scplot}
+\title{Set plot and panel background of an scplot object}
 \usage{
 set_background(object, ...)
 
@@ -19,7 +19,12 @@ function.}
 An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}).
 }
 \description{
-Set plot and panel background of an scplot
+The \code{set_background()} function allows you to customize the plot background
+of an \code{scplot} object by specifying parameters such as fill color, border color,
+line width, and line type. Similarly, the \code{set_panel()} function enables you
+to set the panel background with the same customizable parameters. These
+functions enhance the visual appearance of your plots by allowing you to
+tailor the background styles to your preferences.
 }
 \examples{
 data(exampleAB, package = "scan")

@@ -3,7 +3,7 @@
 \name{set_theme}
 \alias{set_theme}
 \alias{add_theme}
-\title{Add a theme of to an scplot}
+\title{Add a theme of to an scplot object}
 \usage{
 set_theme(object, theme, ...)
 
@@ -24,5 +24,6 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a cha
 element.
 }
 \description{
-Possible themes are: \verb{'basic', 'grid', 'default', 'small', 'tiny', 'big', 'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'}.
+Possible themes are: \verb{'basic', 'grid', 'default', 'small', 'tiny', 'big', 'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'}. See
+\code{\link[=new_theme]{new_theme()}} for details on the themes.
 }

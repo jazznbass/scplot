@@ -1,8 +1,10 @@
-#' Add test to an scplot
+#' Add test to an scplot object
+#'
+#' Adds a text element to an `scplot` object at specified coordinates.
 #'
 #' @inheritParams .inherit_scplot
-#' @param x x position
-#' @param y y position
+#' @param x x position.
+#' @param y y position.
 #' @return An object of class `scplot` (see[scplot()]) with a changed `texts`
 #'   element.
 #' @export
