@@ -15,5 +15,6 @@
 A merged theme list.
 }
 \description{
-Merge two theme lists
+Merges two theme lists, updating the old theme with new values from the new theme.
 }
+\keyword{internal}

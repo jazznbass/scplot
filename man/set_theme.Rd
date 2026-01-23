@@ -24,6 +24,9 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a cha
 element.
 }
 \description{
+Adds a predefined theme or custom theme to an \code{scplot} object.
+}
+\details{
 Possible themes are: \verb{'basic', 'grid', 'default', 'small', 'tiny', 'big', 'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'}. See
 \code{\link[=new_theme]{new_theme()}} for details on the themes.
 }

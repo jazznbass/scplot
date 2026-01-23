@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{set_theme_element}
 \alias{set_theme_element}
-\title{Set a theme element}
+\title{Set a theme element of an scplot object}
 \usage{
 set_theme_element(object, ...)
 }
@@ -10,16 +10,19 @@ set_theme_element(object, ...)
 \item{object}{An scplot object (class \code{scplot}) returned from the \code{scplot()}
 function.}
 
-\item{...}{various style parameter}
+\item{...}{various style parameters for specific theme elements (see Details).}
 }
 \value{
 An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a changed \code{theme}
-element.
+element. If no arguments are provided, the possible theme elements are printed.
 }
 \description{
-Set a theme element
+Low-level function. Sets specific theme elements of an \code{scplot} object.
 }
 \details{
+Allows customization of individual theme elements by passing them as named
+arguments.
+
 Usually, you don't need this function. Possible theme elements are:
 "text", "plot.background", "panel.background", "panel.spacing.y",
 "dataline", "datapoint", "statline", "axis.expand.x", "axis.expand.y",

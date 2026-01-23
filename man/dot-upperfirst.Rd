@@ -15,3 +15,4 @@ A character vector with first letter capitalized.
 \description{
 Capitalize first letter of a string
 }
+\keyword{internal}
