@@ -1,4 +1,8 @@
 
+# scplot 0.6.1
+
+- Extended the roxygen documentation for several functions.
+
 # scplot 0.6.0
 
 -   Compatible with the new ggplot2 version which changed to S7 classes.

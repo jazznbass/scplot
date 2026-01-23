@@ -17,3 +17,4 @@ Absolute size value.
 \description{
 Convert relative size to absolute size
 }
+\keyword{internal}

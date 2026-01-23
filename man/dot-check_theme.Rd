@@ -13,5 +13,6 @@
 The checked theme object.
 }
 \description{
-Check theme object
+Validates specific properties of a theme object.
 }
+\keyword{internal}

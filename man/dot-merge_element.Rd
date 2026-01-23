@@ -17,3 +17,4 @@ A merged theme element.
 \description{
 Merge two theme elements
 }
+\keyword{internal}
