@@ -1,5 +1,7 @@
 #' Add a theme of to an scplot object
 #'
+#' Adds a predefined theme or custom theme to an `scplot` object.
+#'
 #' Possible themes are: `'basic', 'grid', 'default', 'small', 'tiny', 'big',
 #' 'minimal', 'dark', 'sienna', 'phase_color', 'phase_shade', 'grid2'`. See
 #' [new_theme()] for details on the themes.
@@ -46,10 +48,15 @@ add_theme <- function(...) {
   set_theme(...)
 }
 
-#' Set a theme element
+#' Set a theme element of an scplot object
+#'
+#' Low-level function. Sets specific theme elements of an `scplot` object.
+#'
+#' Allows customization of individual theme elements by passing them as named
+#' arguments.
 #'
 #' @inheritParams .inherit_scplot
-#' @param ... various style parameter
+#' @param ... various style parameters for specific theme elements (see Details).
 #' @details Usually, you don't need this function. Possible theme elements are:
 #'   "text", "plot.background", "panel.background", "panel.spacing.y",
 #'   "dataline", "datapoint", "statline", "axis.expand.x", "axis.expand.y",
@@ -99,7 +106,7 @@ add_theme <- function(...) {
 #'   - legend.title = c("element_text", "element"),
 #'   - legend.margin = c("margin", "simpleUnit", "unit", "unit_v2")
 #' @return An object of class `scplot` (see[scplot()]) with a changed `theme`
-#'   element.
+#'   element. If no arguments are provided, the possible theme elements are printed.
 #' @examples
 #' data(exampleABC, package = "scan")
 #' p1 <- scplot(exampleABC)  |>
@@ -113,6 +120,26 @@ add_theme <- function(...) {
 #' @export
 set_theme_element <- function(object, ...) {
 
-  object$theme <- .merge_theme(list(...), object$theme)
+  elements <- names(object$theme)
+  args <- list(...)
+
+  # returns possible element names if no args are provided
+
+  if (length(args) == 0) {
+    message("Possible theme elements are: ",
+            paste0("'", elements, "'", collapse = ", "))
+    return(invisible(NULL))
+  }
+
+  invalid_args <- setdiff(names(args), elements)
+  if (length(invalid_args) > 0) {
+    stop(
+      "Invalid theme elements: ",
+      paste0("'", invalid_args, "'", collapse = ", "),
+      ". Possible theme elements are: ",
+      paste0("'", elements, "'", collapse = ", ")
+    )
+  }
+  object$theme <- .merge_theme(args, object$theme)
   object
 }
