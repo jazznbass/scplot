@@ -11,6 +11,7 @@
 #' elements, including data lines, statistical lines, ridges, marks, texts,
 #' and lines.
 #'
+#' @rdname scplot
 #' @aliases scplot scplot.scdf
 #' @param object A single-case data-frame object (scdf).
 #' @param ... further arguments.

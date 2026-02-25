@@ -1,5 +1,5 @@
 
-R version 4.5.0 (2025-04-11) -- "How About a Twenty-Six"
+R version 4.5.2 (2025-10-31) -- "[Not] Part in a Rumble"
 Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: aarch64-apple-darwin20
 
@@ -21,8 +21,8 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('scan')
-[34mscan 0.64.0 (2025-03-18)
-[31mPost a question or improvement idea on scan at https://github.com/jazznbass/scan/discussions
+[34mscan 0.67.0 (2025-09-11)
+[31mThe addon package 'scplot' provides sophisticated graphs for single-case data.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -83,22 +83,22 @@ Type 'q()' to quit R.
 > Leidig2018 |> add_l2(Leidig2018_l2)
 #A single-case data frame with 35 cases
 
- 1a1: mt academic_engagement classID weekday disruptive_behavior phase class
-       1                   4      1a       3                   1     A    1a
-       2                   1      1a       4                   1     A    1a
-       3                   2      1a       5                   1     A    1a
-       4                <NA>      1a       1                <NA>     A    1a
-       5                   2      1a       2                   1     A    1a
-       6                   3      1a       3                   1     A    1a
-       7                   1      1a       4                   1     A    1a
-       8                   1      1a       5                   2     A    1a
-       9                   3      1a       1                   0     B    1a
-      10                   4      1a       2                   0     B    1a
-      11                   3      1a       3                   0     B    1a
-      12                   4      1a       4                   1     B    1a
-      13                   4      1a       5                   0     B    1a
-      14                   4      1a       1                   0     B    1a
-      15                   4      1a       2                   0     B    1a
+ 1a1: academic_engagement mt classID weekday disruptive_behavior phase class
+                        4  1      1a       3                   1     A    1a
+                        1  2      1a       4                   1     A    1a
+                        2  3      1a       5                   1     A    1a
+                     <NA>  4      1a       1                <NA>     A    1a
+                        2  5      1a       2                   1     A    1a
+                        3  6      1a       3                   1     A    1a
+                        1  7      1a       4                   1     A    1a
+                        1  8      1a       5                   2     A    1a
+                        3  9      1a       1                   0     B    1a
+                        4 10      1a       2                   0     B    1a
+                        3 11      1a       3                   0     B    1a
+                        4 12      1a       4                   1     B    1a
+                        4 13      1a       5                   0     B    1a
+                        4 14      1a       1                   0     B    1a
+                        4 15      1a       2                   0     B    1a
  gender migration first_language_german SDQ_TOTAL SDQ_EXTERNALIZING
       0         0                     1        10                 9
       0         0                     1        10                 9
@@ -256,22 +256,22 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > Grosche2011
 #A single-case data frame with three cases
 
- Eva: values mt phase | Georg: values mt phase | Olaf: values mt phase |
-        3.39  0     A |            13  0     A |         7.69  0     A |
-        2.09  1     A |          17.4  1     A |         7.27  1     A |
-        1.46  7     A |            13  6     A |         7.02  7     A |
-        3.23  8     A |          7.74 10     A |         5.37  8     A |
-        3.06 13     A |          8.82 13     A |         4.57 14     A |
-        2.83 15     A |           7.5 15     A |         3.02 15     A |
-        2.44 38     B |          5.82 36     A |         4.68 38     A |
-        1.86 42     B |          6.26 38     B |         4.97 42     A |
-        2.17 45     B |           5.6 41     B |         5.73 43     A |
-        2.59 49     B |         12.79 43     B |         7.63 49     A |
-        3.92 50     B |          9.17 48     B |         6.98 50     A |
-        4.14 56     B |         10.59 50     B |          7.5 56     A |
-        3.31 63     B |          9.23 55     B |         6.91 59     B |
-        2.69 64     B |         10.71 59     B |         4.86 63     B |
-        4.27 70     B |          7.61 62     B |         6.71 64     B |
+ Eva: values mt phase │ Georg: values mt phase │ Olaf: values mt phase │
+        3.39  0     A │            13  0     A │         7.69  0     A │
+        2.09  1     A │          17.4  1     A │         7.27  1     A │
+        1.46  7     A │            13  6     A │         7.02  7     A │
+        3.23  8     A │          7.74 10     A │         5.37  8     A │
+        3.06 13     A │          8.82 13     A │         4.57 14     A │
+        2.83 15     A │           7.5 15     A │         3.02 15     A │
+        2.44 38     B │          5.82 36     A │         4.68 38     A │
+        1.86 42     B │          6.26 38     B │         4.97 42     A │
+        2.17 45     B │           5.6 41     B │         5.73 43     A │
+        2.59 49     B │         12.79 43     B │         7.63 49     A │
+        3.92 50     B │          9.17 48     B │         6.98 50     A │
+        4.14 56     B │         10.59 50     B │          7.5 56     A │
+        3.31 63     B │          9.23 55     B │         6.91 59     B │
+        2.69 64     B │         10.71 59     B │         4.86 63     B │
+        4.27 70     B │          7.61 62     B │         6.71 64     B │
 # ... up to nine more rows
 > Grosche2011_long <- as.data.frame(Grosche2011)
 > Grosche2011_long
@@ -343,21 +343,21 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > ## Combine an scdf with data for l2
 > Leidig2018_long <- as.data.frame(Leidig2018, l2 = Leidig2018_l2)
 > names(Leidig2018_long)
- [1] "case"                  "mt"                    "academic_engagement"  
+ [1] "case"                  "academic_engagement"   "mt"                   
  [4] "classID"               "weekday"               "disruptive_behavior"  
  [7] "phase"                 "class"                 "gender"               
 [10] "migration"             "first_language_german" "SDQ_TOTAL"            
 [13] "SDQ_EXTERNALIZING"     "SDQ_INTERNALIZING"     "ITRF_TOTAL"           
 [16] "ITRF_ACADEMIC"         "ITRF_BEHAVIOR"        
 > summary(Leidig2018_long)
-      case            mt         academic_engagement   classID         
- 1a1    : 108   Min.   :  1.00   Min.   :0.0         Length:3780       
- 1a2    : 108   1st Qu.: 27.75   1st Qu.:3.0         Class :character  
- 1a3    : 108   Median : 54.50   Median :4.0         Mode  :character  
- 1a4    : 108   Mean   : 54.50   Mean   :3.7                           
- 1a5    : 108   3rd Qu.: 81.25   3rd Qu.:5.0                           
- 2a1    : 108   Max.   :108.00   Max.   :5.0                           
- (Other):3132                    NA's   :1366                          
+      case      academic_engagement       mt           classID         
+ 1a1    : 108   Min.   :0.0         Min.   :  1.00   Length:3780       
+ 1a2    : 108   1st Qu.:3.0         1st Qu.: 27.75   Class :character  
+ 1a3    : 108   Median :4.0         Median : 54.50   Mode  :character  
+ 1a4    : 108   Mean   :3.7         Mean   : 54.50                     
+ 1a5    : 108   3rd Qu.:5.0         3rd Qu.: 81.25                     
+ 2a1    : 108   Max.   :5.0         Max.   :108.00                     
+ (Other):3132   NA's   :1366                                           
     weekday      disruptive_behavior phase       class          
  Min.   :1.000   Min.   :0.0000      A: 730   Length:3780       
  1st Qu.:2.000   1st Qu.:0.0000      B:3050   Class :character  
@@ -400,9 +400,9 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > 
 > flush(stderr()); flush(stdout())
 > 
-> ### Name: autocorr
+> ### Name: print.sc_ac
 > ### Title: Autocorrelation for single-case data
-> ### Aliases: autocorr
+> ### Aliases: print.sc_ac export.sc_ac autocorr
 > ### Keywords: regression
 > 
 > ### ** Examples
@@ -484,7 +484,7 @@ interB       2.50000   1.765889  1.4157177 1.760295e-01
 > 
 > ### Name: between_smd
 > ### Title: Between-Case Standardized Mean Difference
-> ### Aliases: between_smd print.sc_bcsmd
+> ### Aliases: between_smd print.sc_bcsmd export.sc_bcsmd
 > 
 > ### ** Examples
 > 
@@ -502,30 +502,49 @@ interB       2.50000   1.765889  1.4157177 1.760295e-01
 > between_smd(study)
 Between-Case Standardized Mean Difference
 
-Model: frequentist 
+Method: REML
+Base model
 
-    Model phaseB1 phaseA2 phaseB2 phaseC
-     Base    0.89    0.88    1.79   2.70
- Full plm    0.92    1.00    1.95   2.94
+  Effect BC-SMD   se LL-CI95% UL-CI95%
+ phaseB1   0.88 0.02     0.84     0.93
+ phaseA2   0.88 0.02     0.84     0.92
+ phaseB2   1.79 0.02     1.75     1.83
+  phaseC   2.69 0.02     2.65     2.74
+
+Full plm model
+
+  Effect BC-SMD   se LL-CI95% UL-CI95%
+ phaseB1   0.92 0.04     0.83     1.01
+ phaseA2   0.99 0.09     0.82     1.17
+ phaseB2   1.94 0.14     1.67     2.22
+  phaseC   2.94 0.19     2.56     3.31
 > 
 > ## Specify the model and provide an hplm object:
 > model <- hplm(study, contrast_level = "preceding", slope = FALSE,  trend = FALSE)
 > between_smd(model)
 Between-Case Standardized Mean Difference
 
-Model: frequentist 
+Method: REML
+Provided
 
-    Model phaseB1 phaseA2 phaseB2 phaseC
- Provided    0.89       0    0.91   0.91
+  Effect BC-SMD   se LL-CI95% UL-CI95%
+ phaseB1   0.89 0.02     0.84     0.93
+ phaseA2   0.00 0.02    -0.05     0.04
+ phaseB2   0.91 0.02     0.87     0.95
+  phaseC   0.91 0.02     0.86     0.95
 > 
-> ## excluding the residuals gives a more accruate estimation:
+> ## excluding the residuals gives a more accurate estimation:
 > between_smd(model, include_residuals = FALSE)
 Between-Case Standardized Mean Difference
 
-Model: frequentist 
+Method: REML
+Provided
 
-    Model phaseB1 phaseA2 phaseB2 phaseC
- Provided     1.1       0    1.14   1.13
+  Effect BC-SMD   se LL-CI95% UL-CI95%
+ phaseB1   1.10 0.03     1.05     1.16
+ phaseA2   0.00 0.03    -0.06     0.05
+ phaseB2   1.14 0.03     1.08     1.19
+  phaseC   1.13 0.03     1.07     1.18
 > 
 > 
 > 
@@ -629,9 +648,9 @@ R-Structure - Residuals
 > 
 > flush(stderr()); flush(stdout())
 > 
-> ### Name: cdc
+> ### Name: print.sc_cdc
 > ### Title: Conservative Dual-Criterion Method
-> ### Aliases: cdc
+> ### Aliases: print.sc_cdc export.sc_cdc cdc
 > ### Keywords: overlap
 > 
 > ### ** Examples
@@ -645,8 +664,8 @@ Conservative Dual Criterion
 
 N cases =  1 
 
-  Case nB improve nB binom p    CDC Evaluation
- Case1         14 15   <.001 systematic change
+      Case nB improve nB binom p    CDC Evaluation
+ [case #1]         14 15   <.001 systematic change
 
 Assuming an expected increase in phase B.
 Alternative hypothesis (Binomial test): true probability > 50%
@@ -786,9 +805,9 @@ study <- c(
 > 
 > flush(stderr()); flush(stdout())
 > 
-> ### Name: corrected_tau
+> ### Name: print.sc_bctau
 > ### Title: Baseline corrected tau
-> ### Aliases: corrected_tau
+> ### Aliases: print.sc_bctau export.sc_bctau corrected_tau
 > 
 > ### ** Examples
 > 
@@ -800,7 +819,7 @@ Method: Theil-Sen regression
 Kendall's tau b applied.
 Continuity correction not applied.
 
-Case1 :
+[case #1] :
                            tau     z     p
 Baseline autocorrelation -0.68 -2.13  <.05
 Uncorrected tau          -0.57 -2.94  <.01
@@ -916,28 +935,28 @@ trend.C  -0.194   -2.929 -14.000
 >  describe(dat)
 Describe Single-Case Data
 
-       Case1 Case2 Case3
-Design   A-B   A-B   A-B
-n.A        5     5     5
-n.B       15    15    15
-mis.A      0     1     0
-mis.B      2     1     2
+       [case #1] [case #2] [case #3]
+Design       A-B       A-B       A-B
+n.A            5         5         5
+n.B           15        15        15
+mis.A          0         1         0
+mis.B          2         1         2
 
-         Case1  Case2  Case3
-m.A      51.12  50.00  54.36
-m.B     57.115 52.793 56.892
-md.A      50.4   49.2   52.6
-md.B     59.60  55.75  59.20
-sd.A     4.672  3.631  4.538
-sd.B    10.403 12.893  8.003
-mad.A    2.520  2.076  3.410
-mad.B    7.858 10.601  6.672
-min.A     46.8   46.5   50.3
-min.B     29.7   19.7   38.7
-max.A     59.0   55.1   61.8
-max.B     71.3   65.2   67.7
-trend.A   0.95   1.36   2.27
-trend.B  0.935  1.693  1.358
+        [case #1] [case #2] [case #3]
+m.A         51.12     50.00     54.36
+m.B        57.115    52.793    56.892
+md.A         50.4      49.2      52.6
+md.B        59.60     55.75     59.20
+sd.A        4.672     3.631     4.538
+sd.B       10.403    12.893     8.003
+mad.A       2.520     2.076     3.410
+mad.B       7.858    10.601     6.672
+min.A        46.8      46.5      50.3
+min.B        29.7      19.7      38.7
+max.A        59.0      55.1      61.8
+max.B        71.3      65.2      67.7
+trend.A      0.95      1.36      2.27
+trend.B     0.935     1.693     1.358
 > 
 >  ## And now have a look at poisson-distributed data
 >  design <- design(
@@ -1185,11 +1204,26 @@ z = 5.8259, p = 0.0000 (single sided)
 > Grosche2011filled <- fill_missing(Grosche2011)
 > study <- c(Grosche2011[2], Grosche2011filled[2])
 > names(study) <- c("Original", "Filled")
-> plot(study)
-Warning: This function is deprecated. It might be dropped without any further notice in a future update of scan.
-Please use function 'scplot' from the package 'scplot' instead of 'plot'.
-Warning: This function is deprecated. It might be dropped without any further notice in a future update of scan.
-Please use function 'scplot' from the package 'scplot' instead of 'style_plot'.
+> study
+#A single-case data frame with two cases
+
+ Original: values mt phase │ Filled: values mt phase │
+               13  0     A │             13  0     A │
+             17.4  1     A │           17.4  1     A │
+               13  6     A │          16.52  2     A │
+             7.74 10     A │          15.64  3     A │
+             8.82 13     A │          14.76  4     A │
+              7.5 15     A │          13.88  5     A │
+             5.82 36     A │             13  6     A │
+             6.26 38     B │          11.69  7     A │
+              5.6 41     B │          10.37  8     A │
+            12.79 43     B │           9.05  9     A │
+             9.17 48     B │           7.74 10     A │
+            10.59 50     B │            8.1 11     A │
+             9.23 55     B │           8.46 12     A │
+            10.71 59     B │           8.82 13     A │
+             7.61 62     B │           8.16 14     A │
+# ... up to 87 more rows
 > 
 > ## Fill missing values in a single-case dataset that are NA
 > Maggie <- random_scdf(design(level = list(0,1)), seed = 123)
@@ -1199,11 +1233,27 @@ Please use function 'scplot' from the package 'scplot' instead of 'style_plot'.
 > Maggie_f <- fill_missing(Maggie_n)
 > study <- c(Maggie, Maggie_n, Maggie_f)
 > names(study) <- c("original", "missing", "interpolated")
-> plot(study, marks = list(positions = replace.positions), style = "grid2")
-Warning: This function is deprecated. It might be dropped without any further notice in a future update of scan.
-Please use function 'scplot' from the package 'scplot' instead of 'plot'.
-Warning: This function is deprecated. It might be dropped without any further notice in a future update of scan.
-Please use function 'scplot' from the package 'scplot' instead of 'style_plot'.
+> study
+#A single-case data frame with three cases
+
+ original: phase values mt │ missing: phase values mt │
+               A   47.2  1 │              A   47.2  1 │
+               A  48.85  2 │              A  48.85  2 │
+               A  57.79  3 │              A  57.79  3 │
+               A  50.35  4 │              A  50.35  4 │
+               A  50.65  5 │              A  50.65  5 │
+               B  68.58  6 │              B  68.58  6 │
+               B   62.3  7 │              B   62.3  7 │
+               B  53.67  8 │              B  53.67  8 │
+               B  56.57  9 │              B  56.57  9 │
+               B  57.77 10 │              B   <NA> 10 │
+               B  66.12 11 │              B  66.12 11 │
+               B   61.8 12 │              B   61.8 12 │
+               B     62 13 │              B     62 13 │
+               B  60.55 14 │              B  60.55 14 │
+               B  57.22 15 │              B  57.22 15 │
+# ... up to five more rows
+# One more case
 > 
 > 
 > 
@@ -1289,7 +1339,7 @@ Residual  0.785
 > 
 > ### Name: mplm
 > ### Title: Multivariate Piecewise linear model / piecewise regression
-> ### Aliases: mplm print.sc_mplm
+> ### Aliases: mplm print.sc_mplm export.sc_mplm
 > 
 > ### ** Examples
 > 
@@ -1300,60 +1350,42 @@ Residual  0.785
 Multivariate piecewise linear model
 
 Dummy model: W level = first, slope = first
+Type III MANOVA 
+Pillai = 0.35; F(6, 158) = 5.57; p = 0.000 
 
-Coefficients: 
-                       academic_engagement disruptive_behavior
-Intercept                            2.771              0.8493
-Trend (mt)                          -0.216              0.0822
-Level phase B (phaseB)               2.340             -1.3898
-Slope phase B (interB)               0.219             -0.0803
+                       academic_engagement disruptive_behavior Pillai      F
+Intercept                            2.771               0.849  0.284 15.475
+Trend (mt)                          -0.216               0.082  0.032  1.275
+Level phase B (phaseB)               2.340              -1.390  0.190  9.176
+Slope phase B (interB)               0.219              -0.080  0.031  1.267
+                           p
+Intercept              0.000
+Trend (mt)             0.285
+Level phase B (phaseB) 0.000
+Slope phase B (interB) 0.287
 
 Formula: y ~ 1 + mt + phaseB + interB
-
-Type III MANOVA Tests: Pillai test statistic
-                       Df test stat approx F num Df den Df  Pr(>F)    
-Intercept               1    0.2841    15.48      2     78 2.2e-06 ***
-Trend (mt)              1    0.0317     1.28      2     78 0.28519    
-Level phase B (phaseB)  1    0.1905     9.18      2     78 0.00026 ***
-Slope phase B (interB)  1    0.0315     1.27      2     78 0.28737    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-The following variables were used in this analysis:
-'academic_engagement/ disruptive_behavior' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
 > ## also report standardized coefficients:
 > print(res, std = TRUE)
 Multivariate piecewise linear model
 
 Dummy model: W level = first, slope = first
+Type III MANOVA 
+Pillai = 0.35; F(6, 158) = 5.57; p = 0.000 
 
-Coefficients: 
-                       academic_engagement disruptive_behavior
-Intercept                            2.771              0.8493
-Trend (mt)                          -0.216              0.0822
-Level phase B (phaseB)               2.340             -1.3898
-Slope phase B (interB)               0.219             -0.0803
+                       academic_engagement disruptive_behavior Pillai      F
+Intercept                            0.000               0.000  0.284 15.475
+Trend (mt)                          -5.979               5.107  0.032  1.275
+Level phase B (phaseB)               0.576              -0.767  0.190  9.176
+Slope phase B (interB)               5.950              -4.897  0.031  1.267
+                           p
+Intercept              0.000
+Trend (mt)             0.285
+Level phase B (phaseB) 0.000
+Slope phase B (interB) 0.287
 
-Standardized coefficients: 
-                       academic_engagement disruptive_behavior
-Intercept                            0.000               0.000
-Trend (mt)                          -5.979               5.107
-Level phase B (phaseB)               0.576              -0.767
-Slope phase B (interB)               5.950              -4.897
-
+Coefficients are standardized
 Formula: y ~ 1 + mt + phaseB + interB
-
-Type III MANOVA Tests: Pillai test statistic
-                       Df test stat approx F num Df den Df  Pr(>F)    
-Intercept               1    0.2841    15.48      2     78 2.2e-06 ***
-Trend (mt)              1    0.0317     1.28      2     78 0.28519    
-Level phase B (phaseB)  1    0.1905     9.18      2     78 0.00026 ***
-Slope phase B (interB)  1    0.0315     1.27      2     78 0.28737    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-The following variables were used in this analysis:
-'academic_engagement/ disruptive_behavior' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
 > 
 > 
 > 
@@ -1376,8 +1408,8 @@ The following variables were used in this analysis:
 > nap(gretchen, decreasing = TRUE)
 Nonoverlap of All Pairs
 
-  Case NAP NAP Rescaled  w    p   d   R²
- Case1  94           88 22 <.05 2.2 0.56
+      Case NAP NAP Rescaled  w    p   d   R²
+ [case #1]  94           88 22 <.05 2.2 0.56
 > 
 > ## Request NAP for all cases from the Grosche2011 scdf
 > nap(Grosche2011)
@@ -1397,9 +1429,9 @@ Nonoverlap of All Pairs
 > 
 > flush(stderr()); flush(stdout())
 > 
-> ### Name: outlier
+> ### Name: print.sc_outlier
 > ### Title: Handling outliers in single-case data
-> ### Aliases: outlier
+> ### Aliases: print.sc_outlier export.sc_outlier outlier
 > ### Keywords: manip
 > 
 > ### ** Examples
@@ -1411,7 +1443,7 @@ Nonoverlap of All Pairs
 > res_outlier
 Outlier Analysis for Single-Case Data
 
-Case Case1 : Dropped 2 
+Case [case #1] : Dropped 2 
 
 > 
 > ## Identify outliers in the original data from Grosche (2011)
@@ -1421,7 +1453,7 @@ Case Case1 : Dropped 2
 Outlier Analysis for Single-Case Data
 
 Case Eva : Dropped 1 
-Case Georg : Dropped 2 
+Case Georg : Dropped 3 
 Case Olaf : Dropped 2 
 
 > 
@@ -1447,22 +1479,22 @@ Overlap Indices
 
 Comparing phase 1 against phase 2 
 
-              Case1
-Design          A-B
-PND              40
-PEM              70
-PET             100
-NAP              70
-NAP rescaled     40
-PAND             60
-IRD             0.4
-Tau_U(A)      -0.51
-Tau_U(BA)     -0.69
-Base_Tau      -0.73
-Diff_mean     -20.4
-Diff_trend   -17.87
-SMD            -0.9
-Hedges_g      -0.71
+             [case #1]
+Design             A-B
+PND                 40
+PEM                 70
+PET                100
+NAP                 70
+NAP rescaled        40
+PAND                60
+IRD                0.4
+Tau_U(A)         -0.51
+Tau_U(BA)        -0.69
+Base_Tau         -0.73
+Diff_mean        -20.4
+Diff_trend      -17.87
+SMD               -0.9
+Hedges_g         -0.71
 
 The following variables were used in this analysis:
 'score' as dependent variable, 'phase' as phase variable, and 'mt' as measurement-time variable.
@@ -1617,8 +1649,8 @@ Warning in random_scdf(5, level = 0.5) :
 > pem(dat, chi.test = TRUE)
 Percent Exceeding the Median
 
-  Case  PEM positives total binom.p  Chi DF       p
- Case1 86.7        13    15 0.00369 8.07  1 0.00451
+      Case  PEM positives total binom.p  Chi DF       p
+ [case #1] 86.7        13    15 0.00369 8.07  1 0.00451
 
 Alternative hypothesis: true probability > 50%
 > 
@@ -1646,12 +1678,12 @@ Alternative hypothesis: true probability > 50%
 Percent Exceeding the Trend
 
 
-  Case   PET PET CI  binom.p
- Case1  13.3    0.0 1.00e+00
- Case2 100.0   53.3 3.05e-05
- Case3 100.0   93.3 3.05e-05
- Case4   0.0    0.0 1.00e+00
- Case5  80.0    0.0 1.76e-02
+      Case   PET PET CI  binom.p
+ [case #1]  13.3    0.0 1.00e+00
+ [case #2] 100.0   53.3 3.05e-05
+ [case #3] 100.0   93.3 3.05e-05
+ [case #4]   0.0    0.0 1.00e+00
+ [case #5]  80.0    0.0 1.76e-02
 
 Binom.test: alternative hypothesis: true probability > 50%
 PET CI: Percent of values greater than upper 99% confidence threshold (single sided)
@@ -1667,7 +1699,7 @@ PET CI: Percent of values greater than upper 99% confidence threshold (single si
 > 
 > ### Name: plm
 > ### Title: Piecewise linear model / piecewise regression
-> ### Aliases: plm
+> ### Aliases: plm print.sc_plm export.sc_plm
 > 
 > ### ** Examples
 > 
@@ -1686,7 +1718,7 @@ Piecewise Regression Analysis
 Contrast model: W / level = first, slope = first
 
 Fitted a gaussian distribution.
-Correlated residuals up to autoregressions of lag 3 are modelled
+Autocorrelated residuals up to lag 3 were modeled
 
 F(3, 26) = 47.38; p = 0.000; R² = 0.845; Adjusted R² = 0.828; AIC = 
 
@@ -1860,6 +1892,101 @@ Slope phase B (interB)     0.895     1.204
 
 Formula: percentage ~ 1 + mt + phaseB + interB
 weights = trials 
+> ## Print
+> plm(exampleAB$Johanna) |> 
++   print(ci = 0.9, r_squared = c("delta", "partial"))
+Piecewise Regression Analysis
+
+Contrast model: W / level = first, slope = first
+
+Fitted a gaussian distribution.
+F(3, 16) = 28.69; p = 0.000; R² = 0.843; Adjusted R² = 0.814; AIC = 126.8444
+
+                            B LL-CI90% UL-CI90%    SE      t     p delta R²
+Intercept              54.400   48.002   60.798 3.890 13.986 0.000         
+Trend (mt)              0.100   -2.512    2.712 1.588  0.063 0.951    0.000
+Level phase B (phaseB)  7.858   -1.709   17.426 5.816  1.351 0.195    0.018
+Slope phase B (interB)  1.525   -1.133    4.183 1.616  0.944 0.359    0.009
+                       partial R²
+Intercept                        
+Trend (mt)                  0.000
+Level phase B (phaseB)      0.102
+Slope phase B (interB)      0.053
+
+Autocorrelations of the residuals
+ lag    cr
+   1 -0.32
+   2 -0.13
+   3 -0.01
+Ljung-Box test: X²(3) = 2.84; p = 0.417 
+
+Formula: values ~ 1 + mt + phaseB + interB 
+> ## Export
+> plm(exampleAB$Johanna) |> export()
+<table class=" lightable-classic" style="width: auto !important; border-bottom: 0;">
+<caption>Piecewise-regression model predicting 'values'</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">CI(95%)</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="4"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Parameter </th>
+   <th style="text-align:center;"> B </th>
+   <th style="text-align:center;"> LL </th>
+   <th style="text-align:center;"> UL </th>
+   <th style="text-align:center;"> SE </th>
+   <th style="text-align:center;"> t </th>
+   <th style="text-align:center;"> p </th>
+   <th style="text-align:center;"> delta R² </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Intercept </td>
+   <td style="text-align:center;"> 54.40 </td>
+   <td style="text-align:center;"> 46.78 </td>
+   <td style="text-align:center;"> 62.02 </td>
+   <td style="text-align:center;"> 3.89 </td>
+   <td style="text-align:center;"> 13.99 </td>
+   <td style="text-align:center;"> &lt;.001 </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trend (mt) </td>
+   <td style="text-align:center;"> 0.10 </td>
+   <td style="text-align:center;"> -3.01 </td>
+   <td style="text-align:center;"> 3.21 </td>
+   <td style="text-align:center;"> 1.59 </td>
+   <td style="text-align:center;"> 0.06 </td>
+   <td style="text-align:center;"> .95 </td>
+   <td style="text-align:center;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Level phase B (phaseB) </td>
+   <td style="text-align:center;"> 7.86 </td>
+   <td style="text-align:center;"> -3.54 </td>
+   <td style="text-align:center;"> 19.26 </td>
+   <td style="text-align:center;"> 5.82 </td>
+   <td style="text-align:center;"> 1.35 </td>
+   <td style="text-align:center;"> .20 </td>
+   <td style="text-align:center;"> 0.02 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slope phase B (interB) </td>
+   <td style="text-align:center;"> 1.53 </td>
+   <td style="text-align:center;"> -1.64 </td>
+   <td style="text-align:center;"> 4.69 </td>
+   <td style="text-align:center;"> 1.62 </td>
+   <td style="text-align:center;"> 0.94 </td>
+   <td style="text-align:center;"> .36 </td>
+   <td style="text-align:center;"> 0.01 </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<span style="font-style: italic;">Note: </span> <sup></sup> F(3, 16) = 28.69; p = 0.000; R² = 0.843; Adjusted R² = 0.814; AIC = 127; LL = lower limit; UL = upper limit; Slope estimation method = W; Contrasts for the level and slope effects are coded with the first phase as the reference.</td></tr></tfoot>
+</table>> 
 > 
 > 
 > 
@@ -1993,9 +2120,9 @@ Test-Power in percent:
 > 
 > flush(stderr()); flush(stdout())
 > 
-> ### Name: rand_test
+> ### Name: print.sc_rand
 > ### Title: Randomization Tests for single-case data
-> ### Aliases: rand_test
+> ### Aliases: print.sc_rand export.sc_rand rand_test
 > 
 > ### ** Examples
 > 
@@ -2314,7 +2441,6 @@ Residual  0.266
 > 
 > ### ** Examples
 > 
-> 
 > ## Scores on a letter naming task were collected on eleven days in a row.
 > ## The intervention started after the fifth measurement,
 > ## so the first B phase measurement was 6 (B_start = 6).
@@ -2348,19 +2474,19 @@ max.B       19
 trend.A    0.2
 trend.B  0.743
 > 
-> # Alternative coding 1:
+> # Alternative: using named vector
 > klaas <- scdf(
 +   c(A = 5, 7, 8, 5, 7, B = 12, 16, 18, 15, 14, 19),
 +   name = "Klaas"
 + )
 > 
-> # Alternative coding 2:
+> # Alternative: using phase_design
 > klaas <- scdf(
 +   c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
 +   phase_design = c(A = 5, B = 6), name = "Klaas"
 + )
 > 
-> # Alternative coding 3:
+> # Alternative: using phase_starts
 > klaas <- scdf(
 +   c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
 +   phase_starts = c(A = 1, B = 7), name = "Klaas"
@@ -2403,30 +2529,30 @@ trend.B 0.779
 > ## further conjoined analyses.
 > charlotte <- scdf(c(A = 5, 7, 10, 5, 12, B = 7, 10, 18, 15, 14, 19))
 > theresa <- scdf(c(A = 3, 4, 3, 5, B = 7, 4, 7, 9, 8, 10, 12))
-> antonia <- scdf(c(A = 9, 8, 8, 7, 5, 7, B = 6, 14, 15, 12, 16))
-> mbd <- c(charlotte, theresa, antonia)
-> names(mbd) <- c("Charlotte", "Theresa", "Antonia")
+> tonia <- scdf(c(A = 9, 8, 8, 7, 5, 7, B = 6, 14, 15, 12, 16))
+> mbd <- c(charlotte, theresa, tonia)
+> names(mbd) <- c("Charlotte", "Theresa", "Tonia")
 > overlap(mbd)
 Overlap Indices
 
 Comparing phase 1 against phase 2 
 
-             Charlotte Theresa Antonia
-Design             A-B     A-B     A-B
-PND                 67      86      80
-PEM                 83     100      80
-PET                 33      86     100
-NAP                 87      95      83
-NAP rescaled        73      89      67
-PAND                82      82      82
-IRD               0.63    0.80    0.82
-Tau_U(A)          0.37    0.52    0.63
-Tau_U(BA)         0.49    0.71    0.69
-Base_Tau          0.56    0.66    0.66
-Diff_mean         6.03    4.39    5.27
-Diff_trend        0.77    0.50    2.37
-SMD               1.94    4.59    3.85
-Hedges_g          1.37    1.87    1.70
+             Charlotte Theresa Tonia
+Design             A-B     A-B   A-B
+PND                 67      86    80
+PEM                 83     100    80
+PET                 33      86   100
+NAP                 87      95    83
+NAP rescaled        73      89    67
+PAND                82      82    82
+IRD               0.63    0.80  0.82
+Tau_U(A)          0.37    0.52  0.63
+Tau_U(BA)         0.49    0.71  0.69
+Base_Tau          0.56    0.66  0.66
+Diff_mean         6.03    4.39  5.27
+Diff_trend        0.77    0.50  2.37
+SMD               1.94    4.59  3.85
+Hedges_g          1.37    1.87  1.70
 > 
 > ## In a classroom-based intervention it was not possible to measure outcomes
 > ## every day, but only on schooldays. The sequence of measurements is passed
@@ -2438,8 +2564,8 @@ Hedges_g          1.37    1.87    1.70
 > summary(frida)
 #A single-case data frame with one case
 
-       Measurements Design
- Case1           15    A-B
+           Measurements Design
+ [case #1]           15    A-B
 
 Variable names:
 values <dependent variable>
@@ -2449,28 +2575,28 @@ mt <measurement-time variable>
 > describe(frida)
 Describe Single-Case Data
 
-       Case1
-Design   A-B
-n.A        8
-n.B        7
-mis.A      0
-mis.B      0
+       [case #1]
+Design       A-B
+n.A            8
+n.B            7
+mis.A          0
+mis.B          0
 
-        Case1
-m.A     3.375
-m.B        11
-md.A        3
-md.B       12
-sd.A    1.506
-sd.B     2.38
-mad.A   1.483
-mad.B   2.965
-min.A       2
-min.B       8
-max.A       6
-max.B      14
-trend.A 0.305
-trend.B  0.71
+        [case #1]
+m.A         3.375
+m.B            11
+md.A            3
+md.B           12
+sd.A        1.506
+sd.B         2.38
+mad.A       1.483
+mad.B       2.965
+min.A           2
+min.B           8
+max.A           6
+max.B          14
+trend.A     0.305
+trend.B      0.71
 > 
 > ## example with two independent variables and four phases
 > jim <- scdf(
@@ -2483,7 +2609,7 @@ Overlap Indices
 
 Comparing phases A1 + A2 against phases B1 + B2 
 
-                   Case1
+               [case #1]
 Design       A1-B1-A2-B2
 PND                   17
 PEM                   67
@@ -2505,6 +2631,7 @@ The following variables were used in this analysis:
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("select_cases")
 > ### * select_cases
@@ -2520,102 +2647,102 @@ The following variables were used in this analysis:
 > select_cases(exampleAB, Johanna, Karolina)
 #A single-case data frame with two cases
 
- Johanna: values mt phase | Karolina: values mt phase |
-              54  1     A |               41  1     A |
-              53  2     A |               59  2     A |
-              56  3     A |               56  3     A |
-              58  4     A |               51  4     A |
-              52  5     A |               52  5     A |
-              61  6     B |               57  6     B |
-              62  7     B |               56  7     B |
-              71  8     B |               67  8     B |
-              66  9     B |               75  9     B |
-              64 10     B |               66 10     B |
-              78 11     B |               69 11     B |
-              70 12     B |               68 12     B |
-              74 13     B |               73 13     B |
-              82 14     B |               77 14     B |
-              77 15     B |               79 15     B |
+ Johanna: values mt phase │ Karolina: values mt phase │
+              54  1     A │               41  1     A │
+              53  2     A │               59  2     A │
+              56  3     A │               56  3     A │
+              58  4     A │               51  4     A │
+              52  5     A │               52  5     A │
+              61  6     B │               57  6     B │
+              62  7     B │               56  7     B │
+              71  8     B │               67  8     B │
+              66  9     B │               75  9     B │
+              64 10     B │               66 10     B │
+              78 11     B │               69 11     B │
+              70 12     B │               68 12     B │
+              74 13     B │               73 13     B │
+              82 14     B │               77 14     B │
+              77 15     B │               79 15     B │
 # ... up to five more rows
 > select_cases(exampleAB, c(Johanna, Karolina))
 #A single-case data frame with two cases
 
- Johanna: values mt phase | Karolina: values mt phase |
-              54  1     A |               41  1     A |
-              53  2     A |               59  2     A |
-              56  3     A |               56  3     A |
-              58  4     A |               51  4     A |
-              52  5     A |               52  5     A |
-              61  6     B |               57  6     B |
-              62  7     B |               56  7     B |
-              71  8     B |               67  8     B |
-              66  9     B |               75  9     B |
-              64 10     B |               66 10     B |
-              78 11     B |               69 11     B |
-              70 12     B |               68 12     B |
-              74 13     B |               73 13     B |
-              82 14     B |               77 14     B |
-              77 15     B |               79 15     B |
+ Johanna: values mt phase │ Karolina: values mt phase │
+              54  1     A │               41  1     A │
+              53  2     A │               59  2     A │
+              56  3     A │               56  3     A │
+              58  4     A │               51  4     A │
+              52  5     A │               52  5     A │
+              61  6     B │               57  6     B │
+              62  7     B │               56  7     B │
+              71  8     B │               67  8     B │
+              66  9     B │               75  9     B │
+              64 10     B │               66 10     B │
+              78 11     B │               69 11     B │
+              70 12     B │               68 12     B │
+              74 13     B │               73 13     B │
+              82 14     B │               77 14     B │
+              77 15     B │               79 15     B │
 # ... up to five more rows
 > select_cases(exampleAB, 1,2)
 #A single-case data frame with two cases
 
- Johanna: values mt phase | Karolina: values mt phase |
-              54  1     A |               41  1     A |
-              53  2     A |               59  2     A |
-              56  3     A |               56  3     A |
-              58  4     A |               51  4     A |
-              52  5     A |               52  5     A |
-              61  6     B |               57  6     B |
-              62  7     B |               56  7     B |
-              71  8     B |               67  8     B |
-              66  9     B |               75  9     B |
-              64 10     B |               66 10     B |
-              78 11     B |               69 11     B |
-              70 12     B |               68 12     B |
-              74 13     B |               73 13     B |
-              82 14     B |               77 14     B |
-              77 15     B |               79 15     B |
+ Johanna: values mt phase │ Karolina: values mt phase │
+              54  1     A │               41  1     A │
+              53  2     A │               59  2     A │
+              56  3     A │               56  3     A │
+              58  4     A │               51  4     A │
+              52  5     A │               52  5     A │
+              61  6     B │               57  6     B │
+              62  7     B │               56  7     B │
+              71  8     B │               67  8     B │
+              66  9     B │               75  9     B │
+              64 10     B │               66 10     B │
+              78 11     B │               69 11     B │
+              70 12     B │               68 12     B │
+              74 13     B │               73 13     B │
+              82 14     B │               77 14     B │
+              77 15     B │               79 15     B │
 # ... up to five more rows
 > select_cases(exampleAB, 1:2)
 #A single-case data frame with two cases
 
- Johanna: values mt phase | Karolina: values mt phase |
-              54  1     A |               41  1     A |
-              53  2     A |               59  2     A |
-              56  3     A |               56  3     A |
-              58  4     A |               51  4     A |
-              52  5     A |               52  5     A |
-              61  6     B |               57  6     B |
-              62  7     B |               56  7     B |
-              71  8     B |               67  8     B |
-              66  9     B |               75  9     B |
-              64 10     B |               66 10     B |
-              78 11     B |               69 11     B |
-              70 12     B |               68 12     B |
-              74 13     B |               73 13     B |
-              82 14     B |               77 14     B |
-              77 15     B |               79 15     B |
+ Johanna: values mt phase │ Karolina: values mt phase │
+              54  1     A │               41  1     A │
+              53  2     A │               59  2     A │
+              56  3     A │               56  3     A │
+              58  4     A │               51  4     A │
+              52  5     A │               52  5     A │
+              61  6     B │               57  6     B │
+              62  7     B │               56  7     B │
+              71  8     B │               67  8     B │
+              66  9     B │               75  9     B │
+              64 10     B │               66 10     B │
+              78 11     B │               69 11     B │
+              70 12     B │               68 12     B │
+              74 13     B │               73 13     B │
+              82 14     B │               77 14     B │
+              77 15     B │               79 15     B │
 # ... up to five more rows
 > select_cases(exampleAB, -Johanna)
 #A single-case data frame with two cases
 
- Karolina: values mt phase | Anja: values mt phase |
-               41  1     A |           55  1     A |
-               59  2     A |           58  2     A |
-               56  3     A |           53  3     A |
-               51  4     A |           50  4     A |
-               52  5     A |           52  5     A |
-               57  6     B |           55  6     B |
-               56  7     B |           68  7     B |
-               67  8     B |           68  8     B |
-               75  9     B |           81  9     B |
-               66 10     B |           67 10     B |
-               69 11     B |           78 11     B |
-               68 12     B |           73 12     B |
-               73 13     B |           72 13     B |
-               77 14     B |           78 14     B |
-               79 15     B |           81 15     B |
+ Karolina: values mt phase │ Anja: values mt phase │
+               41  1     A │           55  1     A │
+               59  2     A │           58  2     A │
+               56  3     A │           53  3     A │
+               51  4     A │           50  4     A │
+               52  5     A │           52  5     A │
+               57  6     B │           55  6     B │
+               56  7     B │           68  7     B │
+               67  8     B │           68  8     B │
+               75  9     B │           81  9     B │
+               66 10     B │           67 10     B │
+               69 11     B │           78 11     B │
+               68 12     B │           73 12     B │
+               73 13     B │           72 13     B │
+               77 14     B │           78 14     B │
+               79 15     B │           81 15     B │
 # ... up to five more rows
 > select_cases(exampleAB, -c(Johanna, Karolina))
 #A single-case data frame with one case
@@ -2641,22 +2768,22 @@ The following variables were used in this analysis:
 > select_cases(exampleA1B1A2B2, v)
 #A single-case data frame with two cases
 
- Moritz: values mt phase | Jannis: values mt phase |
-             15  1    A1 |             12  1    A1 |
-             11  2    A1 |             11  2    A1 |
-             12  3    A1 |             18  3    A1 |
-             10  4    A1 |             20  4    A1 |
-             12  5    A1 |             15  5    A1 |
-             18  6    A1 |             13  6    A1 |
-             16  7    A1 |              8  7    A1 |
-             18  8    A1 |             19  8    A1 |
-             12  9    A1 |             16  9    A1 |
-             12 10    A1 |             14 10    A1 |
-             11 11    A1 |             13 11    A1 |
-             10 12    A1 |             12 12    A1 |
-             13 13    A1 |             18 13    A1 |
-              9 14    A1 |             13 14    A1 |
-             14 15    A1 |             17 15    A1 |
+ Moritz: values mt phase │ Jannis: values mt phase │
+             15  1    A1 │             12  1    A1 │
+             11  2    A1 │             11  2    A1 │
+             12  3    A1 │             18  3    A1 │
+             10  4    A1 │             20  4    A1 │
+             12  5    A1 │             15  5    A1 │
+             18  6    A1 │             13  6    A1 │
+             16  7    A1 │              8  7    A1 │
+             18  8    A1 │             19  8    A1 │
+             12  9    A1 │             16  9    A1 │
+             12 10    A1 │             14 10    A1 │
+             11 11    A1 │             13 11    A1 │
+             10 12    A1 │             12 12    A1 │
+             13 13    A1 │             18 13    A1 │
+              9 14    A1 │             13 14    A1 │
+             14 15    A1 │             17 15    A1 │
 # ... up to 25 more rows
 > 
 > 
@@ -2881,22 +3008,22 @@ Please use function 'scplot' from the package 'scplot' instead of 'style_plot'.
 + )
 #A single-case data frame with one case
 
- Berta: mt compliance phase compliance (moving median) compliance (moving mean)
-         1         25     A                         25                       25
-         2       20.8     A                         25                    28.47
-         3       39.6     A                       39.6                    47.69
-         4         75     A                         45                     55.9
-         5         45     A                         45                     38.5
-         6       14.6     A                         45                    32.97
-         7       45.8     A                         45                    37.36
-         8       33.3     A                       33.3                    33.99
-         9       31.3     A                       32.5                     32.6
-        10       32.5     A                       32.5                     23.1
-        11        4.2     B                       32.5                    24.37
-        12       45.8     B                       32.5                    33.82
-        13       31.3     B                       31.3                    24.84
-        14        9.4     B                        9.4                    13.51
-        15        6.3     B                        6.3                        8
+ Berta: compliance mt phase compliance (moving median) compliance (moving mean)
+                25  1     A                         25                       25
+              20.8  2     A                         25                    28.47
+              39.6  3     A                       39.6                    47.69
+                75  4     A                         45                     55.9
+                45  5     A                         45                     38.5
+              14.6  6     A                         45                    32.97
+              45.8  7     A                         45                    37.36
+              33.3  8     A                       33.3                    33.99
+              31.3  9     A                       32.5                     32.6
+              32.5 10     A                       32.5                     23.1
+               4.2 11     B                       32.5                    24.37
+              45.8 12     B                       32.5                    33.82
+              31.3 13     B                       31.3                    24.84
+               9.4 14     B                        9.4                    13.51
+               6.3 15     B                        6.3                        8
  compliance (local regression)
                          22.02
                          28.81
@@ -3033,22 +3160,22 @@ Please use function 'scplot' from the package 'scplot' instead of 'style_plot'.
 +   subset((values < 60 & phase == "A") | (values >= 60 & phase == "B"))
 #A single-case data frame with three cases
 
- Johanna: values mt phase | Karolina: values mt phase | Anja: values mt phase |
-              54  1     A |               41  1     A |           55  1     A |
-              53  2     A |               59  2     A |           58  2     A |
-              56  3     A |               56  3     A |           53  3     A |
-              58  4     A |               51  4     A |           50  4     A |
-              52  5     A |               52  5     A |           52  5     A |
-              61  6     B |               67  8     B |           68  7     B |
-              62  7     B |               75  9     B |           68  8     B |
-              71  8     B |               66 10     B |           81  9     B |
-              66  9     B |               69 11     B |           67 10     B |
-              64 10     B |               68 12     B |           78 11     B |
-              78 11     B |               73 13     B |           73 12     B |
-              70 12     B |               77 14     B |           72 13     B |
-              74 13     B |               79 15     B |           78 14     B |
-              82 14     B |               86 16     B |           81 15     B |
-              77 15     B |               82 17     B |           78 16     B |
+ Johanna: values mt phase │ Karolina: values mt phase │ Anja: values mt phase │
+              54  1     A │               41  1     A │           55  1     A │
+              53  2     A │               59  2     A │           58  2     A │
+              56  3     A │               56  3     A │           53  3     A │
+              58  4     A │               51  4     A │           50  4     A │
+              52  5     A │               52  5     A │           52  5     A │
+              61  6     B │               67  8     B │           68  7     B │
+              62  7     B │               75  9     B │           68  8     B │
+              71  8     B │               66 10     B │           81  9     B │
+              66  9     B │               69 11     B │           67 10     B │
+              64 10     B │               68 12     B │           78 11     B │
+              78 11     B │               73 13     B │           73 12     B │
+              70 12     B │               77 14     B │           72 13     B │
+              74 13     B │               79 15     B │           78 14     B │
+              82 14     B │               86 16     B │           81 15     B │
+              77 15     B │               82 17     B │           78 16     B │
 # ... up to five more rows
 > subset(exampleAB_add, select = c(-cigarrets, -depression))
 #A single-case data frame with one case
@@ -3073,42 +3200,42 @@ Please use function 'scplot' from the package 'scplot' instead of 'style_plot'.
 > subset(exampleAB, cases = c(Karolina, Johanna))
 #A single-case data frame with two cases
 
- Karolina: values mt phase | Johanna: values mt phase |
-               41  1     A |              54  1     A |
-               59  2     A |              53  2     A |
-               56  3     A |              56  3     A |
-               51  4     A |              58  4     A |
-               52  5     A |              52  5     A |
-               57  6     B |              61  6     B |
-               56  7     B |              62  7     B |
-               67  8     B |              71  8     B |
-               75  9     B |              66  9     B |
-               66 10     B |              64 10     B |
-               69 11     B |              78 11     B |
-               68 12     B |              70 12     B |
-               73 13     B |              74 13     B |
-               77 14     B |              82 14     B |
-               79 15     B |              77 15     B |
+ Karolina: values mt phase │ Johanna: values mt phase │
+               41  1     A │              54  1     A │
+               59  2     A │              53  2     A │
+               56  3     A │              56  3     A │
+               51  4     A │              58  4     A │
+               52  5     A │              52  5     A │
+               57  6     B │              61  6     B │
+               56  7     B │              62  7     B │
+               67  8     B │              71  8     B │
+               75  9     B │              66  9     B │
+               66 10     B │              64 10     B │
+               69 11     B │              78 11     B │
+               68 12     B │              70 12     B │
+               73 13     B │              74 13     B │
+               77 14     B │              82 14     B │
+               79 15     B │              77 15     B │
 # ... up to five more rows
 > subset(exampleA1B1A2B2, phase %in% c("A1", "B2"), cases = Pawel:Moritz)
 #A single-case data frame with two cases
 
- Pawel: values mt phase | Moritz: values mt phase |
-            10  1    A1 |             15  1    A1 |
-            19  2    A1 |             11  2    A1 |
-            11  3    A1 |             12  3    A1 |
-             6  4    A1 |             10  4    A1 |
-            16  5    A1 |             12  5    A1 |
-            16  6    A1 |             18  6    A1 |
-            17  7    A1 |             16  7    A1 |
-            18  8    A1 |             18  8    A1 |
-            12  9    A1 |             12  9    A1 |
-            12 10    A1 |             12 10    A1 |
-            34 31    B2 |             11 11    A1 |
-            35 32    B2 |             10 12    A1 |
-            28 33    B2 |             13 13    A1 |
-            30 34    B2 |              9 14    A1 |
-            22 35    B2 |             14 15    A1 |
+ Pawel: values mt phase │ Moritz: values mt phase │
+            10  1    A1 │             15  1    A1 │
+            19  2    A1 │             11  2    A1 │
+            11  3    A1 │             12  3    A1 │
+             6  4    A1 │             10  4    A1 │
+            16  5    A1 │             12  5    A1 │
+            16  6    A1 │             18  6    A1 │
+            17  7    A1 │             16  7    A1 │
+            18  8    A1 │             18  8    A1 │
+            12  9    A1 │             12  9    A1 │
+            12 10    A1 │             12 10    A1 │
+            34 31    B2 │             11 11    A1 │
+            35 32    B2 │             10 12    A1 │
+            28 33    B2 │             13 13    A1 │
+            30 34    B2 │              9 14    A1 │
+            22 35    B2 │             14 15    A1 │
 # ... up to 10 more rows
 > 
 > 
@@ -3218,8 +3345,8 @@ A vs. B + Trend B - Trend A -0.07    -0.50     0.38 30.82 -0.45 .65
 > 
 > ### Name: moving_median
 > ### Title: Transform every single case of a single case data frame
-> ### Aliases: moving_median moving_mean local_regression first_of
-> ###   across_cases all_cases transform.scdf
+> ### Aliases: moving_median moving_mean local_regression set_na_at center_at
+> ###   first_of across_cases all_cases rowwise transform.scdf
 > 
 > ### ** Examples
 > 
@@ -3236,22 +3363,22 @@ A vs. B + Trend B - Trend A -0.07    -0.50     0.38 30.82 -0.45 .65
 > transform(study, proportion = values/trials, percentage = proportion * 100)
 #A single-case data frame with three cases
 
- Case1: phase values mt trials proportion percentage
-            A      9  1     20       0.45         45
-            A      9  2     20       0.45         45
-            A     10  3     20        0.5         50
-            A     13  4     20       0.65         65
-            A      8  5     20        0.4         40
-            B     20  6     20          1        100
-            B     20  7     20          1        100
-            B     20  8     20          1        100
-            B     20  9     20          1        100
-            B     20 10     20          1        100
-            B     20 11     20          1        100
-            B     20 12     20          1        100
-            B     20 13     20          1        100
-            B     20 14     20          1        100
-            B     20 15     20          1        100
+ [case #1]: phase values mt trials proportion percentage
+                A      9  1     20       0.45         45
+                A      9  2     20       0.45         45
+                A     10  3     20        0.5         50
+                A     13  4     20       0.65         65
+                A      8  5     20        0.4         40
+                B     20  6     20          1        100
+                B     20  7     20          1        100
+                B     20  8     20          1        100
+                B     20  9     20          1        100
+                B     20 10     20          1        100
+                B     20 11     20          1        100
+                B     20 12     20          1        100
+                B     20 13     20          1        100
+                B     20 14     20          1        100
+                B     20 15     20          1        100
 # ... up to five more rows
 #  two more cases
 > 
@@ -3319,22 +3446,22 @@ A vs. B + Trend B - Trend A -0.07    -0.50     0.38 30.82 -0.45 .65
 +   )
 #A single-case data frame with three cases
 
- Marie: values mt phase | Rosalind: values mt phase | Lise: values mt phase |
-         -0.24  1     A |            -1.02  1     A |        -0.81  1     A |
-         -0.39  2     A |            -1.45  2     A |        -1.16  2     A |
-          -0.1  3     A |            -1.02  3     A |         0.11  3     A |
-          0.11  4     A |            -0.67  4     A |         -0.6  4     A |
-         -0.74  5     A |            -0.53  5     A |         0.32  5     A |
-         -1.16  6     A |             0.25  6     A |        -0.32  6     A |
-         -1.23  7     A |            -0.46  7     A |        -1.87  7     A |
-         -0.17  8     A |            -1.73  8     A |        -1.16  8     A |
-         -1.16  9     A |            -0.74  9     A |         0.88  9     A |
-         -1.59 10     A |             -0.1 10     A |         0.11 10     A |
-          1.52 11     B |             -0.1 11     A |        -1.02 11     A |
-          0.25 12     B |             0.25 12     A |        -1.16 12     A |
-           0.6 13     B |            -0.46 13     A |        -1.02 13     A |
-          1.52 14     B |            -1.09 14     A |         -1.8 14     A |
-           0.6 15     B |            -0.88 15     A |        -0.74 15     A |
+ Marie: values mt phase │ Rosalind: values mt phase │ Lise: values mt phase │
+         -0.24  1     A │            -1.02  1     A │        -0.81  1     A │
+         -0.39  2     A │            -1.45  2     A │        -1.16  2     A │
+          -0.1  3     A │            -1.02  3     A │         0.11  3     A │
+          0.11  4     A │            -0.67  4     A │         -0.6  4     A │
+         -0.74  5     A │            -0.53  5     A │         0.32  5     A │
+         -1.16  6     A │             0.25  6     A │        -0.32  6     A │
+         -1.23  7     A │            -0.46  7     A │        -1.87  7     A │
+         -0.17  8     A │            -1.73  8     A │        -1.16  8     A │
+         -1.16  9     A │            -0.74  9     A │         0.88  9     A │
+         -1.59 10     A │             -0.1 10     A │         0.11 10     A │
+          1.52 11     B │             -0.1 11     A │        -1.02 11     A │
+          0.25 12     B │             0.25 12     A │        -1.16 12     A │
+           0.6 13     B │            -0.46 13     A │        -1.02 13     A │
+          1.52 14     B │            -1.09 14     A │         -1.8 14     A │
+           0.6 15     B │            -0.88 15     A │        -0.74 15     A │
 # ... up to 15 more rows
 > 
 > ## Rank transform the values based on all cases vs. within each case:
@@ -3373,22 +3500,22 @@ A vs. B + Trend B - Trend A -0.07    -0.50     0.38 30.82 -0.45 .65
 + )
 #A single-case data frame with one case
 
- Berta: mt compliance phase compliance (moving median) compliance (moving mean)
-         1         25     A                         25                       25
-         2       20.8     A                         25                    28.47
-         3       39.6     A                       39.6                    47.69
-         4         75     A                         45                     55.9
-         5         45     A                         45                     38.5
-         6       14.6     A                         45                    32.97
-         7       45.8     A                         45                    37.36
-         8       33.3     A                       33.3                    33.99
-         9       31.3     A                       32.5                     32.6
-        10       32.5     A                       32.5                     23.1
-        11        4.2     B                       32.5                    24.37
-        12       45.8     B                       32.5                    33.82
-        13       31.3     B                       31.3                    24.84
-        14        9.4     B                        9.4                    13.51
-        15        6.3     B                        6.3                        8
+ Berta: compliance mt phase compliance (moving median) compliance (moving mean)
+                25  1     A                         25                       25
+              20.8  2     A                         25                    28.47
+              39.6  3     A                       39.6                    47.69
+                75  4     A                         45                     55.9
+                45  5     A                         45                     38.5
+              14.6  6     A                         45                    32.97
+              45.8  7     A                         45                    37.36
+              33.3  8     A                       33.3                    33.99
+              31.3  9     A                       32.5                     32.6
+              32.5 10     A                       32.5                     23.1
+               4.2 11     B                       32.5                    24.37
+              45.8 12     B                       32.5                    33.82
+              31.3 13     B                       31.3                    24.84
+               9.4 14     B                        9.4                    13.51
+               6.3 15     B                        6.3                        8
  compliance (local regression)
                          22.02
                          28.81
@@ -3413,27 +3540,27 @@ A vs. B + Trend B - Trend A -0.07    -0.50     0.38 30.82 -0.45 .65
 > 
 > byHeart2011 |>
 +   transform(
-+     values = replace(values, first_of(phase == "A", 0:1), NA),
-+     values = replace(values, first_of(phase == "B", -1:0), NA)
++     values = set_na_at(values, phase == "A", 0:1),
++     values = set_na_at(values, phase == "B", -1:0)
 +   )
 #A single-case data frame with 11 cases
 
- Lisa (Turkish): values mt phase | Patrick (Spanish): values mt phase |
-                   <NA>  1     A |                      <NA>  1     A |
-                   <NA>  2     A |                      <NA>  2     A |
-                      0  3     A |                         3  3     A |
-                      0  4     A |                         0  4     A |
-                   <NA>  5     A |                      <NA>  5     A |
-                   <NA>  6     B |                      <NA>  6     B |
-                      5  7     B |                         8  7     B |
-                      6  8     B |                         8  8     B |
-                      7  9     B |                         8  9     B |
-                     10 10     B |                        12 10     B |
-                     10 11     B |                        13 11     B |
-                     15 12     B |                        13 12     B |
-                     16 13     B |                        15 13     B |
-                     14 14     B |                        14 14     B |
-                     17 15     B |                        15 15     B |
+ Lisa (Turkish): values mt phase │ Patrick (Spanish): values mt phase │
+                   <NA>  1     A │                      <NA>  1     A │
+                   <NA>  2     A │                      <NA>  2     A │
+                      0  3     A │                         3  3     A │
+                      0  4     A │                         0  4     A │
+                   <NA>  5     A │                      <NA>  5     A │
+                   <NA>  6     B │                      <NA>  6     B │
+                      5  7     B │                         8  7     B │
+                      6  8     B │                         8  8     B │
+                      7  9     B │                         8  9     B │
+                     10 10     B │                        12 10     B │
+                     10 11     B │                        13 11     B │
+                     15 12     B │                        13 12     B │
+                     16 13     B │                        15 13     B │
+                     14 14     B │                        14 14     B │
+                     17 15     B │                        15 15     B │
 # ... up to 11 more rows
 #  nine more cases
 > 
@@ -3572,7 +3699,7 @@ Imported 3 cases
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.556 0.333 4.893 0 0 
+Time elapsed:  4.484 0.099 4.588 0 0 
 > grDevices::dev.off()
 null device 
           1 

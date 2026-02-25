@@ -1,15 +1,15 @@
-* using log directory ‘/Users/wilbert/Documents/GitHub/scplot/revdep/checks.noindex/scan/new/scan.Rcheck’
-* using R version 4.5.0 (2025-04-11)
+* using log directory ‘/Users/wilbert/Documents/GitHub/packages/scplot/revdep/checks.noindex/scan/new/scan.Rcheck’
+* using R version 4.5.2 (2025-10-31)
 * using platform: aarch64-apple-darwin20
 * R was compiled by
-    Apple clang version 14.0.0 (clang-1400.0.29.202)
+    Apple clang version 16.0.0 (clang-1600.0.26.6)
     GNU Fortran (GCC) 14.2.0
-* running under: macOS Sequoia 15.5
+* running under: macOS Tahoe 26.3
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
 * checking for file ‘scan/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘scan’ version ‘0.64.0’
+* this is package ‘scan’ version ‘0.67.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... OK

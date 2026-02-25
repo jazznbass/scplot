@@ -136,9 +136,9 @@ nameEx("autocorr")
 
 flush(stderr()); flush(stdout())
 
-### Name: autocorr
+### Name: print.sc_ac
 ### Title: Autocorrelation for single-case data
-### Aliases: autocorr
+### Aliases: print.sc_ac export.sc_ac autocorr
 ### Keywords: regression
 
 ### ** Examples
@@ -173,7 +173,7 @@ flush(stderr()); flush(stdout())
 
 ### Name: between_smd
 ### Title: Between-Case Standardized Mean Difference
-### Aliases: between_smd print.sc_bcsmd
+### Aliases: between_smd print.sc_bcsmd export.sc_bcsmd
 
 ### ** Examples
 
@@ -194,7 +194,7 @@ between_smd(study)
 model <- hplm(study, contrast_level = "preceding", slope = FALSE,  trend = FALSE)
 between_smd(model)
 
-## excluding the residuals gives a more accruate estimation:
+## excluding the residuals gives a more accurate estimation:
 between_smd(model, include_residuals = FALSE)
 
 
@@ -229,9 +229,9 @@ nameEx("cdc")
 
 flush(stderr()); flush(stdout())
 
-### Name: cdc
+### Name: print.sc_cdc
 ### Title: Conservative Dual-Criterion Method
-### Aliases: cdc
+### Aliases: print.sc_cdc export.sc_cdc cdc
 ### Keywords: overlap
 
 ### ** Examples
@@ -305,9 +305,9 @@ nameEx("corrected_tau")
 
 flush(stderr()); flush(stdout())
 
-### Name: corrected_tau
+### Name: print.sc_bctau
 ### Title: Baseline corrected tau
-### Aliases: corrected_tau
+### Aliases: print.sc_bctau export.sc_bctau corrected_tau
 
 ### ** Examples
 
@@ -434,7 +434,7 @@ flush(stderr()); flush(stdout())
 Grosche2011filled <- fill_missing(Grosche2011)
 study <- c(Grosche2011[2], Grosche2011filled[2])
 names(study) <- c("Original", "Filled")
-plot(study)
+study
 
 ## Fill missing values in a single-case dataset that are NA
 Maggie <- random_scdf(design(level = list(0,1)), seed = 123)
@@ -444,7 +444,7 @@ Maggie_n[[1]][replace.positions,"values"] <- NA
 Maggie_f <- fill_missing(Maggie_n)
 study <- c(Maggie, Maggie_n, Maggie_f)
 names(study) <- c("original", "missing", "interpolated")
-plot(study, marks = list(positions = replace.positions), style = "grid2")
+study
 
 
 
@@ -483,7 +483,7 @@ flush(stderr()); flush(stdout())
 
 ### Name: mplm
 ### Title: Multivariate Piecewise linear model / piecewise regression
-### Aliases: mplm print.sc_mplm
+### Aliases: mplm print.sc_mplm export.sc_mplm
 
 ### ** Examples
 
@@ -526,9 +526,9 @@ nameEx("outlier")
 
 flush(stderr()); flush(stdout())
 
-### Name: outlier
+### Name: print.sc_outlier
 ### Title: Handling outliers in single-case data
-### Aliases: outlier
+### Aliases: print.sc_outlier export.sc_outlier outlier
 ### Keywords: manip
 
 ### ** Examples
@@ -644,7 +644,7 @@ flush(stderr()); flush(stdout())
 
 ### Name: plm
 ### Title: Piecewise linear model / piecewise regression
-### Aliases: plm
+### Aliases: plm print.sc_plm export.sc_plm
 
 ### ** Examples
 
@@ -687,6 +687,12 @@ exampleAB_score$Christiano |>
   transform(percentage = values/trials) |>
   set_dvar("percentage") |>
   plm(family = "binomial", var_trials = "trials", dvar_percentage = TRUE)
+## Print
+plm(exampleAB$Johanna) |> 
+  print(ci = 0.9, r_squared = c("delta", "partial"))
+## Export
+plm(exampleAB$Johanna) |> export()
+
 
 
 
@@ -781,9 +787,9 @@ nameEx("rand_test")
 
 flush(stderr()); flush(stdout())
 
-### Name: rand_test
+### Name: print.sc_rand
 ### Title: Randomization Tests for single-case data
-### Aliases: rand_test
+### Aliases: print.sc_rand export.sc_rand rand_test
 
 ### ** Examples
 
@@ -952,7 +958,6 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-
 ## Scores on a letter naming task were collected on eleven days in a row.
 ## The intervention started after the fifth measurement,
 ## so the first B phase measurement was 6 (B_start = 6).
@@ -962,19 +967,19 @@ klaas <- scdf(
 )
 describe(klaas)
 
-# Alternative coding 1:
+# Alternative: using named vector
 klaas <- scdf(
   c(A = 5, 7, 8, 5, 7, B = 12, 16, 18, 15, 14, 19),
   name = "Klaas"
 )
 
-# Alternative coding 2:
+# Alternative: using phase_design
 klaas <- scdf(
   c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
   phase_design = c(A = 5, B = 6), name = "Klaas"
 )
 
-# Alternative coding 3:
+# Alternative: using phase_starts
 klaas <- scdf(
   c(5, 7, 8, 5, 7, 12, 16, 18, 15, 14, 19),
   phase_starts = c(A = 1, B = 7), name = "Klaas"
@@ -993,9 +998,9 @@ describe(emmi)
 ## further conjoined analyses.
 charlotte <- scdf(c(A = 5, 7, 10, 5, 12, B = 7, 10, 18, 15, 14, 19))
 theresa <- scdf(c(A = 3, 4, 3, 5, B = 7, 4, 7, 9, 8, 10, 12))
-antonia <- scdf(c(A = 9, 8, 8, 7, 5, 7, B = 6, 14, 15, 12, 16))
-mbd <- c(charlotte, theresa, antonia)
-names(mbd) <- c("Charlotte", "Theresa", "Antonia")
+tonia <- scdf(c(A = 9, 8, 8, 7, 5, 7, B = 6, 14, 15, 12, 16))
+mbd <- c(charlotte, theresa, tonia)
+names(mbd) <- c("Charlotte", "Theresa", "Tonia")
 overlap(mbd)
 
 ## In a classroom-based intervention it was not possible to measure outcomes
@@ -1015,6 +1020,7 @@ jim <- scdf(
   phase_design = c(A1 = 3, B1 = 3, A2 = 3, B2 = 3), dvar = "zvt"
 )
 overlap(jim, phases = list(c("A1", "A2"), c("B1", "B2")))
+
 
 
 
@@ -1252,8 +1258,8 @@ flush(stderr()); flush(stdout())
 
 ### Name: moving_median
 ### Title: Transform every single case of a single case data frame
-### Aliases: moving_median moving_mean local_regression first_of
-###   across_cases all_cases transform.scdf
+### Aliases: moving_median moving_mean local_regression set_na_at center_at
+###   first_of across_cases all_cases rowwise transform.scdf
 
 ### ** Examples
 
@@ -1313,8 +1319,8 @@ transform(
 
 byHeart2011 |>
   transform(
-    values = replace(values, first_of(phase == "A", 0:1), NA),
-    values = replace(values, first_of(phase == "B", -1:0), NA)
+    values = set_na_at(values, phase == "A", 0:1),
+    values = set_na_at(values, phase == "B", -1:0)
   )
 
 
