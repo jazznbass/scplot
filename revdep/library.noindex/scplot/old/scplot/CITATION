@@ -5,12 +5,12 @@ bibentry(
   shorttitle   = "scplot",
   publisher    = "github",
   author       =  as.person("Jürgen Wilbert"),
-  year         = "2023",
+  year         = "2025",
   url          = "https://github.com/jazznbass/scplot",
 
   textVersion  =  paste0(
-    "Wilbert, J. (2023). ",
+    "Wilbert, J. (2025). ",
     "scplot - Single-Case Data Plots. ",
-    "(0.3) [English]. CRAN. https://CRAN.R-project.org/package=scplot"
+    "(0.5.1) [English]. CRAN. https://CRAN.R-project.org/package=scplot"
   )
 )

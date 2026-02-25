@@ -1,8 +1,8 @@
 Package: scplot
 Type: Package
 Title: Plot Function for Single-Case Data Frames
-Version: 0.5.1
-Date: 2025-03-01
+Version: 0.6.0
+Date: 2025-06-29
 Authors@R: 
     person("Juergen", "Wilbert", 
     email = "juergen.wilbert@uni-muenster.de", 
@@ -22,9 +22,10 @@ License: GPL (>= 3)
 Encoding: UTF-8
 RoxygenNote: 7.3.2
 NeedsCompilation: no
-Packaged: 2025-03-01 12:54:04 UTC; wilbert
-Author: Juergen Wilbert [aut, cre] (<https://orcid.org/0000-0002-8392-2873>)
+Packaged: 2025-06-29 12:22:03 UTC; wilbert
+Author: Juergen Wilbert [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-8392-2873>)
 Maintainer: Juergen Wilbert <juergen.wilbert@uni-muenster.de>
 Repository: CRAN
-Date/Publication: 2025-03-01 13:10:03 UTC
-Built: R 4.5.0; ; 2025-04-03 01:01:47 UTC; unix
+Date/Publication: 2025-06-29 12:50:02 UTC
+Built: R 4.5.0; ; 2025-07-04 08:40:12 UTC; unix

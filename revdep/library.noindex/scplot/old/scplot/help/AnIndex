@@ -28,6 +28,7 @@ scplot.scdf	scplot.scdf
 scplot.sc_hplm	scplot.sc_hplm
 scplot.sc_rand	scplot.sc_rand
 scplot.sc_tauu	scplot.sc_tauu
+scplot_rand	scplot_rand
 set_background	set_background
 set_base_text	set_base_text
 set_casenames	set_casenames

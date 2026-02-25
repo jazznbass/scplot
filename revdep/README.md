@@ -1,25 +1,25 @@
 # Platform
 
-|field    |value                                   |
-|:--------|:---------------------------------------|
-|version  |R version 4.5.0 (2025-04-11)            |
-|os       |macOS Sequoia 15.5                      |
-|system   |aarch64, darwin20                       |
-|ui       |RStudio                                 |
-|language |(EN)                                    |
-|collate  |en_US.UTF-8                             |
-|ctype    |en_US.UTF-8                             |
-|tz       |Europe/Berlin                           |
-|date     |2025-06-29                              |
-|rstudio  |2025.05.0+496 Mariposa Orchid (desktop) |
-|pandoc   |NA                                      |
-|quarto   |1.7.31 @ /usr/local/bin/quarto          |
+|field    |value                                                                                              |
+|:--------|:--------------------------------------------------------------------------------------------------|
+|version  |R version 4.5.2 (2025-10-31)                                                                       |
+|os       |macOS Tahoe 26.3                                                                                   |
+|system   |aarch64, darwin20                                                                                  |
+|ui       |RStudio                                                                                            |
+|language |(EN)                                                                                               |
+|collate  |en_US.UTF-8                                                                                        |
+|ctype    |en_US.UTF-8                                                                                        |
+|tz       |Europe/Amsterdam                                                                                   |
+|date     |2026-02-25                                                                                         |
+|rstudio  |2026.01.1+403 Apple Blossom (desktop)                                                              |
+|pandoc   |3.6.3 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown) |
+|quarto   |1.8.27 @ /usr/local/bin/quarto                                                                     |
 
 # Dependencies
 
 |package |old   |new   |Δ  |
 |:-------|:-----|:-----|:--|
-|scplot  |0.5.1 |0.6.0 |*  |
+|scplot  |0.6.0 |0.6.1 |*  |
 
 # Revdeps
 

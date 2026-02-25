@@ -17,7 +17,7 @@
 #'   should be a closed triangle.
 #' @param ends One of `"last"`, `"first"`, or `"both"`, indicating which ends of the
 #'   line to draw arrow heads.
-#' @return An object of class `scplot` (see[scplot()]) with added element
+#' @return An object of class `scplot` (see [scplot()]) with added element
 #'   `lines`.
 #' @examples
 #' data(exampleAB, package = "scan")

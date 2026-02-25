@@ -18,6 +18,8 @@ scplot.sc_hplm          This function generates a forest plot for the
 scplot.sc_rand          Plot Randomization Effects
 scplot.sc_tauu          Plot Tau-U Effects
 scplot.scdf             Plot single-case data
+scplot_rand             Random start position plot Plot of statistics
+                        for random phase B start positions
 set_background          Set plot and panel background of an scplot
 set_base_text           Set base text parameters of an scplot
 set_casenames           Set casenames of an scplot
