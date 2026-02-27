@@ -100,7 +100,11 @@ add_statline <- function(object,
     if (!is.null(phase)) {
       if (is.numeric(phase)) {
         if (length(phase) == 1) {
-          phase_str <- paste0(" phase ", phase)
+          if (identical(phase, 1)) {
+            phase_str <- paste0(" baseline")
+          } else {
+            phase_str <- paste0(" phase ", phase)
+          }
         } else {
           phase_str <- paste0(" phases ", paste0(phase, collapse = "/"))
         }

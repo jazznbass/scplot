@@ -15,6 +15,7 @@ add_statline(
   linetype = NULL,
   variable = NULL,
   label = NULL,
+  segmented = NULL,
   ...
 )
 }
@@ -41,6 +42,9 @@ phase (see details).}
 \item{variable}{Name of the dataline variable to apply the style.}
 
 \item{label}{A character string which is used to set the label in a legend.}
+
+\item{segmented}{Logical. If TRUE, the statline is plotted separately for each phase.
+The default is NULL, where sensible settings are applied based on the \code{stat} and \code{phase} arguments.}
 
 \item{...}{additional parameters passed to the statistical function.}
 }
