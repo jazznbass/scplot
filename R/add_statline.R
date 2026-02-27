@@ -15,6 +15,8 @@
 #'   phase (see details).
 #' @param label A character string which is used to set the label in a legend.
 #' @param ... additional parameters passed to the statistical function.
+#' @param segmented Logical. If TRUE, the statline is plotted separately for each phase.
+#'   The default is NULL, where sensible settings are applied based on the `stat` and `phase` arguments.
 #' @details The `phase` argument defines the reference phase for some
 #'   statistical functions (`"median", "mean", "min", "max", "quantile"`). The
 #'   default is `NULL` which calculates and plots statistics for each phase
@@ -48,6 +50,7 @@ add_statline <- function(object,
                          linetype = NULL,
                          variable = NULL,
                          label = NULL,
+                         segmented = NULL,
                          ...) {
 
   stat <- match.arg(stat)
@@ -70,16 +73,8 @@ add_statline <- function(object,
 
   args <- list(...)
 
-  if (identical(stat, "trend") && identical(phase, "A")) {
-    phase <- NULL
-    stat <- "trendA"
-  }
-
+  # adjust stat name for trendA variants ----
   if (!is.null(args$method)) {
-    if (args$method == "theil-sen" && stat == "trendA") {
-      stat <- "trendA theil-sen"
-      args$method <- NULL
-    }
     if (args$method == "bisplit" && stat == "trendA") {
       stat <- "trendA bisplit"
       args$method <- NULL
@@ -89,14 +84,52 @@ add_statline <- function(object,
       args$method <- NULL
     }
   }
+  if (identical(stat, "trendA")) {
+    phase <- 1
+    stat <- "trend"
+  }
+  if (identical(stat, "trendA theil-sen")) {
+    args$method == "theil-sen"
+    phase <- 1
+    stat <- "trend"
+  }
 
+  # set default label ----
+  if (is.null(label)) {
+    if (is.null(phase)) phase_str <- NULL
+    if (!is.null(phase)) {
+      if (is.numeric(phase)) {
+        if (length(phase) == 1) {
+          phase_str <- paste0(" phase ", phase)
+        } else {
+          phase_str <- paste0(" phases ", paste0(phase, collapse = "/"))
+        }
+      } else {
+        phase_str <- paste0(" ", paste0(phase, collapse = "/"))
+      }
+    }
+
+    label <- paste0(stat, " ", variable, phase_str)
+  }
+
+  # set default segment option for statlines ----
+  if (is.null(segmented)) {
+    segmented <- FALSE
+    stat_selection <- c("mean", "median", "min", "max", "quantile",
+                        "sd", "mad", "trend")
+    if (stat %in% stat_selection && is.null(phase)) {
+      segmented <- TRUE
+    }
+  }
+
+  # add statline to object ----
   new <- list(
     stat = stat,
     phase = phase,
     args = args,
-    #line = line,
     variable = variable,
-    label = label
+    label = label,
+    segmented = segmented
   )
 
   object$statlines <- c(object$statlines, list(new))
