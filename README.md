@@ -12,11 +12,11 @@
 From CRAN:
 `install.packages("scplot")`
 
-For the developmental version from GitHub you need the *devtools* package:  
-`install.packages("devtools")`  
+For the developmental version from GitHub you need the *pak* package:  
+`install.packages("pak")`  
 
 Then install *scplot* from GitHub with:  
-`devtools::install_github("jazznbass/scplot")`
+`pak::pak("jazznbass/scan")`
 
 After installation, load the package with:  
 `library(scplot)`
