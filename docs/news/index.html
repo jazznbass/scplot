@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
       </span>
     </div>
 
@@ -42,7 +42,13 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.6.1" id="scplot-061">scplot 0.6.1<a class="anchor" aria-label="anchor" href="#scplot-061"></a></h2>
+<h2 class="page-header" data-toc-text="0.6.2" id="scplot-062">scplot 0.6.2<a class="anchor" aria-label="anchor" href="#scplot-062"></a></h2>
+<ul><li>Fixed bug that did failed to add statlines when the phase variable was not “phase”.</li>
+<li>Improved the automatic naming of statlines when the phase argument was set. (e.g. “mean”, phase = “A” now creates a statline with the name “mean values A”).</li>
+<li>Themes that have been created with <em>scplot</em> prior version 0.6.2 (including 0.6.1) must be recreated by executing the respective functions due to the adoption to S7 classes.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.1" id="scplot-061">scplot 0.6.1<small>2026-02-25</small><a class="anchor" aria-label="anchor" href="#scplot-061"></a></h2>
 <ul><li>Compatible with the new ggplot2 version which changed to S7 classes.</li>
 <li>Themes that have been created with <em>scplot</em> prior version 0.6.1 must be recreated by executing the respective functions due to the adoption to S7 classes.<br></li>
 <li>Extended the roxygen documentation for several functions.</li>

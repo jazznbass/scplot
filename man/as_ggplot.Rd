@@ -7,7 +7,7 @@
 as_ggplot(scplot)
 }
 \arguments{
-\item{scplot}{An \code{scplot} object}
+\item{scplot}{An \code{scplot} object.}
 }
 \value{
 A \code{ggplot2} plot object.
@@ -19,4 +19,12 @@ object.
 \details{
 \code{as_ggplot()} is used directly when you want to return a ggplot2 object for
 further use with external ggplot functions.
+It is also used internally when printing an \code{scplot} object (see \code{\link[=print.scplot]{print.scplot()}}).
+The function processes the data and theme specifications from the \code{scplot} object and constructs a ggplot2 plot accordingly.
+}
+\seealso{
+\code{\link[=scplot]{scplot()}}, \code{\link[=print.scplot]{print.scplot()}}
+}
+\author{
+Juergen Wilbert
 }
