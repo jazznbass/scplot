@@ -12,5 +12,18 @@
 
 print.scplot <- function(x, ...) {
   args <- list(...)
-  print(as_ggplot(x))
+  p <- as_ggplot(x)
+  sc <- attr(p, "scplot_staircase")
+  if (!is.null(sc)) {
+    print(p)
+    x_pos <- split(sc$data$x, factor(sc$data$case, levels = unique(sc$data$case))) |> as.data.frame()
+    x_pos <- apply(x_pos, 1, function(x) x,simplify = FALSE)
+    suppressMessages(add_staircase(p,
+                  x_pos = x_pos,
+                  color = sc$color,
+                  linewidth = sc$linewidth,
+                  linetype = sc$linetype))
+  } else {
+    print(p)
+  }
 }

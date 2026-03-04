@@ -14,9 +14,15 @@
 set_separator <- function(object, ...) {
 
   args <- list(...)
+  if ("staircase" %in% names(args)) {
+    object$theme$separators.staircase <- args$staircase
+    args$staircase <- NULL
+  }
   object$theme$separators <- .merge_element(
     args, object$theme$separators
   )
+
+
 
   object
 }
