@@ -100,7 +100,7 @@ add_staircase <- function(
         xscale = xr, yscale = c(0, 1),
         clip = "off"
       ))
-      grid.lines(
+      grid::grid.lines(
         x = grid::unit(c(x_pos[[case]][i], x_pos[[case]][i + 1]), "native"),
         y = grid::unit(y_h, "npc"),
         gp = gp_h
