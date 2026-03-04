@@ -87,6 +87,7 @@
     color = "black", linewidth = 0.4, linetype = "dashed"),
 
   separators.extent = "full",
+  separators.staircase = FALSE,
 
   label.text = element_text(
     color = "black", vjust = 0.5, hjust = 0.5, angle = 0, size = rel(1)),
@@ -234,6 +235,18 @@
 .scplot_themes$grid2 <- list(
   grid = element_line(colour = "lightgreen", linewidth = 0.2),
   panel.background = element_rect(fill = "grey95", linewidth = 1)
+)
+
+# staircase -----------------------------------------------------------------
+
+.scplot_themes$staircase = list(
+  separators = element_line(
+    color = "black", linewidth = 1.2, linetype = "solid"),
+  separators.staircase = TRUE,
+  phasenames = element_text(color = "black", vjust = 1.5, hjust = 0.5,
+                            margin = margin(b = 1.5)),
+  phasenames.position.x = "centre"
+
 )
 
 # illustration -----------------------------------------------------------------

@@ -18,5 +18,9 @@ set_separator <- function(object, ...) {
     args, object$theme$separators
   )
 
+  if ("staircase" %in% names(args)) {
+    object$theme$separators.staircase <- args$staircase
+  }
+
   object
 }

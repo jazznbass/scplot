@@ -414,15 +414,27 @@ as_ggplot <- function(scplot) {
     x = unlist(lapply(design, function(x) x$stop_mt[-length(x$stop_mt)] + 0.5))
   )
 
-  p <- p + geom_vline(
-    data = data_phase,
-    aes(xintercept = x),
-    linetype = theme$separators$linetype,
-    color = theme$separators$colour,
-    linewidth = theme$separators$linewidth
-  )
+  if (!theme$separators.staircase) {
+    p <- p + geom_vline(
+      data = data_phase,
+      aes(xintercept = x),
+      linetype = theme$separators$linetype,
+      color = theme$separators$colour,
+      linewidth = theme$separators$linewidth
+    )
+  }
 
   p <- p + coord_cartesian(clip = "off")
+
+  # prepare add_staircase ------
+  if (theme$separators.staircase) {
+    attr(p, "scplot_staircase") <- list(
+      linetype = theme$separators$linetype,
+      color = theme$separators$colour,
+      linewidth = theme$separators$linewidth,
+      data = data_phase
+    )
+  }
 
   # add phasenames ---------
 
