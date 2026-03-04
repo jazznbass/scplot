@@ -1,15 +1,25 @@
+
+
 # scplot 0.6.2
 
-- Fixed bug that did failed to add statlines when the phase variable was not "phase".
-- Improved the automatic naming of statlines when the phase argument was set. 
-  (e.g. "mean", phase = "A" now creates a statline with the name "mean values A").
--   Themes that have been created with *scplot* prior version 0.6.2 (including 0.6.1) must be recreated by executing the respective functions due to the adoption to S7 classes.   
+-   Fixed bug that did not allow to set the pvar to something else than and add a statline at the same time.
+-   Improved the automatic naming of statlines when the phase argument is set. (e.g. "mean", phase = "A" now creates a statline with the name "mean values A").
+-   Themes that have been created with *scplot* prior version 0.6.2 (including 0.6.1) must be recreated by executing the respective functions due to the adoption to S7 classes.
+-   New experimental option to include staicase style phase separators that go across plots
 
+```
+scplot(exampleA1B1A2B2) |> 
+  scplot::set_theme("basic", "tiny", "staircase") |> 
+  set_yaxis(c(NA,50))
+  
+scplot(exampleABC) |> 
+  set_separator(staircase = TRUE, linewidth = 2, linetype = "solid")  
+```
 
 # scplot 0.6.1
 
 -   Compatible with the new ggplot2 version which changed to S7 classes.
--   Themes that have been created with *scplot* prior version 0.6.1 must be recreated by executing the respective functions due to the adoption to S7 classes.   
+-   Themes that have been created with *scplot* prior version 0.6.1 must be recreated by executing the respective functions due to the adoption to S7 classes.\
 -   Extended the roxygen documentation for several functions.
 
 # scplot 0.6.0
