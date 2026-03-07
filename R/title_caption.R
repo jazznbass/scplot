@@ -34,7 +34,13 @@ add_caption <- function(object, label, header = "Note:\n", ...) {
 
   args <- list(...)
   if (missing(label)) label <- ""
-  object$caption <- paste0(header, paste0(label, collapse = "\n"))
+
+  if (is.null(label)) {
+    object$caption <- NULL
+  } else {
+    object$caption <- paste0(header, paste0(label, collapse = "\n"))
+  }
+
 
   if (!is.null(args$size)) args$size <- rel(args$size)
 
