@@ -2,6 +2,7 @@
 
 .add_statline <- function(data, line) {
 
+  # prepare data ----
   data <- data.frame(
     case = data[["case"]],
     values = data[[line$variable]],
@@ -12,7 +13,7 @@
   if (is.numeric(line$phase))
     line$phase <- levels(data[["phase"]])[line$phase]
 
-  ## constants ----
+  ## horizontal constants ----
   stat_selection <- c("mean", "median", "min", "max", "quantile", "sd", "mad")
   if (line$stat %in% stat_selection) {
 
@@ -36,25 +37,36 @@
 
   }
 
-  ## trends ----
-  if (line$stat %in% "trend") {
+  if (line$stat == "trend") {
+
     if (is.null(line$args$method)) line$args$method <- "lm"
+
+    # define regression function based on method argument
     func <- function(data, ...) {
       args <- list(...)
       regression <- if (line$args$method %in% c("theil-sen", "mblm")) {
-        function(data) mblm::mblm(values ~ mt, repeated = FALSE, data = data)
+        function(data) theil_sen(values ~ mt, data = data)
       } else if (line$args$method %in% c("lm", "ols")) {
         function(data) lm(values ~ mt, data = data)
+      } else if (line$args$method == "bisplit") {
+        function(data) .split_func(data = data, splits = 2)
+      } else if (line$args$method == "trisplit") {
+        function(data) .split_func(data = data, splits = 3)
+      } else {
+        stop("Unknown method for trend statline: ", line$args$method)
       }
+
+      # if no phase specified, calculate regression for each phase separately
       if (is.null(line$phase)) {
         data_list <- split(data, data[["phase"]])
         y <- lapply(data_list, function(x) {
           fit <- regression(x)
-          fitted.values(fit)
+          x$mt * fit$coefficients[2] + fit$coefficients[1]
         })
         return(unname(unlist(y)))
       }
 
+      # if phase specified, calculate regression for filtered data
       data_filter <- if (identical(line$phase, "all")) {
         data
       } else {
@@ -62,59 +74,18 @@
       }
 
       fit <- regression(data_filter)
-      return(predict(fit, data))
+      return(data$mt * fit$coefficients[2] + fit$coefficients[1])
     }
 
   }
+
+  # smoothers ----
 
   if (line$stat %in% c("lowess", "loreg")) {
     func <- function(data, ...) {
       do.call(lowess,
         c(list(x = data$mt, y = data$values), list(...))
       )$y
-    }
-  }
-
-  if (line$stat == "trendA bisplit") {
-    func <- function(data, ...) {
-      filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
-      mt <- data$mt[filter_first_phase] #x
-      values <- data$mt[filter_first_phase] #y
-
-      md1 <- c(
-        median(values[1:floor(length(values) / 2)], na.rm = FALSE),
-        median(mt[1:floor(length(mt) / 2)], na.rm = FALSE)
-      )
-      md2 <- c(
-        median(values[ceiling(length(values) / 2 + 1):length(values)], na.rm = FALSE),
-        median(mt[ceiling(length(mt) / 2 + 1):length(mt)], na.rm = FALSE)
-      )
-      md <- as.data.frame(rbind(md1, md2))
-      colnames(md) <- c("values", "mt")
-      model <- lm(values ~ mt, data = md)
-
-      predict(model, data[, "mt", drop = FALSE])
-    }
-  }
-
-  if (line$stat == "trendA trisplit") {
-    func <- function(data, ...) {
-      filter_first_phase <- 1:rle(as.character(data$phase))$lengths[1]
-      mt <- data$mt[filter_first_phase] #x
-      values <- data$values[filter_first_phase] #y
-
-      md1 <- c(
-        median(values[1:floor(length(values) / 3)], na.rm = FALSE),
-        median(mt[1:floor(length(mt) / 3)], na.rm = FALSE)
-      )
-      md2 <- c(
-        median(values[ceiling(length(values) / 3 * 2 + 1):length(values)], na.rm = FALSE),
-        median(mt[ceiling(length(mt) / 3 * 2 + 1):length(mt)], na.rm = FALSE)
-      )
-      md <- as.data.frame(rbind(md1, md2))
-      colnames(md) <- c("values", "mt")
-      model <- lm(values~mt, data = md)
-      predict(model, data[, "mt", drop = FALSE])
     }
   }
 
@@ -142,13 +113,32 @@
     }
   }
 
+  # calculate statline values ----
+
   data$y <- NA
 
-  for(case in unique(data$case)) {
+  cases <- unique(data$case)
+
+  if (!is.null(line$case)) {
+    if (is.numeric(line$case)) {
+      if (any(line$case > length(cases))) {
+        warn("Some case numbers in case argument are higher than the number of ",
+             "cases in data. Please check case argument.")
+        line$case <- line$case[line$case <= length(cases)]
+      }
+      line$case <- cases[line$case]
+    }
+    cases <- cases[cases %in% line$case]
+    if (length(cases) == 0) {
+      warn("No cases selected for statline. Please check case argument.")
+    }
+  }
+  for(case in cases) {
     filter <- which(data$case == case)
     data$y[filter] <- do.call(func, c(list(data[filter, ]), line$args))
   }
 
+  # add statline to plot ----
   p <- geom_line(
     data = data,
     aes(x = mt,
@@ -165,12 +155,37 @@
 
 .moving_average <- function(x, lag = 1, fun) {
   if (length(x) < lag * 2 + 1) {
-    warning("Too few datapoints to calculate with lag ", lag)
+    warn("Too few datapoints to calculate a moving average with lag ", lag)
     return(x)
   }
   for(i in (lag + 1):(length(x) - lag))
     x[i] <- do.call(fun, list(x[(i - lag):(i + lag)], na.rm = TRUE))
 
   x
+}
+
+.split_func <- function(data, splits) {
+
+  mt <- data$mt
+  values <- data$values
+
+  part <- floor(length(values) / splits)
+  first_part <- 1:part
+  last_part <- (length(values) - part + 1) : length(values)
+
+  md1 <- c(
+    median(values[first_part], na.rm = FALSE),
+    median(mt[first_part], na.rm = FALSE)
+  )
+  md2 <- c(
+    median(values[last_part], na.rm = FALSE),
+    median(mt[last_part], na.rm = FALSE)
+  )
+  md <- as.data.frame(rbind(md1, md2))
+
+  colnames(md) <- c("values", "mt")
+
+  lm(values ~ mt, data = md)
+  #predict(model, data[, "mt", drop = FALSE])
 }
 
