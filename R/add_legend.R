@@ -64,9 +64,9 @@ add_legend <- function(object,
                        background = NULL
 ) {
 
-  if (!is.null(labels)) warning("label argument is deprecated. Please set ",
-                                "label argument in the add_statline and ",
-                                "set_dataline functions.")
+  if (!is.null(labels)) warn("label argument is deprecated. Please set ",
+                             "label argument in add_statline and ",
+                             "set_dataline.")
   object$legend$labels <- labels
   object$legend$section_labels <- section_labels
   object$legend$statlines <- statlines
