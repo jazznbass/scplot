@@ -52,6 +52,9 @@
 #' @keywords internal
 .merge_element <- function(new, old) {
 
+  if (is.null(new) && is.null(old)) return(NULL)
+  if (is.null(old)) return(new)
+  if (is.null(new)) return(old)
 
   id <- which(names(new) == "color")
   if (length(id) > 0) names(new)[id] <- "colour"
