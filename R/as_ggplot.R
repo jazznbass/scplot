@@ -143,7 +143,7 @@ as_ggplot <- function(scplot) {
   }
 
   p <- p + scale_x_continuous(
-    breaks = x, #seq(xlim[1], xlim[2], scplot$xaxis$inc),
+    breaks = x,
     limits = c(xlim[1], xlim[2]),
     expand = theme$axis.expand.x
   )
@@ -284,7 +284,7 @@ as_ggplot <- function(scplot) {
 
     # add datapoints
 
-    if (!identical(theme$datapoint[[i]], "none")) {
+    if (!identical(theme$datapoint[[i]]@colour, "none")) {
       p <- p + geom_point(
         aes(y = !!sym(scplot$datalines[[i]]$variable)),
         colour = theme$datapoint[[i]]$colour,
@@ -439,7 +439,7 @@ as_ggplot <- function(scplot) {
 
   if (!identical(theme$phasenames.position.x, "none")) {
 
-    if (theme$phasenames.position.x == "centre") {
+    if (theme$phasenames.position.x %in% c("center", "centre")) {
       x <- lapply(design, function(.x) (.x$stop_mt - .x$start_mt) / 2 + .x$start_mt)
     }
 
