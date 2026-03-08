@@ -30,12 +30,19 @@
 #' @export
 scplot.scdf <- function(object, ...) {
 
-  caption <- getOption("scplot.plot.caption")
-  if (caption == "auto")
+  if (identical(getOption("scplot.plot.caption"), "auto")) {
     caption <- .format_caption(
       scdf_attr(object)$info,
       scdf_attr(object)$author
     )
+  } else {
+    caption <- NULL
+  }
+
+  theme <- .scplot_themes[["basic"]]
+  for (i in getOption("scplot.plot.theme")) {
+    theme <- .merge_theme(.scplot_themes[[i]], theme)
+  }
 
   out <- list(
     scdf = object,
@@ -48,7 +55,7 @@ scplot.scdf <- function(object, ...) {
     marks = NULL,
     texts = NULL,
     lines = NULL,
-    theme = .scplot_themes[[getOption("scplot.plot.theme")]],
+    theme = theme,
     title = NULL,
     caption = caption,
     xaxis = list(lim = NULL, inc = 1),
