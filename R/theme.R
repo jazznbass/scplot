@@ -25,8 +25,9 @@ set_theme <- function(object, theme, ...) {
     }
 
     if(inherits(theme_list[[i]], "character")) {
-      theme_list[[i]] <- .scplot_themes[[theme_list[[i]]]]
-      if(is.null(theme_list[[i]])) {
+      if (theme_list[[i]] %in% names(.scplot_themes)) {
+        theme_list[[i]] <- .scplot_themes[[theme_list[[i]]]]
+      } else {
         abort(
           "Unknown theme template. Available themes are: ",
           paste0("'", names(.scplot_themes), "'", collapse = ", ")
