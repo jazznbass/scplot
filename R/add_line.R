@@ -33,7 +33,7 @@ add_line <- function(object,
                      linetype = "solid") {
 
   if(!is.null(hline) && !is.null(vline)) {
-    stop("Either choose a vline or an hline.")
+    abort("Either choose a vline or an hline.")
   }
 
   line <- list(

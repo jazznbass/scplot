@@ -1,4 +1,17 @@
+
+
+get_scplot_theme <- function(theme) {
+  if (!theme %in% names(.scplot_themes)) {
+    abort(paste0("Theme '", theme, "' not found. Available themes are: ",
+                 paste(names(.scplot_themes), collapse = ", ")))
+  }
+  .scplot_themes[[theme]]
+}
+
+
 # deprecated -------
+
+
 
 # .statline_loreg <- function(data, line, fun) {
 #

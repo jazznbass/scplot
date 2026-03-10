@@ -16,9 +16,10 @@ scplot.sc_tauu <- function(object, effect = 1, ...) {
 
   x <- object
 
-  message(
+  notify(
     "Possible effects are:\n",
-    paste0(1:nrow(x$table[[1]]), ": '", rownames(x$table[[1]]), "'", collapse = "\n")
+    paste0(1:nrow(x$table[[1]]), ": '", rownames(x$table[[1]]), "'", collapse = "\n"),
+    type = "i"
   )
 
   if (is.numeric(effect)) {

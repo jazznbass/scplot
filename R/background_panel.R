@@ -32,13 +32,15 @@ set_background <- function(object, ...) {
 set_panel <- function(object, ...) {
 
   args <- list(...)
+  if (length(args)== 0) return(object)
 
   if (length(args$fill > 1)) alpha <- 0.5 else alpha <- 1
 
   if (!is.null(args$fill)) args$fill <- alpha(args$fill, alpha)
 
   object$theme$panel.background <- .merge_element(
-    args, object$theme$panel.background)
+    do.call(element_rect, args),
+    object$theme$panel.background)
 
   object
 }

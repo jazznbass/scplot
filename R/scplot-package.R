@@ -10,7 +10,6 @@
 #' @import ggplot2
 #' @import stats
 #' @import utils
-#' @importFrom mblm mblm
 #' @importFrom graphics hist
 "_PACKAGE"
 

@@ -10,7 +10,7 @@
 .onLoad <- function(lib, pkg, ...) {
 
   new_options <- list(
-    "scplot.plot.theme" = "default",
+    "scplot.plot.theme" = c("basic", "grid3"),
     "scplot.plot.caption" = "auto"
   )
 

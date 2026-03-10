@@ -25,9 +25,10 @@ set_theme <- function(object, theme, ...) {
     }
 
     if(inherits(theme_list[[i]], "character")) {
-      theme_list[[i]] <- .scplot_themes[[theme_list[[i]]]]
-      if(is.null(theme_list[[i]])) {
-        stop(
+      if (theme_list[[i]] %in% names(.scplot_themes)) {
+        theme_list[[i]] <- .scplot_themes[[theme_list[[i]]]]
+      } else {
+        abort(
           "Unknown theme template. Available themes are: ",
           paste0("'", names(.scplot_themes), "'", collapse = ", ")
         )
@@ -44,7 +45,7 @@ set_theme <- function(object, theme, ...) {
 #' @rdname set_theme
 #' @export
 add_theme <- function(...) {
-  warning("Deprecated. Please use `set_theme()`")
+  warn("Deprecated. Please use `set_theme()`")
   set_theme(...)
 }
 
@@ -126,14 +127,14 @@ set_theme_element <- function(object, ...) {
   # returns possible element names if no args are provided
 
   if (length(args) == 0) {
-    message("Possible theme elements are: ",
-            paste0("'", elements, "'", collapse = ", "))
+    notify("Possible theme elements are: ",
+            paste0("'", elements, "'", collapse = ", "), type = "i")
     return(invisible(NULL))
   }
 
   invalid_args <- setdiff(names(args), elements)
   if (length(invalid_args) > 0) {
-    stop(
+    abort(
       "Invalid theme elements: ",
       paste0("'", invalid_args, "'", collapse = ", "),
       ". Possible theme elements are: ",

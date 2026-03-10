@@ -5,25 +5,26 @@
 #' of the legend, as well as the text style for the title and text within the
 #' legend.
 #'
-#' Deprecated argument: The `labels` argument is deprecated. Please set the
-#' `label` argument in the `add_statline` and `set_dataline` functions instead.
-#' The legend can be customized to include different sections for
-#' datalines, statlines, and phases. You can control which sections are
-#' included in the legend using the `datalines`, `statlines`, and `phases`
-#' arguments. The `position` argument allows you to specify where
-#' the legend should be placed on the plot. You can also customize the text
-#' style for the title and text within the legend using the `title` and `text`
-#' arguments, respectively. The `background` argument allows you to set
-#' the background style of the legend.
+#' The `position` argument allows you to specify where the legend should be
+#' placed on the plot. You can also customize the text style for the title and
+#' text within the legend using the `title` and `text` arguments, respectively.
+#' The `background` argument allows you to set the background style of the
+#' legend. Deprecated argument: The `labels` argument is deprecated. Please set
+#' the `label` argument in the `add_statline` and `set_dataline` functions
+#' instead. The legend can be customized to include different sections for
+#' datalines, statlines, and phases. You can control which sections are included
+#' in the legend using the `datalines`, `statlines`, and `phases` arguments.
 #'
 #' @inheritParams .inherit_scplot
 #' @param position The position ("none", "left", "right", "bottom", "top", or
-#'   two-element numeric vector) of the legend.
+#'   two-element numeric vector) of the legend. The two-element numeric vector
+#'   specifies the x and y coordinates of the legend relative to the plot area
+#'   (e.g., `c(0.5, 0.5)` for the center).
 #' @param datalines If TRUE, a legend for the datalines is generated.
 #' @param statlines If TRUE, a legend for the statlines is generated.
-#' @param phases If TRUE, a legend for the phases is generated.
-#'  Note that you also have to set the `set_panel` argument
-#'  (e.g., `set_panel(fill = c("lightblue", "grey80"))`).
+#' @param phases If TRUE, a legend for the phases is generated. Note that you
+#'   also have to set the `set_panel` argument (e.g., `set_panel(fill =
+#'   c("lightblue", "grey80"))`).
 #' @param section_labels A character vector of length two. The labels for the
 #'   lines section and phase section.
 #' @param title A list with text style parameters for the title.
@@ -54,7 +55,6 @@
 add_legend <- function(object,
                        labels = NULL,
                        section_labels = c("Lines", "Phases"),
-                       case = 1,
                        position = "right",
                        datalines = TRUE,
                        statlines = TRUE,
@@ -64,9 +64,9 @@ add_legend <- function(object,
                        background = NULL
 ) {
 
-  if (!is.null(labels)) warning("label argument is deprecated. Please set ",
-                                "label argument in the add_statline and ",
-                                "set_dataline functions.")
+  if (!is.null(labels)) warn("label argument is deprecated. Please set ",
+                             "label argument in add_statline and ",
+                             "set_dataline.")
   object$legend$labels <- labels
   object$legend$section_labels <- section_labels
   object$legend$statlines <- statlines

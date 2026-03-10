@@ -28,9 +28,9 @@ as_ggplot <- function(scplot) {
   n_cases <- length(scdf)
 
   # rename casesnames --------
-
+  scplot$casenames$labels <- rep(scplot$casenames$labels, length = n_cases)
   id <- which(duplicated(scplot$casenames$labels))
-  if (length(id) > 0) scplot$casenames$labels[id] <- paste0(".case ", id)
+  if (length(id) > 0) scplot$casenames$labels[id] <- paste0(scplot$casenames$labels[id]," case ", id)
   names(scdf) <- scplot$casenames$labels
 
   # rename phasenames ----------
@@ -48,7 +48,6 @@ as_ggplot <- function(scplot) {
       rle(as.character(scdf[[i]][[pvar]]))$lengths
     )
   }
-
 
   # convert to long format --------
 
@@ -144,7 +143,7 @@ as_ggplot <- function(scplot) {
   }
 
   p <- p + scale_x_continuous(
-    breaks = x, #seq(xlim[1], xlim[2], scplot$xaxis$inc),
+    breaks = x,
     limits = c(xlim[1], xlim[2]),
     expand = theme$axis.expand.x
   )
@@ -285,7 +284,7 @@ as_ggplot <- function(scplot) {
 
     # add datapoints
 
-    if (!identical(theme$datapoint[[i]], "none")) {
+    if (!identical(theme$datapoint[[i]]@colour, "none")) {
       p <- p + geom_point(
         aes(y = !!sym(scplot$datalines[[i]]$variable)),
         colour = theme$datapoint[[i]]$colour,
@@ -440,7 +439,7 @@ as_ggplot <- function(scplot) {
 
   if (!identical(theme$phasenames.position.x, "none")) {
 
-    if (theme$phasenames.position.x == "centre") {
+    if (theme$phasenames.position.x %in% c("center", "centre")) {
       x <- lapply(design, function(.x) (.x$stop_mt - .x$start_mt) / 2 + .x$start_mt)
     }
 
@@ -515,9 +514,9 @@ as_ggplot <- function(scplot) {
       if (identical(scplot$statlines[[j]]$variable, ".dvar"))
         scplot$statlines[[j]]$variable <- dvar[1]
 
-      scplot$statlines[[j]]$label <- gsub(".dvar",
-                                          scplot$statlines[[j]]$variable,
-                                          scplot$statlines[[j]]$label)
+      scplot$statlines[[j]]$label <- gsub(
+        ".dvar", scplot$statlines[[j]]$variable, scplot$statlines[[j]]$label
+      )
 
       scplot$statlines[[j]]$line <- theme$statline[[j]]
       if (scplot$statlines[[j]]$variable == ".dvar") {
@@ -529,7 +528,6 @@ as_ggplot <- function(scplot) {
       )
     }
   }
-
 
   # plot background --------------------------------------------------------
 

@@ -8,7 +8,6 @@ add_legend(
   object,
   labels = NULL,
   section_labels = c("Lines", "Phases"),
-  case = 1,
   position = "right",
   datalines = TRUE,
   statlines = TRUE,
@@ -27,18 +26,17 @@ function.}
 \item{section_labels}{A character vector of length two. The labels for the
 lines section and phase section.}
 
-\item{case}{Numerical vector with the case number or character string. \code{case = "all"} for all cases.}
-
 \item{position}{The position ("none", "left", "right", "bottom", "top", or
-two-element numeric vector) of the legend.}
+two-element numeric vector) of the legend. The two-element numeric vector
+specifies the x and y coordinates of the legend relative to the plot area
+(e.g., \code{c(0.5, 0.5)} for the center).}
 
 \item{datalines}{If TRUE, a legend for the datalines is generated.}
 
 \item{statlines}{If TRUE, a legend for the statlines is generated.}
 
-\item{phases}{If TRUE, a legend for the phases is generated.
-Note that you also have to set the \code{set_panel} argument
-(e.g., \code{set_panel(fill = c("lightblue", "grey80"))}).}
+\item{phases}{If TRUE, a legend for the phases is generated. Note that you
+also have to set the \code{set_panel} argument (e.g., \code{set_panel(fill = c("lightblue", "grey80"))}).}
 
 \item{title}{A list with text style parameters for the title.}
 
@@ -58,16 +56,15 @@ of the legend, as well as the text style for the title and text within the
 legend.
 }
 \details{
-Deprecated argument: The \code{labels} argument is deprecated. Please set the
-\code{label} argument in the \code{add_statline} and \code{set_dataline} functions instead.
-The legend can be customized to include different sections for
-datalines, statlines, and phases. You can control which sections are
-included in the legend using the \code{datalines}, \code{statlines}, and \code{phases}
-arguments. The \code{position} argument allows you to specify where
-the legend should be placed on the plot. You can also customize the text
-style for the title and text within the legend using the \code{title} and \code{text}
-arguments, respectively. The \code{background} argument allows you to set
-the background style of the legend.
+The \code{position} argument allows you to specify where the legend should be
+placed on the plot. You can also customize the text style for the title and
+text within the legend using the \code{title} and \code{text} arguments, respectively.
+The \code{background} argument allows you to set the background style of the
+legend. Deprecated argument: The \code{labels} argument is deprecated. Please set
+the \code{label} argument in the \code{add_statline} and \code{set_dataline} functions
+instead. The legend can be customized to include different sections for
+datalines, statlines, and phases. You can control which sections are included
+in the legend using the \code{datalines}, \code{statlines}, and \code{phases} arguments.
 }
 \examples{
 data(exampleAB_add, package = "scan")

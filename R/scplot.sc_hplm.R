@@ -27,12 +27,9 @@ scplot.sc_hplm <- function(object,
 
   z <- qnorm((1 - ci) /2, lower.tail = FALSE)
 
-  message(
-    "Possible effects are: \n",
-    paste0(
-      2:ncol(coef_random), ": '", names(coef_random)[-1], "'",
-      collapse = "\n"
-    )
+  notify("Possible effects are: \n",
+         paste0(2:ncol(coef_random), ": '", names(coef_random)[-1], "'",
+                collapse = "\n"), type = "i"
   )
   if (is.character(effect)) {
     effect <- switch (

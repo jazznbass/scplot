@@ -20,7 +20,7 @@ legend."><meta property="og:image" content="/logo.png"><!-- mathjax --><script s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -57,7 +57,6 @@ legend.</p>
 <span>  <span class="va">object</span>,</span>
 <span>  labels <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  section_labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Lines"</span>, <span class="st">"Phases"</span><span class="op">)</span>,</span>
-<span>  case <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  datalines <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  statlines <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -86,13 +85,11 @@ function.</p></dd>
 lines section and phase section.</p></dd>
 
 
-<dt id="arg-case">case<a class="anchor" aria-label="anchor" href="#arg-case"></a></dt>
-<dd><p>Numerical vector with the case number or character string. <code>case = "all"</code> for all cases.</p></dd>
-
-
 <dt id="arg-position">position<a class="anchor" aria-label="anchor" href="#arg-position"></a></dt>
 <dd><p>The position ("none", "left", "right", "bottom", "top", or
-two-element numeric vector) of the legend.</p></dd>
+two-element numeric vector) of the legend. The two-element numeric vector
+specifies the x and y coordinates of the legend relative to the plot area
+(e.g., <code>c(0.5, 0.5)</code> for the center).</p></dd>
 
 
 <dt id="arg-datalines">datalines<a class="anchor" aria-label="anchor" href="#arg-datalines"></a></dt>
@@ -104,9 +101,8 @@ two-element numeric vector) of the legend.</p></dd>
 
 
 <dt id="arg-phases">phases<a class="anchor" aria-label="anchor" href="#arg-phases"></a></dt>
-<dd><p>If TRUE, a legend for the phases is generated.
-Note that you also have to set the <code>set_panel</code> argument
-(e.g., <code>set_panel(fill = c("lightblue", "grey80"))</code>).</p></dd>
+<dd><p>If TRUE, a legend for the phases is generated. Note that you
+also have to set the <code>set_panel</code> argument (e.g., <code>set_panel(fill = c("lightblue", "grey80"))</code>).</p></dd>
 
 
 <dt id="arg-title">title<a class="anchor" aria-label="anchor" href="#arg-title"></a></dt>
@@ -129,16 +125,15 @@ size, linetype).</p></dd>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>Deprecated argument: The <code>labels</code> argument is deprecated. Please set the
-<code>label</code> argument in the <code>add_statline</code> and <code>set_dataline</code> functions instead.
-The legend can be customized to include different sections for
-datalines, statlines, and phases. You can control which sections are
-included in the legend using the <code>datalines</code>, <code>statlines</code>, and <code>phases</code>
-arguments. The <code>position</code> argument allows you to specify where
-the legend should be placed on the plot. You can also customize the text
-style for the title and text within the legend using the <code>title</code> and <code>text</code>
-arguments, respectively. The <code>background</code> argument allows you to set
-the background style of the legend.</p>
+    <p>The <code>position</code> argument allows you to specify where the legend should be
+placed on the plot. You can also customize the text style for the title and
+text within the legend using the <code>title</code> and <code>text</code> arguments, respectively.
+The <code>background</code> argument allows you to set the background style of the
+legend. Deprecated argument: The <code>labels</code> argument is deprecated. Please set
+the <code>label</code> argument in the <code>add_statline</code> and <code>set_dataline</code> functions
+instead. The legend can be customized to include different sections for
+datalines, statlines, and phases. You can control which sections are included
+in the legend using the <code>datalines</code>, <code>statlines</code>, and <code>phases</code> arguments.</p>
     </div>
 
     <div id="ref-examples">

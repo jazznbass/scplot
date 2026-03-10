@@ -7,7 +7,8 @@
 #' @keywords internal
 .check_theme <- function(theme) {
 
-  if (!theme$yaxis.title.angle %in% 0:1) stop("wrong values for ylabel angle")
+  if (!theme$yaxis.title.angle %in% 0:1)
+    abort("wrong values for ylabel angle")
 
   theme
 }
@@ -51,6 +52,9 @@
 #' @keywords internal
 .merge_element <- function(new, old) {
 
+  if (is.null(new) && is.null(old)) return(NULL)
+  if (is.null(old)) return(new)
+  if (is.null(new)) return(old)
 
   id <- which(names(new) == "color")
   if (length(id) > 0) names(new)[id] <- "colour"
@@ -85,7 +89,7 @@
   } else if (inherits(old, "ggplot2::element_blank")) {
     # do nothing
   } else {
-    stop("Wrong element class")
+    abort("Wrong element class")
   }
 
   merge_element(new, old)
