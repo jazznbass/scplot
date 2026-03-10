@@ -2,139 +2,12 @@
 
 .scplot_themes <- list()
 
-# colour styles --------
-
-
-## colours_cool_muted ------
-
-.scplot_themes$colours_muted <- list(
-
-  dataline = list(
-    "1" = element_line(colour = "#2F2F2F", linetype = "solid", linewidth = 0.5),  # soft black / charcoal
-    "2" = element_line(colour = "#4C78A8", linetype = "solid", linewidth = 0.5),  # muted blue
-    "3" = element_line(colour = "#C27D38", linetype = "solid", linewidth = 0.5)   # muted amber-brown
-  ),
-
-  datapoint = list(
-    "1" = element_point(colour = "#2F2F2F", shape = 16, size = 2),
-    "2" = element_point(colour = "#4C78A8", shape = 16, size = 2),
-    "3" = element_point(colour = "#C27D38", shape = 16, size = 2)
-  ),
-
-  statline = list(
-    a = element_line(colour = "#8E3B46", linewidth = 0.7, linetype = "solid"),  # muted wine red
-    b = element_line(colour = "#4F6D9A", linewidth = 0.7, linetype = "solid"),  # muted cobalt
-    c = element_line(colour = "#5C7A3A", linewidth = 0.7, linetype = "solid"),  # muted olive green
-    d = element_line(colour = "#A36A2B", linewidth = 0.7, linetype = "solid"),  # muted ochre
-    e = element_line(colour = "#7A4E8A", linewidth = 0.7, linetype = "solid"),  # muted violet
-    f = element_line(colour = "#2F7C7C", linewidth = 0.7, linetype = "solid")   # muted teal
-  )
-
-)
-
-## colours_black ---------------------------------------------------------------
-
-.scplot_themes$colours_bw <- list(
-
-  dataline = list(
-    "1" = element_line(colour = "#000000", linetype = "solid",    linewidth = 0.5),
-    "2" = element_line(colour = "#000000", linetype = "dashed",   linewidth = 0.5),
-    "3" = element_line(colour = "#000000", linetype = "dotted",   linewidth = 0.5),
-    "4" = element_line(colour = "#000000", linetype = "dotdash",  linewidth = 0.5),
-    "5" = element_line(colour = "#000000", linetype = "longdash", linewidth = 0.5)
-  ),
-
-  datapoint = list(
-    "1" = element_point(colour = "#000000", shape = 16, size = 2),  # filled circle
-    "2" = element_point(colour = "#000000", shape = 17, size = 2),  # filled triangle
-    "3" = element_point(colour = "#000000", shape = 15, size = 2),  # filled square
-    "4" = element_point(colour = "#000000", shape = 18, size = 2),  # filled diamond
-    "5" = element_point(colour = "#000000", shape = 8,  size = 2)   # star
-  )
-)
-
-## colours_publication ---------------------------------------------------------------
-.scplot_themes$colors_publication <- list(
-
-  dataline = list(
-    "1" = element_line(colour = "#000000", linetype = "solid", linewidth = 0.5),
-    "2" = element_line(colour = "#5A5A5A", linetype = "solid", linewidth = 0.5),
-    "3" = element_line(colour = "#8A8A8A", linetype = "solid", linewidth = 0.5)
-  ),
-
-  datapoint = list(
-    "1" = element_point(colour = "#000000", shape = 16, size = 2),
-    "2" = element_point(colour = "#5A5A5A", shape = 16, size = 2),
-    "3" = element_point(colour = "#8A8A8A", shape = 16, size = 2)
-  ),
-
-  statline = list(
-    a = element_line(colour = "#7A1E1E", linewidth = 0.7, linetype = "solid"),    # dark red
-    b = element_line(colour = "#1F3F7A", linewidth = 0.7, linetype = "dashed"),   # dark blue
-    c = element_line(colour = "#3F5A1F", linewidth = 0.7, linetype = "dotdash"),  # dark olive
-    d = element_line(colour = "#8A5A1A", linewidth = 0.7, linetype = "twodash"),  # dark ochre
-    e = element_line(colour = "#5A3A7A", linewidth = 0.7, linetype = "longdash"), # dark violet
-    f = element_line(colour = "#1F5A5A", linewidth = 0.7, linetype = "dotted")    # dark teal
-  )
-)
-
-## colours_blind ------
-.scplot_themes$colors_blind <- list(
-
-  dataline = list(
-    "1" = element_line(colour = "#000000", linetype = "solid", linewidth = 0.5),
-    "2" = element_line(colour = "#0072B2", linetype = "solid", linewidth = 0.5),
-    "3" = element_line(colour = "#D55E00", linetype = "solid", linewidth = 0.5)
-  ),
-
-  datapoint = list(
-    "1" = element_point(colour = "#000000", shape = 16, size = 2),
-    "2" = element_point(colour = "#0072B2", shape = 16, size = 2),
-    "3" = element_point(colour = "#D55E00", shape = 16, size = 2)
-  ),
-
-  statline = list(
-    a = element_line(colour = "#CC79A7", linewidth = 0.8, linetype = "solid"),    # reddish purple
-    b = element_line(colour = "#009E73", linewidth = 0.8, linetype = "solid"),    # bluish green
-    c = element_line(colour = "#E69F00", linewidth = 0.8, linetype = "solid"),    # orange
-    d = element_line(colour = "#56B4E9", linewidth = 0.8, linetype = "solid"),    # sky blue
-    e = element_line(colour = "#D55E00", linewidth = 0.8, linetype = "solid"),    # vermillion
-    f = element_line(colour = "#F0E442", linewidth = 1.0, linetype = "solid")     # yellow
-  )
-)
-
-## colours_presentation ------
-
-.scplot_themes$colors_presentation <- list(
-  dataline = list(
-    "1" = element_line(colour = "#000000", linetype = "solid", linewidth = 0.5),
-    "2" = element_line(colour = "#0072B2", linetype = "solid", linewidth = 0.5),
-    "3" = element_line(colour = "#D55E00", linetype = "solid", linewidth = 0.5),
-    "4" = element_line(colour = "#009E73", linetype = "solid", linewidth = 0.5),
-    "5" = element_line(colour = "#E69F00", linetype = "solid", linewidth = 0.5)
-  ),
-
-  datapoint = list(
-    "1" = element_point(colour = "#000000", shape = 16, size = 2),
-    "2" = element_point(colour = "#0072B2", shape = 16, size = 2),
-    "3" = element_point(colour = "#D55E00", shape = 16, size = 2),
-    "4" = element_point(colour = "#009E73", shape = 16, size = 2),
-    "5" = element_point(colour = "#E69F00", shape = 16, size = 2)
-  ),
-
-  statline = list(
-    a = element_line(colour = "#B22222", linewidth = 0.7, linetype = "solid"),  # firebrick
-    b = element_line(colour = "#3A5FCD", linewidth = 0.7, linetype = "solid"),  # medium blue
-    c = element_line(colour = "#556B2F", linewidth = 0.7, linetype = "solid"),  # dark olive green
-    d = element_line(colour = "#CD8500", linewidth = 0.7, linetype = "solid"),  # dark goldenrod
-    e = element_line(colour = "#6A3D9A", linewidth = 0.7, linetype = "solid"),  # dark violet
-    f = element_line(colour = "#1F6F78", linewidth = 0.7, linetype = "solid")   # dark teal
-  )
-)
-
 # basic -----------------------------------------------------------------
 
 .scplot_themes$basic = list(
+
+  theme_type = "complete",
+  theme_name = "basic",
 
   text = element_text(colour = "black", size = 11, family = "sans",
                       face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
@@ -164,11 +37,11 @@
                              margin = margin(r = 1.5)),
 
   plot.title = element_text(
-                            margin = margin(0,0,2,0, unit = "lines"),
-                            hjust = 0.5),
+    margin = margin(0,0,2,0, unit = "lines"),
+    hjust = 0.5),
 
   plot.caption = element_text(margin = margin(t = 1, r = 0, b = 0, l = 2,
-                              unit = "lines"),
+                                              unit = "lines"),
                               hjust = 0,
                               face = "italic"),
 
@@ -240,73 +113,428 @@
 
 )
 
-# grid --------------------------------------------------------------------
+# colour styles --------
+
+## colours_cool_muted ------
+
+.scplot_themes$colours_muted <- list(
+
+  theme_type = "colours",
+  theme_name = "colours_muted",
+
+  dataline = list(
+    "1" = element_line(colour = "#2F2F2F", linetype = "solid", linewidth = 0.5),  # soft black / charcoal
+    "2" = element_line(colour = "#4C78A8", linetype = "solid", linewidth = 0.5),  # muted blue
+    "3" = element_line(colour = "#C27D38", linetype = "solid", linewidth = 0.5)   # muted amber-brown
+  ),
+
+  datapoint = list(
+    "1" = element_point(colour = "#2F2F2F", shape = 16, size = 2),
+    "2" = element_point(colour = "#4C78A8", shape = 16, size = 2),
+    "3" = element_point(colour = "#C27D38", shape = 16, size = 2)
+  ),
+
+  statline = list(
+    a = element_line(colour = "#8E3B46", linewidth = 0.7, linetype = "solid"),  # muted wine red
+    b = element_line(colour = "#4F6D9A", linewidth = 0.7, linetype = "solid"),  # muted cobalt
+    c = element_line(colour = "#5C7A3A", linewidth = 0.7, linetype = "solid"),  # muted olive green
+    d = element_line(colour = "#A36A2B", linewidth = 0.7, linetype = "solid"),  # muted ochre
+    e = element_line(colour = "#7A4E8A", linewidth = 0.7, linetype = "solid"),  # muted violet
+    f = element_line(colour = "#2F7C7C", linewidth = 0.7, linetype = "solid")   # muted teal
+  )
+
+)
+
+## colours_black ---------------------------------------------------------------
+
+.scplot_themes$colours_bw <- list(
+
+  dataline = list(
+    "1" = element_line(colour = "#000000", linetype = "solid",    linewidth = 0.5),
+    "2" = element_line(colour = "#000000", linetype = "dashed",   linewidth = 0.5),
+    "3" = element_line(colour = "#000000", linetype = "dotted",   linewidth = 0.5),
+    "4" = element_line(colour = "#000000", linetype = "dotdash",  linewidth = 0.5),
+    "5" = element_line(colour = "#000000", linetype = "longdash", linewidth = 0.5)
+  ),
+
+  datapoint = list(
+    "1" = element_point(colour = "#000000", shape = 16, size = 2),  # filled circle
+    "2" = element_point(colour = "#000000", shape = 17, size = 2),  # filled triangle
+    "3" = element_point(colour = "#000000", shape = 15, size = 2),  # filled square
+    "4" = element_point(colour = "#000000", shape = 18, size = 2),  # filled diamond
+    "5" = element_point(colour = "#000000", shape = 8,  size = 2)   # star
+  )
+)
+
+## colours_publication ---------------------------------------------------------------
+.scplot_themes$colors_publication <- list(
+
+  theme_type = "colours",
+
+  dataline = list(
+    "1" = element_line(colour = "#000000", linetype = "solid", linewidth = 0.5),
+    "2" = element_line(colour = "#5A5A5A", linetype = "solid", linewidth = 0.5),
+    "3" = element_line(colour = "#8A8A8A", linetype = "solid", linewidth = 0.5)
+  ),
+
+  datapoint = list(
+    "1" = element_point(colour = "#000000", shape = 16, size = 2),
+    "2" = element_point(colour = "#5A5A5A", shape = 16, size = 2),
+    "3" = element_point(colour = "#8A8A8A", shape = 16, size = 2)
+  ),
+
+  statline = list(
+    a = element_line(colour = "#7A1E1E", linewidth = 0.7, linetype = "solid"),    # dark red
+    b = element_line(colour = "#1F3F7A", linewidth = 0.7, linetype = "dashed"),   # dark blue
+    c = element_line(colour = "#3F5A1F", linewidth = 0.7, linetype = "dotdash"),  # dark olive
+    d = element_line(colour = "#8A5A1A", linewidth = 0.7, linetype = "twodash"),  # dark ochre
+    e = element_line(colour = "#5A3A7A", linewidth = 0.7, linetype = "longdash"), # dark violet
+    f = element_line(colour = "#1F5A5A", linewidth = 0.7, linetype = "dotted")    # dark teal
+  )
+)
+
+## colours_blind ------
+.scplot_themes$colors_blind <- list(
+
+  theme_type = "colours",
+
+  dataline = list(
+    "1" = element_line(colour = "#000000", linetype = "solid", linewidth = 0.5),
+    "2" = element_line(colour = "#0072B2", linetype = "solid", linewidth = 0.5),
+    "3" = element_line(colour = "#D55E00", linetype = "solid", linewidth = 0.5)
+  ),
+
+  datapoint = list(
+    "1" = element_point(colour = "#000000", shape = 16, size = 2),
+    "2" = element_point(colour = "#0072B2", shape = 16, size = 2),
+    "3" = element_point(colour = "#D55E00", shape = 16, size = 2)
+  ),
+
+  statline = list(
+    a = element_line(colour = "#CC79A7", linewidth = 0.8, linetype = "solid"),    # reddish purple
+    b = element_line(colour = "#009E73", linewidth = 0.8, linetype = "solid"),    # bluish green
+    c = element_line(colour = "#E69F00", linewidth = 0.8, linetype = "solid"),    # orange
+    d = element_line(colour = "#56B4E9", linewidth = 0.8, linetype = "solid"),    # sky blue
+    e = element_line(colour = "#D55E00", linewidth = 0.8, linetype = "solid"),    # vermillion
+    f = element_line(colour = "#F0E442", linewidth = 1.0, linetype = "solid")     # yellow
+  )
+)
+
+## colours_presentation ------
+
+.scplot_themes$colors_presentation <- list(
+
+  theme_type = "colours",
+
+  dataline = list(
+    "1" = element_line(colour = "#000000", linetype = "solid", linewidth = 0.5),
+    "2" = element_line(colour = "#0072B2", linetype = "solid", linewidth = 0.5),
+    "3" = element_line(colour = "#D55E00", linetype = "solid", linewidth = 0.5),
+    "4" = element_line(colour = "#009E73", linetype = "solid", linewidth = 0.5),
+    "5" = element_line(colour = "#E69F00", linetype = "solid", linewidth = 0.5)
+  ),
+
+  datapoint = list(
+    "1" = element_point(colour = "#000000", shape = 16, size = 2),
+    "2" = element_point(colour = "#0072B2", shape = 16, size = 2),
+    "3" = element_point(colour = "#D55E00", shape = 16, size = 2),
+    "4" = element_point(colour = "#009E73", shape = 16, size = 2),
+    "5" = element_point(colour = "#E69F00", shape = 16, size = 2)
+  ),
+
+  statline = list(
+    a = element_line(colour = "#B22222", linewidth = 0.7, linetype = "solid"),  # firebrick
+    b = element_line(colour = "#3A5FCD", linewidth = 0.7, linetype = "solid"),  # medium blue
+    c = element_line(colour = "#556B2F", linewidth = 0.7, linetype = "solid"),  # dark olive green
+    d = element_line(colour = "#CD8500", linewidth = 0.7, linetype = "solid"),  # dark goldenrod
+    e = element_line(colour = "#6A3D9A", linewidth = 0.7, linetype = "solid"),  # dark violet
+    f = element_line(colour = "#1F6F78", linewidth = 0.7, linetype = "solid")   # dark teal
+  )
+)
+
+
+# element styles -----------------------------------------------------------------
+
+## grid --------------------------------------------------------------------
 
 .scplot_themes$grid <- list(
+
+  theme_type = "element",
+
   grid = element_line(colour = "lightblue", linewidth = 0.2),
   panel.background = element_rect(fill = "grey95", linewidth = 0)
 )
 
-# grid2 ---------------------------------------------------
+## grid2 ---------------------------------------------------
 
 .scplot_themes$grid2 <- list(
+
+  theme_type = "element",
+
   grid = element_line(colour = "lightgreen", linewidth = 0.2),
   panel.background = element_rect(fill = "grey95", linewidth = 1)
 )
 
 
-# grid3 --------------------------------------------------------------------
+## grid3 --------------------------------------------------------------------
 
 .scplot_themes$grid3 <- list(
+
+  theme_type = "element",
+
   grid = element_line(colour = "grey90", linewidth = 0.2),
   panel.background = element_rect(fill = "grey99", linewidth = 0)
 )
 
-
-
-# sizes -------------------------------------------------------------------
+## sizes -------------------------------------------------------------------
 
 .scplot_themes$small <- list(
+
+  theme_type = "element",
+
   text = element_text(size = 8),
   panel.spacing.y = unit(1, "lines")
 )
 
 .scplot_themes$tiny <- list(
+
+  theme_type = "element",
+
   text = element_text(size = 6),
   panel.spacing.y = unit(0.5, "lines")
 )
 
 .scplot_themes$big <- list(
+
+  theme_type = "element",
+
   text = element_text(size = 14),
   panel.spacing.y = unit(1.5, "lines")
 )
 
-# minimal -----------------------------------------------------------------
+## phase colour and shade -----------------------------------------------------------------
 
-.scplot_themes$minimal = list(
-  panel.spacing.y = unit(1, "lines"),
-  panel.background = element_rect(fill = alpha("white", 1), color = alpha("white", 1)),
-  datapoint = list(
-    "1" = element_point(size = 1.5)),
+.scplot_themes$phase_color <- list(
 
-  axis.ticks.length = unit(0, "points"),
-  axis.ticks =  element_line(linewidth = 0),
+  theme_type = "element",
 
-  axis.line.x = element_line(linewidth = 0),
+  panel.background = element_rect(
+    fill = alpha(c("aliceblue", "mistyrose1", "honeydew"), 0.5))
+)
 
-  axis.text.x = element_text(size = 0),
-  axis.text.y = element_text(size = 0),
+.scplot_themes$phase_shade <- list(
+
+  theme_type = "element",
+
+  panel.background = element_rect(
+    fill = alpha(c("grey80", "grey99", "grey90"), 0.5))
+)
+
+
+## add staircase -----------------------------------------------------------------
+
+.scplot_themes$staircase = list(
+
+  theme_type = "element",
+  theme_name = "staircase separators",
 
   separators = element_line(
-    color = "black", linewidth = 0.3, linetype = "solid"),
+    color = "black", linewidth = 1.2, linetype = "solid"),
+  separators.staircase = TRUE,
+  phasenames = element_text(color = "black", vjust = 1.5, hjust = 0.5,
+                            margin = margin(b = 1.5)),
+  phasenames.position.x = "centre"
+
+)
+
+.scplot_themes$strip = list(
+
+  theme_type = "element",
+  theme_name = "strip",
+
+  plot.background = element_rect(linewidth = 0),
+  panel.background = element_rect(linewidth = 0),
+
+  axis.line.x = element_line(linewidth = 0),
+  axis.line.y = element_line(linewidth = 0.3, linetype = "solid"),
+
+  axis.ticks.length = unit(0, "points"),
+  axis.ticks = element_line(linewidth = 0),
+  axis.text.x = element_text(size = 0, margin = margin(t = 0)),
+  axis.text.y = element_text(size = 0, margin = margin(r = 0)),
+
+  plot.margin = margin(t = 0.5, r = 0.5, b = 0.5, l = 0.5, unit = "lines"),
+
+  casenames.background = element_rect(linewidth = 0),
+
+  separators = element_line(linewidth = 0.3, linetype = "solid"),
+
+  separators.staircase = FALSE,
+
+  label.background = NULL,
 
   grid = element_line(linewidth = 0),
+
+  legend.position = "none",
+
   NULL
 )
 
-# dark --------------------------------------------------------------------
+# complete themes --------
+
+## minimal -----------------------------------------------------------------
+
+.scplot_themes$minimal = list(
+
+  theme_type = "complete",
+  theme_name = "minimal",
+
+  text = element_text(
+    colour = "black", size = 11, family = "sans",
+    face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
+    lineheight = 1
+  ),
+
+  plot.background = element_rect(
+    fill = alpha("white", 1),
+    colour = alpha("white", 1),
+    linewidth = 0,
+    linetype = "solid"
+  ),
+  panel.background = element_rect(
+    fill = alpha("white", 1),
+    colour = alpha("white", 1),
+    linewidth = 0,
+    linetype = "solid"
+  ),
+  panel.spacing.y = unit(1, "lines"),
+
+  axis.expand.x = c(0, 0.4, 0, 0.4),
+  axis.expand.y = c(0.03, 0, 0.03, 0),
+
+  axis.line.x = element_line(
+    colour = "black", linewidth = 0, linetype = "solid"
+  ),
+  axis.line.y = element_line(
+    colour = "black", linewidth = 0.3, linetype = "solid"
+  ),
+
+  axis.ticks.length = unit(0, "points"),
+  axis.ticks = element_line(
+    colour = "black", linewidth = 0, linetype = "solid"
+  ),
+
+  axis.title.y = element_text(
+    angle = 90, margin = margin(r = 1.5)
+  ),
+  axis.title.x = element_text(
+    margin = margin(t = 1.5)
+  ),
+
+  axis.text.x = element_text(
+    size = 0, colour = "black", margin = margin(t = 0)
+  ),
+  axis.text.y = element_text(
+    size = 0, colour = "black", margin = margin(r = 0)
+  ),
+
+  plot.title = element_text(
+    margin = margin(0, 0, 1, 0, unit = "lines"),
+    hjust = 0.5
+  ),
+
+  plot.caption = element_text(
+    margin = margin(t = 0.5, r = 0, b = 0, l = 0, unit = "lines"),
+    hjust = 0,
+    face = "plain"
+  ),
+
+  plot.margin = margin(t = 0.5, r = 0.5, b = 0.5, l = 0.5, unit = "lines"),
+
+  casenames = element_text(
+    vjust = 1, hjust = 0,
+    margin = margin(0.15, 0.15, 0.15, 0.15, unit = "lines")
+  ),
+
+  casenames.strip = element_rect(
+    colour = NA,
+    fill = NA,
+    linewidth = 0,
+    linetype = "solid"
+  ),
+  casenames.background = element_rect(
+    colour = NA,
+    fill = NA,
+    linewidth = 0,
+    linetype = "solid"
+  ),
+
+  casenames.position = "topleft",
+
+  phasenames = element_text(
+    vjust = 0, hjust = 0.5,
+    margin = margin(b = 1)
+  ),
+
+  phasenames.position.x = "center",
+
+  separators = element_line(
+    colour = "black", linewidth = 0.3, linetype = "solid"
+  ),
+
+  separators.extent = "full",
+  separators.staircase = FALSE,
+
+  label.text = element_text(
+    colour = "black", vjust = 0.5, hjust = 0.5, angle = 0, size = rel(1)
+  ),
+  label.background = NULL,
+
+  label.padding = 0.1,
+
+  grid = element_line(
+    colour = "black", linewidth = 0, linetype = "solid"
+  ),
+
+  legend.position = "none",
+  legend.background = element_rect(
+    fill = NA, colour = NA, linewidth = 0, linetype = "solid"
+  ),
+  legend.text = element_text(size = rel(0.7), colour = "black"),
+  legend.title = element_text(size = rel(0.7), colour = "black"),
+  legend.margin = margin(0.2, 0.2, 0.2, 0.2, unit = "lines"),
+
+  dataline = list(
+    "1" = element_line(colour = "black", linetype = "solid", linewidth = 0.5),
+    "2" = element_line(colour = "grey40", linetype = "solid", linewidth = 0.5),
+    "3" = element_line(colour = "grey65", linetype = "solid", linewidth = 0.5)
+  ),
+
+  datapoint = list(
+    "1" = element_point(colour = "black", shape = 16, size = 1.5),
+    "2" = element_point(colour = "grey40", shape = 16, size = 1.5),
+    "3" = element_point(colour = "grey65", shape = 16, size = 1.5)
+  ),
+
+  statline = list(
+    a = element_line(colour = "black", linewidth = 0.6, linetype = "dotted"),
+    b = element_line(colour = "grey35", linewidth = 0.6, linetype = "dotted"),
+    c = element_line(colour = "grey50", linewidth = 0.6, linetype = "dotted"),
+    d = element_line(colour = "grey60", linewidth = 0.6, linetype = "dotted"),
+    e = element_line(colour = "grey70", linewidth = 0.6, linetype = "dotted"),
+    f = element_line(colour = "grey80", linewidth = 0.6, linetype = "dotted")
+  )
+
+)
+
+
+## dark --------------------------------------------------------------------
 
 .scplot_themes$dark <- list(
+
+  theme_type = "complete",
+
+  text = element_text(colour = "whiite"),
 
   panel.background = element_rect(fill = "#16213E"),
   plot.background = element_rect(fill = "#1A1A2E"),
@@ -351,34 +579,13 @@
 
 )
 
-## phase colour and shade -----------------------------------------------------------------
 
-.scplot_themes$phase_color <- list(
-  panel.background = element_rect(
-    fill = alpha(c("aliceblue", "mistyrose1", "honeydew"), 0.5))
-)
-
-.scplot_themes$phase_shade <- list(
-  panel.background = element_rect(
-    fill = alpha(c("grey80", "grey99", "grey90"), 0.5))
-)
-
-
-## add staircase -----------------------------------------------------------------
-
-.scplot_themes$staircase = list(
-  separators = element_line(
-    color = "black", linewidth = 1.2, linetype = "solid"),
-  separators.staircase = TRUE,
-  phasenames = element_text(color = "black", vjust = 1.5, hjust = 0.5,
-                            margin = margin(b = 1.5)),
-  phasenames.position.x = "centre"
-
-)
-
-# illustration -----------------------------------------------------------------
+## illustration -----------------------------------------------------------------
 
 .scplot_themes$illustration = list(
+
+  theme_type = "complete",
+  theme_name = "illustration",
 
   text = element_text(size = 16, family = "sans",
                       face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
@@ -465,9 +672,10 @@
 
 .scplot_themes$clarity = list(
 
-  text = element_text(
-    colour = "#1A1A1A"
-  ),
+  theme_type = "complete",
+  theme_name = "clarity",
+
+  text = element_text(colour = "#1A1A1A"),
 
   panel.spacing.y = unit(1.1, "lines"),
 
@@ -586,6 +794,9 @@
 ## midnight -------------------------------------------------------------------
 
 .scplot_themes$midnight = list(
+
+  theme_type = "complete",
+  theme_name = "midnight",
 
   text = element_text(
     colour = "#EAEAF2", size = 11, family = "sans",
@@ -729,6 +940,9 @@
 
 .scplot_themes$journal = list(
 
+  theme_type = "complete",
+  theme_name = "journal",
+
   text = element_text(
     colour = "#000000", size = 10.5, family = "sans",
     face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
@@ -867,6 +1081,8 @@
 
 ## playful -----------------------------------------------------------------
 .scplot_themes$playful = list(
+
+  theme_type = "complete",
 
   text = element_text(
     colour = "#2B2B2B", size = 11, family = "sans",
@@ -1014,6 +1230,8 @@
 ## atelier -----------------------------------------------------------------
 
 .scplot_themes$atelier = list(
+
+  theme_type = "complete",
 
   text = element_text(
     colour = "#2E2A26", size = 11, family = "serif",
@@ -1164,6 +1382,8 @@
 ## bauhaus -----------------------------------------------------------------
 .scplot_themes$bauhaus = list(
 
+  theme_type = "complete",
+
   text = element_text(
     colour = "#111111", size = 11, family = "sans",
     face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
@@ -1309,6 +1529,8 @@
 
 .scplot_themes$poster = list(
 
+  theme_type = "complete",
+
   text = element_text(
     colour = "#1A1A1A", size = 16, family = "sans",
     face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
@@ -1449,6 +1671,8 @@
 ## handout -----------------------------------------------------------------
 .scplot_themes$handout = list(
 
+  theme_type = "complete",
+
   text = element_text(
     colour = "#000000", size = 11, family = "sans",
     face = "plain", angle = 0, hjust = 0.5, vjust = 0.5,
@@ -1575,6 +1799,8 @@
 ## sparse -----------------------------------------------------------------
 
 .scplot_themes$sparse = list(
+
+  theme_type = "complete",
 
   text = element_text(
     colour = "#222222", size = 10.5, family = "sans",
@@ -1703,6 +1929,8 @@
 ## sienna -----------------------------------------------------------------
 
 .scplot_themes$sienna = list(
+
+  theme_type = "complete",
 
   text = element_text(
     colour = "sienna4", size = 11, family = "serif",
