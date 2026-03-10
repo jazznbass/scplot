@@ -1,11 +1,19 @@
+# scplot 0.7.0
 
+## Bug fixes
 
-# scplot 0.6.2
+-   Fixed bug that did not allow to set pvar to something else than "phase" and add a statline at the same time.
 
--   Fixed bug that did not allow to set the pvar to something else than and add a statline at the same time.
+## New features
+
 -   Improved the automatic naming of statlines when the phase argument is set. (e.g. "mean", phase = "A" now creates a statline with the name "mean values A").
 -   Themes that have been created with *scplot* prior version 0.6.2 (including 0.6.1) must be recreated by executing the respective functions due to the adoption to S7 classes.
--   New experimental option to include staicase style phase separators that go across plots
+-   add_statline(): trends can now be plotted for any phase or phase combination.
+-   add_statline(): Four regression methods now apply to all trend settings.
+-   add_stalline(): phase = "all" calculates a statistic for all values.
+-   New argument `segmented` for add_statline to indicate if there is a gap in the statline between phases.
+-   New argument `case` specifying for which cases a statline should be added.
+-   New experimental option to include staircase style phase separators that go across plots
 
 ```
 scplot(exampleA1B1A2B2) |> 
@@ -15,6 +23,10 @@ scplot(exampleA1B1A2B2) |>
 scplot(exampleABC) |> 
   set_separator(staircase = TRUE, linewidth = 2, linetype = "solid")  
 ```
+
+## Multiple new themes:
+
+'clarity', 'journal', 'poster', 'handout', 'sparse','midnight', 'playful', 'atelier', 'bauhaus',  'sienna'
 
 # scplot 0.6.1
 

@@ -19,7 +19,7 @@ min, max, quantile, standard deviation, moving average, and trend lines."><meta 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -53,9 +53,9 @@ min, max, quantile, standard deviation, moving average, and trend lines.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">add_statline</span><span class="op">(</span></span>
 <span>  <span class="va">object</span>,</span>
-<span>  stat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span>, <span class="st">"min"</span>, <span class="st">"max"</span>, <span class="st">"quantile"</span>, <span class="st">"sd"</span>, <span class="st">"mad"</span>, <span class="st">"trend"</span>, <span class="st">"trendA"</span>,</span>
-<span>    <span class="st">"trendA theil-sen"</span>, <span class="st">"trendA bisplit"</span>, <span class="st">"trendA trisplit"</span>, <span class="st">"moving mean"</span>,</span>
-<span>    <span class="st">"moving median"</span>, <span class="st">"loreg"</span>, <span class="st">"lowess"</span>, <span class="st">"loess"</span><span class="op">)</span>,</span>
+<span>  stat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span>, <span class="st">"min"</span>, <span class="st">"max"</span>, <span class="st">"quantile"</span>, <span class="st">"sd"</span>, <span class="st">"mad"</span>, <span class="st">"trend"</span>,</span>
+<span>    <span class="st">"moving mean"</span>, <span class="st">"moving median"</span>, <span class="st">"loreg"</span>, <span class="st">"lowess"</span>, <span class="st">"loess"</span>, <span class="st">"trendA"</span>,</span>
+<span>    <span class="st">"trendA theil-sen"</span>, <span class="st">"trendA bisplit"</span>, <span class="st">"trendA trisplit"</span><span class="op">)</span>,</span>
 <span>  phase <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  color <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  linewidth <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -63,6 +63,7 @@ min, max, quantile, standard deviation, moving average, and trend lines.</p>
 <span>  variable <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  label <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  segmented <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  case <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -78,11 +79,8 @@ function.</p></dd>
 
 <dt id="arg-stat">stat<a class="anchor" aria-label="anchor" href="#arg-stat"></a></dt>
 <dd><p>A character string for defining a statistical line or curve to be
-plotted. Possible values are <code>"mean"</code>, <code>"median"</code>, <code>"min"</code>, <code>"max"</code>,
-<code>"quantile"</code>, <code>"sd"</code>, <code>"mad"</code>, <code>"trend"</code>, <code>"trendA"</code>, <code>"trendA theil-sen"</code>,
-<code>"trendA bisplit"</code>, <code>"trendA trisplit"</code>, <code>"moving mean"</code>,
-<code>"moving median"</code>, <code>"loreg"</code> (local regression using <code>loess</code>), and
-<code>"lowess"</code> (local regression using <code>lowess</code>).</p></dd>
+plotted. Main options are <code>"mean"</code>, <code>"median"</code>, <code>"min"</code>, <code>"max"</code>,
+<code>"quantile"</code>, <code>"sd"</code>, <code>"mad"</code>, <code>"trend"</code>, <code>"moving mean"</code>, <code>"moving median"</code>, <code>"loreg"</code> (local regression using <code>loess</code>).</p></dd>
 
 
 <dt id="arg-phase">phase<a class="anchor" aria-label="anchor" href="#arg-phase"></a></dt>
@@ -111,8 +109,15 @@ phase (see details).</p></dd>
 
 
 <dt id="arg-segmented">segmented<a class="anchor" aria-label="anchor" href="#arg-segmented"></a></dt>
-<dd><p>Logical. If TRUE, the statline is plotted separately for each phase.
-The default is NULL, where sensible settings are applied based on the <code>stat</code> and <code>phase</code> arguments.</p></dd>
+<dd><p>Logical. If TRUE, the statline is plotted separately for
+each phase. The default is NULL, where sensible settings are applied based
+on the <code>stat</code> and <code>phase</code> arguments.</p></dd>
+
+
+<dt id="arg-case">case<a class="anchor" aria-label="anchor" href="#arg-case"></a></dt>
+<dd><p>Either a numeric or a character vector specifying the case(s) for which the
+statline is plotted. The default is NULL, which applies the statline to all
+cases.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -127,20 +132,21 @@ The default is NULL, where sensible settings are applied based on the <code>stat
     <div id="details">
     <h2>Details</h2>
     <p>The <code>phase</code> argument defines the reference phase for some
-statistical functions (<code>"median", "mean", "min", "max", "quantile"</code>). The
-default is <code>NULL</code> which calculates and plots statistics for each phase
-separately. The arguments takes a numeric vector (phase number(s)) or a
-character vector (phase name(s)). When more than one phase is defines,
-statistics are based on the combined values of these phases. Various
-methods for an extrapolated <em>trendA</em> line exist: <code>"trendA"</code> is based on an
-OLS regression, <code>"trendA theil-sen"</code> on a nonparametric regression, and
-<code>"trendA bisplit"</code> / <code>"trendA trisplit"</code> are two median based approaches.
-Some of the functions defined in <code>stats</code> have additional arguments. The
-<code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code> function has a trim argument (e.g. <code>trim = 0.1</code>). <code><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile()</a></code> has
-a proportion argument (e.g. <code>prob = 0.75</code> for calculating the 75%
-quantile). <code>moving mean</code> and <code>moving median</code> have a lag argument (e.g. <code>lag = 2</code>). The local-regression curve function <code>"lowess"</code> (or <code>"loreg"</code>) has a
-proportion argument (e.g. <code>f = 0.5</code>; see <code><a href="https://rdrr.io/r/stats/lowess.html" class="external-link">lowess()</a></code>) and the
-local-regression curve function <code>"loess"</code> has a span argument (e.g. <code>span = 0.75</code>; see <code><a href="https://rdrr.io/r/stats/loess.html" class="external-link">loess()</a></code>).</p>
+statistical functions (<code>"median", "mean", "min", "max", "quantile", "trend"</code>). The default is <code>NULL</code> which calculates and plots statistics for
+each phase separately. The arguments takes a numeric vector (phase
+number(s)) or a character vector (phase name(s)). When more than one phase
+is defines, statistics are based on the combined values of these phases.
+<code>phase = all</code> will select all phases. Various methods for a <em>trend</em> line
+exist that can be set with <code>method</code> argument: The default is based on an
+OLS regression, <code>"theil-sen"</code> on a nonparametric regression, and
+<code>"bisplit"</code> / <code>"trisplit"</code> are two median based approaches. Some of the
+functions defined in <code>stat</code> have additional arguments. The <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code>
+function has a trim argument (e.g. <code>trim = 0.1</code>). <code><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile()</a></code> has a
+proportion argument (e.g. <code>prob = 0.75</code> for calculating the 75% quantile).
+<code>moving mean</code> and <code>moving median</code> have a lag argument (e.g. <code>lag = 2</code>). The
+local-regression curve function <code>"lowess"</code> (or <code>"loreg"</code>) has a proportion
+argument (e.g. <code>f = 0.5</code>; see <code><a href="https://rdrr.io/r/stats/lowess.html" class="external-link">lowess()</a></code>) and the local-regression curve
+function <code>"loess"</code> has a span argument (e.g. <code>span = 0.75</code>; see <code><a href="https://rdrr.io/r/stats/loess.html" class="external-link">loess()</a></code>).</p>
     </div>
 
   </div>

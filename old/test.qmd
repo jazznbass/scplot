@@ -1,4 +1,6 @@
 ```{r}
+#| label: setup
+#| include: false
 library(scan)
 library(scplot)
 ```
@@ -165,27 +167,32 @@ scplot(exampleABC) |>
   set_panel(fill = c("grey80", "white", "blue4"))
 ```
 
+# Themes
+
+::: panel-tabset
 ```{r}
 #| label: scplot-themes
 #| echo: false
-#| fig-cap: Various scplot themes.
-#| fig-height: 10
+#| results: asis
 
-ts <- 10
-data <- exampleABC$Marie
+th <- c('basic', 'minimal', 'illustration', 'clarity', 'journal', 'poster', 'handout', 'sparse','midnight', 'dark', 'playful', 'atelier', 'bauhaus',  'sienna')
 
-p1 <- scplot(data) |> set_theme("default") |> set_base_text(size = ts) |> set_casenames("default") |> as_ggplot()
-p2 <- scplot(data) |> set_theme("basic") |> set_base_text(size = ts) |>  set_casenames("basic") |> as_ggplot()
-p3 <- scplot(data) |> set_theme("minimal") |> set_base_text(size = ts) |>  set_casenames("minimal") |> as_ggplot()
-p4 <- scplot(data) |> set_theme("dark") |> set_base_text(size = ts) |>  set_casenames("dark") |> as_ggplot()
-p5 <- scplot(data) |> set_theme("sienna") |> set_base_text(size = ts) |>  set_casenames("sienna")|> as_ggplot()
-p6 <- scplot(data) |> set_theme("illustration") |> set_base_text(size = ts) |> set_casenames("illustration") |> as_ggplot()
+p <- lapply(th, function(x) {
+  scplot(exampleA1B1A2B2) |>
+    set_theme(x) |> 
+    set_base_text(size = 10) |> 
+    add_statline("trend", phase = "A1") |>
+    add_statline("loess") |>
+    add_title(paste0("Theme: ", x)) 
+})
 
-library(patchwork)
-p1 + p2 + p3 + p4 + p5 + p6 +
-  plot_annotation(tag_levels = "a", tag_suffix =  ")") + 
-  plot_layout(ncol = 2)
+for (i in seq_along(th)) {
+  cat(paste0("\n\n## ", th[i], "\n\n"), collapse = "")
+  print(p[[i]])
+}
+
 ```
+:::
 
 ```{r}
 #| label: scplot-combine-themes
@@ -196,9 +203,10 @@ scplot(exampleABC) |>
 
 ```{r}
 my_theme <- new_theme() |>
-  set_panel(color = "red")  |>
+  set_panel(color = "red", linewidth = 1) |> 
   set_base_text(size = 12, color = "blue")  |>
   set_dataline(color = "darkred", linewidth = 2)
+
 
 scplot(exampleABC)  |> set_theme(my_theme)
 ```
@@ -219,12 +227,21 @@ scplot(exampleAB_decreasing) |>
 ```
 
 ```{r}
-#| label: scplot-legend
+#| label: scplot-legend-1
 
 scplot(exampleABC) |>
   add_statline("mean", color = "darkred") |>
   add_statline("min", phase = "B", linewidth = 0.2, color = "darkblue") |>
   add_legend()
+```
+
+```{r}
+#| label: scplot-legend-2
+
+scplot(exampleABC) |>
+  add_statline("mean", color = "darkred") |>
+  add_statline("min", phase = "B", linewidth = 0.2, color = "darkblue") |>
+  add_legend(position = "bottom", section_labels = NULL)
 ```
 
 ```{r}
@@ -297,22 +314,22 @@ scplot(exampleAB_mpd) |>
 
 ```{r extend1}
 
-p1 <- scplot(byHeart2011$`Lisa (Turkish)`) |> 
-  set_theme("minimal") |>
-  as_ggplot()
-p2 <- scplot(byHeart2011$`Patrick (Spanish)`) |> 
-  set_theme("minimal") |> 
-  as_ggplot()
-p3 <- scplot(byHeart2011$`Anna (Twi)`) |> 
-  set_theme("minimal") |> 
-  as_ggplot()
-p4 <- scplot(byHeart2011$`Melanie (Swedish)`) |> 
-  set_theme("minimal") |> 
-  as_ggplot()
+options(scplot.plot.caption = NULL, scplot.plot.theme = c("basic","minimal"))
+
+names(byHeart2011)[1:4] <- c("Lisa", "Pat", "Anna", "Lena")
+
+p1 <- scplot(byHeart2011[1]) |> as_ggplot()
+p2 <- scplot(byHeart2011[2]) |> as_ggplot()
+p3 <- scplot(byHeart2011[3]) |> as_ggplot()
+p4 <- scplot(byHeart2011[4]) |> as_ggplot()
 
 library(patchwork)
-p1 + p2 + p3 + p4 + plot_annotation(tag_levels = "a", tag_suffix =  ")")
+p1 + p2 + p3 + p4 + plot_annotation(
+  tag_levels = "a", tag_suffix =  ")",
+  title = "Data from university students learning vocabulary by heart"
+)
 
+options(scplot.plot.caption = "auto", scplot.plot.theme = "default")
 ```
 
 ```{r}
@@ -329,7 +346,7 @@ scplot(example_A24) |>
                  position = "left", hjust = 0, vjust = 1) |>
   set_casenames(position = "none") |>
   add_title("Effect of a speedlimit on the A24") |>
-  add_caption("Note: Moving mean calculated with lag three", face = 3, size = 1) |>
+  add_caption("Moving mean calculated with lag three", face = 3, size = 1) |>
   add_ridge(color = "lightblue")
 
 ```
@@ -360,6 +377,8 @@ scplot(exampleAB_add) |>
 
 ```{r complex3}
 scplot(exampleA1B1A2B2) |> 
+  set_theme("basic") |>
+  set_theme_element(panel.spacing.y = unit(0, "points")) |> 
   set_xaxis(increment = 4, size = 0.7) |>
   set_yaxis(color = "sienna3") |>
   set_ylabel("Points", color = "sienna3", angle = 0) |>
@@ -387,9 +406,8 @@ scplot(exampleA1B1A2B2) |>
            color = "darkgreen", angle = 20, size = 0.7) |>
   add_arrow(case = 1, 5, 30, 5, 22, color = "steelblue") |>
   set_background(fill = "white") |>
-  add_legend() |>
-  set_theme("basic") |>
-  set_theme_element(panel.spacing.y = unit(0, "points"))
+  add_legend()
+
 
 ```
 
