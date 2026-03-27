@@ -243,14 +243,13 @@ as_ggplot <- function(scplot) {
     }
 
     if(scplot$datalines[[i]]$type == "continuous") {
-
-      if (is.null(scplot$datalines[[i]]$show_gaps) | isTRUE(scplot$datalines[[i]]$show_gaps)) {
-        df <- data_long
+      show_gaps <- scplot$datalines[[i]]$show_gaps
+      if (is.null(show_gaps) || isTRUE(show_gaps)) {
+        df_line <- data_long
       } else {
-        df <- data_long[!is.na(data_long[[scplot$datalines[[i]]$variable]]), ]
+        df_line <- data_long[!is.na(data_long[[scplot$datalines[[i]]$variable]]), ]
       }
 
-      df_line <- data_long[!is.na(data_long[[scplot$datalines[[i]]$variable]]), ]
       p <- p + geom_line(
         mapping = aes(
           y = !!as.name(scplot$datalines[[i]]$variable),
