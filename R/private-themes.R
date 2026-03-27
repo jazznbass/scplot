@@ -534,7 +534,7 @@
 
   theme_type = "complete",
 
-  text = element_text(colour = "whiite"),
+  text = element_text(colour = "white"),
 
   panel.background = element_rect(fill = "#16213E"),
   plot.background = element_rect(fill = "#1A1A2E"),

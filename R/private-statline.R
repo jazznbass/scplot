@@ -22,7 +22,8 @@
 
       if (is.null(line$phase)) {
         data_list <- split(data, data[["phase"]])
-        stats <- lapply(data_list, function(x) do.call(line$stat, c(list(x$values), args))) |> unlist()
+        stats <- lapply(data_list, function(x)
+                        do.call(line$stat, c(list(x$values), args))) |> unlist()
         return(unname(stats[data$phase]))
       }
 
