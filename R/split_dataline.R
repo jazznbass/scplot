@@ -16,11 +16,12 @@
 #'   used.
 #' @param levels Optional, a vector of treatment levels.
 #' @param labels Optional, labels for the treatment levels.
-#' @param auto_add Logical, should the new columns be added automatically?
-#'   (default is TRUE)
 #' @param remove_original Logical, should the original dependent variable be
 #'   removed from the cases where the treatment variable matches the level?
-#'   (default is FALSE)
+#'   (default is FALSE).
+#' @param color Optional, a vector of colors for the new datalines. If provided,
+#'  the length of the color vector should match the number of treatment levels.
+#'  If not provided, default colors will be used for the datalines.
 #' @param ... Additional arguments.
 #' @return The modified scplot object with added datalines.
 #' @export
@@ -32,8 +33,8 @@ split_dataline <- function(object,
                            dvar = NULL,
                            levels = NULL,
                            labels = NULL,
-                           auto_add = TRUE,
                            remove_original = TRUE,
+                           color = NULL,
                            ...) {
 
   treatment_levels <- if (is.null(levels)) {
@@ -45,10 +46,8 @@ split_dataline <- function(object,
 
   if (is.null(dvar)) dvar <- object$dvar
 
-  prefix <- "treatment_"
-
   if (is.null(labels)) {
-    labels <- paste(prefix, treatment_levels, sep = "")
+    labels <- paste("treatment_", treatment_levels, sep = "")
   } else if (length(labels) != length(treatment_levels)) {
     abort("Length of labels must match the number of treatment levels.")
   }
@@ -66,9 +65,21 @@ split_dataline <- function(object,
     }
   }
 
-  if (auto_add) {
-
-    for (level in seq_along(treatment_levels)) {
+  # Add datalines for each treatment level
+  if (!is.null(color) && length(color) != length(treatment_levels)) {
+    color <- rep(color, length.out = length(treatment_levels))
+  }
+  for (level in seq_along(treatment_levels)) {
+    if (!is.null(color)) {
+      object <- set_dataline(
+        object,
+        variable = labels[level],
+        show_gaps = FALSE,
+        color = color[level],
+        point = color[level],
+        ...
+      )
+    } else {
       object <- set_dataline(
         object,
         variable = labels[level],
@@ -77,7 +88,6 @@ split_dataline <- function(object,
       )
     }
   }
-
   return(object)
 
 }
