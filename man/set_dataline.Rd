@@ -12,6 +12,7 @@ set_dataline(
   point,
   type = "continuous",
   label = NULL,
+  show_gaps = TRUE,
   ...
 )
 

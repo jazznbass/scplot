@@ -32,6 +32,7 @@ set_dataline <- function(object,
                          point,
                          type = "continuous",
                          label = NULL,
+                         show_gaps = TRUE,
                          ...) {
 
   line_args <- list(...)
@@ -46,6 +47,7 @@ set_dataline <- function(object,
     pos_line <- 1
     n_element <- 1
     object$datalines[[1]]$type <- type
+    object$datalines[[1]]$show_gaps <- show_gaps
     if (!is.null(label)) object$datalines[[1]]$label <- label
   } else {
     pos_line <- length(object$datalines) + 1
@@ -68,7 +70,11 @@ set_dataline <- function(object,
 
   if (is.null(point@colour)) point@colour <- line@colour
 
-  new_line <- list(variable = variable, type = type, label = label)
+  new_line <- list(
+    variable = variable,
+    type = type, label = label,
+    show_gaps = show_gaps
+  )
 
   object$datalines[[n_element]] <- new_line
   object$theme$dataline[[n_element]] <- line
