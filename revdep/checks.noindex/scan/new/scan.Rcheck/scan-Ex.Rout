@@ -22,7 +22,7 @@ Type 'q()' to quit R.
 > options(warn = 1)
 > library('scan')
 [34mscan 0.67.0 (2025-09-11)
-[31mThe addon package 'scplot' provides sophisticated graphs for single-case data.
+[31mVisit the free online book on scan at: https://jazznbass.github.io/scan-Book/
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -3699,7 +3699,7 @@ Imported 3 cases
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.498 0.1 4.599 0 0 
+Time elapsed:  4.504 0.123 4.635 0 0 
 > grDevices::dev.off()
 null device 
           1 

@@ -1,4 +1,4 @@
-add_arrow               Add arrrows to an scplot
+add_arrow               Add an arrow to a scplot
 add_grid                Add grid to an scplot theme
 add_labels              Add value labels to an scplot
 add_legend              Add a legend to an scplot
@@ -31,3 +31,4 @@ set_theme               Add a theme of to an scplot object
 set_theme_element       Set a theme element of an scplot object
 set_xaxis               Set axis parameters of an scplot
 set_xlabel              Set label for axis
+split_dataline          Split Treatment Dataline

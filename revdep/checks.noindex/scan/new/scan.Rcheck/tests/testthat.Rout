@@ -26,7 +26,7 @@ Type 'q()' to quit R.
 > library(testthat)
 > library(scan)
 [34mscan 0.67.0 (2025-09-11)
-[31mFor information on citing scan, type citation("scan").
+[31mPost issues at https://github.com/jazznbass/scan/issues
 
 Attaching package: 'scan'
 
@@ -40,4 +40,4 @@ The following object is masked from 'package:testthat':
 > 
 > proc.time()
    user  system elapsed 
-  1.493   0.138   2.227 
+  1.495   0.140   2.203 

@@ -2,10 +2,20 @@
 
 ## Bug fixes
 
--   Fixed bug that did not allow to set pvar to something else than "phase" and add a statline at the same time.
+- Fixed bug that did not allow to set pvar to something else than "phase" and add a statline at the same time.
 
-## New features
+## New function
 
+- `split_dataline()`: This function allows to split the dataline of a treatment phase into two parts based on a treatment variable in a dataset. This is mainly used to visualize alternating treatments in a phase (e.g. alternating treatments in a B phase).
+ 
+```r
+scplot(scan::example_atd) |> 
+  split_dataline("treatment")
+```
+
+## New features / arguments
+
+- set_dataline(): new argument "show_gaps". Logical. If TRUE, missing values in the data will result in gaps in the line. If FALSE, missing values will be ignored and the line will be drawn continuously. 
 -   Improved the automatic naming of statlines when the phase argument is set. (e.g. "mean", phase = "A" now creates a statline with the name "mean values A").
 -   Themes that have been created with *scplot* prior version 0.6.2 (including 0.6.1) must be recreated by executing the respective functions due to the adoption to S7 classes.
 -   add_statline(): trends can now be plotted for any phase or phase combination.

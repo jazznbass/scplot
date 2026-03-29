@@ -1,10 +1,13 @@
 
-# scplot 0.6.0
+# scplot 0.6.1
 
 -   Compatible with the new ggplot2 version which changed to S7 classes.
--   Themes that have been created with *scplot* prior version 0.6.0 must be recreated by executing the respective functions due to the adaption to S7 classes.   
+-   Themes that have been created with *scplot* prior version 0.6.1 must be recreated by executing the respective functions due to the adoption to S7 classes.   
+-   Extended the roxygen documentation for several functions.
 
--   New function `scplot_rand()`: Takes an scdf and a statistic from the rand-test() function and returns a plot with the stat results for varying phase B start positions.
+# scplot 0.6.0
+
+-   New function `scplot_rand()`: Takes an scdf and a statistic from the rand-test() function and returns a plot with the repective statistical results for varying phase B start positions.
 
 ``` r
 scplot_rand(byHeart2011[1:5], "Slope B-A")

@@ -422,6 +422,20 @@ scplot(exampleAB_add) |>
 
 # new -----------
 
+## Alternating treatment design
+
+```{r}
+scplot(scan::example_atd) |> 
+  split_dataline("treatment") |> 
+  add_legend()
+```
+
+```{r}
+scplot(scan::example_atd) |> 
+  split_dataline("treatment", labels = c("Maze", "PGC")) |> 
+  add_legend()
+```
+
 ## Separator
 
 ```{r}

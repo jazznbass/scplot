@@ -1,32 +1,33 @@
 add_arrow               Add arrrows to an scplot
-add_grid                Add grid to an scplot
+add_grid                Add grid to an scplot theme
 add_labels              Add value labels to an scplot
 add_legend              Add a legend to an scplot
-add_line                Add line to an scplot
-add_marks               Add marks to an scplot
-add_ridge               Add a ridge to an scplot
-add_statline            Add a statline to an scplot
-add_text                Add test to an scplot
-add_title               Add title and caption to an scplot
+add_line                Add line to an scplot object
+add_marks               Add marks to an scplot object
+add_ridge               Add a ridge to an scplot object
+add_statline            Add a statline to an scplot object
+add_text                Add test to an scplot object
+add_title               Add title and caption to an scplot object
 as_ggplot               Creates a ggplot2 object from an 'scplot()'
                         object
-element_point           Point element
-new_theme               Create a new scplot theme
+new_theme               Create a new scplot theme object
 scplot-package          Single-Case Data Plots
-scplot.sc_hplm          This function generates a forest plot for the
-                        random effects of a mixed hplm model
+scplot.sc_hplm          Forest Plot for Random Effects of Mixed HPLM
+                        Models
 scplot.sc_rand          Plot Randomization Effects
-scplot.sc_tauu          Plot Tau-U Effects
-scplot.scdf             Plot single-case data
+scplot.sc_tauu          Plot Tau-U Effects Forest Plot
+scplot.scdf             Plot single-case data from a single-case
+                        data-frame
 scplot_rand             Random start position plot Plot of statistics
                         for random phase B start positions
 set_background          Set plot and panel background of an scplot
-set_base_text           Set base text parameters of an scplot
-set_casenames           Set casenames of an scplot
-set_dataline            Set data lines of an scplot
-set_phasenames          Set phasenames of an scplot
-set_separator           Set separator line in an scplot
-set_theme               Add a theme of to an scplot
-set_theme_element       Set a theme element
+                        object
+set_base_text           Set base text parameters of an scplot object
+set_casenames           Set casenames of an scplot object
+set_dataline            Set data lines of an scplot object
+set_phasenames          Set phasenames of an scplot object
+set_separator           Set separator line in an scplot object
+set_theme               Add a theme of to an scplot object
+set_theme_element       Set a theme element of an scplot object
 set_xaxis               Set axis parameters of an scplot
 set_xlabel              Set label for axis
