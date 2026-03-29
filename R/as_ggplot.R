@@ -243,14 +243,23 @@ as_ggplot <- function(scplot) {
     }
 
     if(scplot$datalines[[i]]$type == "continuous") {
+      show_gaps <- scplot$datalines[[i]]$show_gaps
+      if (is.null(show_gaps) || isTRUE(show_gaps)) {
+        df_line <- data_long
+      } else {
+        df_line <- data_long[!is.na(data_long[[scplot$datalines[[i]]$variable]]), ]
+      }
+
       p <- p + geom_line(
-        aes(
+        mapping = aes(
           y = !!as.name(scplot$datalines[[i]]$variable),
           group = !!as.name(pvar),
           colour = !!scplot$datalines[[i]]$label
         ),
+        data = df_line,
         linewidth = theme$dataline[[i]]$linewidth,
-        linetype = theme$dataline[[i]]$linetype
+        linetype = theme$dataline[[i]]$linetype,
+        na.rm = TRUE
       )
     }
 
@@ -262,7 +271,8 @@ as_ggplot <- function(scplot) {
           colour = !!scplot$datalines[[i]]$label#!!theme$dataline[[i]]$colour
         ),
         linewidth = theme$dataline[[i]]$linewidth,
-        linetype = theme$dataline[[i]]$linetype
+        linetype = theme$dataline[[i]]$linetype,
+        na.rm = TRUE
       )
     }
 
@@ -278,7 +288,8 @@ as_ggplot <- function(scplot) {
         stat = "identity",
         #position = position_nudge(x = 0.5),
         width = theme$dataline[[i]]$linewidth,
-        linetype = theme$dataline[[i]]$linetype
+        linetype = theme$dataline[[i]]$linetype,
+        na.rm = TRUE
       )
     }
 
@@ -289,8 +300,8 @@ as_ggplot <- function(scplot) {
         aes(y = !!sym(scplot$datalines[[i]]$variable)),
         colour = theme$datapoint[[i]]$colour,
         size = theme$datapoint[[i]]$size,
-        shape = theme$datapoint[[i]]$shape
-        #na.rm = TRUE
+        shape = theme$datapoint[[i]]$shape,
+        na.rm = TRUE
       )
     }
 

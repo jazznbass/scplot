@@ -5,6 +5,7 @@ scplot-package	scplot-package
 .merge_theme	dot-merge_theme
 .size	dot-size
 .upperfirst	dot-upperfirst
+abort	abort
 add_arrow	add_arrow
 add_caption	add_title
 add_dataline	set_dataline
@@ -25,6 +26,7 @@ element_rect	reexports
 element_text	reexports
 extract_theme	new_theme
 new_theme	new_theme
+notify	notify
 print.scplot	print.scplot
 reexports	reexports
 scplot	scplot
@@ -46,4 +48,5 @@ set_xaxis	set_xaxis
 set_xlabel	set_xlabel
 set_yaxis	set_xaxis
 set_ylabel	set_xlabel
+split_dataline	split_dataline
 unit	reexports

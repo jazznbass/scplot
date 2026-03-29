@@ -12,6 +12,7 @@ set_dataline(
   point,
   type = "continuous",
   label = NULL,
+  show_gaps = FALSE,
   ...
 )
 
@@ -34,6 +35,10 @@ should be treated.}
 
 \item{label}{A character string which is used to set the label in a legend.}
 
+\item{show_gaps}{Logical. If TRUE, missing values in the data will result in
+gaps in the line. If FALSE, missing values will be ignored and the line
+will be drawn continuously.}
+
 \item{...}{As a shortcut, arguments passed here are bundled as \code{line}
 arguments (see \code{\link[=element_line]{element_line()}}).}
 }
@@ -42,15 +47,13 @@ An object of class \code{scplot} (see\code{\link[=scplot]{scplot()}}) with a cha
 \code{datalines} element.
 }
 \description{
-Either set aesthetics of the default data line or add another data line. The
-function allows customization of data lines by passing arguments similar to
-those used in \code{element_line()} and \code{element_point()}, such as \code{color},
-\code{size}, and \code{linetype}.
+Either set aesthetics of the default data line or add another data line.
 }
 \details{
-If \code{variable} is left empty or set to \code{".dvar"}, the aesthetics of the
-default data line are changed. Otherwise, a new data line is added for the
-specified variable.
+The function allows customization of data lines by passing arguments such as
+\code{color}, \code{size}, and \code{linetype}. If \code{variable} is left empty or set to
+\code{".dvar"}, the aesthetics of the default data line are changed. Otherwise, a
+new data line is added for the specified variable.
 }
 \examples{
 data(exampleAB_add, package = "scan")

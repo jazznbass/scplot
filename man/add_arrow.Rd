@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_arrow.R
 \name{add_arrow}
 \alias{add_arrow}
-\title{Add arrrows to an scplot}
+\title{Add an arrow to a scplot}
 \usage{
 add_arrow(
   object,
@@ -13,7 +13,7 @@ add_arrow(
   y1,
   color = "black",
   angle = 30,
-  length = unit(5, "points"),
+  length = 5,
   type = "open",
   ends = "last",
   linewidth = 0.7
@@ -37,13 +37,14 @@ function.}
 
 \item{angle}{Angle (in [0,360])}
 
-\item{length}{Size of the arrow angels.}
+\item{length}{Size of the arrow angels. Can be specified as a numeric value
+(in points) or as a unit object (e.g., \code{unit(5, "points")}).}
 
 \item{type}{One of \code{"open"} or \code{"closed"} indicating whether the arrow head
 should be a closed triangle.}
 
-\item{ends}{One of \code{"last"}, \code{"first"}, or \code{"both"}, indicating which ends of the
-line to draw arrow heads.}
+\item{ends}{One of \code{"last"}, \code{"first"}, or \code{"both"}, indicating which ends of
+the line to draw arrow heads.}
 
 \item{linewidth}{A number with the width of the line.}
 }
@@ -55,9 +56,16 @@ An object of class \code{scplot} (see \code{\link[=scplot]{scplot()}}) with adde
 Draws an arrow between two points in the scplot.
 }
 \details{
-The arrow is drawn from point \verb{(x0, y0)} to point \verb{(x1, y1)}.
-The arrow head can be customized with the arguments
-\code{angle}, \code{length}, \code{type}, and \code{ends}.
+The arrow is drawn from point \verb{(x0, y0)} to point \verb{(x1, y1)}. The
+arrow head can be customized with the arguments \code{angle}, \code{length}, \code{type},
+and \code{ends}. The \code{angle} argument specifies the angle of the arrow head,
+while \code{length} specifies the size of the arrow head. The \code{type} argument
+indicates whether the arrow head should be an open or closed triangle, and
+the \code{ends} argument specifies which ends of the line should have arrow
+heads (last, first, or both). The \code{color} and \code{linewidth} arguments control
+the appearance of the arrow line. Note that the \code{length} argument can be
+specified as a numeric value (in points) or as a unit object (e.g.,
+\code{unit(5, "points")}).
 }
 \examples{
 data(exampleAB, package = "scan")

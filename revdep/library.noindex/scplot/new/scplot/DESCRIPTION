@@ -1,8 +1,8 @@
 Package: scplot
 Type: Package
 Title: Plot Function for Single-Case Data Frames
-Version: 0.6.1
-Date: 2026-02-25
+Version: 0.7.0
+Date: 2026-03-29
 Authors@R: 
     person("Juergen", "Wilbert", 
     email = "juergen.wilbert@uni-muenster.de", 
@@ -14,9 +14,9 @@ Description: Add-on for the 'scan' package that creates plots
   parameters, and predefined themes for presentations and publications. More 
   information and in depth examples can be found in the online book 
   "Analyzing Single-Case Data with R and 'scan" 
-  Jürgen Wilbert (2025) <https://jazznbass.github.io/scan-Book/>.
+  Jürgen Wilbert (2026) <https://jazznbass.github.io/scan-Book/>.
 Depends: R (>= 4.1.0)
-Imports: ggplot2, scan (>= 0.61.0), stats, utils, mblm
+Imports: ggplot2, grid, scan (>= 0.61.0), stats, utils, rlang, cli
 Suggests: rmarkdown, knitr
 License: GPL (>= 3)
 Encoding: UTF-8
@@ -25,8 +25,8 @@ Roxygen: list(markdown = TRUE)
 RemoteType: local
 RemoteUrl: /Users/wilbert/Documents/GitHub/packages/scplot
 NeedsCompilation: no
-Packaged: 2026-02-25 06:41:14 UTC; wilbert
+Packaged: 2026-03-29 10:29:22 UTC; wilbert
 Author: Juergen Wilbert [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-8392-2873>)
 Maintainer: Juergen Wilbert <juergen.wilbert@uni-muenster.de>
-Built: R 4.5.2; ; 2026-02-25 06:41:14 UTC; unix
+Built: R 4.5.2; ; 2026-03-29 10:29:22 UTC; unix
